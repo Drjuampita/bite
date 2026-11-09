@@ -13,10 +13,48 @@ Bite resuelve un problema cotidiano en la Universidad Anáhuac Querétaro: salir
 | Fase | Estado |
 |---|---|
 | 1. Arquitectura y user flow | ✅ Definido (este documento) |
-| 2. Wireframes de las pantallas clave | ⏳ Siguiente |
-| 3. Diseño visual (UI) | ⏳ Pendiente |
-| 4. Desarrollo del MVP | ⏳ Pendiente |
-| 5. Demo y presentación | ⏳ Pendiente |
+| 2. Desarrollo del MVP navegable | ✅ Primera versión en `app/` |
+| 3. Diseño visual (UI) | 🔄 Base lista, se afina en la fase de diseño |
+| 4. Datos reales (menús, horarios, salones) | ⏳ Pendiente |
+| 5. Backend en Supabase | ⏳ Esquema listo en `supabase/` |
+| 6. Demo y presentación | ⏳ Pendiente |
+
+---
+
+## 🚀 Cómo correr la app
+
+Requisitos: Node.js 20 o superior.
+
+```bash
+cd app
+npm install
+npm run dev
+```
+
+Abre http://localhost:3000. En computadora la app se ve centrada con proporción de celular; en el teléfono se ve a pantalla completa y se puede instalar como app (PWA).
+
+### Rutas principales
+
+| Ruta | Quién | Qué es |
+|---|---|---|
+| `/login` | Alumno | Entrada con correo institucional (o cuenta de demostración) |
+| `/inicio` | Alumno | Locales, categorías, pedido activo y "pedir de nuevo" |
+| `/local/[id]` | Alumno | Menú del local con opciones por producto |
+| `/carrito` → `/checkout` | Alumno | Ahora o agendar, salón y pago |
+| `/pedido/[id]` | Alumno | Seguimiento, código de entrega y calificación |
+| `/pedidos`, `/perfil` | Alumno | Historial, agendados, salón habitual y ajustes de demo |
+| `/panel` | Local | Pedidos nuevos, en preparación, programados por bloque y productos agotados |
+| `/repartidor` | Repartidor | Pedidos por recoger y entregas agrupadas por edificio |
+
+### Cómo presentar la demo
+
+1. Abre la app del alumno y el `/panel` en **dos pestañas del mismo navegador**: comparten datos y se actualizan en vivo.
+2. En **Perfil → Modo presentación**:
+   - *Locales siempre abiertos* permite pedir "Ahora" a cualquier hora (activado por defecto).
+   - *Simular avance de pedidos* hace que un pedido inmediato avance solo cada ~12 s. Apágalo si quieres mover el pedido a mano desde el panel del local y la vista del repartidor.
+3. *Reiniciar datos de la demo* borra pedidos y carrito antes de presentar.
+
+> Los datos viven en el navegador (localStorage). No hay servidor todavía: es suficiente para la demo y el cambio a Supabase está preparado.
 
 ---
 
@@ -90,12 +128,31 @@ Programado* → Recibido → Preparando → Listo → En camino → Entregado
 
 ## 🏗️ Arquitectura
 
-| Capa | Tecnología propuesta |
+| Capa | Tecnología |
 |---|---|
-| Frontend | Next.js, mobile-first, PWA (se instala desde el navegador) |
-| Backend / BD | Supabase (Postgres, Auth, Realtime) |
-| Pagos | Simulados (interfaz lista para integrar Stripe) |
+| Frontend | Next.js 16 + React 19 + Tailwind CSS 4, mobile-first, PWA |
+| Estado (MVP) | Store propio sobre localStorage, sincronizado entre pestañas (`app/src/lib/store.ts`) |
+| Backend / BD | Supabase (Postgres, Auth, Realtime). Esquema en `supabase/migrations/` |
+| Pagos | Simulados (tarjeta de prueba o efectivo al recibir) |
 | Hosting | Vercel |
+
+### Cómo está organizado el código
+
+```
+app/src/
+├── app/
+│   ├── (alumno)/        # App del alumno con marco de celular
+│   │   ├── (tabs)/      # Inicio, Pedidos y Perfil (con barra inferior)
+│   │   ├── login/  local/[vendorId]/  carrito/  checkout/  pedido/[orderId]/
+│   └── (operacion)/     # Vistas de escritorio: panel del local y repartidor
+├── components/          # UI compartida (botones, hojas, tarjetas, línea de tiempo)
+└── lib/
+    ├── types.ts         # Modelo de dominio (igual al esquema SQL)
+    ├── data/            # Locales, menús, bloques de entrega y salones (datos de ejemplo)
+    ├── schedule.ts      # Reglas de "Ahora" y de agendado (horarios, hora de corte, anticipación)
+    ├── orders.ts        # Máquina de estados del pedido
+    └── store.ts         # Acciones: carrito, pedidos, local, demo
+```
 
 ### Modelo de datos (núcleo)
 
@@ -124,15 +181,14 @@ Auth · Catálogo · Carrito · Checkout y agenda · Pedidos y seguimiento · Pa
 
 ---
 
-## 🗂️ Estructura planeada del repo
+## 🗂️ Estructura del repo
 
 ```
 bite/
 ├── README.md
-├── docs/            # Flujos, wireframes y decisiones
 ├── app/             # Aplicación Next.js (alumno, local, repartidor)
-├── supabase/        # Migraciones y datos de ejemplo
-└── design/          # Sistema de diseño y assets
+├── supabase/        # Migraciones de base de datos
+└── design/          # Sistema de diseño y assets (fase de diseño)
 ```
 
 ---
@@ -141,21 +197,28 @@ bite/
 
 - [x] Definir problema, usuarios y alcance
 - [x] Arquitectura y user flow
-- [ ] Wireframes de las 10 pantallas
-- [ ] Sistema de diseño (colores, tipografía, componentes)
-- [ ] Prototipo navegable con datos de ejemplo
-- [ ] Panel de local y vista de repartidor
+- [x] Prototipo navegable con datos de ejemplo (10 pantallas del alumno)
+- [x] Panel de local y vista de repartidor
+- [ ] Sistema de diseño final (colores, tipografía, fotos de producto)
+- [ ] Menús, horarios y salones reales
+- [ ] Conectar Supabase (cuentas reales y datos compartidos entre dispositivos)
 - [ ] Demo final y presentación
 
 ---
 
 ## ❓ Decisiones abiertas
 
-- ¿Quién reparte? (alumnos, personal de cada local o equipo Bite)
-- ¿Costo de envío fijo o gratuito en la demo?
-- Horarios reales de recesos para los bloques de entrega
-- Formato de la demo: prototipo navegable con datos de ejemplo o app con base de datos real
-- Locales y productos de ejemplo (propuesta: 4 locales, 6-8 productos cada uno)
+El MVP usa estos valores provisionales. Cambiarlos es editar un archivo:
+
+| Decisión | Valor provisional | Dónde se cambia |
+|---|---|---|
+| ¿Quién reparte? | Rol genérico "Repartidor Bite" | `app/src/app/(operacion)/repartidor` |
+| Costo de envío | $10 MXN fijo | `DELIVERY_FEE` en `app/src/lib/data/campus.ts` |
+| Bloques de entrega | 15 min antes de las 7, 9, 11, 13, 15 y 17 h | `DELIVERY_SLOTS` en `app/src/lib/data/campus.ts` |
+| Hora de corte para agendar | 21:00 del día anterior | `SCHEDULE_CUTOFF` en `app/src/lib/data/campus.ts` |
+| Edificios y salones | Edificios A–E, salones genéricos | `BUILDINGS` en `app/src/lib/data/campus.ts` |
+| Locales y menús | 4 locales con 8 productos cada uno (inventados) | `app/src/lib/data/vendors.ts` y `products.ts` |
+| Formato de la demo | Prototipo navegable con datos en el navegador | — |
 
 ---
 
