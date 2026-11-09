@@ -11,7 +11,7 @@ export const VENDORS: Vendor[] = [
     categories: ["Desayunos", "Comida"],
     rating: 4.8,
     prepTime: "15–20 min",
-    hours: { open: "07:00", close: "17:00" },
+    hours: { open: "06:30", close: "17:00" },
     place: "Cafetería central",
   },
   {
@@ -23,7 +23,7 @@ export const VENDORS: Vendor[] = [
     categories: ["Café", "Saludable", "Desayunos"],
     rating: 4.9,
     prepTime: "5–10 min",
-    hours: { open: "07:00", close: "19:00" },
+    hours: { open: "06:30", close: "21:00" },
     place: "Junto a biblioteca",
   },
   {
@@ -35,7 +35,7 @@ export const VENDORS: Vendor[] = [
     categories: ["Comida"],
     rating: 4.7,
     prepTime: "15–25 min",
-    hours: { open: "10:00", close: "19:00" },
+    hours: { open: "10:00", close: "21:00" },
     place: "Zona de comida",
   },
   {

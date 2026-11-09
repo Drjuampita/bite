@@ -36,8 +36,8 @@ export default function PerfilPage() {
         <LocationPicker
           value={user.defaultLocation ?? null}
           onChange={(l) => {
-            setDefaultLocation(l);
-            setSaved(true);
+            if (l) setDefaultLocation(l);
+            setSaved(!!l);
           }}
         />
         {saved && <p className="mt-2 animate-fade-in text-xs font-semibold text-emerald-700">Guardado ✓</p>}

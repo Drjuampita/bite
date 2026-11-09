@@ -5,7 +5,7 @@ import { useState, type ReactNode } from "react";
 import { OpsOrderCard } from "@/components/OpsOrderCard";
 import { Button } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
-import { DELIVERY_SLOTS, getSlot } from "@/lib/data/campus";
+import { DELIVERY_SLOTS, getSlot, slotWindow } from "@/lib/data/campus";
 import { getVendorProducts } from "@/lib/data/products";
 import { VENDORS } from "@/lib/data/vendors";
 import { money } from "@/lib/format";
@@ -104,9 +104,9 @@ export default function PanelPage() {
                   return (
                     <div key={key}>
                       <p className="mb-2 text-sm font-semibold">
-                        {relativeDayLabel(date, now)} · bloque {slot?.label}{" "}
+                        {relativeDayLabel(date, now)} · clase de {slot?.label}{" "}
                         <span className="font-normal text-muted">
-                          (entrega {slot?.start}–{slot?.end}) · {list.length} {list.length === 1 ? "pedido" : "pedidos"}
+                          (entrega {slot && slotWindow(slot)}) · {list.length} {list.length === 1 ? "pedido" : "pedidos"}
                         </span>
                       </p>
                       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

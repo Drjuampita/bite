@@ -206,6 +206,14 @@ bite/
 
 ---
 
+## 🏫 Campus
+
+Edificios de Anáhuac Querétaro y pisos de cada uno: **A** (2), **B** (2), **C** (4), **IDEA** (por confirmar) y **ABI** (6).
+
+Los salones se nombran edificio + piso + número de salón: **C204** es edificio C, piso 2, salón 4. ABI e IDEA siguen el mismo formato (ABI305, IDEA102). En la app el alumno elige su salón en tres toques: edificio, piso y salón.
+
+---
+
 ## ❓ Decisiones abiertas
 
 El MVP usa estos valores provisionales. Cambiarlos es editar un archivo:
@@ -214,9 +222,11 @@ El MVP usa estos valores provisionales. Cambiarlos es editar un archivo:
 |---|---|---|
 | ¿Quién reparte? | Rol genérico "Repartidor Bite" | `app/src/app/(operacion)/repartidor` |
 | Costo de envío | $10 MXN fijo | `DELIVERY_FEE` en `app/src/lib/data/campus.ts` |
-| Bloques de entrega | 15 min antes de las 7, 9, 11, 13, 15 y 17 h | `DELIVERY_SLOTS` en `app/src/lib/data/campus.ts` |
+| Horas de clase | Cada hora en punto, de 7:00 am a 9:00 pm (la última termina a las 10 pm). El pedido llega 15 min antes | `DELIVERY_SLOTS` en `app/src/lib/data/campus.ts` |
 | Hora de corte para agendar | 21:00 del día anterior | `SCHEDULE_CUTOFF` en `app/src/lib/data/campus.ts` |
-| Edificios y salones | Edificios A–E, salones genéricos | `BUILDINGS` en `app/src/lib/data/campus.ts` |
+| Salones por piso | 10 (01–10) | `ROOMS_PER_FLOOR` en `app/src/lib/data/campus.ts` |
+| Pisos del edificio IDEA | 2 (pendiente de confirmar) | `BUILDINGS` en `app/src/lib/data/campus.ts` |
+| Horarios de los locales | Inventados (6:30 am a 9 pm según el local) | `app/src/lib/data/vendors.ts` |
 | Locales y menús | 4 locales con 8 productos cada uno (inventados) | `app/src/lib/data/vendors.ts` y `products.ts` |
 | Formato de la demo | Prototipo navegable con datos en el navegador | — |
 

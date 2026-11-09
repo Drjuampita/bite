@@ -57,11 +57,13 @@ create table delivery_slots (
   hora_fin time not null                -- 09:00
 );
 
+-- Salones: edificio + piso + número, ej. C204 = edificio C, piso 2, salón 4.
+-- Edificios: A, B, C, IDEA, ABI.
 create table locations (
   id bigserial primary key,
-  edificio text not null,
-  piso smallint,
-  salon text not null unique
+  edificio text not null check (edificio in ('A', 'B', 'C', 'IDEA', 'ABI')),
+  piso smallint not null check (piso between 1 and 6),
+  salon text not null unique         -- 'C204', 'ABI305'
 );
 
 create table orders (

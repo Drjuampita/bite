@@ -1,13 +1,13 @@
 "use client";
 
-import { Banknote, CalendarClock, Check, CreditCard, Zap } from "lucide-react";
+import { Banknote, CalendarClock, Check, CreditCard, MapPin, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { LocationPicker } from "@/components/LocationPicker";
 import { EmptyState, PageHeader, RequireUser } from "@/components/shell";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
-import { DELIVERY_FEE } from "@/lib/data/campus";
+import { DELIVERY_FEE, SCHEDULE_CUTOFF, describeLocation, formatClock } from "@/lib/data/campus";
 import { getVendor } from "@/lib/data/vendors";
 import { itemsCount, itemsSubtotal, lineTotal, money } from "@/lib/format";
 import { availableSlots, formatShortDate, scheduleDays, slotAvailability, toISODate, vendorOpenNow } from "@/lib/schedule";
@@ -59,12 +59,16 @@ function Checkout({ vendor }: { vendor: Vendor }) {
     () => availableSlots(vendor, date, now, settings.demoMode).find((s) => s.available)?.slot.id ?? null,
   );
   const [location, setLocation] = useState<DeliveryLocation | null>(user?.defaultLocation ?? null);
+  const [editingLocation, setEditingLocation] = useState(!user?.defaultLocation);
   const [saveLocation, setSaveLocation] = useState(!user?.defaultLocation);
   const [payment, setPayment] = useState<PaymentMethod>("tarjeta");
   const [note, setNote] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const slots = availableSlots(vendor, date, now, settings.demoMode);
+  // Solo se muestran los bloques que se pueden elegir; los pasados o fuera de horario se ocultan.
+  const openSlots = slots.filter((s) => s.available);
+  const blockedByCutoff = openSlots.length === 0 && slots.some((s) => s.reason?.startsWith("Corte"));
   const subtotal = itemsSubtotal(cart!.items);
   const total = subtotal + DELIVERY_FEE;
 
@@ -85,7 +89,7 @@ function Checkout({ vendor }: { vendor: Vendor }) {
         return setError("Ese bloque ya no está disponible. Elige otro.");
       }
     }
-    if (saveLocation) setDefaultLocation(location);
+    if (editingLocation && saveLocation) setDefaultLocation(location);
     const order = placeOrder({
       mode,
       deliveryDate: mode === "ahora" ? toISODate(new Date()) : date,
@@ -145,52 +149,75 @@ function Checkout({ vendor }: { vendor: Vendor }) {
                 ))}
               </div>
 
-              <p className="mt-4 mb-2 text-xs font-semibold text-muted">Llega antes de tu clase de las…</p>
-              <div role="radiogroup" aria-label="Bloque de entrega" className="grid grid-cols-3 gap-2">
-                {slots.map(({ slot, available, reason }) => {
-                  const active = slot.id === slotId;
-                  return (
-                    <button
-                      key={slot.id}
-                      type="button"
-                      role="radio"
-                      aria-checked={active}
-                      disabled={!available}
-                      onClick={() => setSlotId(slot.id)}
-                      className={`rounded-2xl px-2 py-3 text-center transition ${
-                        active
-                          ? "bg-brand-500 text-white shadow-float"
-                          : available
-                            ? "bg-white ring-1 ring-line"
-                            : "bg-canvas text-muted/60 ring-1 ring-line/60"
-                      }`}
-                    >
-                      <span className="block text-base font-extrabold">{slot.label}</span>
-                      <span className={`block text-[11px] ${active ? "text-white/80" : "text-muted"}`}>
-                        {available ? `${slot.start}–${slot.end}` : reason}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-              {slots.every((s) => !s.available) && (
-                <p className="mt-3 text-sm text-muted">No hay bloques disponibles este día. Prueba con otro.</p>
+              <p className="mt-4 mb-2 text-xs font-semibold text-muted">¿A qué hora empieza tu clase?</p>
+              {openSlots.length > 0 ? (
+                <div role="radiogroup" aria-label="Hora de tu clase" className="grid grid-cols-3 gap-2">
+                  {openSlots.map(({ slot }) => {
+                    const active = slot.id === slotId;
+                    return (
+                      <button
+                        key={slot.id}
+                        type="button"
+                        role="radio"
+                        aria-checked={active}
+                        onClick={() => setSlotId(slot.id)}
+                        className={`rounded-2xl px-2 py-3 text-center transition ${
+                          active ? "bg-brand-500 text-white shadow-float" : "bg-white ring-1 ring-line"
+                        }`}
+                      >
+                        <span className="block text-base font-extrabold">{slot.label}</span>
+                        <span className={`block text-[11px] ${active ? "text-white/80" : "text-muted"}`}>
+                          Llega {formatClock(slot.start)}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="rounded-2xl bg-canvas px-4 py-3 text-sm text-muted ring-1 ring-line">
+                  {blockedByCutoff
+                    ? `Ya pasó la hora de corte (${formatClock(SCHEDULE_CUTOFF)}) para agendar este día.`
+                    : `${vendor.name} ya no tiene horarios disponibles este día. Prueba con otro.`}
+                </p>
               )}
             </div>
           )}
         </Step>
 
         <Step n={2} title="¿A qué salón?">
-          <LocationPicker value={location} onChange={(l) => { setLocation(l); setError(null); }} />
-          <label className="mt-3 flex items-center gap-2 text-sm text-muted">
-            <input
-              type="checkbox"
-              checked={saveLocation}
-              onChange={(e) => setSaveLocation(e.target.checked)}
-              className="size-4 accent-brand-500"
+          {location && !editingLocation ? (
+            <div className="flex items-center gap-3 rounded-2xl bg-canvas p-4 ring-1 ring-line">
+              <span className="grid size-10 place-items-center rounded-xl bg-brand-500 text-white">
+                <MapPin className="size-5" />
+              </span>
+              <span className="flex-1">
+                <span className="block font-bold">Salón {location.room}</span>
+                <span className="block text-xs text-muted">{describeLocation(location)}</span>
+              </span>
+              <button type="button" onClick={() => setEditingLocation(true)} className="text-sm font-semibold text-brand-600">
+                Cambiar
+              </button>
+            </div>
+          ) : (
+            <LocationPicker
+              value={location}
+              onChange={(l) => {
+                setLocation(l);
+                setError(null);
+              }}
             />
-            Guardar como mi salón habitual
-          </label>
+          )}
+          {editingLocation && (
+            <label className="mt-3 flex items-center gap-2 text-sm text-muted">
+              <input
+                type="checkbox"
+                checked={saveLocation}
+                onChange={(e) => setSaveLocation(e.target.checked)}
+                className="size-4 accent-brand-500"
+              />
+              Guardar como mi salón habitual
+            </label>
+          )}
         </Step>
 
         <Step n={3} title="¿Cómo pagas?">

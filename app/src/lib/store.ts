@@ -20,7 +20,7 @@ import type {
 // pestañas, así la vista del local y la del alumno se actualizan en vivo durante la demo.
 // Cada acción de este archivo corresponde a una operación futura contra Supabase.
 
-const STORAGE_KEY = "bite:v1";
+const STORAGE_KEY = "bite:v2";
 
 interface PersistedState {
   user: User | null;

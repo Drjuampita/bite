@@ -7,7 +7,7 @@ import { StatusBadge, StatusTimeline } from "@/components/OrderStatus";
 import { EmptyState, PageHeader, RequireUser } from "@/components/shell";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
-import { BUILDINGS } from "@/lib/data/campus";
+import { describeLocation } from "@/lib/data/campus";
 import { getVendor } from "@/lib/data/vendors";
 import { lineTotal, money, optionsSummary } from "@/lib/format";
 import { STATUS_META, canCancel, deliveryLabel, isActive } from "@/lib/orders";
@@ -48,7 +48,6 @@ function OrderDetail() {
   }
 
   const vendor = getVendor(order.vendorId)!;
-  const building = BUILDINGS.find((b) => b.id === order.location.building);
   const meta = STATUS_META[order.status];
   const deliveredAt = order.history.find((h) => h.status === "entregado")?.at;
 
@@ -108,7 +107,7 @@ function OrderDetail() {
 
         <section className="space-y-4 rounded-card bg-white p-5 shadow-card ring-1 ring-line/60">
           <Detail icon={<MapPin className="size-5" />} label="Entregar en">
-            Salón {order.location.room} · {building?.name}
+            Salón {order.location.room} · {describeLocation(order.location)}
           </Detail>
           <Detail icon={order.payment === "tarjeta" ? <CreditCard className="size-5" /> : <Banknote className="size-5" />} label="Pago">
             {order.payment === "tarjeta"

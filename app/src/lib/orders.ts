@@ -1,4 +1,4 @@
-import { getSlot } from "@/lib/data/campus";
+import { getSlot, slotWindow } from "@/lib/data/campus";
 import { relativeDayLabel } from "@/lib/schedule";
 import type { Order, OrderStatus } from "@/lib/types";
 
@@ -75,14 +75,14 @@ export function lastChange(order: Order): number {
   return order.history[order.history.length - 1]?.at ?? order.createdAt;
 }
 
-/** "Hoy · 08:45–09:00" para agendados; "Lo antes posible" para pedidos inmediatos en curso. */
+/** "Mañana · 8:45–9:00 am" para agendados; "Lo antes posible" para pedidos inmediatos en curso. */
 export function deliveryLabel(order: Order, now: Date = new Date()): string {
   if (order.mode === "ahora") {
     return isActive(order) ? "Lo antes posible" : relativeDayLabel(order.deliveryDate, now);
   }
   const slot = getSlot(order.slotId);
   const day = relativeDayLabel(order.deliveryDate, now);
-  return slot ? `${day} · ${slot.start}–${slot.end}` : day;
+  return slot ? `${day} · ${slotWindow(slot)}` : day;
 }
 
 export function generateOrderCode(): string {
