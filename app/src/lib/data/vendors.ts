@@ -13,6 +13,7 @@ export const VENDORS: Vendor[] = [
     prepTime: "15–20 min",
     hours: { open: "06:30", close: "17:00" },
     place: "Cafetería central",
+    capacityPerSlot: 15,
   },
   {
     id: "luka",
@@ -25,6 +26,7 @@ export const VENDORS: Vendor[] = [
     prepTime: "5–10 min",
     hours: { open: "06:30", close: "21:00" },
     place: "Junto a biblioteca",
+    capacityPerSlot: 20,
   },
   {
     id: "diegos-house",
@@ -37,6 +39,7 @@ export const VENDORS: Vendor[] = [
     prepTime: "15–25 min",
     hours: { open: "10:00", close: "21:00" },
     place: "Zona de comida",
+    capacityPerSlot: 12,
   },
   {
     id: "carrusel",
@@ -49,6 +52,7 @@ export const VENDORS: Vendor[] = [
     prepTime: "10–15 min",
     hours: { open: "08:00", close: "18:00" },
     place: "Explanada",
+    capacityPerSlot: 10,
   },
 ];
 

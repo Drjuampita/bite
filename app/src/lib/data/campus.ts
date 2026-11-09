@@ -94,3 +94,9 @@ export const SCHEDULE_CUTOFF = "21:00";
 
 /** Minutos mínimos de anticipación para agendar un bloque del mismo día. */
 export const MIN_LEAD_MINUTES = 45;
+
+/** Un pedido agendado pasa a la cocina del local esta cantidad de minutos antes de la clase. */
+export const PREP_WINDOW_MINUTES = 60;
+
+/** A partir de cuántos lugares restantes se avisa "Quedan N" en una hora de clase. */
+export const LOW_CAPACITY_THRESHOLD = 3;

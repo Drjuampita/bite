@@ -24,6 +24,8 @@ export interface Vendor {
   /** Horario de operación en formato HH:mm (lunes a viernes). */
   hours: { open: string; close: string };
   place: string;
+  /** Máximo de pedidos agendados que el local acepta por hora de clase. */
+  capacityPerSlot: number;
 }
 
 export type Category =
@@ -134,8 +136,15 @@ export interface Order {
   status: OrderStatus;
   history: { status: OrderStatus; at: number }[];
   createdAt: number;
+  /** Repartidor que tomó el pedido. */
+  runnerName?: string;
   rating?: { stars: number; comment?: string };
 }
+
+/** Sesión del personal (local o repartidor), separada de la sesión del alumno. */
+export type StaffSession =
+  | { role: "local"; vendorId: string }
+  | { role: "repartidor"; name: string };
 
 export interface Settings {
   /** Locales siempre abiertos y sin hora de corte, para presentar a cualquier hora. */

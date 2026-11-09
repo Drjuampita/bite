@@ -1,9 +1,22 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { DELIVERY_FEE } from "@/lib/data/campus";
+import { DELIVERY_FEE, getSlot } from "@/lib/data/campus";
+import { getProduct } from "@/lib/data/products";
+import { DEMO_STAFF_PIN } from "@/lib/data/staff";
+import { getVendor } from "@/lib/data/vendors";
 import { itemsSubtotal } from "@/lib/format";
-import { canCancel, generateId, generateOrderCode, isActive, lastChange, nextStatus } from "@/lib/orders";
+import {
+  activationTime,
+  canCancel,
+  generateId,
+  generateOrderCode,
+  isActive,
+  lastChange,
+  nextStatus,
+  slotLoad,
+} from "@/lib/orders";
+import { slotAvailability, toISODate, vendorOpenNow } from "@/lib/schedule";
 import type {
   Cart,
   CartItem,
@@ -13,6 +26,7 @@ import type {
   OrderStatus,
   PaymentMethod,
   Settings,
+  StaffSession,
   User,
 } from "@/lib/types";
 
@@ -24,6 +38,7 @@ const STORAGE_KEY = "bite:v2";
 
 interface PersistedState {
   user: User | null;
+  staff: StaffSession | null;
   cart: Cart | null;
   orders: Order[];
   settings: Settings;
@@ -37,6 +52,7 @@ export interface BiteState extends PersistedState {
 
 const INITIAL: BiteState = {
   user: null,
+  staff: null,
   cart: null,
   orders: [],
   settings: { demoMode: true, simulate: true },
@@ -83,6 +99,7 @@ if (typeof window !== "undefined") {
 function persist() {
   const data: PersistedState = {
     user: state.user,
+    staff: state.staff,
     cart: state.cart,
     orders: state.orders,
     settings: state.settings,
@@ -135,6 +152,17 @@ export function login(name: string, email: string) {
 
 export function logout() {
   setState(() => ({ user: null, cart: null }));
+}
+
+/** Acceso del personal. En el MVP se valida un PIN de demostración. */
+export function staffLogin(session: StaffSession, pin: string): boolean {
+  if (pin !== DEMO_STAFF_PIN) return false;
+  setState(() => ({ staff: session }));
+  return true;
+}
+
+export function staffLogout() {
+  setState(() => ({ staff: null }));
 }
 
 export function setDefaultLocation(location: DeliveryLocation) {
@@ -200,36 +228,82 @@ export interface PlaceOrderInput {
   note?: string;
 }
 
-export function placeOrder(input: PlaceOrderInput): Order | null {
-  const { cart, user } = state;
-  if (!cart || !user || cart.items.length === 0) return null;
-  const now = Date.now();
-  const subtotal = itemsSubtotal(cart.items);
+export type PlaceOrderResult = { ok: true; order: Order } | { ok: false; error: string };
+
+/**
+ * Crea el pedido aplicando las mismas reglas que aplicará el servidor (función crear_pedido en
+ * supabase/migrations): precios tomados del catálogo, productos disponibles, local abierto,
+ * hora de clase válida y con lugar.
+ */
+export function placeOrder(input: PlaceOrderInput): PlaceOrderResult {
+  const { cart, user, settings, unavailable, orders } = state;
+  if (!cart || !user || cart.items.length === 0) return { ok: false, error: "Tu carrito está vacío." };
+  const vendor = getVendor(cart.vendorId);
+  if (!vendor) return { ok: false, error: "Este local ya no existe." };
+
+  const items: CartItem[] = [];
+  for (const item of cart.items) {
+    const product = getProduct(item.productId);
+    if (!product || product.vendorId !== vendor.id || unavailable.includes(product.id)) {
+      return { ok: false, error: `${item.name} ya no está disponible. Quítalo del carrito.` };
+    }
+    // El precio se recalcula desde el catálogo, no se confía en el que trae el carrito.
+    const options = item.options.map((o) => {
+      const choice = product.options?.find((g) => g.id === o.groupId)?.choices.find((c) => c.id === o.choiceId);
+      return { ...o, price: choice?.price ?? 0 };
+    });
+    items.push({ ...item, basePrice: product.price, options });
+  }
+
+  const now = new Date();
+  if (input.mode === "ahora") {
+    const open = vendorOpenNow(vendor, now, settings.demoMode);
+    if (!open.available) return { ok: false, error: `${vendor.name} no recibe pedidos inmediatos ahora.` };
+  } else {
+    const slot = getSlot(input.slotId);
+    if (!slot) return { ok: false, error: "Elige la hora de tu clase." };
+    const taken = slotLoad(orders, vendor.id, input.deliveryDate)[slot.id] ?? 0;
+    const availability = slotAvailability(vendor, slot, input.deliveryDate, now, settings.demoMode, taken);
+    if (!availability.available) {
+      return {
+        ok: false,
+        error:
+          availability.reason === "Lleno"
+            ? "Esa hora se acaba de llenar. Elige otra."
+            : "Esa hora ya no está disponible. Elige otra.",
+      };
+    }
+  }
+
+  const createdAt = now.getTime();
+  const subtotal = itemsSubtotal(items);
   const status: OrderStatus = input.mode === "agendado" ? "programado" : "recibido";
   const order: Order = {
     id: generateId("ord"),
     code: generateOrderCode(),
     userId: user.id,
     userName: user.name,
-    vendorId: cart.vendorId,
-    items: cart.items,
+    vendorId: vendor.id,
+    items,
     subtotal,
     deliveryFee: DELIVERY_FEE,
     total: subtotal + DELIVERY_FEE,
     ...input,
+    deliveryDate: input.mode === "ahora" ? toISODate(now) : input.deliveryDate,
+    slotId: input.mode === "agendado" ? input.slotId : undefined,
     status,
-    history: [{ status, at: now }],
-    createdAt: now,
+    history: [{ status, at: createdAt }],
+    createdAt,
   };
   setState((s) => ({ orders: [order, ...s.orders], cart: null }));
-  return order;
+  return { ok: true, order };
 }
 
-export function setOrderStatus(orderId: string, status: OrderStatus) {
+export function setOrderStatus(orderId: string, status: OrderStatus, patch: Partial<Order> = {}) {
   setState((s) => ({
     orders: s.orders.map((o) =>
       o.id === orderId && o.status !== status
-        ? { ...o, status, history: [...o.history, { status, at: Date.now() }] }
+        ? { ...o, ...patch, status, history: [...o.history, { status, at: Date.now() }] }
         : o,
     ),
   }));
@@ -244,6 +318,22 @@ export function advanceOrder(orderId: string) {
 export function cancelOrder(orderId: string) {
   const order = state.orders.find((o) => o.id === orderId);
   if (order && canCancel(order)) setOrderStatus(orderId, "cancelado");
+}
+
+// ── Repartidor ────────────────────────────────────────────
+
+/** El repartidor toma un pedido listo y sale a entregarlo. */
+export function takeOrder(orderId: string, runnerName: string) {
+  const order = state.orders.find((o) => o.id === orderId);
+  if (order?.status === "listo") setOrderStatus(orderId, "en_camino", { runnerName });
+}
+
+/** Se marca como entregado solo si el código coincide con el que ve el alumno en su app. */
+export function deliverOrder(orderId: string, code: string): boolean {
+  const order = state.orders.find((o) => o.id === orderId);
+  if (order?.status !== "en_camino" || order.code !== code.trim()) return false;
+  setOrderStatus(orderId, "entregado");
+  return true;
 }
 
 export function rateOrder(orderId: string, stars: number, comment?: string) {
@@ -269,18 +359,32 @@ export function updateSettings(patch: Partial<Settings>) {
 }
 
 export function resetDemo() {
-  setState((s) => ({ ...INITIAL, user: s.user, hydrated: true }));
+  setState((s) => ({ ...INITIAL, user: s.user, staff: s.staff, hydrated: true }));
 }
 
 /** Segundos entre cada cambio de estado simulado de un pedido "Ahora". */
 const SIMULATION_STEP_MS = 12_000;
+const SIMULATED_RUNNER = "Repartidor Bite";
 
-/** Avanza los pedidos "Ahora" activos. Lo llama el componente <Simulator />. */
-export function tickSimulation() {
-  if (!state.settings.simulate) return;
+/**
+ * Tareas en segundo plano (las llama <BackgroundJobs /> cada pocos segundos):
+ * 1. Pasa a la cocina los pedidos agendados cuya hora de preparación ya llegó.
+ *    En producción lo hará la función activar_pedidos_programados() con pg_cron.
+ * 2. En modo presentación, avanza solos los pedidos "Ahora".
+ */
+export function tickBackgroundJobs() {
   const now = Date.now();
+  for (const o of state.orders) {
+    const at = o.status === "programado" ? activationTime(o) : null;
+    if (at !== null && now >= at) setOrderStatus(o.id, "recibido");
+  }
+
+  if (!state.settings.simulate) return;
   const due = state.orders.filter(
     (o) => o.mode === "ahora" && isActive(o) && now - lastChange(o) >= SIMULATION_STEP_MS,
   );
-  due.forEach((o) => advanceOrder(o.id));
+  for (const o of due) {
+    if (o.status === "listo") setOrderStatus(o.id, "en_camino", { runnerName: SIMULATED_RUNNER });
+    else advanceOrder(o.id);
+  }
 }

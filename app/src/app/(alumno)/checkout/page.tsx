@@ -7,10 +7,11 @@ import { LocationPicker } from "@/components/LocationPicker";
 import { EmptyState, PageHeader, RequireUser } from "@/components/shell";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
-import { DELIVERY_FEE, SCHEDULE_CUTOFF, describeLocation, formatClock } from "@/lib/data/campus";
+import { DELIVERY_FEE, LOW_CAPACITY_THRESHOLD, SCHEDULE_CUTOFF, describeLocation, formatClock } from "@/lib/data/campus";
 import { getVendor } from "@/lib/data/vendors";
 import { itemsCount, itemsSubtotal, lineTotal, money } from "@/lib/format";
-import { availableSlots, formatShortDate, scheduleDays, slotAvailability, toISODate, vendorOpenNow } from "@/lib/schedule";
+import { slotLoad } from "@/lib/orders";
+import { availableSlots, formatShortDate, scheduleDays, vendorOpenNow } from "@/lib/schedule";
 import { placeOrder, setDefaultLocation, useBite } from "@/lib/store";
 import type { DeliveryLocation, OrderMode, PaymentMethod, Vendor } from "@/lib/types";
 import { useNow } from "@/lib/useNow";
@@ -44,19 +45,21 @@ function CheckoutGate() {
 
 function Checkout({ vendor }: { vendor: Vendor }) {
   const router = useRouter();
-  const { cart, user, settings } = useBite();
+  const { cart, user, settings, orders } = useBite();
   const now = useNow();
 
   const openNow = vendorOpenNow(vendor, now, settings.demoMode);
   const days = scheduleDays(now, settings.demoMode);
 
   const [mode, setMode] = useState<OrderMode>(() => (openNow.available ? "ahora" : "agendado"));
+  const slotsFor = (d: string) =>
+    availableSlots(vendor, d, now, settings.demoMode, slotLoad(orders, vendor.id, d));
   const [date, setDate] = useState(() => {
-    const withSlots = days.find((d) => availableSlots(vendor, d.date, now, settings.demoMode).some((s) => s.available));
+    const withSlots = days.find((d) => slotsFor(d.date).some((s) => s.available));
     return (withSlots ?? days[0]).date;
   });
   const [slotId, setSlotId] = useState<string | null>(
-    () => availableSlots(vendor, date, now, settings.demoMode).find((s) => s.available)?.slot.id ?? null,
+    () => slotsFor(date).find((s) => s.available)?.slot.id ?? null,
   );
   const [location, setLocation] = useState<DeliveryLocation | null>(user?.defaultLocation ?? null);
   const [editingLocation, setEditingLocation] = useState(!user?.defaultLocation);
@@ -65,10 +68,10 @@ function Checkout({ vendor }: { vendor: Vendor }) {
   const [note, setNote] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const slots = availableSlots(vendor, date, now, settings.demoMode);
-  // Solo se muestran los bloques que se pueden elegir; los pasados o fuera de horario se ocultan.
-  const openSlots = slots.filter((s) => s.available);
-  const blockedByCutoff = openSlots.length === 0 && slots.some((s) => s.reason?.startsWith("Corte"));
+  const slots = slotsFor(date);
+  // Se ocultan las horas pasadas o fuera de horario; las llenas se muestran deshabilitadas.
+  const visibleSlots = slots.filter((s) => s.available || s.reason === "Lleno");
+  const blockedByCutoff = visibleSlots.length === 0 && slots.some((s) => s.reason?.startsWith("Corte"));
   const subtotal = itemsSubtotal(cart!.items);
   const total = subtotal + DELIVERY_FEE;
 
@@ -77,28 +80,23 @@ function Checkout({ vendor }: { vendor: Vendor }) {
 
   function pickDate(d: string) {
     setDate(d);
-    setSlotId(availableSlots(vendor, d, now, settings.demoMode).find((s) => s.available)?.slot.id ?? null);
+    setSlotId(slotsFor(d).find((s) => s.available)?.slot.id ?? null);
   }
 
   function submit() {
     if (!location) return setError("Elige el salón de entrega.");
-    if (mode === "agendado") {
-      const slot = slots.find((s) => s.slot.id === slotId)?.slot;
-      // Se revalida con la hora actual por si el bloque expiró mientras se llenaba el formulario.
-      if (!slot || !slotAvailability(vendor, slot, date, new Date(), settings.demoMode).available) {
-        return setError("Ese bloque ya no está disponible. Elige otro.");
-      }
-    }
-    if (editingLocation && saveLocation) setDefaultLocation(location);
-    const order = placeOrder({
+    // placeOrder vuelve a validar todo (precios, disponibilidad, hora y cupo) como lo hará el servidor.
+    const result = placeOrder({
       mode,
-      deliveryDate: mode === "ahora" ? toISODate(new Date()) : date,
-      slotId: mode === "agendado" ? slotId ?? undefined : undefined,
+      deliveryDate: date,
+      slotId: slotId ?? undefined,
       location,
       payment,
       note: note.trim() || undefined,
     });
-    if (order) router.replace(`/pedido/${order.id}?nuevo=1`);
+    if (!result.ok) return setError(result.error);
+    if (editingLocation && saveLocation) setDefaultLocation(location);
+    router.replace(`/pedido/${result.order.id}?nuevo=1`);
   }
 
   return (
@@ -150,24 +148,34 @@ function Checkout({ vendor }: { vendor: Vendor }) {
               </div>
 
               <p className="mt-4 mb-2 text-xs font-semibold text-muted">¿A qué hora empieza tu clase?</p>
-              {openSlots.length > 0 ? (
+              {visibleSlots.length > 0 ? (
                 <div role="radiogroup" aria-label="Hora de tu clase" className="grid grid-cols-3 gap-2">
-                  {openSlots.map(({ slot }) => {
+                  {visibleSlots.map(({ slot, available, remaining }) => {
                     const active = slot.id === slotId;
+                    const few = available && remaining !== undefined && remaining <= LOW_CAPACITY_THRESHOLD;
                     return (
                       <button
                         key={slot.id}
                         type="button"
                         role="radio"
                         aria-checked={active}
+                        disabled={!available}
                         onClick={() => setSlotId(slot.id)}
                         className={`rounded-2xl px-2 py-3 text-center transition ${
-                          active ? "bg-brand-500 text-white shadow-float" : "bg-white ring-1 ring-line"
+                          active
+                            ? "bg-brand-500 text-white shadow-float"
+                            : available
+                              ? "bg-white ring-1 ring-line"
+                              : "bg-canvas text-muted/60 ring-1 ring-line/60"
                         }`}
                       >
-                        <span className="block text-base font-extrabold">{slot.label}</span>
-                        <span className={`block text-[11px] ${active ? "text-white/80" : "text-muted"}`}>
-                          Llega {formatClock(slot.start)}
+                        <span className={`block text-base font-extrabold ${available ? "" : "line-through"}`}>{slot.label}</span>
+                        <span
+                          className={`block text-[11px] ${
+                            active ? "text-white/80" : few ? "font-semibold text-amber-700" : "text-muted"
+                          }`}
+                        >
+                          {!available ? "Lleno" : few ? `Quedan ${remaining}` : `Llega ${formatClock(slot.start)}`}
                         </span>
                       </button>
                     );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Banknote, CalendarClock, CreditCard, MapPin, MessageSquare, RotateCcw, Star, Zap } from "lucide-react";
+import { Banknote, Bike, CalendarClock, CreditCard, MapPin, MessageSquare, RotateCcw, Star, Zap } from "lucide-react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { StatusBadge, StatusTimeline } from "@/components/OrderStatus";
@@ -10,7 +10,7 @@ import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { describeLocation } from "@/lib/data/campus";
 import { getVendor } from "@/lib/data/vendors";
 import { lineTotal, money, optionsSummary } from "@/lib/format";
-import { STATUS_META, canCancel, deliveryLabel, isActive } from "@/lib/orders";
+import { STATUS_META, canCancel, deliveryLabel, isActive, orderRef } from "@/lib/orders";
 import { cancelOrder, rateOrder, reorder, useBite } from "@/lib/store";
 import type { Order } from "@/lib/types";
 import { formatTime, relativeDayLabel } from "@/lib/schedule";
@@ -53,7 +53,7 @@ function OrderDetail() {
 
   return (
     <>
-      <PageHeader title={`Pedido #${order.code}`} backHref="/pedidos" right={<StatusBadge status={order.status} />} />
+      <PageHeader title={`Pedido #${orderRef(order)}`} backHref="/pedidos" right={<StatusBadge status={order.status} />} />
       <main className="flex-1 space-y-4 px-4 pt-4 pb-10">
         {isNew && (order.status === "recibido" || order.status === "programado") && (
           <div className="flex animate-fade-in items-center gap-4 rounded-card bg-emerald-50 p-4 ring-1 ring-emerald-200">
@@ -93,6 +93,7 @@ function OrderDetail() {
               <div className="text-right">
                 <p className="text-xs text-white/60">Código de entrega</p>
                 <p className="text-2xl font-extrabold tabular-nums tracking-[0.2em] text-brand-200">{order.code}</p>
+                {isActive(order) && <p className="text-[11px] text-white/60">Díselo al repartidor</p>}
               </div>
             </div>
           </div>
@@ -116,6 +117,11 @@ function OrderDetail() {
                 ? `Efectivo · ten listo ${money(order.total)}`
                 : `Efectivo · ${money(order.total)}`}
           </Detail>
+          {order.runnerName && (
+            <Detail icon={<Bike className="size-5" />} label="Repartidor">
+              {order.runnerName}
+            </Detail>
+          )}
           {order.note && (
             <Detail icon={<MessageSquare className="size-5" />} label="Nota">
               {order.note}

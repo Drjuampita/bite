@@ -1,18 +1,20 @@
 "use client";
 
-import { CalendarClock, Zap } from "lucide-react";
+import { CalendarClock, LogOut, Zap } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { OpsOrderCard } from "@/components/OpsOrderCard";
 import { Button } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
 import { DELIVERY_SLOTS, getSlot, slotWindow } from "@/lib/data/campus";
 import { getVendorProducts } from "@/lib/data/products";
-import { VENDORS } from "@/lib/data/vendors";
+import { getVendor } from "@/lib/data/vendors";
 import { money } from "@/lib/format";
 import { relativeDayLabel } from "@/lib/schedule";
-import { advanceOrder, toggleProductAvailability, useBite } from "@/lib/store";
+import { advanceOrder, staffLogout, toggleProductAvailability, useBite } from "@/lib/store";
 import type { Order, OrderStatus } from "@/lib/types";
 import { useNow } from "@/lib/useNow";
+import { StaffGate } from "../StaffGate";
+import { VendorMetrics } from "./VendorMetrics";
 
 const ACTIONS: Partial<Record<OrderStatus, string>> = {
   programado: "Pasar a cocina",
@@ -21,10 +23,14 @@ const ACTIONS: Partial<Record<OrderStatus, string>> = {
 };
 
 export default function PanelPage() {
-  const { orders, unavailable, hydrated } = useBite();
+  return <StaffGate role="local">{(session) => <VendorPanel vendorId={session.vendorId} />}</StaffGate>;
+}
+
+function VendorPanel({ vendorId }: { vendorId: string }) {
+  const { orders, unavailable } = useBite();
   const now = useNow();
-  const [vendorId, setVendorId] = useState(VENDORS[0].id);
-  const [tab, setTab] = useState<"pedidos" | "menu">("pedidos");
+  const vendor = getVendor(vendorId);
+  const [tab, setTab] = useState<"pedidos" | "resumen" | "menu">("pedidos");
 
   const vendorOrders = orders.filter((o) => o.vendorId === vendorId);
   const byStatus = (s: OrderStatus) => vendorOrders.filter((o) => o.status === s);
@@ -41,26 +47,19 @@ export default function PanelPage() {
 
   return (
     <main className="pt-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-sm text-muted">Panel del local</p>
-          <h1 className="text-3xl font-extrabold tracking-tight">{VENDORS.find((v) => v.id === vendorId)?.name}</h1>
+      <div className="flex items-end justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className={`grid size-14 place-items-center rounded-2xl bg-gradient-to-br text-3xl ${vendor?.cover}`}>
+            {vendor?.emoji}
+          </span>
+          <div>
+            <p className="text-sm text-muted">Panel del local</p>
+            <h1 className="text-3xl font-extrabold tracking-tight">{vendor?.name}</h1>
+          </div>
         </div>
-        <div className="no-scrollbar flex gap-2 overflow-x-auto">
-          {VENDORS.map((v) => (
-            <button
-              key={v.id}
-              type="button"
-              onClick={() => setVendorId(v.id)}
-              aria-pressed={v.id === vendorId}
-              className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
-                v.id === vendorId ? "bg-ink text-white" : "bg-white ring-1 ring-line"
-              }`}
-            >
-              <span aria-hidden="true">{v.emoji}</span> {v.name}
-            </button>
-          ))}
-        </div>
+        <Button variant="secondary" size="sm" onClick={staffLogout}>
+          <LogOut className="size-4" /> Salir
+        </Button>
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -77,12 +76,15 @@ export default function PanelPage() {
           onChange={setTab}
           options={[
             { value: "pedidos", label: "Pedidos" },
-            { value: "menu", label: "Menú y disponibilidad" },
+            { value: "resumen", label: "Resumen" },
+            { value: "menu", label: "Menú" },
           ]}
         />
       </div>
 
-      {!hydrated ? null : tab === "pedidos" ? (
+      {tab === "resumen" ? (
+        <VendorMetrics orders={vendorOrders} />
+      ) : tab === "pedidos" ? (
         <div className="mt-6 space-y-8">
           <div className="grid gap-6 lg:grid-cols-3">
             <Column title="Nuevos" icon={<Zap className="size-4" />} orders={byStatus("recibido")} empty="Sin pedidos nuevos" />

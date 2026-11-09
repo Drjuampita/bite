@@ -4,6 +4,7 @@ import { Banknote, CreditCard, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { StatusBadge } from "@/components/OrderStatus";
 import { optionsSummary, money } from "@/lib/format";
+import { orderRef } from "@/lib/orders";
 import { formatTime } from "@/lib/schedule";
 import type { Order } from "@/lib/types";
 
@@ -23,7 +24,7 @@ export function OpsOrderCard({
     <article className="flex flex-col rounded-2xl bg-white p-4 shadow-card ring-1 ring-line/60">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <p className="text-lg font-extrabold tabular-nums tracking-wider">#{order.code}</p>
+          <p className="text-lg font-extrabold tabular-nums tracking-wider">#{orderRef(order)}</p>
           <p className="text-xs text-muted">
             {order.userName} · {formatTime(order.createdAt)}
           </p>
@@ -56,6 +57,11 @@ export function OpsOrderCard({
           </>
         )}
       </p>
+      {order.runnerName && (
+        <p className="mt-2 text-xs text-muted">
+          Repartidor: <span className="font-semibold text-ink">{order.runnerName}</span>
+        </p>
+      )}
       {order.note && <p className="mt-2 rounded-xl bg-canvas px-3 py-2 text-xs">“{order.note}”</p>}
       {action && <div className="mt-4">{action}</div>}
     </article>

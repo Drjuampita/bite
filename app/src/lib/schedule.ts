@@ -44,6 +44,8 @@ function nextBusinessDay(d: Date): Date {
 export interface Availability {
   available: boolean;
   reason?: string;
+  /** Lugares que le quedan al local en esa hora de clase. */
+  remaining?: number;
 }
 
 /** ¿El local acepta pedidos "Ahora" en este momento? */
@@ -83,8 +85,25 @@ export function scheduleDays(now: Date, demoMode: boolean): ScheduleDay[] {
   return days;
 }
 
-/** ¿Se puede agendar este bloque, en esta fecha, con este local? */
+/**
+ * ¿Se puede agendar este bloque, en esta fecha, con este local?
+ * `taken` es cuántos pedidos agendados ya tiene el local en ese bloque.
+ */
 export function slotAvailability(
+  vendor: Vendor,
+  slot: DeliverySlot,
+  date: string,
+  now: Date,
+  demoMode: boolean,
+  taken = 0,
+): Availability {
+  const timing = slotTiming(vendor, slot, date, now, demoMode);
+  if (!timing.available) return timing;
+  const remaining = Math.max(0, vendor.capacityPerSlot - taken);
+  return remaining > 0 ? { available: true, remaining } : { available: false, reason: "Lleno", remaining: 0 };
+}
+
+function slotTiming(
   vendor: Vendor,
   slot: DeliverySlot,
   date: string,
@@ -113,10 +132,16 @@ export function slotAvailability(
   return { available: true };
 }
 
-export function availableSlots(vendor: Vendor, date: string, now: Date, demoMode: boolean) {
+export function availableSlots(
+  vendor: Vendor,
+  date: string,
+  now: Date,
+  demoMode: boolean,
+  load: Record<string, number> = {},
+) {
   return DELIVERY_SLOTS.map((slot) => ({
     slot,
-    ...slotAvailability(vendor, slot, date, now, demoMode),
+    ...slotAvailability(vendor, slot, date, now, demoMode, load[slot.id] ?? 0),
   }));
 }
 
