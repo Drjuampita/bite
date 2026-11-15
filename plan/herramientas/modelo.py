@@ -107,7 +107,8 @@ def salida(clave, ws, celda):
 def abs_ref(ws, celda):
     col = "".join(ch for ch in celda if ch.isalpha())
     row = "".join(ch for ch in celda if ch.isdigit())
-    return f"{ws.title}!${col}${row}"
+    nombre = ws.title if ws.title.isascii() else f"'{ws.title}'"
+    return f"{nombre}!${col}${row}"
 
 
 WRAP = Alignment(wrap_text=True, vertical="top")
@@ -197,7 +198,10 @@ titulo(ws, "Gastos fijos", "Los de 12 meses se pagan haya o no clases. Los de 9 
 encabezado(ws, 4, ["Concepto", "Al mes", "Meses al año", "Al año", "Nivel", "Tipo", "Fuente o razonamiento"])
 f = 5
 f0 = f
-for etiqueta, valor, meses, nivel, tipo, nota in D.FIJOS:
+SUSP_12, SUSP_CLASE = [], []
+for etiqueta, valor, meses, nivel, tipo, nota, susp in D.FIJOS:
+    if susp:
+        (SUSP_12 if meses == 12 else SUSP_CLASE).append(f"B{f}")
     put(ws, f"A{f}", etiqueta)
     es_formula = isinstance(valor, str) and valor.startswith("=")
     put(ws, f"B{f}", valor.format(**REF) if es_formula else valor, fmt="$", font=NEGRO if es_formula else AZUL)
@@ -235,6 +239,16 @@ f += 1
 put(ws, f"A{f}", "Gastos de cada campus al año")
 put(ws, f"D{f}", f'=SUMIF(E{f0}:E{f1},"Campus",D{f0}:D{f1})', fmt="$")
 salida("fijos_campus_ano", ws, f"D{f}")
+f += 1
+put(ws, f"A{f}", "Gastos que se suspenden si se activa el plan de contingencia, todos los meses")
+put(ws, f"B{f}", "=" + ("+".join(SUSP_12) or "0"), fmt="$")
+REF["ahorro_12"] = abs_ref(ws, f"B{f}")
+salida("ahorro_12", ws, f"B{f}")
+f += 1
+put(ws, f"A{f}", "Gastos que se suspenden si se activa el plan de contingencia, meses con clases")
+put(ws, f"B{f}", "=" + ("+".join(SUSP_CLASE) or "0"), fmt="$")
+REF["ahorro_clase"] = abs_ref(ws, f"B{f}")
+salida("ahorro_clase", ws, f"B{f}")
 FIJOS_FILAS = (f0, f1)
 f += 2
 put(ws, f"A{f}", "Coordinador de operación (entra al pasar el umbral de pedidos)")
@@ -249,7 +263,7 @@ salida("coord_ano", ws, f"D{f}")
 # ══════════════════════════════════════════════════════════
 # Inversión inicial
 # ══════════════════════════════════════════════════════════
-ws = hoja("Inversion", [58, 16, 13, 78])
+ws = hoja("Inversión", [58, 16, 13, 78])
 titulo(ws, "Inversión inicial y origen de los recursos")
 encabezado(ws, 4, ["Concepto", "Monto", "Tipo", "Fuente o razonamiento"])
 f = 5
@@ -336,14 +350,14 @@ filas_u = [
     ("c_ss", "Seguridad social del repartidor", "={c}{c_rep_r}*{pct_ss}", "$2", "Pago × % de seguridad social"),
     ("c_pas", "Pasarela de pago", "={pas_pct}*{c}{total_r}+{pas_fijo}", "$2", "% × total cobrado + cuota fija"),
     ("c_sello", "Sello de seguridad y etiqueta", "={sello}", "$2", "Supuestos"),
-    ("c_punt", "Garantía de puntualidad (envíos devueltos)", "={pct_tarde}*{c}{i_fee_r}", "$2", "% de entregas tardías × envío sin IVA"),
+    ("c_punt", "Garantías: envíos y pedidos reembolsados", "={pct_tarde}*{c}{i_fee_r}+{pct_perdido}*{c}{ticket_r}", "$2", "% de entregas tardías × envío sin IVA, más % de pedidos no entregados × comida"),
     ("costo", "Costo por pedido", "={c}{c_rep_r}+{c}{c_ss_r}+{c}{c_pas_r}+{c}{c_sello_r}+{c}{c_punt_r}", "$2", "Suma"),
     ("margen", "Margen por pedido", "={c}{ing_r}-{c}{costo_r}", "$2", "Ingreso − costo"),
     ("margen_pct", "Margen sobre el ingreso", "={c}{margen_r}/{c}{ing_r}", "%", ""),
     ("s", "Pedido de un alumno con BITE Pass (no paga envío)"),
     ("p_ing", "Ingreso por pedido", "={c}{i_mark_r}+{c}{i_com_r}", "$2", "Sobreprecio + comisión"),
     ("p_pas", "Pasarela de pago", "={pas_pct}*({c}{ticket_r}+{c}{markup_r})+{pas_fijo}", "$2", "% × (comida + sobreprecio) + cuota fija"),
-    ("p_costo", "Costo por pedido", "={c}{c_rep_r}+{c}{c_ss_r}+{c}{p_pas_r}+{c}{c_sello_r}", "$2", "Suma"),
+    ("p_costo", "Costo por pedido", "={c}{c_rep_r}+{c}{c_ss_r}+{c}{p_pas_r}+{c}{c_sello_r}+{pct_perdido}*{c}{ticket_r}", "$2", "Suma, con los pedidos no entregados"),
     ("p_margen", "Margen por pedido con Pass", "={c}{p_ing_r}-{c}{p_costo_r}", "$2", "Debe ser positivo para que la suscripción pueda ser ilimitada"),
     ("s", "BITE Pass, por suscriptor al mes"),
     ("pass_precio", "Cuota mensual (IVA incluido)", "={passfee}", "$2", "Supuestos"),
@@ -395,6 +409,7 @@ ws.freeze_panes = "B5"
 # Escenarios mensuales (36 meses)
 # ══════════════════════════════════════════════════════════
 N = 36
+FILAS_ESC = {}
 C0 = 3  # primera columna de meses (C)
 CN = C0 + N - 1
 c0, cN = CL(C0), CL(CN)
@@ -420,6 +435,9 @@ def hoja_escenario(k, nombre):
         put(ws, f"B{r}", f"={REF[f'{clave}_{k}']}", fmt=fmt, font=VERDE)
         P[clave] = f"$B${r}"
 
+    put(ws, "A12", "Usuarios activos mínimos en abril del año 1 (regla de decisión)")
+    put(ws, "B12", f"=ROUND({REF['alumnos']}*{REF['adop_decision']}*INDEX({REF['cal_arr']},4),0)", fmt="n")
+    salida("umbral_abr", ws, "B12")
     H = 13
     encabezado(ws, H, ["Concepto", "Unidad"] + [None] * N)
     for j in range(N):
@@ -443,7 +461,7 @@ def hoja_escenario(k, nombre):
         ("c_rep", "Pago a repartidores", "$", "$"), ("c_gar", "Garantía mínima por bloque", "$", "$"),
         ("c_ss", "Seguridad social de repartidores", "$", "$"), ("c_pas", "Pasarela de pago", "$", "$"),
         ("c_sello", "Sellos y etiquetas", "$", "$"), ("c_promo", "Promoción: primer envío gratis", "$", "$"),
-        ("c_punt", "Garantía de puntualidad: envíos devueltos", "$", "$"),
+        ("c_punt", "Garantías: envíos y pedidos reembolsados", "$", "$"),
         ("cvar", "Costos variables totales", "$", "$"), ("mc", "Margen de contribución", "$", "$"),
         ("mc_pct", "Margen de contribución sobre ingresos", "%", "%"),
         ("S3", "GASTOS FIJOS Y RESULTADO", None, None),
@@ -453,7 +471,9 @@ def hoja_escenario(k, nombre):
         ("flujo", "Flujo del mes", "$", "$"), ("caja", "Caja al cierre del mes", "$", "$"),
         ("S4", "DATOS DE CONTROL", None, None),
         ("gmv", "Venta de comida generada a los locales (con IVA)", "$", "$"),
-        ("rb", "Turnos de repartidor por día (un turno = un bloque)", "turnos", "n1"),
+        ("cont", "Plan de contingencia activo (1 = sí)", "", "n"),
+        ("blq", "Bloques de entrega abiertos", "bloques", "n"),
+        ("rb", "Turnos de repartidor por día (un turno = un repartidor en un bloque)", "turnos", "n1"),
         ("ing_rb", "Ingreso promedio del repartidor por bloque", "$", "$2"),
         ("pico", "Pedidos en el bloque pico", "pedidos", "n1"),
         ("rec", "Caja ≥ capital aportado (1 = sí)", "", "n"),
@@ -479,8 +499,11 @@ def hoja_escenario(k, nombre):
             fx = {
                 "ano": f"={j // 12 + 1}",
                 "dias": f"=INDEX({REF['cal_dias']},MONTH({fecha}))",
-                "arr": f"=IF({g('ano')}=1,INDEX({REF['cal_arr']},MONTH({fecha})),1)",
-                "adop": f"=CHOOSE({g('ano')},{P['adop1']},{P['adop2']},{P['adop3']})*{g('arr')}",
+                "arr": f"=IF({g('ano')}=1,INDEX({REF['cal_arr']},MONTH({fecha})),IF(MONTH({fecha})=8,{REF['regreso']},1))",
+                "adop": (f"=IF({g('ano')}=1,{P['adop1']},CHOOSE({g('ano')},0,{P['adop1']},{P['adop2']})"
+                         f"+(CHOOSE({g('ano')},{P['adop1']},{P['adop2']},{P['adop3']})-CHOOSE({g('ano')},0,{P['adop1']},{P['adop2']}))"
+                         f"*IF(MONTH({fecha})<=7,{REF['avance_sem1']},1))*{g('arr')}"),
+                "cont": "=0" if j < 7 else f"=IF(${CL(C0 + 3)}{R['users']}<$B$12,1,0)",
                 "users": f"=IF({g('dias')}>0,ROUND({REF['alumnos']}*{g('adop')},0),0)",
                 "pass": f"=ROUND({g('users')}*{P['pct_pass']},0)",
                 "occ": f"={g('users')}-{g('pass')}",
@@ -502,11 +525,11 @@ def hoja_escenario(k, nombre):
                           f"+{g('pass')}*MIN(1,{g('dias')}/{REF['dias_tipo']})*({REF['pas_pct']}*{REF['passfee']}+{REF['pas_fijo']})"),
                 "c_sello": f"={g('ord')}*{REF['sello']}",
                 "c_promo": f"={g('new')}*{REF['fee']}/(1+{REF['iva']})",
-                "c_punt": f"={g('o_occ')}*{REF['pct_tarde']}*{REF['fee']}/(1+{REF['iva']})",
+                "c_punt": f"={g('o_occ')}*{REF['pct_tarde']}*{REF['fee']}/(1+{REF['iva']})+{g('ord')}*{REF['pct_perdido']}*{REF['ticket']}",
                 "cvar": f"=SUM({c}{R['c_rep']}:{c}{R['c_punt']})",
                 "mc": f"={g('ing')}-{g('cvar')}",
                 "mc_pct": f"=IF({g('ing')}>0,{g('mc')}/{g('ing')},0)",
-                "f_base": f"={REF['fijos_12']}+IF({g('dias')}>0,{REF['fijos_clase']},0)",
+                "f_base": f"={REF['fijos_12']}+IF({g('dias')}>0,{REF['fijos_clase']},0)-{g('cont')}*({REF['ahorro_12']}+IF({g('dias')}>0,{REF['ahorro_clase']},0))",
                 "f_coord": f"=IF(AND({g('dias')}>0,MAX(${c0}{R['oday']}:{c}{R['oday']})>={REF['umbral_coord']}),{REF['coord']},0)",
                 "fijos": f"={g('f_base')}+{g('f_coord')}",
                 "arranque": f"={REF['arranque']}" if j == 0 else "=0",
@@ -515,7 +538,8 @@ def hoja_escenario(k, nombre):
                 "flujo": f"={g('ebit')}-{g('isr')}",
                 "caja": f"={REF['capital']}+{g('flujo')}" if j == 0 else f"={prev}{R['caja']}+{g('flujo')}",
                 "gmv": f"={g('ord')}*{REF['ticket']}",
-                "rb": f"=MAX(MIN({REF['bloques']},{g('oday')}),ROUNDUP({g('oday')}/{REF['cap_viaje']},0))",
+                "blq": f"=IF({g('dias')}>0,MIN({REF['bloques']},MAX({REF['bloques_piloto']},ROUNDUP({g('oday')}/{REF['ped_abrir']},0))),0)",
+                "rb": f"=IF({g('dias')}>0,MAX({REF['rep_min']}*{g('blq')},ROUNDUP({g('oday')}/{REF['ped_rb']},0)),0)",
                 "ing_rb": f"=IF({g('rb')}>0,({REF['pago']}*{g('oday')}+{g('c_gar')}/MAX(1,{g('dias')}))/{g('rb')},0)",
                 "pico": f"={g('oday')}*{REF['pico']}",
                 "rec": f"=IF({g('caja')}>={REF['capital']},1,0)",
@@ -600,6 +624,8 @@ def hoja_escenario(k, nombre):
     put(ws, f"C{r}", f'=IFERROR(MATCH({REF["coord"]},{rango("f_coord")},0),"No se contrata")', fmt="n", font=NEGRITA)
     salida(f"{k}_mes_coord", ws, f"C{r}")
     ws.freeze_panes = f"{c0}{H + 1}"
+    FILAS_ESC[k] = dict(R)
+    salida(f"{k}_contingencia", ws, f"{CL(C0 + 7)}{R['cont']}")
     # Guardar referencias mensuales útiles para gráficas
     for clave in ("ord", "oday", "ing", "mc", "ebit", "caja", "users", "fijos"):
         for j in range(N):
@@ -723,7 +749,7 @@ for q in range(0, 151, 10):
 # ══════════════════════════════════════════════════════════
 ws = hoja("Sensibilidad", [44, 11, 9, 9, 9, 10, 11, 9, 10, 11, 9, 13, 13, 13, 14, 15])
 titulo(ws, "Sensibilidad: qué pasa si un supuesto cambia",
-       "Año completo al ritmo del año 2 del escenario esperado, con coordinador contratado. Cada fila cambia un solo supuesto (en azul).")
+       "Año completo al ritmo de cierre del año 2 del escenario esperado. El coordinador se paga solo si el volumen pasa el umbral. Cada fila cambia un solo supuesto (en azul).")
 cols = ["Caso", "Adopción", "% Pass", "Ped. ocas.", "Ped. Pass", "Comida", "Sobreprecio", "Envío", "Comisión",
         "Pago repartidor", "Seg. social", "Margen pedido", "Margen Pass", "Margen por usuario", "Utilidad de operación", "Cambio contra la base"]
 encabezado(ws, 4, cols)
@@ -742,10 +768,11 @@ for nombre_caso, cambios in D.SENSIBILIDAD:
         else:
             put(ws, f"{col}{f}", f"={col}${BASE_F}", fmt=fmt_col[col])
     iva, pp, pf, sello, pas = REF["iva"], REF["pas_pct"], REF["pas_fijo"], REF["sello"], REF["passfee"]
-    put(ws, f"L{f}", f"=(H{f}+G{f})/(1+{iva})+I{f}*F{f}-(J{f}*(1+K{f})+{pp}*(F{f}+G{f}+H{f})+{pf}+{sello}+{REF['pct_tarde']}*H{f}/(1+{iva}))", fmt="$2")
-    put(ws, f"M{f}", f"=G{f}/(1+{iva})+I{f}*F{f}-(J{f}*(1+K{f})+{pp}*(F{f}+G{f})+{pf}+{sello})", fmt="$2")
+    put(ws, f"L{f}", f"=(H{f}+G{f})/(1+{iva})+I{f}*F{f}-(J{f}*(1+K{f})+{pp}*(F{f}+G{f}+H{f})+{pf}+{sello}+{REF['pct_tarde']}*H{f}/(1+{iva})+{REF['pct_perdido']}*F{f})", fmt="$2")
+    put(ws, f"M{f}", f"=G{f}/(1+{iva})+I{f}*F{f}-(J{f}*(1+K{f})+{pp}*(F{f}+G{f})+{pf}+{sello}+{REF['pct_perdido']}*F{f})", fmt="$2")
     put(ws, f"N{f}", f"=(1-C{f})*D{f}*L{f}+C{f}*(E{f}*M{f}+{pas}/(1+{iva})-({pp}*{pas}+{pf}))", fmt="$2")
-    put(ws, f"O{f}", f"={REF['alumnos']}*B{f}*N{f}*{REF['meses_eq']}-({REF['fijos_ano']}+{REF['coord_ano']})", fmt="$", font=NEGRITA)
+    put(ws, f"O{f}", (f"={REF['alumnos']}*B{f}*N{f}*{REF['meses_eq']}-({REF['fijos_ano']}"
+                      f"+IF({REF['alumnos']}*B{f}*((1-C{f})*D{f}+C{f}*E{f})/{REF['dias_tipo']}>={REF['umbral_coord']},{REF['coord_ano']},0))"), fmt="$", font=NEGRITA)
     put(ws, f"P{f}", "=0" if f == BASE_F else f"=O{f}-O${BASE_F}", fmt="$")
     salida(f"sens_{f - BASE_F}", ws, f"O{f}")
     salida(f"sens_d_{f - BASE_F}", ws, f"P{f}")
@@ -766,9 +793,10 @@ filas_f = [
     ("mc", "Margen de contribución", lambda y: "={c}{ing}-{c}{cvar}", "$", ""),
     ("regalia", "Regalía a BITE", lambda y: f"={{c}}{{ing}}*{REF['fq_regalia']}", "$", "% de los ingresos de la unidad"),
     ("fondo", "Fondo de publicidad de la red", lambda y: f"={{c}}{{ing}}*{REF['fq_fondo']}", "$", "% de los ingresos de la unidad"),
-    ("fijos", "Gastos fijos locales", lambda y: f"=12*{REF['fq_fijos']}", "$", "Contador, publicidad local, seguro y varios, promediados en 12 meses (la plataforma la pone BITE)"),
+    ("fijos", "Gastos fijos de la unidad", lambda y: f"=12*{REF['fq_fijos']}", "$", "Contador, publicidad local, seguro y varios, promediados en 12 meses (la plataforma la pone BITE)"),
     ("util", "Utilidad del franquiciatario antes de impuestos", lambda y: "={c}{mc}-{c}{regalia}-{c}{fondo}-{c}{fijos}", "$", "Incluye el pago por su propio trabajo como operador"),
     ("acum", "Utilidad acumulada", lambda y: "={c}{util}" if y == 1 else "={p}{acum}+{c}{util}", "$", ""),
+    ("util_coord", "Utilidad si además contrata un coordinador", lambda y: f"={{c}}{{util}}-{REF['coord_ano']}", "$", "Si el franquiciatario no opera en persona"),
     ("bite", "Lo que recibe BITE de la unidad", lambda y: (f"={REF['fq_cuota']}+" if y == 1 else "=") + f"{{c}}{{regalia}}-{REF['fq_soporte']}", "$", "Cuota inicial (año 1) + regalía − costo de soporte"),
 ]
 f = 5
@@ -819,7 +847,7 @@ salida("fq_regalia_gmv", ws, f"B{f}")
 # ══════════════════════════════════════════════════════════
 # Expansión a 5 años (escenario esperado)
 # ══════════════════════════════════════════════════════════
-ws = hoja("Expansion", [58, 15, 15, 15, 15, 15, 62])
+ws = hoja("Expansión", [58, 15, 15, 15, 15, 15, 62])
 titulo(ws, "Plan de expansión a 5 años (escenario esperado)",
        "Cada campus nuevo repite la curva del campus Anáhuac Querétaro: año 1, año 2 y, del año 3 en adelante, el nivel del año 3.")
 encabezado(ws, 4, ["Concepto", "Año 1", "Año 2", "Año 3", "Año 4", "Año 5", "Cómo se calcula"])
@@ -827,7 +855,7 @@ YC = "BCDEF"
 X = {}
 orden = ["ap_prop", "ap_fq", "n_prop", "n_fq", "n_total", "S1", "ped_prop", "ped_fq", "ped_red", "ped_acum", "gmv_red", "S2",
          "ing_prop", "ing_cuotas", "ing_regalias", "ing_bite", "ing_acum", "S3", "op_prop", "apertura", "soporte", "socios_tc",
-         "central", "ebit", "perdida", "base", "isr", "neta", "neta_acum"]
+         "central", "ebit", "perdida", "base", "isr", "neta", "neta_acum", "caja"]
 f = 5
 for clave in orden:
     X[clave] = f
@@ -854,7 +882,7 @@ def op_prop(y):
     for kk in range(1, y + 1):
         edad = min(3, y - kk + 1)
         tam = "1" if kk == 1 else REF["exp_tamano"]
-        fijos_campus = ANUAL[('E', 'fijos')][edad] if kk == 1 else f"({ANUAL[('E', 'fijos')][edad]}-{REF['fijos_empresa_ano']})"
+        fijos_campus = ANUAL[('E', 'fijos')][edad] if kk == 1 else f"({REF['fijos_ano']}-{REF['fijos_empresa_ano']}+{REF['coord_ano']})"
         terminos.append(f"{YC[kk - 1]}${X['ap_prop']}*({ANUAL[('E', 'mc')][edad]}*{tam}-{fijos_campus})")
     return "=" + "+".join(terminos)
 
@@ -881,7 +909,7 @@ filas_x = {
     "ing_regalias": ("Regalías", "$", lambda y, c, p: regalias(y), "% de los ingresos de cada unidad franquiciada"),
     "ing_bite": ("Ingresos totales de BITE (sin IVA)", "$", lambda y, c, p: f"=SUM({c}{X['ing_prop']}:{c}{X['ing_regalias']})", ""),
     "ing_acum": ("Ingresos acumulados", "$", lambda y, c, p: f"={c}{X['ing_bite']}" if y == 1 else f"={p}{X['ing_acum']}+{c}{X['ing_bite']}", ""),
-    "op_prop": ("Resultado de operación de campus propios", "$", lambda y, c, p: op_prop(y), "Margen − gastos fijos de cada campus. Los gastos de la empresa (contador, infraestructura, seguro) se cuentan una sola vez"),
+    "op_prop": ("Resultado de operación de campus propios", "$", lambda y, c, p: op_prop(y), "Margen − gastos fijos de cada campus. Los gastos de la empresa se cuentan una sola vez; los campus nuevos pagan coordinador desde su primer mes"),
     "apertura": ("Gastos de apertura", "$", lambda y, c, p: (f"={REF['arranque']}" if y == 1 else f"={c}{X['ap_prop']}*{REF['exp_apertura']}" + (f"+{REF['exp_transformacion']}" if y == 4 else "")), "Año 1: arranque de la empresa. Después: costo de abrir cada campus propio. El año 4 incluye la transformación a S.A.P.I."),
     "soporte": ("Soporte a franquiciatarios", "$", lambda y, c, p: f"={c}{X['n_fq']}*{REF['fq_soporte']}", ""),
     "socios_tc": ("Socios con sueldo de tiempo completo", "n", lambda y, c, p: D.SOCIOS_TC[y - 1], "Decisión: los socios empiezan a cobrar cuando la red lo paga"),
@@ -892,6 +920,7 @@ filas_x = {
     "isr": ("ISR", "$", lambda y, c, p: f"={c}{X['base']}*{REF['isr']}", ""),
     "neta": ("Utilidad neta", "$", lambda y, c, p: f"={c}{X['ebit']}-{c}{X['isr']}", ""),
     "neta_acum": ("Utilidad neta acumulada", "$", lambda y, c, p: f"={c}{X['neta']}" if y == 1 else f"={p}{X['neta_acum']}+{c}{X['neta']}", ""),
+    "caja": ("Caja al cierre del año", "$", lambda y, c, p: f"={REF['capital']}+{c}{X['neta_acum']}", "Capital aportado más utilidad neta acumulada"),
 }
 secciones_x = {"S1": "Volumen", "S2": "Ingresos de BITE", "S3": "Resultado"}
 for clave in orden:
@@ -1001,7 +1030,7 @@ ws.freeze_panes = "A6"
 # Pruebas de realidad
 # ══════════════════════════════════════════════════════════
 ws = hoja("Pruebas", [62, 18, 18, 14, 70])
-titulo(ws, "Pruebas de realidad", "Si alguna dice FALLA, el modelo tiene un problema que hay que resolver antes de usar sus cifras.")
+titulo(ws, "Pruebas de consistencia", "Si alguna dice FALLA, el modelo tiene un problema que hay que resolver antes de usar sus cifras.")
 encabezado(ws, 4, ["Prueba", "Valor del modelo", "Límite", "Resultado", "Por qué importa"])
 pruebas = [
     ("El repartidor gana, como mínimo, más que el salario mínimo por hora",
@@ -1010,15 +1039,15 @@ pruebas = [
     ("A ritmo normal, el repartidor gana al menos el doble del mínimo por hora (esperado, año 2)",
      f"={ANUAL[('E', 'ing_rb')][2]}/({REF['min_bloque']}/60)", "$2", f"=2*{REF['sm_diario']}/8", "$2", ">=",
      "Ingreso promedio por bloque en octubre del año 2, llevado a una hora."),
-    ("Un repartidor de 4 bloques diarios queda por debajo del umbral de relación laboral plena",
-     f"={ANUAL[('E', 'ing_rb')][2]}*4*{REF['dias_tipo']}*(1-{REF['excl_pie']})", "$", f"={REF['sm_mensual']}", "$", "<",
-     "Ingreso neto mensual contra un salario mínimo mensual. Si lo rebasa, toca IMSS completo y hay que usar ese costo."),
+    ("Un repartidor de 4 bloques diarios queda por debajo del umbral de relación laboral plena, aun en el mes más largo",
+     f"={ANUAL[('E', 'ing_rb')][2]}*4*MAX({REF['cal_dias']})*(1-{REF['excl_pie']})", "$", f"={REF['sm_mensual']}", "$", "<",
+     "Ingreso neto del mes con más días de clase contra un salario mínimo mensual. Si lo rebasa, toca IMSS completo y hay que usar ese costo."),
     ("El bloque pico cabe en el cupo de los locales (optimista)",
      f"={REF['pico_max_O']}", "n1", f"={REF['cupo_locales']}", "n", "<=",
      "Pedidos en la hora más cargada contra la suma de cupos por hora de los cuatro locales en la app."),
-    ("El bloque pico se cubre con el padrón de repartidores (optimista)",
-     f"=ROUNDUP({REF['pico_max_O']}/{REF['cap_viaje']},0)", "n", f"={REF['padron']}", "n", "<=",
-     "Repartidores que hacen falta al mismo tiempo en la hora más cargada."),
+    ("El bloque pico se cubre con el padrón de repartidores (esperado)",
+     f"=ROUNDUP({REF['pico_max_E']}/{REF['ped_rb']},0)", "n", f"={REF['padron']}", "n", "<=",
+     "Repartidores que hacen falta al mismo tiempo en la hora más cargada. En el optimista el padrón tiene que crecer."),
     ("El calendario respeta las vacaciones", f"={REF['dias_ano']}", "n", "=200", "n", "<",
      "Menos de 200 días de clase al año: junio, julio y parte de diciembre y enero no generan pedidos, pero sí gastos fijos."),
     ("El punto de equilibrio queda por debajo de lo proyectado (esperado, año 2)",
@@ -1028,11 +1057,12 @@ pruebas = [
      "Margen de cada pedido de un suscriptor en el peor escenario. Si es positivo, el Pass puede ser ilimitado."),
     ("La caja nunca queda en negativo (esperado)", f"={REF['caja_min_E']}", "$", "=0", "$", ">=",
      "Saldo mínimo de caja en 36 meses con el capital aportado."),
-    ("La caja nunca queda en negativo (pesimista)", f"={REF['caja_min_P']}", "$", "=0", "$", ">=",
-     "El capital alcanza incluso si la adopción se queda en el escenario pesimista."),
-    ("Los ingresos del modelo mensual cuadran con la economía por pedido (esperado, año 2)",
-     f"=ABS({ANUAL[('E', 'mc')][2]}/({REF['alumnos']}*{REF['adop2_E']}*{REF['u_contrib_user_E']}*{REF['meses_eq']})-1)", "%", "=0.03", "%", "<=",
-     "Margen anual del modelo mensual contra usuarios × margen por usuario × meses de clase. Diferencia máxima de 3% por redondeos."),
+    ("La caja pesimista conserva el colchón fijado", f"={REF['caja_min_P']}", "$", f"={REF['colchon']}*{REF['capital']}", "$", ">=",
+     "El capital alcanza, con margen, incluso si la adopción se queda en el escenario pesimista."),
+    ("El margen del modelo mensual cuadra con la economía por pedido (esperado, año 2)",
+     (f"=ABS({ANUAL[('E', 'mc')][2]}/(SUMPRODUCT(Esc_Esperado!{CL(C0 + 12)}{FILAS_ESC['E']['users']}:{CL(C0 + 23)}{FILAS_ESC['E']['users']},"
+      f"Esc_Esperado!{CL(C0 + 12)}{FILAS_ESC['E']['dias']}:{CL(C0 + 23)}{FILAS_ESC['E']['dias']})/{REF['dias_tipo']}*{REF['u_contrib_user_E']})-1)"), "%", "=0.03", "%", "<=",
+     "Margen anual del modelo mensual contra usuarios de cada mes × margen por usuario. Diferencia máxima de 3% por redondeos, promociones y cuotas prorrateadas."),
     ("La adopción esperada no supera lo que respalda la encuesta",
      f"={REF['adop1_E']}", "%", f"=IF({REF['enc_n']}=0,1,{REF['enc_adop']})", "%", "<=",
      "Mientras la encuesta no esté capturada esta prueba no dice nada: ver hoja Encuesta."),
@@ -1077,7 +1107,7 @@ ej = {
     "G": (f"=B5*{REF['com_E']}*{REF['ticket']}", "$"), "H": ("=0", "$"), "I": ("=SUM(E5:H5)", "$"),
     "J": (f"=B5*{REF['pago']}", "$"), "K": (f"=J5*{REF['pct_ss']}", "$"), "L": (f"={REF['pas_pct']}*C5+{REF['pas_fijo']}*B5", "$"),
     "M": (f"=B5*{REF['sello']}", "$"), "N": (f"=B5*{occ}*{REF['pct_tarde']}*{REF['fee']}/(1+{REF['iva']})", "$"),
-    "O": (f"={REF['fijos_ano']}/52", "$"), "P": ("=I5-SUM(J5:O5)", "$"),
+    "O": (f"=({REF['fijos_mes_clase']}+{REF['coord']})*12/52", "$"), "P": ("=I5-SUM(J5:O5)", "$"),
 }
 for col, (v, fmt) in ej.items():
     put(ws, f"{col}5", v, fmt=fmt, font=GRIS, fill=R_GRIS)
@@ -1109,17 +1139,17 @@ lineas = [
     ("", ""),
     ("Supuestos", "Todos los datos de entrada, con su tipo (dato, decisión o supuesto) y su fuente."),
     ("Fijos", "Gastos fijos mensuales."),
-    ("Inversion", "Gastos de arranque, reserva de caja y aportación de cada socio."),
+    ("Inversión", "Gastos de arranque, reserva de caja y aportación de cada socio."),
     ("Unitario", "Lo que deja un pedido, con y sin BITE Pass, en los tres escenarios."),
     ("Esc_Pesimista / Esperado / Optimista", "36 meses de operación del campus Anáhuac Querétaro y su resumen anual."),
     ("Escenarios", "Los tres escenarios lado a lado."),
     ("Equilibrio", "Cuántos alumnos y pedidos diarios hacen falta para no perder."),
     ("Sensibilidad", "Qué pasa con la utilidad si un solo supuesto cambia."),
     ("Franquicia", "Números de un campus operado por un franquiciatario."),
-    ("Expansion", "Plan a 5 años: campus propios y franquiciados."),
+    ("Expansión", "Plan a 5 años: campus propios y franquiciados."),
     ("Encuesta", "Aquí se capturan las 300 respuestas reales; compara los resultados con los supuestos."),
     ("Semanal", "Plantilla del concentrado semanal de ingresos y gastos para la operación."),
-    ("Pruebas", "Comprobaciones de realidad. Ninguna debe decir FALLA."),
+    ("Pruebas", "Pruebas de consistencia. Ninguna debe decir FALLA."),
 ]
 for i, (a, b) in enumerate(lineas, start=4):
     put(ws, f"A{i}", a, font=NEGRITA)
@@ -1149,14 +1179,14 @@ if RECALC.exists():
             v = v.isoformat()
         out[clave] = v
     out["_n_pruebas"] = N_PRUEBAS
-    out["_pruebas"] = [(n, nota) for n, *_r, nota in pruebas]
+    out["_pruebas"] = [(n, fv, fl, nota) for n, _v, fv, _l, fl, _op, nota in pruebas]
     out["_sens_nombres"] = [n for n, _ in D.SENSIBILIDAD]
     datos = {
         "generales": [{"bloque": b, "items": [dict(clave=c, concepto=e, unidad=u, fmt=fm, tipo=t, nota=n) for c, e, u, _v, fm, t, n in items]} for b, items in D.GENERALES],
         "escenarios": [dict(clave=c, concepto=e, unidad=u, fmt=fm, tipo=t, nota=n) for c, e, u, _v, fm, t, n in D.ESCENARIOS],
         "calendario": [dict(mes=m, dias=d, arranque=a) for m, d, a in D.CALENDARIO],
         "nota_calendario": D.NOTA_CALENDARIO,
-        "fijos": [dict(concepto=e, meses=m, nivel=nv, tipo=t, nota=n) for e, _v, m, nv, t, n in D.FIJOS],
+        "fijos": [dict(concepto=e, meses=m, nivel=nv, tipo=t, nota=n, suspendible=sp) for e, _v, m, nv, t, n, sp in D.FIJOS],
         "arranque": [dict(concepto=e, monto=v, tipo=t, nota=n) for e, v, t, n in D.ARRANQUE],
         "encuesta": [dict(num=n, texto=t, opciones=o, uso=u) for n, t, o, u in D.ENCUESTA],
         "abierta": dict(num=D.PREGUNTA_ABIERTA[0], texto=D.PREGUNTA_ABIERTA[1], uso=D.PREGUNTA_ABIERTA[2]),

@@ -4,9 +4,9 @@
 
 ### ¿Qué elementos se tomaron en cuenta para desarrollar el concepto?
 
-**El tiempo del alumno.** El semestre de la Universidad Anáhuac Querétaro tiene 16 semanas y el año suma {{dias_ano|n}} días de clase. El equipo vive el problema a diario: cuando dos clases van seguidas, el cambio de salón apenas da tiempo de caminar de una a otra, y la fila del área de comida en hora pico no cabe en ese espacio. El resultado es conocido: se come tarde, se come de prisa o no se come.
+**El tiempo del alumno.** El semestre de la Universidad Anáhuac Querétaro tiene 16 semanas y el año suma {{dias_ano|n}} días de clase. El equipo vive el problema a diario: cuando el receso entre dos clases es corto, la fila del área de comida en hora pico se lleva la mayor parte. El resultado es conocido: se come tarde, se come de prisa o no se come.
 
-**La evidencia de que no es un caso aislado.** En un estudio con 300 alumnos de la Universidad Autónoma del Estado de México, la mitad omitió alguna de las tres comidas principales durante su estancia en la universidad y 52.7% comía en las cafeterías del campus (Martínez-Hernández et al., 2021). En otro, con estudiantes de nutrición de la Ciudad de México, 29.4% atribuyó no desayunar a la falta de tiempo (Sámano et al., 2024).
+**La evidencia de que no es un caso aislado.** En un estudio con 300 alumnos de la Universidad Autónoma del Estado de México (UAEMéx), la mitad omitió alguna de las tres comidas principales durante su estancia en la universidad y 52.7% comía en las cafeterías del campus (Martínez-Hernández et al., 2021). En otro, con estudiantes de nutrición de la Ciudad de México, 29.4% atribuyó no desayunar a la falta de tiempo (Sámano et al., 2024).
 
 **La geografía del campus.** La comida se concentra en un punto, el área de comida de la planta baja del Edificio Liderazgo, y los alumnos están repartidos en los edificios A, B, C, IDEA y Business & Innovation Hub. Es un entorno cerrado, con recorridos a pie y destinos que se repiten cada hora. Para una operación de reparto es el mejor escenario posible: sin tráfico, sin vehículos y con rutas cortas.
 
@@ -17,18 +17,18 @@
 ### ¿Qué conocimientos o experiencia tiene el equipo en el proyecto que pretende realizar?
 
 - **Conoce al cliente porque es el cliente.** Los cinco socios son alumnos del campus: conocen los horarios, los edificios, los locales y las horas pico.
-- **Ya construyó el producto.** El equipo desarrolló un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor. La base de datos tiene reglas de negocio probadas con 29 pruebas automáticas: cupo por hora, precios calculados en el servidor, código de entrega y acceso por rol.
+- **Ya construyó el producto.** El equipo desarrolló un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor. La base de datos tiene reglas de negocio probadas con 29 pruebas automáticas, que están en el repositorio del proyecto: cupo por hora, precios calculados en el servidor, código de entrega y acceso por rol.
 - **Tiene formación en negocios.** El equipo cursa licenciaturas del área de negocios, lo que respalda la planeación comercial, financiera y de operación de este documento.
 - **Sabe lo que no sabe.** No tiene experiencia operando repartidores ni negociando con locales. Por eso el plan arranca con un piloto de dos semanas y 50 alumnos antes de abrir a todo el campus, y contrata asesoría legal y contabilidad externa desde el primer día.
 
 ### ¿Qué razones justifican el plan de empresa?
 
-1. **Cada pedido deja dinero.** Por un pedido de $120, BITE ingresa {{u_ing_E|$2}} y gasta {{u_costo_E|$2}}. El margen es de {{u_margen_E|$2}}, {{u_margen_pct_E|%}} del ingreso.
-2. **El punto de equilibrio es bajo.** Con {{e_be_oday_E|n}} pedidos por día de clase se cubren los gastos fijos de todo el año. Eso es {{e_be_adop_E|%1}} de los alumnos del campus.
+1. **Cada pedido genera margen.** Por un pedido de $120, BITE ingresa {{u_ing_E|$2}} y gasta {{u_costo_E|$2}}. El margen es de {{u_margen_E|$2}}, {{u_margen_pct_E|%}} del ingreso.
+2. **El punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase se cubren los gastos fijos de todo el año mientras los socios operan: {{e_be_adop_E|%1}} de los alumnos. Con un coordinador pagado son {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
 3. **Casi no hay activos.** BITE no tiene local, cocina ni vehículos. Los gastos de arranque son {{arranque|$}}, y la mayor parte es terminar la app y la publicidad de lanzamiento.
-4. **Los locales ganan sin invertir.** Reciben pedidos nuevos y anticipados, pagan solo cuando venden y la comisión de 20% es menor que la de 25% a 29% que Uber Eats publica para restaurantes en México.
+4. **Los locales no invierten.** Reciben pedidos anticipados, pagan solo cuando venden y la comisión de 20% es menor que la de 25% a 29% que Uber Eats publica para restaurantes en México. Cuánta de esa venta es nueva y cuánta habría llegado al mostrador se mide en el piloto.
 5. **Se puede repetir.** Lo que funcione en un campus se copia en otro con {{sup_exp_apertura|$}} de inversión, porque la app, la marca y los manuales ya existen.
-6. **El riesgo está acotado.** En el peor de los tres escenarios los socios no recuperan su capital en tres años, pero la empresa no se queda sin caja.
+6. **El riesgo está acotado.** En el peor de los tres escenarios los socios no recuperan su capital en tres años, pero la empresa no se queda sin caja. Y hay una regla escrita para decidir en abril si se sigue.
 
 ## 3.1 Objetivos
 
@@ -50,16 +50,16 @@ BITE es una app de entrega de comida que opera dentro de la Universidad Anáhuac
 | | | | | E2. Subir la adopción a 7% en el campus original | T2. Ampliar los bloques a la tarde, sumar a docentes y personal, y lanzar un programa de referidos |
 | | | | | E3. Convertir la operación en un sistema que se pueda enseñar | T3. Coordinador de operación por campus, tablero semanal de indicadores y manual de operación documentado |
 | **OL** Largo plazo | Año 5 en adelante (2031) | {{x_n_total_5|n}} campus: {{x_n_prop_5|n}} propios y {{x_n_fq_5|n}} franquiciados; {{x_ped_acum_5|n}} pedidos acumulados | {{x_ing_acum_5|$}} de ingresos acumulados; {{x_neta_5|$}} de utilidad neta en el año 5 | E1. Crecer con franquicias de campus | T1. Lanzar la franquicia en el año 4, con cuota de {{sup_fq_cuota|$}} y regalía de {{sup_fq_regalia|%}}; primeras tres unidades en universidades privadas |
-| | | | | E2. Posicionar a BITE como el delivery universitario | T2. Embajadores por campus y presencia en ferias de franquicias |
+| | | | | E2. Posicionar a BITE como el servicio de entrega universitario | T2. Embajadores por campus y presencia en ferias de franquicias |
 | | | | | E3. Diversificar los ingresos | T3. Publicidad de los locales dentro de la app y pedidos para eventos del campus |
 !fuente Las cifras salen del escenario esperado del modelo financiero (apartado 11.2) y del plan de expansión (apartado 13.9).
 
 ### ¿Cuáles son los productos o servicios que se ofrecen?
 
-- **Pedido agendado.** El alumno elige la hora de su clase y recibe en la ventana de 15 minutos anterior. Envío: {{sup_fee|$}}.
+- **Pedido agendado.** El alumno elige la hora de su clase y lo recibe en los 15 minutos anteriores. Envío: {{sup_fee|$}}.
 - **Pedido «Ahora».** Entra a la cocina de inmediato y se entrega en cuanto está listo. Mismo envío.
 - **BITE Pass.** {{sup_passfee|$}} al mes con todos los envíos incluidos.
-- **Garantía de puntualidad.** Si el pedido llega después de la hora de la clase, BITE devuelve el envío.
+- **Garantía de puntualidad.** Si el pedido llega después de la hora de la clase, BITE reembolsa el costo del envío; si el alumno ya no puede recibirlo, reembolsa el pedido completo.
 - **Panel para locales.** Pedidos agrupados por hora, control de productos agotados, resumen de ventas y pago semanal.
 
 El detalle de cada servicio está en el apartado 8.2.
@@ -72,7 +72,7 @@ El detalle de cada servicio está en el apartado 8.2.
 !cols 2.4,5
 | Concepto | Dato |
 |---|---|
-| Nombre de la empresa | BITE Servicios de Entrega, S.A.S. La denominación se solicita en línea ante la Secretaría de Economía |
+| Nombre de la empresa | BITE Servicios de Entrega, S.A.S. (Sociedad por Acciones Simplificada). La denominación se solicita en línea ante la Secretaría de Economía |
 | Nombre comercial | BITE. Marca por registrar ante el IMPI en las clases 39 y 35 |
 | Domicilio de operación | Circuito Universidades I, kilómetro 7, Fracción 2, El Marqués, Querétaro, C.P. 76246 (campus de la Universidad Anáhuac Querétaro) |
 | Teléfono | +52 442 447 8664 |
@@ -102,14 +102,14 @@ El detalle de cada servicio está en el apartado 8.2.
 !cols 1.2,2.8,1.8,2.8
 | Para quién | Qué recibe | Qué paga | Por qué le conviene |
 |---|---|---|---|
-| El alumno | Su comida en la puerta de su salón antes de que empiece su clase, sin hacer fila; puede agendarla desde un día antes | {{sup_fee|$}} de envío por pedido, o {{sup_passfee|$}} al mes con BITE Pass | Recupera su receso y deja de saltarse comidas. Si el pedido llega tarde, el envío no se cobra |
-| El local | Pedidos nuevos, con una hora de anticipación, cobrados y entregados por BITE; panel con sus ventas por hora | {{sup_com_E|%}} de comisión sobre lo que vende por BITE | Vende a quien hoy se va por la fila y reparte la carga de la hora pico. No contrata a nadie y paga solo si vende |
-| La universidad | Un servicio para sus alumnos operado por alumnos, sin costo para ella | Nada | Menos aglomeración en el área de comida, menos retardos por ir a comer y un proyecto emprendedor nacido en su aula |
+| El alumno | Su comida en la puerta de su salón antes de que empiece su clase, sin hacer fila; puede agendarla desde un día antes | {{sup_fee|$}} de envío por pedido, o {{sup_passfee|$}} al mes con BITE Pass; los precios del menú incluyen una tarifa de servicio de 8% | Usa su receso para comer y no para hacer fila. Si el pedido llega tarde, el envío no se cobra |
+| El local | Pedidos anticipados, cobrados y entregados por BITE; panel con sus ventas por hora | {{sup_com_E|%}} de comisión sobre el precio al público de lo que vende por BITE, más IVA | Puede vender a quien hoy se va por la fila y reparte la carga de la hora pico. No contrata a nadie y paga solo si vende |
+| La universidad | Un servicio para sus alumnos operado por alumnos, sin costo para ella | Nada. Si pide una contraprestación, su efecto está medido en el apartado 11.5 | Menos aglomeración en el área de comida, menos retardos por ir a comer y un proyecto emprendedor nacido en su aula. Ella fija las reglas: accesos, horarios y alimentos en salones |
 
 Las cuatro promesas que el alumno puede exigir:
 
 1. **Llega antes de tu clase o el envío va por nuestra cuenta.**
-2. **Ves el total antes de pagar.** Comida y envío, sin cargos al final.
+2. **Ves el total antes de pagar.** Los precios del menú en la app ya incluyen la tarifa de servicio, y la app lo dice. No hay cargos al final.
 3. **La bolsa sale sellada del local.** Si el sello está roto, no la recibas.
 4. **Cancelas sin costo** mientras el local no haya empezado a preparar.
 

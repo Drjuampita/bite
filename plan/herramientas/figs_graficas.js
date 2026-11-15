@@ -58,7 +58,7 @@ module.exports = (S) => {
     html: `<div style="font-size:13px;color:${C.muted};margin:0 0 4px 20px">De los ${money(S.u_ing_E, 2)} que ingresa BITE por un pedido sin Pass</div>` + segBar({ parts: [
       { name: "Repartidor y su seguridad social", v: S.u_c_rep_E + S.u_c_ss_E, color: C.s1 },
       { name: "Pasarela de pago", v: S.u_c_pas_E, color: C.s2 },
-      { name: "Sello, etiqueta y garantía de puntualidad", v: S.u_c_sello_E + S.u_c_punt_E, color: C.s3 },
+      { name: "Sello, etiqueta y garantías", v: S.u_c_sello_E + S.u_c_punt_E, color: C.s3 },
       { name: "Margen de BITE", v: S.u_margen_E, color: "#eda100", dark: true },
     ] }),
   });

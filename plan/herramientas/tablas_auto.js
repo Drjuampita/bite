@@ -19,7 +19,7 @@ module.exports = (S, D) => {
     ["Comisión del local", ...E.map((e) => `${pct(S[`u_com_${e}`])} · ${$2(S[`u_i_com_${e}`])}`)],
     ["**Ingreso por pedido**", ...u("ing", $2)],
     ["**Lo que cuesta entregarlo**", "", "", ""],
-    ["Pago al repartidor", ...u("c_rep", $2)], ["Seguridad social del repartidor", ...u("c_ss", $2)], ["Pasarela de pago", ...u("c_pas", $2)], ["Sello y etiqueta", ...u("c_sello", $2)], ["Garantía de puntualidad", ...u("c_punt", $2)],
+    ["Pago al repartidor", ...u("c_rep", $2)], ["Seguridad social del repartidor", ...u("c_ss", $2)], ["Pasarela de pago", ...u("c_pas", $2)], ["Sello y etiqueta", ...u("c_sello", $2)], ["Garantías: envíos y pedidos reembolsados", ...u("c_punt", $2)],
     ["**Costo por pedido**", ...u("costo", $2)],
     ["**Margen por pedido**", ...E.map((e) => `${$2(S[`u_margen_${e}`])} (${pct(S[`u_margen_pct_${e}`])})`)],
   ] };
@@ -111,14 +111,17 @@ module.exports = (S, D) => {
     ["Resultado de operación de campus propios", ...x("op_prop", $)], ["Gastos de apertura", ...x("apertura", $)], ["Soporte a franquiciatarios", ...x("soporte", $)],
     ["Sueldos de socios de tiempo completo", ...x("central", $)],
     ["**Utilidad de operación**", ...x("ebit", $)], ["ISR", ...x("isr", $)], ["**Utilidad neta**", ...x("neta", $)], ["Utilidad neta acumulada", ...x("neta_acum", $)],
+    ["Caja al cierre del año", ...x("caja", $)],
   ] };
   const fq = (k, f = $) => [1, 2, 3].map((y) => f(S[`fq_${k}_${y}`]));
   T.franquicia_unidad = { cols: [3.4, 1.2, 1.2, 1.2], filas: [
     ["Una unidad franquiciada", "Año 1", "Año 2", "Año 3"],
     ["Ingresos de la unidad (sin IVA)", ...fq("ing")], ["Costos variables", ...fq("cvar")], ["Margen de contribución", ...fq("mc")],
-    [`Regalía a BITE (${pct(S.sup_fq_regalia)})`, ...fq("regalia")], [`Fondo de publicidad (${pct(S.sup_fq_fondo)})`, ...fq("fondo")], ["Gastos fijos locales", ...fq("fijos")],
+    [`Regalía a BITE (${pct(S.sup_fq_regalia)})`, ...fq("regalia")], [`Fondo de publicidad (${pct(S.sup_fq_fondo)})`, ...fq("fondo")], ["Gastos fijos de la unidad", ...fq("fijos")],
     ["**Utilidad del franquiciatario antes de impuestos**", ...fq("util")], ["Utilidad acumulada", ...fq("acum")],
-    ["**Lo que recibe BITE de la unidad**", ...fq("bite")],
+    ["BITE recibe: cuota inicial", $(S.sup_fq_cuota), "$0", "$0"], ["BITE recibe: regalía", ...fq("regalia")],
+    ["BITE gasta: soporte a la unidad", ...[1, 2, 3].map(() => "−" + $(S.sup_fq_soporte))],
+    ["**Lo que le queda a BITE de la unidad**", ...fq("bite")],
   ] };
   T.franquicia_inversion = { cols: [3.4, 1.4], filas: [
     ["Inversión del franquiciatario", "Monto"],
@@ -126,10 +129,11 @@ module.exports = (S, D) => {
     ["Publicidad de lanzamiento", $(S.sup_fq_lanzamiento)], ["Capital de trabajo", $(S.sup_fq_capital_trabajo)],
     ["**Inversión total**", $(S.fq_inv)], ["Meses para recuperarla", num(S.fq_payback)],
   ] };
-  const pv = (i) => { const v = S[`prueba_v_${i}`], l = S[`prueba_l_${i}`]; const f = (z) => (Math.abs(z) < 1 && z !== 0 ? pct(z) : Math.abs(z) >= 1000 ? $(z) : num(z, Number.isInteger(z) ? 0 : 1)); return [f(v), f(l)]; };
+  const fp = { "$": $, "$2": $2, "%": pct, n: (z) => num(z), n1: (z) => num(z, 1) };
   T.pruebas = { size: 17, cols: [4.2, 1.1, 1.1, 1.1], filas: [["Prueba", "Valor", "Límite", "Resultado"],
-    ...S._pruebas.map(([n], i) => (i === S._pruebas.length - 1 ? [n, pct(S[`prueba_v_${i + 1}`]), "Encuesta", S[`prueba_${i + 1}`]] : [n, ...pv(i + 1), S[`prueba_${i + 1}`]]))] };
-  const fv = (it) => { const v = S[`sup_${it.clave}`]; return it.fmt in fmtDe ? fmtDe[it.fmt](v) : String(v); };
+    ...S._pruebas.map(([n, fv, fl], i) => (i === S._pruebas.length - 1 ? [n, pct(S[`prueba_v_${i + 1}`]), "Encuesta", S[`prueba_${i + 1}`]]
+      : [n, fp[fv](S[`prueba_v_${i + 1}`]), fp[fl](S[`prueba_l_${i + 1}`]), S[`prueba_${i + 1}`]]))] };
+  const fv = (it) => { const v = S[`sup_${it.clave}`]; const t = it.fmt in fmtDe ? fmtDe[it.fmt](v) : String(v); return ["$", "%", "veces"].includes(it.unidad) || it.fmt.startsWith("$") ? t : `${t} ${it.unidad}`; };
   T.supuestos = { size: 16, cols: [2.7, 0.9, 1, 4.2], filas: [["Concepto", "Valor", "Tipo", "Fuente o razonamiento"],
     ...D.generales.flatMap((b) => [[`**${b.bloque}**`, "", "", ""], ...b.items.map((it) => [it.concepto, fv(it), it.tipo, it.nota])])] };
   T.supuestos_esc = { size: 16, cols: [2.7, 0.8, 0.8, 0.8, 3.7], filas: [["Variable de escenario", "Pesimista", "Esperado", "Optimista", "Razonamiento"],
@@ -140,7 +144,7 @@ module.exports = (S, D) => {
   T.encuesta = { size: 16, cols: [0.4, 3, 2.8, 2.6], filas: [["#", "Pregunta", "Respuestas", "Para qué sirve esta información"],
     ...todas.map((q) => [q.num, q.texto, q.opciones.join(" · "), q.uso])] };
   T.encuesta_resultados = { size: 17, cols: [3.4, 1.3, 1.3, 1.3], filas: [
-    ["Indicador", "Resultado de la encuesta", "Supuesto del modelo", "Mínimo para no perder"],
+    ["Indicador", "Resultado de la encuesta", "Supuesto del modelo", "Punto de equilibrio"],
     ["Respuestas válidas", "==por capturar==", num(S.sup_meta_encuestas), "–"],
     ["Adopción implícita (pregunta 6, con descuento)", "==por capturar==", pct(S.sup_adop1_E), num(S.e_be_adop_E * 100, 1) + "%"],
     ["Pedidos al mes de quien sí lo usaría (pregunta 7)", "==por capturar==", num(S.u_ped_user_E, 2), "–"],

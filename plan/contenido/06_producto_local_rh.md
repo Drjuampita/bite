@@ -11,15 +11,16 @@
 | Cobertura | Edificios A, B, C, IDEA y Business & Innovation Hub; punto fijo en el Polideportivo |
 | Días y horario | Lunes a viernes, para clases que empiezan entre las 8:00 y las 17:00. Primera entrega a las 7:45 |
 | Ventana de entrega | Los 15 minutos anteriores a la hora de inicio de la clase |
-| Anticipación | Hasta las 21:00 del día anterior, o el mismo día con 45 minutos; se puede agendar con una semana de adelanto |
+| Anticipación | Hasta las 21:00 del día anterior, o el mismo día con 45 minutos de anticipación |
 | Cupo | Cada local fija cuántos pedidos acepta por hora, de 10 a 20; la app muestra «Quedan N» y bloquea la hora llena |
-| Locales | Cuatro en el arranque: Sinforosa, Luka, Diego's House y Carrusel |
+| Locales | Cuatro en el arranque. La app está configurada con Sinforosa, Luka, Diego's House y Carrusel como candidatos; ninguno ha firmado convenio todavía |
 | Pago | Tarjeta de débito o crédito dentro de la app |
 | Precio | Envío de {{sup_fee|$}} por pedido, o BITE Pass de {{sup_passfee|$}} al mes |
 | Acceso | Registro con correo institucional @anahuac.mx |
 | Plataforma | App web que se instala en el celular desde el navegador, sin tienda de aplicaciones |
 | Confirmación de entrega | Código de cuatro dígitos que solo ve el alumno |
-| Garantía | Si llega después de la hora de la clase, se devuelve el envío |
+| Garantía | Si llega después de la hora de la clase, se reembolsa el envío; si el alumno ya no puede recibirlo, el pedido completo |
+| Dónde se come | Cerca del salón, antes de la clase. Dentro del salón, solo si el reglamento de la universidad lo permite |
 
 !pendiente Confirmar con cada local su nombre comercial, horario, menú, precios y cupo por hora. La app tiene hoy menús y horarios de demostración.
 
@@ -37,13 +38,14 @@ Tres aclaraciones sobre el costeo:
 
 - **El IVA no es ingreso.** El alumno paga {{sup_fee|$}} de envío, pero {{= S.sup_fee - S.u_i_fee_E |$2}} son IVA. Lo mismo ocurre con el sobreprecio.
 - **El sobreprecio es la tarifa de servicio.** Los precios del menú en la app son en promedio 8.3% mayores que en mostrador. La app lo dice y muestra el total antes de pagar.
-- **El repartidor es el costo mayor.** Se le paga por pedido, y eso deja el riesgo de un día flojo en BITE solo hasta la garantía de {{sup_garantia|$}} por bloque.
+- **El repartidor es el costo mayor.** Se le paga por pedido; así BITE asume el riesgo de un día de pocos pedidos solo hasta la garantía de {{sup_garantia|$}} por bloque.
+- **La comisión se calcula sobre el precio al público.** El {{sup_com_E|%}} se aplica a los {{sup_ticket|$}} que paga el alumno por la comida, IVA incluido, y se factura al local más IVA. Equivale a {{= S.sup_com_E*1.16 |%1}} de su venta antes de IVA.
 
 !tabla BITE Pass: lo que deja un suscriptor
 !auto pass
 !fuente Fuente: hoja «Unitario» del modelo financiero.
 
-El Pass puede ser ilimitado porque cada pedido de un suscriptor sigue dejando margen por la comisión y el sobreprecio. En el peor escenario ese margen es de {{u_p_margen_P|$2}} por pedido: pequeño, pero positivo. Para el alumno, el Pass se paga solo a partir del sexto pedido del mes.
+El Pass puede ser ilimitado porque cada pedido de un suscriptor sigue dejando margen por la comisión y el sobreprecio. En el peor escenario ese margen es de {{u_p_margen_P|$2}} por pedido: pequeño, pero positivo. Para el alumno, BITE Pass conviene desde el sexto pedido del mes: seis envíos sueltos cuestan {{= 6*S.sup_fee |$}}, y con ocho pedidos ahorra {{= 8*S.sup_fee-S.sup_passfee |$}}.
 
 ### 8.1.2 Diseño de producto
 
@@ -76,8 +78,9 @@ El Pass puede ser ilimitado porque cada pedido de un suscriptor sigue dejando ma
 | Vista del repartidor: tomar pedidos y cerrar con código | Avisos al celular cuando el pedido cambia de estado |
 | Edificios, pisos y salones del campus; horas de clase | Menús, precios y horarios reales de los cuatro locales |
 | Reglas de negocio y seguridad por rol, con 29 pruebas automáticas | Publicar la app en internet con la base de datos en producción |
+| Prototipo que se puede usar de principio a fin con datos de demostración | Opción «vengo de otra clase», tarifa de envío del plan y reembolso automático de las garantías |
 
-Lo que falta es lo que paga la partida «Terminar el producto» de los gastos de arranque.
+Lo que falta se cubre con la partida «Terminar el producto» de los gastos de arranque. El cobro con tarjeta maneja dinero de terceros y datos de pago; por eso esa parte se encarga a un desarrollador con experiencia, que además revisa la seguridad de lo ya construido.
 
 ## 8.2 Servicios
 
@@ -95,11 +98,11 @@ Suscripción de {{sup_passfee|$}} al mes con todos los envíos incluidos. Se cob
 
 ### 8.2.4 Garantía de puntualidad
 
-Si el pedido llega después de la hora de inicio de la clase, BITE devuelve el envío sin que el alumno lo pida. El modelo supone que esto ocurre en {{sup_pct_tarde|%}} de los pedidos y lo carga como costo: {{u_c_punt_E|$2}} por pedido.
+Si el repartidor llega después de la hora de inicio de la clase, el alumno elige: recibe su pedido con el envío reembolsado, o lo cancela y BITE le reembolsa todo. El modelo supone que {{sup_pct_tarde|%}} de los pedidos llega tarde y que uno de cada 200 no se entrega por causa de BITE. Las dos cosas se cargan como costo: {{u_c_punt_E|$2}} por pedido.
 
 ### 8.2.5 Panel para locales
 
-Cada local recibe una tableta con su panel: pedidos nuevos, en preparación y agendados por hora; botón para apagar un producto agotado; resumen del día con ventas, ticket promedio y horas pico. Cada semana recibe su pago y su estado de cuenta.
+Cada local recibe una tableta con su panel: pedidos nuevos, en preparación y agendados por hora; botón para apagar un producto agotado; resumen del día con ventas, ticket promedio y horas pico. Cada semana recibe su pago y su estado de cuenta; el dinero de los locales se guarda en una cuenta separada de la de operación.
 
 ### 8.2.6 Servicios en el plan de crecimiento
 
@@ -148,7 +151,9 @@ No aplica como imagen de un local. El lugar que el cliente ve es la app: las fig
 
 ### 9.5.1 Plano de distribución de local
 
-No aplica. Cada local prepara y despacha en sus propias instalaciones. BITE solo necesita que cada uno aparte un espacio en su barra para las bolsas selladas, ordenadas por edificio.
+BITE no tiene un local que distribuir. Lo único físico es el punto de recolección dentro de cada local: un tramo de barra con cuatro charolas, una por zona, donde se dejan las bolsas selladas.
+
+!fig punto_recoleccion | 15 | Croquis del punto de recolección en la barra de un local. No está a escala.
 
 ### 9.5.2 Plano de área operativa
 
@@ -190,7 +195,7 @@ BITE no compra mobiliario. Lo más parecido son las cuatro tabletas que se entre
 
 !fig organigrama | 16 | Organigrama de BITE.
 
-La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cada una de las cuatro áreas la encabeza un socio; el quinto es el administrador. Mientras el volumen sea menor a {{sup_umbral_coord|n}} pedidos al día, los socios se turnan la guardia de operación. Al pasar ese volumen se contrata a un coordinador de medio tiempo.
+La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cada una de las cuatro áreas la encabeza un socio; el quinto es el administrador. Mientras el volumen sea inferior a {{sup_umbral_coord|n}} pedidos al día, los socios se turnan la guardia de operación. Al pasar ese volumen se contrata a un coordinador de medio tiempo.
 
 ### 10.1.1 Aportación de los socios a la empresa
 
@@ -241,7 +246,7 @@ Se recluta al inicio de cada semestre, cuando los alumnos ya conocen su horario.
 | Panel del local: pedidos, productos agotados y cierre | 45 minutos | Personal de cada local | Al afiliar el local |
 | Corte diario, conciliación y atención de incidencias | 4 horas | Coordinador | Al contratarlo |
 
-La capacitación se registra con fecha y firma. Es evidencia para la NOM-035 y para la universidad.
+La capacitación se registra con fecha y firma. Es evidencia para la norma de riesgos psicosociales (NOM-035, apartado 12.3) y para la universidad.
 
 ## 10.5 Contrato laboral
 
@@ -251,14 +256,14 @@ La capacitación se registra con fecha y firma. Es evidencia para la NOM-035 y p
 - Forma de pago: {{sup_pago|$}} por pedido entregado, con mínimo de {{sup_garantia|$}} por bloque asignado; pago y recibo semanales.
 - Reglas con las que la app asigna los pedidos y cómo se evalúa el servicio.
 - Equipo que BITE entrega en resguardo.
-- Seguridad social: aseguramiento de riesgos de trabajo en todos los casos, e inscripción completa al IMSS en el mes en que el ingreso neto alcance un salario mínimo mensual.
+- Seguridad social: aseguramiento de riesgos de trabajo en todos los casos, e inscripción completa al Instituto Mexicano del Seguro Social (IMSS) en el mes en que el ingreso neto alcance un salario mínimo mensual.
 - Canal de quejas y causas de terminación.
 
 **Coordinador de operación.** Contrato individual por temporada, que cubre los meses con clases, con inscripción al IMSS desde el primer día.
 
 **Socios.** Su relación con la empresa es societaria, no laboral, mientras no cobren sueldo.
 
-Los tres modelos de contrato los redacta un abogado laboral; su costo está en la partida de asesoría legal de los gastos de arranque.
+Los tres modelos de contrato los redacta un abogado laboral; su costo está en la partida de asesoría legal de los gastos de arranque. El mismo abogado confirma por escrito el encuadre de los repartidores antes de reclutar.
 
 ## 10.6 Documentación necesaria
 
@@ -281,7 +286,7 @@ Para repartidores y coordinador:
 5. Trato respetuoso con alumnos, docentes, personal de los locales y de la universidad. Cero tolerancia al acoso y a la violencia.
 6. Las incidencias se reportan el mismo día y se resuelven antes de buscar responsables.
 7. El equipo en resguardo se devuelve limpio y completo.
-8. Las faltas a un bloque confirmado se avisan con al menos dos horas. Tres faltas sin aviso en un mes dan de baja del padrón.
+8. Las faltas a un bloque confirmado se avisan con al menos dos horas de anticipación. Tres faltas sin aviso en un mes causan baja del padrón.
 9. Se cumplen las reglas del campus: accesos, circulación y horarios.
 10. Las quejas del personal se presentan por el canal del contrato y se responden en cinco días hábiles.
 
@@ -296,6 +301,6 @@ Para repartidores y coordinador:
 5. Caminar; no correr ni usar patineta o bicicleta dentro de los edificios.
 6. Entregar en la puerta del salón. Nunca entrar a un salón ni interrumpir una clase que ya empezó.
 7. Pedir el código antes de soltar la bolsa. Sin código no hay entrega.
-8. Si el alumno no está, esperar dos minutos, avisar por la app y seguir la ruta; el pedido regresa al local.
+8. Si el alumno no está en la primera pasada, volver en los últimos cinco minutos de la ventana. Si tampoco está a la hora de inicio de la clase, avisar por la app; el pedido regresa al local, donde el alumno puede recogerlo.
 9. No abrir, probar ni cambiar ningún pedido.
 10. Ante un accidente, primero la persona: avisar al servicio médico del campus y a Operaciones.

@@ -12,7 +12,7 @@ La hoja membretada se usa en convenios con locales, cartas a la universidad y es
 
 !fig id_landing | 16 | Página de entrada de bitedelivery.mx.
 
-La página tiene dos trabajos: llevar al alumno a hacer su primer pedido y recibir a los locales que quieren afiliarse. Por eso solo tiene dos botones. Debajo explica el servicio en tres frases y enlaza al aviso de privacidad y a los términos y condiciones, como exige la Ley Federal de Protección al Consumidor para las ventas en línea. Se publica en el mismo hospedaje que la app, sin costo adicional.
+La página tiene dos funciones: llevar al alumno a hacer su primer pedido y recibir a los locales que quieren afiliarse. Por eso solo tiene dos botones. Debajo explica el servicio en tres frases y enlaza al aviso de privacidad, que exige la ley de datos personales, y a los términos y condiciones, que la Ley Federal de Protección al Consumidor pide a quien vende en línea. Se publica en el mismo hospedaje que la app, sin costo adicional.
 
 ## 5.3 Dominio web
 
@@ -71,11 +71,11 @@ El uniforme cumple una función de seguridad: dentro del campus, cualquiera debe
 
 !tabla Piezas del uniforme y equipo para un padrón de ocho repartidores
 !cols 1.6,0.8,3,1.1,1.5
-| Pieza | Piezas | Material | Precio por pieza | Proveedor |
+| Pieza | Cantidad | Material | Precio por pieza | Proveedor |
 |---|---|---|---|---|
 | Playera polo | 16 | Tela deportiva de viscosa, isotipo bordado al pecho; dos por repartidor | $254.04 | Lazzar |
 | Gorra | 8 | Malla, isotipo bordado al frente | $149.64 | Lazzar |
-| Mochila térmica | 6 | Lona impermeable con forro térmico, 51 litros; se comparten por turno | $1,129.00 | Sears |
+| Mochila térmica | 6 | Lona impermeable con forro térmico, 51 litros; se comparten por bloque | $1,129.00 | Sears |
 | Gafete | 8 | PVC con foto, nombre, folio y cordón | $50.00 | Por cotizar |
 | **Total** | | | **$12,436** | |
-!fuente Fuente: cotizaciones en línea del 15 de noviembre de 2026; las tres cotizaciones de cada pieza están en el apartado 7.1.2.1.2. Precios con IVA.
+!fuente Fuente: cotizaciones en línea del 15 de noviembre de 2026; las tres cotizaciones de cada pieza están en el apartado 7.1.2.1.2, salvo el gafete, que falta cotizar. Precios con IVA.

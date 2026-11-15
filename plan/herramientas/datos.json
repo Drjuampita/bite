@@ -9,7 +9,7 @@
      "unidad": "alumnos",
      "fmt": "n",
      "tipo": "Dato",
-     "nota": "Informe Anual 2024 de la Universidad Anáhuac Querétaro: 7,478 alumnos de licenciatura (8,222 con posgrado y educación continua). No se cuentan docentes ni personal."
+     "nota": "Informe 2024 de la Universidad Anáhuac Querétaro: 7,478 alumnos de licenciatura (8,222 con posgrado y educación continua). No se cuentan docentes ni personal."
     },
     {
      "clave": "dias_tipo",
@@ -62,7 +62,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Supuesto clave",
-     "nota": "Estimación del equipo: un platillo y una bebida. La pregunta 10 de la encuesta lo confirma."
+     "nota": "Estimación del equipo: un platillo y una bebida. La pregunta 10 de la encuesta debe confirmarlo."
     },
     {
      "clave": "markup",
@@ -78,7 +78,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Decisión",
-     "nota": "Uber Eats cobró $28 de envío más $15.75 de servicio en el comparativo de Profeco (octubre de 2026). La pregunta 11 de la encuesta lo confirma."
+     "nota": "Uber Eats cobró $28 de envío más $15.75 de servicio en el comparativo de Profeco (octubre de 2026). La pregunta 11 de la encuesta debe confirmarlo."
     },
     {
      "clave": "passfee",
@@ -86,7 +86,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Decisión",
-     "nota": "Se paga solo desde el sexto pedido del mes. Rappi Pro cuesta $109 al mes."
+     "nota": "Conviene al alumno desde el sexto pedido del mes. Rappi Pro cuesta $109 al mes."
     }
    ]
   },
@@ -139,7 +139,7 @@
      "unidad": "%",
      "fmt": "%",
      "tipo": "Dato",
-     "nota": "Tarifa pública de Stripe México para tarjetas nacionales: 3.6% + $3.00 más IVA (stripe.com/mx/pricing, 15-nov-2026). El IVA es acreditable."
+     "nota": "Tarifa pública de Stripe México para tarjetas nacionales: 3.6% + $3.00 más IVA (stripe.com/mx/pricing, 15 de noviembre de 2026). El IVA es acreditable."
     },
     {
      "clave": "pas_fijo",
@@ -158,12 +158,20 @@
      "nota": "Garantía de puntualidad: si el pedido llega después de la hora de clase, BITE devuelve el envío. Meta de operación: 97% de entregas a tiempo."
     },
     {
+     "clave": "pct_perdido",
+     "concepto": "Pedidos que no se entregan por causa de BITE y se reembolsan completos",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "Uno de cada 200 pedidos. BITE reembolsa al alumno y paga la comida al local. Meta de operación que el piloto debe confirmar."
+    },
+    {
      "clave": "sello",
      "concepto": "Sello de seguridad y etiqueta de salón",
      "unidad": "$",
      "fmt": "$2",
      "tipo": "Supuesto",
-     "nota": "Sello de seguridad impreso: $1.22 por pieza en millar (Pop México, 15-nov-2026), más la etiqueta con número de pedido y salón."
+     "nota": "Sello de seguridad impreso: $1.22 por pieza en millar (Pop México, 15 de noviembre de 2026), más la etiqueta con número de pedido y salón."
     }
    ]
   },
@@ -172,11 +180,67 @@
    "items": [
     {
      "clave": "cap_viaje",
-     "concepto": "Pedidos que un repartidor entrega en un bloque",
+     "concepto": "Pedidos que caben en una mochila térmica",
+     "unidad": "pedidos",
+     "fmt": "n",
+     "tipo": "Supuesto",
+     "nota": "Capacidad física de una mochila de 51 litros. Es el máximo, no el promedio."
+    },
+    {
+     "clave": "ped_rb",
+     "concepto": "Pedidos promedio que un repartidor entrega en un bloque",
      "unidad": "pedidos",
      "fmt": "n",
      "tipo": "Supuesto clave",
-     "nota": "Mochila térmica de 40 a 50 litros y entregas agrupadas por edificio. El piloto lo confirma."
+     "nota": "La mitad de lo que cabe en la mochila: en 15 minutos hay que recorrer varios pisos y esperar a quien viene de otra clase. El piloto debe medirlo."
+    },
+    {
+     "clave": "rep_min",
+     "concepto": "Repartidores mínimos por bloque abierto",
+     "unidad": "personas",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Uno por cada mitad del campus (zonas 1 y 2; zonas 3 y 4)."
+    },
+    {
+     "clave": "bloques_piloto",
+     "concepto": "Bloques de entrega abiertos al arrancar",
+     "unidad": "bloques",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Los de 9:00, 11:00 y 13:00."
+    },
+    {
+     "clave": "ped_abrir",
+     "concepto": "Pedidos diarios por cada bloque que se abre",
+     "unidad": "pedidos",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Se abre un bloque más por cada seis pedidos diarios, hasta llegar a los diez."
+    },
+    {
+     "clave": "avance_sem1",
+     "concepto": "Parte del crecimiento del año que se logra en el primer semestre (años 2 y 3)",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "La adopción no salta el 1 de enero: sube la mitad de enero a mayo y el resto desde agosto, con la generación nueva."
+    },
+    {
+     "clave": "adop_decision",
+     "concepto": "Adopción mínima para seguir con el plan (regla de abril)",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Decisión",
+     "nota": "Cercana al equilibrio con coordinador. Si en abril del año 1 los usuarios activos van por debajo de esa ruta, se suspenden los gastos discrecionales."
+    },
+    {
+     "clave": "regreso",
+     "concepto": "Usuarios activos en agosto de los años 2 y 3, frente al objetivo",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "Tras el verano una parte de los usuarios tarda en volver y la generación nueva todavía no conoce el servicio."
     },
     {
      "clave": "pico",
@@ -191,8 +255,8 @@
      "concepto": "Cupo total de los locales por bloque",
      "unidad": "pedidos",
      "fmt": "n",
-     "tipo": "Dato",
-     "nota": "Suma de los cupos por hora configurados en la app para los cuatro locales (15 + 20 + 12 + 10)."
+     "tipo": "Supuesto",
+     "nota": "Suma de los cupos por hora con que está configurada la app (15 + 20 + 12 + 10). Son valores de demostración: cada local debe confirmar el suyo."
     },
     {
      "clave": "padron",
@@ -200,7 +264,15 @@
      "unidad": "personas",
      "fmt": "n",
      "tipo": "Decisión",
-     "nota": "Se reclutan 8 para tener siempre cubiertos los bloques pico."
+     "nota": "El bloque pico del escenario esperado pide cuatro al mismo tiempo; se reclutan ocho para cubrir ausencias."
+    },
+    {
+     "clave": "colchon",
+     "concepto": "Caja mínima que debe conservarse, como parte del capital",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Decisión",
+     "nota": "Colchón para imprevistos que ningún escenario contempla."
     },
     {
      "clave": "umbral_coord",
@@ -245,7 +317,7 @@
      "unidad": "%",
      "fmt": "%",
      "tipo": "Dato",
-     "nota": "Acuerdo de la STPS, DOF 26-dic-2025, disposición quinta: 3% para transporte no motorizado o sin medio de transporte."
+     "nota": "Acuerdo de la Secretaría del Trabajo y Previsión Social, Diario Oficial de la Federación del 26 de diciembre de 2025, disposición quinta: 3% para transporte no motorizado o sin medio de transporte."
     },
     {
      "clave": "isr",
@@ -261,7 +333,7 @@
      "unidad": "pesos por dólar",
      "fmt": "$2",
      "tipo": "Dato",
-     "nota": "Tipo de cambio FIX del Banco de México del 13-nov-2026."
+     "nota": "Tipo de cambio FIX del Banco de México del 13 de noviembre de 2026."
     }
    ]
   },
@@ -282,11 +354,11 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Decisión",
-     "nota": "Se fija para que la caja no quede en negativo ni en el escenario pesimista (ver hoja Pruebas)."
+     "nota": "Se fija para que, aun en el escenario pesimista, la caja conserve un colchón de 10% del capital (véase la hoja «Pruebas»)."
     },
     {
      "clave": "mvp_horas",
-     "concepto": "Horas invertidas en el MVP",
+     "concepto": "Horas invertidas en el producto mínimo viable",
      "unidad": "horas",
      "fmt": "n",
      "tipo": "Supuesto",
@@ -335,15 +407,15 @@
      "unidad": "veces",
      "fmt": "n2",
      "tipo": "Supuesto",
-     "nota": "Campus tipo de unos 7,500 alumnos de licenciatura."
+     "nota": "Campus de unos 7,500 alumnos de licenciatura. Uno menor genera menos en proporción."
     },
     {
      "clave": "fq_fijos",
-     "concepto": "Gastos fijos locales del franquiciatario, promedio al mes",
+     "concepto": "Gastos fijos de la unidad franquiciada, promedio al mes",
      "unidad": "$",
      "fmt": "$",
      "tipo": "Supuesto",
-     "nota": "Contador $3,500, seguro $500 y varios $1,000 los 12 meses, más publicidad local de $2,500 en los 9 meses con clases. La plataforma y el dominio los paga BITE."
+     "nota": "Contador $3,500, seguro $500 y varios $1,000 los 12 meses, más publicidad local de $2,500 en los 9 meses con clases: $82,500 al año. La plataforma y el dominio los paga BITE."
     },
     {
      "clave": "fq_soporte",
@@ -359,7 +431,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Supuesto",
-     "nota": "Mismas partidas y cotizaciones que el campus propio (hoja Inversion)."
+     "nota": "Mismas partidas y cotizaciones que el campus propio (hoja «Inversión»)."
     },
     {
      "clave": "fq_lanzamiento",
@@ -388,7 +460,7 @@
      "unidad": "veces",
      "fmt": "n2",
      "tipo": "Supuesto",
-     "nota": "Se castiga 10%: los campus nuevos no tienen al equipo fundador dentro."
+     "nota": "Campus de unos 6,000 alumnos, o uno mayor castigado porque el equipo fundador no estudia ahí."
     },
     {
      "clave": "exp_apertura",
@@ -396,7 +468,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Supuesto",
-     "nota": "Equipo de reparto, tabletas, licencia municipal y publicidad de lanzamiento (hoja Inversion). La app, la marca y la sociedad ya existen."
+     "nota": "Equipo de reparto, tabletas, licencia municipal y publicidad de lanzamiento (hoja «Inversión»). La app, la marca y la sociedad ya existen."
     },
     {
      "clave": "exp_sueldo",
@@ -408,11 +480,11 @@
     },
     {
      "clave": "exp_transformacion",
-     "concepto": "Transformación de la sociedad a S.A.P.I. de C.V., en el año 4",
+     "concepto": "Transformación a S.A.P.I. de C.V. y documentos de franquicia, en el año 4",
      "unidad": "$",
      "fmt": "$",
      "tipo": "Supuesto",
-     "nota": "Rango de mercado de $25,000 a $50,000 para constituir una S.A.P.I. ante notario en Querétaro (Praxium Consultores, 2026)."
+     "nota": "Constituir una S.A.P.I. ante notario en Querétaro cuesta de $25,000 a $50,000 (Praxium Consultores, 2026); el resto es el contrato y la información previa de franquicia, por cotizar."
     }
    ]
   }
@@ -424,7 +496,7 @@
    "unidad": "%",
    "fmt": "%",
    "tipo": "Supuesto clave",
-   "nota": "Referencia: una app para pedir y recoger en CETYS Tijuana alcanzó cerca de 10% de los alumnos (2019). La encuesta lo confirma."
+   "nota": "Referencia: una app para pedir y recoger en CETYS Tijuana alcanzó cerca de 10% de los alumnos (2019). La encuesta debe confirmarlo."
   },
   {
    "clave": "adop2",
@@ -448,7 +520,7 @@
    "unidad": "%",
    "fmt": "%",
    "tipo": "Supuesto clave",
-   "nota": "La pregunta 12 de la encuesta lo confirma."
+   "nota": "La pregunta 12 de la encuesta debe confirmarlo."
   },
   {
    "clave": "ped_occ",
@@ -456,7 +528,7 @@
    "unidad": "pedidos",
    "fmt": "n1",
    "tipo": "Supuesto clave",
-   "nota": "Menos de uno por semana. La pregunta 7 de la encuesta lo confirma."
+   "nota": "Menos de uno por semana. La pregunta 7 de la encuesta debe confirmarlo."
   },
   {
    "clave": "ped_pass",
@@ -464,11 +536,11 @@
    "unidad": "pedidos",
    "fmt": "n1",
    "tipo": "Supuesto clave",
-   "nota": "El Pass se paga solo desde el sexto pedido."
+   "nota": "BITE Pass conviene al alumno desde el sexto pedido del mes; nadie que pida menos lo contrataría."
   },
   {
    "clave": "com",
-   "concepto": "Comisión que acepta el comercio",
+   "concepto": "Comisión que acepta el local",
    "unidad": "%",
    "fmt": "%",
    "tipo": "Supuesto clave",
@@ -544,42 +616,64 @@
    "meses": 12,
    "nivel": "Empresa",
    "tipo": "Supuesto",
-   "nota": "Rango de mercado para una persona moral pequeña: $3,000 a $7,000 al mes (Praxium Consultores, 2026). Se toma la parte baja por el poco volumen de facturas."
+   "nota": "Rango de mercado para una persona moral pequeña: $3,000 a $7,000 al mes (Praxium Consultores, 2026). Se toma la parte baja por el poco volumen de facturas.",
+   "suspendible": false
   },
   {
    "concepto": "Infraestructura de la app: base de datos y hospedaje",
    "meses": 12,
    "nivel": "Empresa",
    "tipo": "Dato",
-   "nota": "Supabase Pro USD 25 y Vercel Pro USD 20 al mes (páginas oficiales de precios, 15-nov-2026), al tipo de cambio FIX."
+   "nota": "Supabase Pro, 25 dólares, y Vercel Pro, 20 dólares al mes (páginas oficiales de precios, 15 de noviembre de 2026), al tipo de cambio FIX.",
+   "suspendible": false
   },
   {
    "concepto": "Dominio .mx, dos cuentas de correo y timbrado de facturas",
    "meses": 12,
    "nivel": "Empresa",
    "tipo": "Dato",
-   "nota": "Dominio .mx $689 al año (Akky); Google Workspace $140 por usuario al mes, dos usuarios; timbrado ilimitado $1,650 al año (Facturama). Suma $5,699 al año."
+   "nota": "Dominio .mx $689 al año (Akky); Google Workspace $140 por usuario al mes, dos usuarios; timbrado ilimitado $1,650 al año (Facturama). Suma $5,699 al año.",
+   "suspendible": false
   },
   {
    "concepto": "Seguro de responsabilidad civil",
    "meses": 12,
    "nivel": "Empresa",
    "tipo": "Supuesto",
-   "nota": "Prima anual de $4,000 a $7,000 para una pyme con cobertura básica (IDC, enero de 2026). Se toman $6,000."
+   "nota": "Prima anual de $4,000 a $7,000 para una pyme con cobertura básica (IDC, enero de 2026). Se toman $6,000.",
+   "suspendible": false
+  },
+  {
+   "concepto": "Mantenimiento y mejoras de la app",
+   "meses": 12,
+   "nivel": "Empresa",
+   "tipo": "Supuesto",
+   "nota": "Bolsa de cuatro horas al mes de un desarrollador independiente a $350 la hora.",
+   "suspendible": true
+  },
+  {
+   "concepto": "Provisión para renovar la licencia municipal y el visto bueno",
+   "meses": 12,
+   "nivel": "Empresa",
+   "tipo": "Dato",
+   "nota": "La licencia de funcionamiento y el visto bueno de Protección Civil se renuevan cada año: $3,131 entre 12 meses.",
+   "suspendible": false
   },
   {
    "concepto": "Atención al usuario, reposición de equipo y varios",
    "meses": 12,
    "nivel": "Campus",
    "tipo": "Supuesto",
-   "nota": "Línea de atención, reposición de mochilas y gafetes, imprevistos."
+   "nota": "Línea de atención, reposición de mochilas y gafetes, imprevistos.",
+   "suspendible": false
   },
   {
    "concepto": "Publicidad continua en el campus y redes",
    "meses": 9,
    "nivel": "Campus",
    "tipo": "Decisión",
-   "nota": "Carteles (100 tabloides: $1,044, Sinergia Publicitaria), stickers (1,000: $775, Pop México) y anuncios en Instagram. Solo en meses con clases."
+   "nota": "Carteles (100 tabloides: $1,044, Sinergia Publicitaria), calcomanías (1,000: $775, Pop México) y anuncios en Instagram. Solo en meses con clases.",
+   "suspendible": true
   }
  ],
  "arranque": [
@@ -611,7 +705,7 @@
    "concepto": "Publicidad de lanzamiento",
    "monto": 15000,
    "tipo": "Decisión",
-   "nota": "Activación en el campus, 300 carteles, 3,000 stickers y anuncios en Instagram durante el primer mes."
+   "nota": "Activación en el campus, 300 carteles, 3,000 calcomanías y anuncios en Instagram durante el primer mes."
   },
   {
    "concepto": "Equipo de reparto: mochilas térmicas, playeras, gorras y gafetes",

@@ -35,9 +35,9 @@ module.exports = (S) => {
     name: "dia_alumno",
     html: `<div style="display:grid;gap:14px">
       <div><div style="font-size:13px;font-weight:700;color:${C.muted};margin-bottom:6px">Sin BITE: el receso se va en conseguir la comida</div>
-        <div style="display:flex;gap:6px">${["Sales del salón", "Caminas al área de comida", "Haces fila para pedir", "Esperas a que lo preparen", "Comes de prisa o llegas tarde"].map((t, i, a) => chip(t, { bg: C.canvas }) + (i < a.length - 1 ? arrow : "")).join("")}</div></div>
+        <div style="display:flex;gap:6px">${["Sales de clase", "Caminas al área de comida", "Haces fila para pedir", "Esperas a que lo preparen", "Comes de prisa o llegas tarde"].map((t, i, a) => chip(t, { bg: C.canvas }) + (i < a.length - 1 ? arrow : "")).join("")}</div></div>
       <div><div style="font-size:13px;font-weight:700;color:${C.brand7};margin-bottom:6px">Con BITE: la comida te espera en la puerta de tu salón</div>
-        <div style="display:flex;gap:6px">${[["Pides en un minuto, hoy o desde ayer", 0], ["Sigues en lo tuyo: clase, tarea o entrenamiento", 0], ["Llega a tu salón en los 15 minutos antes de tu clase", 1], ["Empieza la clase y ya comiste", 0]].map(([t, b], i, a) => chip(t, b ? { bg: C.brand, color: "#fff", border: C.brand, bold: true } : { bg: C.b50, border: C.b200 }) + (i < a.length - 1 ? arrow : "")).join("")}</div></div></div>`,
+        <div style="display:flex;gap:6px">${[["Pides en un minuto, hoy o desde ayer", 0], ["Sales de clase y caminas a tu siguiente salón", 0], ["Tu comida ya está en la puerta, 15 minutos antes", 1], ["Comes con calma y entras a tiempo", 0]].map(([t, b], i, a) => chip(t, b ? { bg: C.brand, color: "#fff", border: C.brand, bold: true } : { bg: C.b50, border: C.b200 }) + (i < a.length - 1 ? arrow : "")).join("")}</div></div></div>`,
   });
 
   // ── Línea de tiempo de un pedido agendado ──
@@ -186,7 +186,7 @@ module.exports = (S) => {
     const x = 26 + (i % 2) * 112, y = 132 + Math.floor(i / 2) * 44;
     mp += `<rect x="${x}" y="${y}" width="106" height="34" rx="10" fill="${C.white}" stroke="${C.b200}"/><text x="${x + 53}" y="${y + 21.5}" font-size="12" font-weight="600" fill="${C.ink}" text-anchor="middle">${esc(l)}</text>`;
   });
-  mp += `<text x="135" y="240" font-size="11" fill="${C.muted}" text-anchor="middle">Punto de recolección de repartidores</text>`;
+  mp += `<text x="135" y="240" font-size="11" fill="${C.muted}" text-anchor="middle">Locales candidatos · punto de recolección</text>`;
   zonas.forEach(([z, n, d], i) => {
     const y = 8 + i * 64;
     mp += `<path d="M260,165 C${360},165 ${380},${y + 26} ${468},${y + 26}" fill="none" stroke="${C.brand}" stroke-width="1.6" marker-end="url(#a3)"/>`;
@@ -195,6 +195,19 @@ module.exports = (S) => {
     mp += `<text x="566" y="${y + 23}" font-size="13" font-weight="700" fill="${C.ink}">${esc(n)}</text><text x="566" y="${y + 40}" font-size="11.5" fill="${C.muted}">${d} · ${i === 4 ? "entrega en recepción" : "entrega en el salón"}</text>`;
   });
   figs.push({ name: "mapa_operativo", html: `<svg width="${W}" height="330" viewBox="0 0 ${W} 330">${mp}</svg>` });
+
+  // ── Punto de recolección en la barra de un local ──
+  let pr = `<defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${C.ink}"/></marker></defs>`;
+  pr += `<rect x="10" y="10" width="780" height="70" rx="12" fill="${C.canvas}" stroke="${C.line}"/><text x="400" y="40" font-size="14" font-weight="800" fill="${C.ink}" text-anchor="middle">Cocina del local</text><text x="400" y="60" font-size="11.5" fill="${C.muted}" text-anchor="middle">Prepara, sella la bolsa y pega la etiqueta con salón y hora de clase</text>`;
+  pr += `<rect x="10" y="118" width="780" height="92" rx="12" fill="${C.b50}" stroke="${C.brand}" stroke-width="1.5"/><text x="26" y="140" font-size="12" font-weight="700" fill="${C.brand7}">Barra de despacho: un metro apartado para BITE</text>`;
+  ["Zona 1 · Edificios A y B", "Zona 2 · Edificio C", "Zona 3 · IDEA", "Zona 4 · Innovation Hub"].forEach((z, i) => {
+    const x = 26 + i * 190;
+    pr += `<line x1="${x + 86}" y1="82" x2="${x + 86}" y2="114" stroke="${C.ink}" stroke-width="1.3" marker-end="url(#a4)"/>`;
+    pr += `<rect x="${x}" y="150" width="172" height="48" rx="8" fill="#fff" stroke="${C.b200}"/><text x="${x + 86}" y="170" font-size="12" font-weight="700" fill="${C.ink}" text-anchor="middle">Charola ${i + 1}</text><text x="${x + 86}" y="187" font-size="11" fill="${C.muted}" text-anchor="middle">${z}</text>`;
+    pr += `<line x1="${x + 86}" y1="212" x2="${x + 86}" y2="244" stroke="${C.ink}" stroke-width="1.3" marker-end="url(#a4)"/>`;
+  });
+  pr += `<rect x="10" y="248" width="780" height="60" rx="12" fill="${C.ink}"/><text x="400" y="274" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">Lado del cliente: repartidores</text><text x="400" y="293" font-size="11.5" fill="#d9cfc6" text-anchor="middle">Cada repartidor toma la charola de su zona 10 minutos antes de la ventana y marca «En camino»</text>`;
+  figs.push({ name: "punto_recoleccion", html: `<svg width="${W}" height="318" viewBox="0 0 ${W} 318">${pr}</svg>` });
 
   // ── Organigrama ──
   const box = (x, y, w, t, sub, o = {}) => {

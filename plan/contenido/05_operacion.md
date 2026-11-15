@@ -48,7 +48,7 @@ El archivo es la hoja «Semanal» del libro BITE_Modelo_Financiero.xlsx. Cada lu
 
 #### 7.1.1.2 Orden de compra
 
-Toda compra mayor a $500 lleva orden de compra con folio. La orden nace de una requisición y de tres cotizaciones, y sin ella Administración no paga la factura.
+Toda compra superior a $500 lleva orden de compra con folio. La orden nace de una requisición y de tres cotizaciones, y sin ella Administración no paga la factura.
 
 !tabla Formato de orden de compra, con un ejemplo
 !cols 2,5
@@ -66,7 +66,7 @@ Toda compra mayor a $500 lleva orden de compra con folio. La orden nace de una r
 
 #### 7.1.1.3 Corte por turno
 
-En BITE el turno es el bloque de entrega. La app cierra cada bloque sola: registra pedidos entregados, cancelados y fallidos. Al final del día Operaciones revisa el corte diario antes de las 18:00.
+En BITE el turno es el bloque de entrega. La app cierra cada bloque sola: registra pedidos entregados, cancelados y fallidos. Al final del día Operaciones revisa el corte diario a las 17:30.
 
 !tabla Contenido del corte diario
 !cols 2.4,4.6
@@ -129,9 +129,9 @@ BITE no almacena alimentos. Su inventario es de equipo y consumibles: mochilas, 
 | Ingreso por hora efectiva de trabajo | {{= S.E_ing_rb_2*2 |$}} |
 | Salario mínimo por hora | {{= S.sup_sm_diario/8 |$2}} |
 
-El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases. Mientras el ingreso neto del mes quede por debajo de un salario mínimo mensual, la ley trata al repartidor como trabajador independiente de plataforma y BITE paga su aseguramiento contra riesgos de trabajo. Si un repartidor rebasa el umbral, BITE lo inscribe en el IMSS con seguridad social completa. El costo de ese caso está medido en el apartado 11.5.
+El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases. Mientras el ingreso neto del mes quede por debajo de un salario mínimo mensual, la ley trata al repartidor como trabajador independiente de plataforma y BITE paga su aseguramiento contra riesgos de trabajo. Si un repartidor rebasa el umbral, BITE lo inscribe en el IMSS con seguridad social completa. El costo de ese caso está medido en el apartado 11.5. Este encuadre laboral y fiscal debe confirmarse por escrito con un abogado laboral y un contador antes de reclutar.
 
-**Coordinador de operación.** Sueldo fijo quincenal con contrato por temporada. Su costo mensual de {{sup_coord|$}} incluye las cuotas patronales.
+**Coordinador de operación.** Sueldo fijo quincenal con contrato por temporada. Su costo mensual de {{sup_coord|$}} incluye las cuotas patronales y solo se paga en los meses con clases.
 
 **Socios.** No cobran sueldo en los primeros tres años. El plan de expansión prevé el primer sueldo de tiempo completo en el año 4.
 
@@ -146,6 +146,7 @@ El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases.
 | Facturación electrónica | Facturas de comisión a locales y recibos | $1,650 al año |
 | Correo y hojas de cálculo | Concentrado semanal, inventario y comunicación | $140 al mes por usuario |
 | Contador externo | Contabilidad, declaraciones y retenciones | $3,500 al mes |
+| Bolsa de horas de desarrollo | Mantenimiento y mejoras de la app | $1,400 al mes |
 
 ### 7.1.2 Procesos operativos
 
@@ -196,7 +197,7 @@ Requisición, tres cotizaciones, comparación, orden de compra, recepción contr
 | Uniformes: 16 playeras, 8 gorras y 8 gafetes | $5,662 |
 | Tabletas para los cuatro locales, 4 piezas | $7,196 |
 | **Total de equipo** | **$19,632** |
-!fuente Fuente: hoja «Inversion» del modelo financiero. El equipo forma parte de los gastos de arranque del apartado 11.1.
+!fuente Fuente: hoja «Inversión» del modelo financiero. El equipo forma parte de los gastos de arranque del apartado 11.1.
 
 #### 7.1.2.2 Plan de sistema de control
 
@@ -244,9 +245,11 @@ BITE no abre un local: abre un servicio.
 | 7:15 | Revisar la lista de encendido; confirmar locales abiertos y repartidores de los primeros bloques | Operaciones |
 | 7:30 | Entregar mochilas limpias; revisión de personal | Operaciones |
 | 7:45 a 16:45 | Bloques de entrega; seguimiento de pedidos e incidencias | Operaciones y repartidores |
-| 17:00 | Recibir mochilas; limpiarlas y guardarlas | Repartidores del último bloque |
+| 17:00 | Recibir mochilas; limpiarlas y guardarlas en el gabinete | Repartidores del último bloque |
 | 17:30 | Corte diario; incidencias cerradas | Operaciones |
 | 21:00 | Cierre automático de pedidos para el día siguiente; asignación de bloques a repartidores | App y Operaciones |
+
+Las mochilas se guardan en un gabinete con llave dentro de uno de los locales afiliados. Ese espacio se pacta en su convenio.
 
 ### 7.1.5 Proceso de limpieza de áreas
 
@@ -275,7 +278,7 @@ Si la app falla, el plan de contingencia es simple: Operaciones avisa a los alum
 
 ### 7.1.7 Proceso de recepción de cliente
 
-El cliente de BITE no llega a un mostrador: llega a la app.
+El cliente de BITE llega por la app.
 
 !fig flujo_pedido | 15.5 | Proceso de pedido, de la app a la puerta del salón.
 
@@ -283,11 +286,17 @@ El cliente de BITE no llega a un mostrador: llega a la app.
 
 ### 7.1.8 Proceso de producción
 
-La cocina es del local. Lo que BITE produce es la entrega, y la produce por bloques.
+La cocina es del local. Lo que BITE produce es la entrega, por bloques.
 
-**Capacidad.** Un repartidor entrega hasta {{sup_cap_viaje|n}} pedidos por bloque. El modelo supone que el bloque más cargado concentra {{sup_pico|%}} de los pedidos del día. En el año 2 del escenario esperado eso significa {{= S.E_oday_oct_2*S.sup_pico |n}} pedidos en el bloque pico, que se cubren con {{= Math.ceil(S.E_oday_oct_2*S.sup_pico/S.sup_cap_viaje) |n}} repartidores al mismo tiempo. En el optimista, el máximo de tres años es de {{O_pico_max|n}} pedidos en un bloque: cabe en el cupo de {{sup_cupo_locales|n}} pedidos por hora que suman los cuatro locales y se cubre con {{= Math.ceil(S.O_pico_max/S.sup_cap_viaje) |n}} repartidores de un padrón de {{sup_padron|n}}.
+**Las dos pasadas.** En cada ventana el repartidor recorre su zona dos veces. En la primera pasada, desde el minuto 45, entrega a quien ya está en su salón. En la segunda, en los últimos cinco minutos, entrega a quien viene llegando de otra clase. Al pedir, el alumno marca si estará en el salón o si viene de otra clase, y la app ordena la ruta. A la hora en punto el repartidor se retira: no se entrega con la clase empezada.
 
-**Asignación.** A las 21:00 se cierran los pedidos agendados del día siguiente. La app agrupa los pedidos de cada bloque por edificio y Operaciones asigna un repartidor por cada {{sup_cap_viaje|n}} pedidos. Los pedidos «Ahora» se suman al repartidor del bloque en curso.
+**Capacidad.** En una mochila caben {{sup_cap_viaje|n}} pedidos, pero con dos pasadas y varios pisos el modelo supone que un repartidor entrega {{sup_ped_rb|n}} por bloque en promedio. Es un supuesto clave que el piloto debe medir.
+
+**Cuántos repartidores.** Cada bloque abierto lleva al menos {{sup_rep_min|n}} repartidores, uno por cada mitad del campus, y se suma otro por cada {{sup_ped_rb|n}} pedidos. El bloque más cargado concentra {{sup_pico|%}} de los pedidos del día: en el año 2 del escenario esperado son {{= S.E_oday_oct_2*S.sup_pico |n}} pedidos, que piden {{= Math.ceil(S.E_oday_oct_2*S.sup_pico/S.sup_ped_rb) |n}} repartidores al mismo tiempo, uno por zona. En el optimista el pico llega a {{O_pico_max|n}} pedidos: caben en el cupo de {{sup_cupo_locales|n}} pedidos por hora con que está configurada la app, pero piden {{= Math.ceil(S.O_pico_max/S.sup_ped_rb) |n}} repartidores, más que el padrón inicial de {{sup_padron|n}}. En ese escenario el padrón y el equipo crecen con cargo a la caja.
+
+**Los bloques se abren con la demanda.** BITE arranca con {{sup_bloques_piloto|n}} bloques y abre uno más por cada {{sup_ped_abrir|n}} pedidos diarios, hasta llegar a los {{sup_bloques|n}}. Así ningún repartidor queda asignado a un bloque casi vacío.
+
+**Asignación.** A las 21:00 se cierran los pedidos agendados del día siguiente. La app agrupa los pedidos de cada bloque por edificio y Operaciones asigna a los repartidores. Los pedidos «Ahora» se suman al repartidor del bloque en curso.
 
 **Cuando algo sale mal.**
 

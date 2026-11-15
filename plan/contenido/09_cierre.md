@@ -1,12 +1,12 @@
 # 14. Conclusiones
 
-1. **El problema es real y el producto lo resuelve de una forma que nadie más ofrece.** Comer entre clases seguidas no cabe en el tiempo disponible. BITE no acorta la fila: la elimina, porque la comida llega al salón a la hora de la clase.
+1. **El problema es real y el producto lo resuelve de una forma que nadie más ofrece.** Cuando el receso es corto, la fila se lo lleva. BITE quita la fila del camino: la comida llega a la puerta del salón antes de la clase.
 2. **La idea que hace viable el negocio es el horario.** Agendar por hora de clase permite juntar pedidos, asignar repartidores con un día de anticipación y que el local cocine antes del pico. Sin eso, un envío de {{sup_fee|$}} dentro del campus no dejaría margen.
-3. **Cada pedido deja {{u_margen_E|$2}} y el punto de equilibrio es bajo.** Con {{e_be_oday_E|n}} pedidos por día de clase, {{e_be_adop_E|%1}} de los alumnos, se pagan los gastos fijos de todo el año.
-4. **Un campus es un negocio pequeño.** En el escenario esperado deja {{E_neta_2|$}} en el año 2 y {{E_neta_3|$}} en el año 3, antes de pagar el trabajo de los socios. El valor está en repetirlo: con diez campus al año 5, la utilidad neta llega a {{x_neta_5|$}} después de dos sueldos de tiempo completo.
-5. **El riesgo está medido.** El capital de {{capital|$}} se fijó para que la caja no llegue a cero ni en el escenario pesimista. En ese escenario los socios no recuperan su dinero en tres años, y el plan dice en qué mes se sabrá.
-6. **Todo depende de un número que todavía no se ha medido: la adopción.** El modelo necesita {{e_be_adop_E|%1}} para no perder y supone {{sup_adop1_E|%}}. La encuesta y el piloto existen para medirlo antes de gastar.
-7. **Hay dos condiciones que no dependen del equipo:** el permiso de la universidad y que los locales acepten la comisión. Ambas se resuelven con una conversación y un convenio, y van antes que cualquier gasto.
+3. **Cada pedido deja {{u_margen_E|$2}} y el punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase, {{e_be_adop_E|%1}} de los alumnos, se pagan los gastos fijos de todo el año mientras los socios operan. Con un coordinador pagado hacen falta {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
+4. **Un campus es un negocio pequeño.** En el escenario esperado deja {{E_neta_2|$}} en el año 2 y {{E_neta_3|$}} en el año 3, sin pagar el trabajo de los socios. El valor está en repetirlo: con diez campus al año 5, la utilidad neta llega a {{x_neta_5|$}} después de pagar dos sueldos de tiempo completo.
+5. **El riesgo está medido.** El capital de {{capital|$}} se fijó para que la caja conserve un colchón aun en el escenario pesimista. En ese escenario los socios no recuperan su dinero en tres años, y el plan dice en qué mes se sabrá y qué se hace entonces.
+6. **Todo depende de un número que todavía no se ha medido: la adopción.** El modelo necesita {{e_be2_adop_E|%1}} para sostenerse con un coordinador pagado y supone {{sup_adop1_E|%}} en el primer año. La encuesta y el piloto existen para medirlo antes de gastar.
+7. **Hay dos condiciones que no dependen del equipo:** el permiso de la universidad, con sus reglas, y que los locales acepten la comisión. Ambas dependen de una negociación y van antes que cualquier gasto.
 
 # 15. Recomendaciones
 
@@ -16,9 +16,9 @@ El orden importa: cada paso es barato y decide si se da el siguiente.
 !cols 0.4,3.2,1.5,2
 | # | Acción | Cuándo | Qué decide |
 |---|---|---|---|
-| 1 | Presentar el proyecto a la universidad y pedir autorización para el piloto | Noviembre de 2026 | Si hay negocio en este campus |
+| 1 | Presentar el proyecto a la universidad y pedir por escrito su autorización para el piloto y sus reglas: accesos, alimentos en salones y uso del correo institucional | Noviembre de 2026 | Si hay negocio en este campus y con qué oferta |
 | 2 | Levantar la encuesta de 300 respuestas y capturarla en el modelo | Noviembre de 2026 | Si la adopción respalda el plan, con la regla del apartado 6.2.1 |
-| 3 | Medir filas tres días con el protocolo del Anexo C | Noviembre de 2026 | El argumento de venta, con minutos reales |
+| 3 | Medir filas y recorridos tres días con el protocolo del Anexo C | Noviembre de 2026 | El argumento de venta, con minutos reales, y cuántos pedidos puede entregar un repartidor por bloque |
 | 4 | Firmar convenio con los cuatro locales; cargar menús y precios reales | Diciembre de 2026 | La comisión del escenario y el ticket promedio |
 | 5 | Constituir la S.A.S., abrir cuenta y contratar la pasarela de pago | Diciembre de 2026 | Nada: es requisito para cobrar |
 | 6 | Terminar el producto: cobro, Pass y avisos | Diciembre de 2026 | Solo se ejerce si los pasos 1 y 2 salieron bien |
@@ -27,11 +27,14 @@ El orden importa: cada paso es barato y decide si se da el siguiente.
 | 9 | Apertura a todo el campus | 25 de enero de 2027 | El ritmo de arranque frente al modelo |
 | 10 | Punto de decisión con los usuarios activos de abril | Abril de 2027 | Seguir, ajustar o detener, con la regla del apartado 11.2 |
 
+**Si el calendario no alcanza.** Faltan ocho semanas para el 11 de enero y el permiso, los convenios y el cobro con tarjeta están por resolverse. Si alguno no está listo, el piloto se hace en febrero con lo que haya y la apertura general se recorre al semestre de agosto de 2027. El modelo se desplaza completo siete meses y sus conclusiones no cambian; lo que cambia es que el primer año calendario tendría un solo semestre de ventas.
+
 Recomendaciones de fondo:
 
 - **Medir cada semana cuatro números:** usuarios activos, pedidos por día, entregas a tiempo y pedidos por repartidor en cada bloque. Son los que el modelo supone.
-- **Probar el precio durante el piloto.** La mitad de los alumnos ve el sobreprecio dentro del menú y la otra mitad lo ve como tarifa de servicio aparte. Se queda la forma que retenga más.
-- **Contratar asesoría laboral antes de reclutar.** El capítulo de plataformas digitales es reciente y sus reglas ante el IMSS todavía están cambiando.
+- **Probar el precio durante el piloto.** La mitad de los alumnos ve el sobreprecio dentro del menú y la otra mitad lo ve como tarifa de servicio aparte. Se conserva la presentación que retenga a más alumnos.
+- **Contratar asesoría laboral antes de reclutar.** El capítulo de plataformas digitales es reciente y sus reglas ante el IMSS todavía están cambiando. Hace falta un dictamen escrito sobre el encuadre de los repartidores.
+- **Medir en el piloto lo que el local quiere saber:** cuánta de la venta por BITE es nueva. Se comparan sus ventas totales antes y durante el piloto. Si el local lo pide, el primer mes va sin comisión.
 - **No abrir un segundo campus antes de un año completo de cifras.** El plan de expansión supone que la curva del primer campus se repite; primero hay que conocerla.
 - **Escribir el manual de operación desde el primer día.** Es el activo que después se vende como franquicia.
 - **Acordar hoy qué pasa cuando los socios se gradúen.** El convenio entre accionistas debe decir quién sigue, quién vende y a qué precio.
@@ -46,10 +49,12 @@ Recomendaciones de fondo:
 | Riesgo | Probabilidad | Impacto | Respuesta |
 |---|---|---|---|
 | La universidad no autoriza la operación | Media | Total | Es el paso 1. Se propone un piloto acotado, con reglas de la universidad y un responsable de enlace. Sin permiso no se gasta |
+| No se permite comer en los salones | Media | Medio | La entrega 15 minutos antes de la clase ya está pensada para comer fuera del salón. Quien no tiene receso queda fuera del mercado; el modelo no depende de ese grupo |
+| La universidad pide una contraprestación | Media | Medio | Medida en la sensibilidad: una cuota de 3% de la venta reduce la utilidad anual en {{= -S.sens_d_17 |$}} |
 | Los locales no aceptan 20% de comisión | Media | Alto | El escenario pesimista ya supone 15%. Se ofrece el primer mes sin comisión a cambio de un semestre de convenio |
 | La adopción se queda por debajo de {{e_be_adop_E|%1}} | Media | Alto | Encuesta antes de gastar; piloto antes de abrir; punto de decisión en abril |
 | Faltan repartidores en horas pico | Media | Medio | Padrón de ocho para cubrir cuatro a la vez; garantía de pago por bloque; reclutamiento cada semestre |
-| Entregas tarde en las primeras semanas | Alta | Medio | Empezar con tres bloques; cupo por local; garantía de puntualidad que devuelve el envío |
+| Entregas tardías en las primeras semanas | Alta | Medio | Empezar con tres bloques; cupo por local; garantía de puntualidad que reembolsa el envío |
 | Falla de la app en hora pico | Baja | Alto | Plan de contingencia del apartado 7.1.6; monitoreo; cobro de prueba cada mañana |
 | Un alumno se enferma y culpa al pedido | Baja | Alto | La comida la prepara el local con sus permisos; bolsa sellada; seguro de responsabilidad civil; bitácora de cada entrega |
 | El IMSS exige seguridad social completa para todos los repartidores | Media | Medio | Medido en la sensibilidad: reduce la utilidad anual en {{= -S.sens_d_13 |$}} |
@@ -76,10 +81,10 @@ Diez entrevistas de 15 minutos a alumnos con clases seguidas. Las respuestas se 
 
 - **Cuándo:** martes, miércoles y jueves de una misma semana, en los recesos de las 9:00, 11:00 y 13:00.
 - **Dónde:** cada uno de los cuatro locales.
-- **Cómo:** dos personas por local. Una cuenta cuántas personas hay en la fila cada cinco minutos. La otra cronometra a diez clientes por receso: desde que se forman hasta que reciben su comida.
+- **Cómo:** dos personas por local. Una cuenta cada cinco minutos cuántas personas hay en la fila y cuántas se salen sin comprar. La otra cronometra a diez clientes por receso: desde que se forman hasta que reciben su comida.
 - **Además:** cronometrar tres veces el recorrido a pie del área de comida al salón más lejano de cada edificio.
 - **Registro:** hoja con local, día, hora, personas en la fila, minutos de espera y minutos de recorrido.
-- **Resultado:** minutos promedio y máximo por local y por hora. Ese número va al mensaje de lanzamiento y al cálculo de las zonas de entrega.
+- **Resultado:** minutos promedio y máximo por local y por hora, y personas que dejan la fila. El primer número va al mensaje de lanzamiento y al cálculo de las zonas; el segundo es el argumento para el local: ventas que hoy pierde.
 
 ## Anexo D. Supuestos del modelo financiero
 
@@ -92,13 +97,13 @@ Diez entrevistas de 15 minutos a alumnos con clases seguidas. Las respuestas se 
 ## Anexo E. Puntos principales del convenio con los locales
 
 1. **Objeto.** El local vende sus productos por medio de BITE; BITE cobra, entrega y le paga.
-2. **Comisión.** {{sup_com_E|%}} sobre el precio de mostrador de lo vendido, más IVA, descontada del pago semanal.
+2. **Comisión.** {{sup_com_E|%}} sobre el precio al público de lo vendido, más IVA, descontada del pago semanal. El IVA de la comisión es acreditable para el local.
 3. **Precios.** El local fija su precio de mostrador. El precio en la app incluye la tarifa de servicio de BITE.
 4. **Cupo y horario.** El local define cuántos pedidos acepta por hora y puede cambiarlo con un día de aviso.
 5. **Preparación.** El pedido sale completo, sellado y etiquetado 15 minutos antes de la ventana de entrega.
-6. **Pago.** Cada lunes, por transferencia, con estado de cuenta de la semana anterior.
+6. **Pago.** Cada lunes, por transferencia, con estado de cuenta de la semana anterior. El dinero de los locales se guarda en una cuenta separada de la de operación de BITE.
 7. **Incidencias.** Un pedido incompleto o mal preparado se repone o se descuenta al local; uno entregado tarde por el repartidor lo absorbe BITE.
-8. **Equipo.** La tableta se entrega en comodato y se devuelve al terminar el convenio.
+8. **Equipo y espacio.** La tableta se entrega en comodato y se devuelve al terminar el convenio. El local aparta un tramo de barra para las bolsas listas; uno de los locales presta además el espacio para el gabinete de las mochilas.
 9. **Vigencia.** Un semestre, renovable. Sin exclusividad para ninguna de las partes.
 10. **Datos.** El local recibe sus ventas y horarios pico; los datos personales de los alumnos los resguarda BITE.
 
