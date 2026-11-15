@@ -172,6 +172,6 @@ Diez entrevistas de 15 minutos a alumnos con clases seguidas. Las respuestas se 
 
 # 18. Presentación Canvas
 
-El lienzo resume el modelo de negocio en una página. Es el contenido de la presentación en diapositivas que acompaña a este documento.
+El lienzo resume el modelo de negocio en una página y es la base de la presentación en diapositivas.
 
 !fig canvas | 16.5 | Lienzo del modelo de negocio de BITE.

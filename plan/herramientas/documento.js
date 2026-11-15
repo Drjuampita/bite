@@ -297,6 +297,7 @@ async function escribir(paginas, destino) {
     console.log("No se pudo paginar el índice (se deja sin números):", e.message.split("\n")[0]);
   }
   const r = await escribir(paginas, SALIDA);
+  execFileSync("python3", [path.join(AQUI, "corregir_docx.py"), SALIDA]);
   fs.rmSync(tmp, { recursive: true, force: true });
   console.log(`Documento: ${SALIDA}\nTablas: ${r.nTabla} · Figuras: ${r.nFig} · Títulos: ${r.indice.length}`);
 })().catch((e) => { console.error(e.message); process.exit(1); });

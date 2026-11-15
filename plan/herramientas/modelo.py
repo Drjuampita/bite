@@ -840,7 +840,10 @@ def por_edad(y, clave, aperturas_fila, factor=True):
     for kk in range(1, y + 1):
         edad = min(3, y - kk + 1)
         ref = ANUAL[("E", clave)][edad]
-        tam = "1" if kk == 1 and aperturas_fila == "ap_prop" else REF["exp_tamano"]
+        if aperturas_fila == "ap_fq":
+            tam = REF["fq_tamano"]
+        else:
+            tam = "1" if kk == 1 else REF["exp_tamano"]
         terminos.append(f"{YC[kk - 1]}${X[aperturas_fila]}*{ref}" + (f"*{tam}" if factor else ""))
     return "=" + "+".join(terminos)
 
