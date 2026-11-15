@@ -1,0 +1,832 @@
+{
+ "generales": [
+  {
+   "bloque": "Mercado",
+   "items": [
+    {
+     "clave": "alumnos",
+     "concepto": "Alumnos de licenciatura en el campus",
+     "unidad": "alumnos",
+     "fmt": "n",
+     "tipo": "Dato",
+     "nota": "Informe Anual 2024 de la Universidad Anáhuac Querétaro: 7,478 alumnos de licenciatura (8,222 con posgrado y educación continua). No se cuentan docentes ni personal."
+    },
+    {
+     "clave": "dias_tipo",
+     "concepto": "Días de clase de un mes completo",
+     "unidad": "días",
+     "fmt": "n",
+     "tipo": "Supuesto",
+     "nota": "Convención de cálculo: los pedidos al mes se expresan para un mes de 20 días de clase y se ajustan a los días reales de cada mes."
+    },
+    {
+     "clave": "meta_encuestas",
+     "concepto": "Encuestas que pide la guía",
+     "unidad": "respuestas",
+     "fmt": "n",
+     "tipo": "Dato",
+     "nota": "Guía del Proyecto Integrador, apartado 6.2.1."
+    },
+    {
+     "clave": "conv_def",
+     "concepto": "De quienes dicen «definitivamente sí», cuántos lo usan de verdad",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "Descuento conservador a la intención declarada: las pruebas de concepto sobrestiman la compra real."
+    },
+    {
+     "clave": "conv_prob",
+     "concepto": "De quienes dicen «probablemente sí», cuántos lo usan de verdad",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "Mismo criterio."
+    }
+   ]
+  },
+  {
+   "bloque": "Precios al alumno (IVA incluido)",
+   "items": [
+    {
+     "clave": "iva",
+     "concepto": "IVA",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Dato",
+     "nota": "Ley del IVA, artículo 1."
+    },
+    {
+     "clave": "ticket",
+     "concepto": "Comida por pedido, a precio de mostrador",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto clave",
+     "nota": "Estimación del equipo: un platillo y una bebida. La pregunta 10 de la encuesta lo confirma."
+    },
+    {
+     "clave": "markup",
+     "concepto": "Sobreprecio en el menú de la app",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "8.3% sobre el precio de mostrador. Las apps generales cobran una tarifa de servicio de 7% a 9% además del envío (Profeco, octubre de 2026)."
+    },
+    {
+     "clave": "fee",
+     "concepto": "Envío al salón",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "Uber Eats cobró $28 de envío más $15.75 de servicio en el comparativo de Profeco (octubre de 2026). La pregunta 11 de la encuesta lo confirma."
+    },
+    {
+     "clave": "passfee",
+     "concepto": "BITE Pass, cuota mensual",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "Se paga solo desde el sexto pedido del mes. Rappi Pro cuesta $109 al mes."
+    }
+   ]
+  },
+  {
+   "bloque": "Costo de cada pedido",
+   "items": [
+    {
+     "clave": "pago",
+     "concepto": "Pago al repartidor por pedido entregado",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "Pago por pedido, con garantía mínima por bloque asignado."
+    },
+    {
+     "clave": "garantia",
+     "concepto": "Garantía mínima por bloque asignado",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "Si en un bloque el repartidor entrega menos de dos pedidos, BITE completa hasta este monto."
+    },
+    {
+     "clave": "min_bloque",
+     "concepto": "Duración de un bloque de reparto",
+     "unidad": "minutos",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Recoger en el local 15 minutos antes y entregar en la ventana de 15 minutos previa a la clase."
+    },
+    {
+     "clave": "bloques",
+     "concepto": "Bloques de entrega por día",
+     "unidad": "bloques",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Clases de 8:00 a 17:00, una ventana de entrega antes de cada hora."
+    },
+    {
+     "clave": "pct_ss",
+     "concepto": "Seguridad social del repartidor, sobre su pago",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "Prima de riesgo de trabajo Clase IV (4.65325%, Ley del Seguro Social art. 73), la que las Reglas del IMSS asignan a plataformas, redondeada a 5%. Aplica mientras el repartidor gane menos de un salario mínimo mensual neto (LFT art. 291-C)."
+    },
+    {
+     "clave": "pas_pct",
+     "concepto": "Pasarela de pago, porcentaje",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Dato",
+     "nota": "Tarifa pública de Stripe México para tarjetas nacionales: 3.6% + $3.00 más IVA (stripe.com/mx/pricing, 15-nov-2026). El IVA es acreditable."
+    },
+    {
+     "clave": "pas_fijo",
+     "concepto": "Pasarela de pago, cuota fija por cobro",
+     "unidad": "$",
+     "fmt": "$2",
+     "tipo": "Dato",
+     "nota": "Misma fuente. Conekta cobra 3.4% + $3.00 y Mercado Pago 3.49% + $4.00."
+    },
+    {
+     "clave": "pct_tarde",
+     "concepto": "Pedidos que llegan tarde y reciben su envío de vuelta",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "Garantía de puntualidad: si el pedido llega después de la hora de clase, BITE devuelve el envío. Meta de operación: 97% de entregas a tiempo."
+    },
+    {
+     "clave": "sello",
+     "concepto": "Sello de seguridad y etiqueta de salón",
+     "unidad": "$",
+     "fmt": "$2",
+     "tipo": "Supuesto",
+     "nota": "Sello de seguridad impreso: $1.22 por pieza en millar (Pop México, 15-nov-2026), más la etiqueta con número de pedido y salón."
+    }
+   ]
+  },
+  {
+   "bloque": "Operación",
+   "items": [
+    {
+     "clave": "cap_viaje",
+     "concepto": "Pedidos que un repartidor entrega en un bloque",
+     "unidad": "pedidos",
+     "fmt": "n",
+     "tipo": "Supuesto clave",
+     "nota": "Mochila térmica de 40 a 50 litros y entregas agrupadas por edificio. El piloto lo confirma."
+    },
+    {
+     "clave": "pico",
+     "concepto": "Parte de los pedidos del día que cae en el bloque más cargado",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Supuesto",
+     "nota": "El doble de un reparto parejo entre los 10 bloques."
+    },
+    {
+     "clave": "cupo_locales",
+     "concepto": "Cupo total de los locales por bloque",
+     "unidad": "pedidos",
+     "fmt": "n",
+     "tipo": "Dato",
+     "nota": "Suma de los cupos por hora configurados en la app para los cuatro locales (15 + 20 + 12 + 10)."
+    },
+    {
+     "clave": "padron",
+     "concepto": "Repartidores inscritos en el padrón",
+     "unidad": "personas",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Se reclutan 8 para tener siempre cubiertos los bloques pico."
+    },
+    {
+     "clave": "umbral_coord",
+     "concepto": "Pedidos diarios a partir de los cuales se contrata coordinador",
+     "unidad": "pedidos/día",
+     "fmt": "n",
+     "tipo": "Decisión",
+     "nota": "Hasta ese volumen los socios se turnan la coordinación."
+    },
+    {
+     "clave": "coord",
+     "concepto": "Coordinador de operación, costo mensual",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Medio tiempo: 4 horas diarias a $80 la hora, 20 días, más 30% de cargas sociales. Contrato por temporada, solo en meses con clases."
+    }
+   ]
+  },
+  {
+   "bloque": "Laboral y fiscal",
+   "items": [
+    {
+     "clave": "sm_diario",
+     "concepto": "Salario mínimo general diario",
+     "unidad": "$",
+     "fmt": "$2",
+     "tipo": "Dato",
+     "nota": "CONASAMI, Tabla de Salarios Mínimos 2026 (zona general, que incluye Querétaro)."
+    },
+    {
+     "clave": "sm_mensual",
+     "concepto": "Salario mínimo de un mes de 30 días",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Dato",
+     "nota": "Umbral del artículo 291-C de la Ley Federal del Trabajo: quien gana menos que esto, neto, es trabajador independiente de plataforma ese mes."
+    },
+    {
+     "clave": "excl_pie",
+     "concepto": "Factor de exclusión del ingreso para quien reparte a pie",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Dato",
+     "nota": "Acuerdo de la STPS, DOF 26-dic-2025, disposición quinta: 3% para transporte no motorizado o sin medio de transporte."
+    },
+    {
+     "clave": "isr",
+     "concepto": "ISR de personas morales",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Dato",
+     "nota": "Ley del ISR, artículo 9."
+    },
+    {
+     "clave": "fx",
+     "concepto": "Tipo de cambio",
+     "unidad": "pesos por dólar",
+     "fmt": "$2",
+     "tipo": "Dato",
+     "nota": "Tipo de cambio FIX del Banco de México del 13-nov-2026."
+    }
+   ]
+  },
+  {
+   "bloque": "Capital",
+   "items": [
+    {
+     "clave": "socios",
+     "concepto": "Socios",
+     "unidad": "personas",
+     "fmt": "n",
+     "tipo": "Dato",
+     "nota": "Los cinco integrantes del equipo, en partes iguales."
+    },
+    {
+     "clave": "aporte",
+     "concepto": "Aportación en efectivo de cada socio",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "Se fija para que la caja no quede en negativo ni en el escenario pesimista (ver hoja Pruebas)."
+    },
+    {
+     "clave": "mvp_horas",
+     "concepto": "Horas invertidas en el MVP",
+     "unidad": "horas",
+     "fmt": "n",
+     "tipo": "Supuesto",
+     "nota": "Estimación del equipo: app del alumno, panel del local, vista del repartidor y base de datos probada."
+    },
+    {
+     "clave": "mvp_tarifa",
+     "concepto": "Valor de mercado de una hora de desarrollo",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Tarifa de un desarrollador independiente de nivel medio en México."
+    }
+   ]
+  },
+  {
+   "bloque": "Franquicia de campus",
+   "items": [
+    {
+     "clave": "fq_cuota",
+     "concepto": "Cuota inicial de franquicia",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Decisión",
+     "nota": "Se fija para que el franquiciatario recupere su inversión en menos de dos años."
+    },
+    {
+     "clave": "fq_regalia",
+     "concepto": "Regalía sobre los ingresos de la unidad",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Decisión",
+     "nota": "Incluye el uso de la plataforma, la marca y el soporte."
+    },
+    {
+     "clave": "fq_fondo",
+     "concepto": "Fondo de publicidad de la red",
+     "unidad": "%",
+     "fmt": "%",
+     "tipo": "Decisión",
+     "nota": "Sobre los ingresos de la unidad."
+    },
+    {
+     "clave": "fq_tamano",
+     "concepto": "Tamaño del campus franquiciado frente a Anáhuac Querétaro",
+     "unidad": "veces",
+     "fmt": "n2",
+     "tipo": "Supuesto",
+     "nota": "Campus tipo de unos 7,500 alumnos de licenciatura."
+    },
+    {
+     "clave": "fq_fijos",
+     "concepto": "Gastos fijos locales del franquiciatario, promedio al mes",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Contador $3,500, seguro $500 y varios $1,000 los 12 meses, más publicidad local de $2,500 en los 9 meses con clases. La plataforma y el dominio los paga BITE."
+    },
+    {
+     "clave": "fq_soporte",
+     "concepto": "Costo anual de dar soporte a una unidad",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Infraestructura adicional, capacitación y visitas."
+    },
+    {
+     "clave": "fq_equipo",
+     "concepto": "Equipo de reparto, tabletas e identidad",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Mismas partidas y cotizaciones que el campus propio (hoja Inversion)."
+    },
+    {
+     "clave": "fq_lanzamiento",
+     "concepto": "Publicidad de lanzamiento",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Igual que el campus propio."
+    },
+    {
+     "clave": "fq_capital_trabajo",
+     "concepto": "Capital de trabajo",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Tres meses de gastos fijos locales."
+    }
+   ]
+  },
+  {
+   "bloque": "Expansión",
+   "items": [
+    {
+     "clave": "exp_tamano",
+     "concepto": "Tamaño de los campus propios nuevos frente a Anáhuac Querétaro",
+     "unidad": "veces",
+     "fmt": "n2",
+     "tipo": "Supuesto",
+     "nota": "Se castiga 10%: los campus nuevos no tienen al equipo fundador dentro."
+    },
+    {
+     "clave": "exp_apertura",
+     "concepto": "Costo de abrir un campus propio",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Equipo de reparto, tabletas, licencia municipal y publicidad de lanzamiento (hoja Inversion). La app, la marca y la sociedad ya existen."
+    },
+    {
+     "clave": "exp_sueldo",
+     "concepto": "Sueldo mensual de un socio de tiempo completo, con carga social",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Sueldo bruto de $17,000 más cargas."
+    },
+    {
+     "clave": "exp_transformacion",
+     "concepto": "Transformación de la sociedad a S.A.P.I. de C.V., en el año 4",
+     "unidad": "$",
+     "fmt": "$",
+     "tipo": "Supuesto",
+     "nota": "Rango de mercado de $25,000 a $50,000 para constituir una S.A.P.I. ante notario en Querétaro (Praxium Consultores, 2026)."
+    }
+   ]
+  }
+ ],
+ "escenarios": [
+  {
+   "clave": "adop1",
+   "concepto": "Adopción objetivo, año 1 (alumnos activos / alumnos)",
+   "unidad": "%",
+   "fmt": "%",
+   "tipo": "Supuesto clave",
+   "nota": "Referencia: una app para pedir y recoger en CETYS Tijuana alcanzó cerca de 10% de los alumnos (2019). La encuesta lo confirma."
+  },
+  {
+   "clave": "adop2",
+   "concepto": "Adopción objetivo, año 2",
+   "unidad": "%",
+   "fmt": "%",
+   "tipo": "Supuesto clave",
+   "nota": "Crece con la recomendación entre alumnos y cada generación nueva."
+  },
+  {
+   "clave": "adop3",
+   "concepto": "Adopción objetivo, año 3",
+   "unidad": "%",
+   "fmt": "%",
+   "tipo": "Supuesto clave",
+   "nota": "Mismo criterio."
+  },
+  {
+   "clave": "pct_pass",
+   "concepto": "Usuarios activos con BITE Pass",
+   "unidad": "%",
+   "fmt": "%",
+   "tipo": "Supuesto clave",
+   "nota": "La pregunta 12 de la encuesta lo confirma."
+  },
+  {
+   "clave": "ped_occ",
+   "concepto": "Pedidos al mes de un usuario ocasional",
+   "unidad": "pedidos",
+   "fmt": "n1",
+   "tipo": "Supuesto clave",
+   "nota": "Menos de uno por semana. La pregunta 7 de la encuesta lo confirma."
+  },
+  {
+   "clave": "ped_pass",
+   "concepto": "Pedidos al mes de un usuario con Pass",
+   "unidad": "pedidos",
+   "fmt": "n1",
+   "tipo": "Supuesto clave",
+   "nota": "El Pass se paga solo desde el sexto pedido."
+  },
+  {
+   "clave": "com",
+   "concepto": "Comisión que acepta el comercio",
+   "unidad": "%",
+   "fmt": "%",
+   "tipo": "Supuesto clave",
+   "nota": "Uber Eats cobra de 25% a 29% a los restaurantes en México (tarifas publicadas, noviembre de 2026)."
+  }
+ ],
+ "calendario": [
+  {
+   "mes": "Enero",
+   "dias": 15,
+   "arranque": 0.15
+  },
+  {
+   "mes": "Febrero",
+   "dias": 19,
+   "arranque": 0.35
+  },
+  {
+   "mes": "Marzo",
+   "dias": 17,
+   "arranque": 0.55
+  },
+  {
+   "mes": "Abril",
+   "dias": 22,
+   "arranque": 0.75
+  },
+  {
+   "mes": "Mayo",
+   "dias": 5,
+   "arranque": 0.9
+  },
+  {
+   "mes": "Junio",
+   "dias": 0,
+   "arranque": 0.9
+  },
+  {
+   "mes": "Julio",
+   "dias": 0,
+   "arranque": 0.9
+  },
+  {
+   "mes": "Agosto",
+   "dias": 16,
+   "arranque": 0.9
+  },
+  {
+   "mes": "Septiembre",
+   "dias": 21,
+   "arranque": 1.0
+  },
+  {
+   "mes": "Octubre",
+   "dias": 22,
+   "arranque": 1.0
+  },
+  {
+   "mes": "Noviembre",
+   "dias": 18,
+   "arranque": 1.0
+  },
+  {
+   "mes": "Diciembre",
+   "dias": 0,
+   "arranque": 1.0
+  }
+ ],
+ "nota_calendario": "Días de clase: calendarios escolares oficiales 2027A (11 de enero a 7 de mayo) y 2026B (10 de agosto a 27 de noviembre) de la Universidad Anáhuac Querétaro, sin días inhábiles, Semana Santa, exámenes finales ni verano. Arranque: parte de la adopción objetivo que se alcanza cada mes del primer año (supuesto).",
+ "fijos": [
+  {
+   "concepto": "Contabilidad externa y declaraciones",
+   "meses": 12,
+   "nivel": "Empresa",
+   "tipo": "Supuesto",
+   "nota": "Rango de mercado para una persona moral pequeña: $3,000 a $7,000 al mes (Praxium Consultores, 2026). Se toma la parte baja por el poco volumen de facturas."
+  },
+  {
+   "concepto": "Infraestructura de la app: base de datos y hospedaje",
+   "meses": 12,
+   "nivel": "Empresa",
+   "tipo": "Dato",
+   "nota": "Supabase Pro USD 25 y Vercel Pro USD 20 al mes (páginas oficiales de precios, 15-nov-2026), al tipo de cambio FIX."
+  },
+  {
+   "concepto": "Dominio .mx, dos cuentas de correo y timbrado de facturas",
+   "meses": 12,
+   "nivel": "Empresa",
+   "tipo": "Dato",
+   "nota": "Dominio .mx $689 al año (Akky); Google Workspace $140 por usuario al mes, dos usuarios; timbrado ilimitado $1,650 al año (Facturama). Suma $5,699 al año."
+  },
+  {
+   "concepto": "Seguro de responsabilidad civil",
+   "meses": 12,
+   "nivel": "Empresa",
+   "tipo": "Supuesto",
+   "nota": "Prima anual de $4,000 a $7,000 para una pyme con cobertura básica (IDC, enero de 2026). Se toman $6,000."
+  },
+  {
+   "concepto": "Atención al usuario, reposición de equipo y varios",
+   "meses": 12,
+   "nivel": "Campus",
+   "tipo": "Supuesto",
+   "nota": "Línea de atención, reposición de mochilas y gafetes, imprevistos."
+  },
+  {
+   "concepto": "Publicidad continua en el campus y redes",
+   "meses": 9,
+   "nivel": "Campus",
+   "tipo": "Decisión",
+   "nota": "Carteles (100 tabloides: $1,044, Sinergia Publicitaria), stickers (1,000: $775, Pop México) y anuncios en Instagram. Solo en meses con clases."
+  }
+ ],
+ "arranque": [
+  {
+   "concepto": "Terminar el producto: cobro con tarjeta, BITE Pass, avisos y pruebas",
+   "monto": 35000,
+   "tipo": "Supuesto",
+   "nota": "100 horas de un desarrollador independiente a $350 la hora. Es el presupuesto original del equipo para la app."
+  },
+  {
+   "concepto": "Asesoría legal: contratos con locales y repartidores, términos y aviso de privacidad",
+   "monto": 7500,
+   "tipo": "Supuesto",
+   "nota": "Por cotizar con un despacho. La constitución como S.A.S. es gratuita y en línea (Secretaría de Economía)."
+  },
+  {
+   "concepto": "Registro de marca en el IMPI, dos clases",
+   "monto": 5628,
+   "tipo": "Dato",
+   "nota": "$2,813.77 por clase con IVA, en línea (Tarifa del IMPI, art. 14a, con 10% de descuento). Clases 39 y 35."
+  },
+  {
+   "concepto": "Licencia de funcionamiento y visto bueno de Protección Civil",
+   "monto": 3131,
+   "tipo": "Dato",
+   "nota": "Referencia publicada por el municipio de El Marqués para giros de bajo riesgo: licencia $2,428 y visto bueno $703."
+  },
+  {
+   "concepto": "Publicidad de lanzamiento",
+   "monto": 15000,
+   "tipo": "Decisión",
+   "nota": "Activación en el campus, 300 carteles, 3,000 stickers y anuncios en Instagram durante el primer mes."
+  },
+  {
+   "concepto": "Equipo de reparto: mochilas térmicas, playeras, gorras y gafetes",
+   "monto": 12436,
+   "tipo": "Dato",
+   "nota": "6 mochilas térmicas de 51 L a $1,129 (Sears); 16 playeras polo bordadas a $254.04 y 8 gorras a $149.64, con IVA (Lazzar); 8 gafetes a $50."
+  },
+  {
+   "concepto": "Tabletas para los cuatro locales",
+   "monto": 7196,
+   "tipo": "Dato",
+   "nota": "4 tabletas Android de 10 pulgadas a $1,799 (Office Depot)."
+  },
+  {
+   "concepto": "Papelería: hojas membretadas y tarjetas de presentación",
+   "monto": 1152,
+   "tipo": "Dato",
+   "nota": "1,000 hojas membretadas $792 y 1,000 tarjetas $201 (360imprimir), más IVA."
+  }
+ ],
+ "encuesta": [
+  {
+   "num": "1",
+   "texto": "¿Cuántos días a la semana estás en el campus?",
+   "opciones": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5 o más"
+   ],
+   "uso": "Hábitos. Días en que el alumno puede pedir."
+  },
+  {
+   "num": "2",
+   "texto": "De tus últimas cinco visitas al campus, ¿en cuántas compraste comida ahí?",
+   "opciones": [
+    "Ninguna",
+    "1",
+    "2",
+    "3",
+    "4 o 5"
+   ],
+   "uso": "Hábitos. Tamaño del mercado de comida dentro del campus."
+  },
+  {
+   "num": "3",
+   "texto": "¿Cuál es tu principal dificultad para comer en el campus?",
+   "opciones": [
+    "Las filas",
+    "El poco tiempo entre clases",
+    "La distancia a los locales",
+    "El precio",
+    "Ninguna"
+   ],
+   "uso": "Producto. Confirma el problema que justifica el negocio."
+  },
+  {
+   "num": "4",
+   "texto": "En hora pico, ¿cuánto tardas desde que sales del salón hasta que tienes tu comida?",
+   "opciones": [
+    "Menos de 5 min",
+    "5 a 10 min",
+    "11 a 15 min",
+    "16 a 20 min",
+    "Más de 20 min"
+   ],
+   "uso": "Producto. Tiempo que BITE le ahorra al alumno."
+  },
+  {
+   "num": "6",
+   "texto": "Si pudieras pedir desde tu celular a los locales del campus y recibirlo en tu salón antes de que empiece tu clase, ¿lo usarías en el primer mes?",
+   "opciones": [
+    "Definitivamente sí",
+    "Probablemente sí",
+    "No sé",
+    "Probablemente no",
+    "Definitivamente no"
+   ],
+   "uso": "Producto. Adopción: el supuesto del que depende todo el modelo."
+  },
+  {
+   "num": "7",
+   "texto": "¿Cuántas veces al mes lo usarías?",
+   "opciones": [
+    "Ninguna",
+    "1 o 2",
+    "3 o 4",
+    "5 a 8",
+    "Más de 8"
+   ],
+   "uso": "Producto. Frecuencia de pedido."
+  },
+  {
+   "num": "8",
+   "texto": "¿Qué pedirías con más frecuencia?",
+   "opciones": [
+    "Desayuno",
+    "Comida completa",
+    "Café o bebida",
+    "Snack o postre",
+    "Opción saludable"
+   ],
+   "uso": "Producto. Qué locales afiliar primero."
+  },
+  {
+   "num": "9",
+   "texto": "¿Qué es lo más importante para ti en este servicio?",
+   "opciones": [
+    "Que llegue a tiempo",
+    "Que sea barato",
+    "Que haya variedad",
+    "Que sea fácil de usar",
+    "Poder agendar desde antes"
+   ],
+   "uso": "Producto. Orden de prioridades de la propuesta de valor."
+  },
+  {
+   "num": "10",
+   "texto": "¿Cuánto gastas normalmente en una comida en el campus?",
+   "opciones": [
+    "Menos de $60",
+    "$60 a $99",
+    "$100 a $139",
+    "$140 a $179",
+    "$180 o más"
+   ],
+   "uso": "Precio. Ticket promedio del modelo."
+  },
+  {
+   "num": "11",
+   "texto": "¿Cuánto es lo máximo que pagarías por el envío a tu salón?",
+   "opciones": [
+    "Solo si es gratis",
+    "Hasta $10",
+    "Hasta $15",
+    "Hasta $20",
+    "$25 o más"
+   ],
+   "uso": "Precio. Tarifa de envío."
+  },
+  {
+   "num": "12",
+   "texto": "Si por $99 al mes tuvieras todos los envíos incluidos, ¿lo contratarías?",
+   "opciones": [
+    "Definitivamente sí",
+    "Probablemente sí",
+    "No sé",
+    "Probablemente no",
+    "Definitivamente no"
+   ],
+   "uso": "Precio. Alumnos con BITE Pass."
+  },
+  {
+   "num": "13",
+   "texto": "¿Dónde preferirías recibir tu pedido?",
+   "opciones": [
+    "En la puerta de mi salón",
+    "En un punto fijo de mi edificio",
+    "En la biblioteca o áreas comunes",
+    "En el área deportiva",
+    "Me da igual"
+   ],
+   "uso": "Plaza. Puntos de entrega."
+  },
+  {
+   "num": "14",
+   "texto": "¿A qué hora pedirías más seguido?",
+   "opciones": [
+    "Antes de las 9:00",
+    "De 9:00 a 11:00",
+    "De 11:00 a 13:00",
+    "De 13:00 a 15:00",
+    "Después de las 15:00"
+   ],
+   "uso": "Plaza. Bloques de entrega y turnos de repartidores."
+  },
+  {
+   "num": "15",
+   "texto": "¿Por dónde te gustaría enterarte de BITE?",
+   "opciones": [
+    "Instagram",
+    "Grupos de WhatsApp",
+    "Carteles y códigos QR en el campus",
+    "Correo institucional",
+    "Recomendación de un amigo"
+   ],
+   "uso": "Promoción. Canales de la campaña de lanzamiento."
+  }
+ ],
+ "abierta": {
+  "num": "5",
+  "texto": "Cuéntanos la última vez que te quedaste sin comer o llegaste tarde a clase por ir a comprar comida. ¿Qué pasó?",
+  "uso": "Producto. Historias reales para el mensaje de lanzamiento; las respuestas se agrupan por motivo."
+ },
+ "aperturas_propias": [
+  1,
+  1,
+  1,
+  0,
+  0
+ ],
+ "aperturas_franquicia": [
+  0,
+  0,
+  0,
+  3,
+  4
+ ],
+ "socios_tc": [
+  0,
+  0,
+  0,
+  1,
+  2
+ ],
+ "ano_inicio": 2027
+}
