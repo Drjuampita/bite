@@ -1,6 +1,6 @@
 # 12. Aspectos legales y personalidad jurídica
 
-!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial que citamos. También la usamos para revisar las fórmulas del modelo financiero. Aun así, todo lo de este capítulo y del 13 debe confirmarse con un abogado y un contador antes de ejecutarse.
+!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial que citamos. También usamos inteligencia artificial para armar y revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción de todo el documento a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Aun así, todo lo de este capítulo y del 13 debe confirmarse con un abogado y un contador antes de ejecutarse.
 
 ## 12.1 Constitución legal del negocio
 

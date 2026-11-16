@@ -152,7 +152,7 @@ function construir(paginas) {
       if (!cols && t.cols) cols = t.cols;
       if (!tam && t.size) tam = t.size;
       ponerTabla(t.filas);
-    } else if (l.startsWith("!fuente ")) cuerpo.push(pie(l.slice(8)));
+    } else if (l.startsWith("!fuente ")) { /* las notas de fuente bajo tablas ya no se imprimen */ }
     else if (l.startsWith("!fig ")) {
       const [nombre, cm, texto] = l.slice(5).split("|").map((x) => x.trim());
       cuerpo.push(figura(nombre, Number(cm)));
