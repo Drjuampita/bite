@@ -62,7 +62,7 @@ En la simulación, 64% de los encuestados señala las filas o el poco tiempo ent
 - **Entre {{e_be_adop_E|%1}} y {{e_be2_adop_E|%1}}:** el negocio solo se sostiene mientras lo operemos nosotros sin cobrar. Se lanza con menos bloques y la mitad de la publicidad, y se planea con el escenario pesimista.
 - **Menos de {{e_be_adop_E|%1}}:** no se gasta en terminar el producto hasta revisar el precio y la oferta.
 
-**Complementos.** La encuesta dice cuántos; no dice por qué. Se suman dos herramientas baratas: diez entrevistas con la guía del Anexo B, y la medición de filas del Anexo C, que con un cronómetro y tres días da dos datos que hoy solo se conocen por experiencia: cuántos minutos cuesta comprar comida en hora pico y cuántos alumnos dejan la fila sin comprar.
+**Complementos.** La encuesta dice cuántos; no dice por qué. Se suman dos herramientas baratas: diez entrevistas, y la medición de filas, que con un cronómetro y tres días da dos datos que hoy solo se conocen por experiencia: cuántos minutos cuesta comprar comida en hora pico y cuántos alumnos dejan la fila sin comprar.
 
 ## 6.3 Análisis SWOT general
 

@@ -9,7 +9,7 @@ Cada dato de entrada del modelo lleva una etiqueta:
 - **Supuesto:** estimación razonada.
 - **Supuesto clave:** estimación de la que depende el resultado. La encuesta y el piloto deben confirmarla.
 
-La lista completa, con su fuente, está en el Anexo D.
+La lista completa está en la hoja «Supuestos» del modelo financiero.
 
 ## 11.1 Origen de recursos: total de capital
 

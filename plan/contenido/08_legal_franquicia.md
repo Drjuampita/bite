@@ -1,23 +1,12 @@
 # 12. Aspectos legales y personalidad jurídica
 
-!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial que citamos. También usamos inteligencia artificial para armar y revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción de todo el documento a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Aun así, todo lo de este capítulo y del 13 debe confirmarse con un abogado y un contador antes de ejecutarse.
+!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Lo de este capítulo y del 13 debe confirmarse con un abogado y un contador antes de ejecutarse.
 
 ## 12.1 Constitución legal del negocio
 
 **Figura elegida: Sociedad por Acciones Simplificada (S.A.S.).** BITE se constituye como S.A.S. y se transforma en Sociedad Anónima Promotora de Inversión de Capital Variable (S.A.P.I. de C.V.) en el año 4, cuando empiece a vender franquicias.
 
-!tabla Por qué una S.A.S. para empezar
-!cols 1.8,1.8,1.8,1.8
-!tam 16
-| Criterio | S.A.S. | S. de R.L. de C.V. | S.A.P.I. de C.V. |
-|---|---|---|---|
-| Costo de constitución | Gratuita y en línea | $20,000 a $40,000 ante notario | $25,000 a $50,000 ante notario |
-| Quién puede ser socio | Solo personas físicas | Personas físicas y morales | Personas físicas y morales |
-| Responsabilidad de los socios | Limitada a su aportación | Limitada a su aportación | Limitada a su aportación |
-| Límite de ingresos | $7,678,849.94 al año en 2026 | Sin límite | Sin límite |
-| Administración | Un administrador, que debe ser accionista | Gerentes | Consejo o administrador |
-| Entrada de inversionistas | Limitada | Difícil: las partes sociales no circulan libremente | Diseñada para eso |
-!fuente Fuente: Ley General de Sociedades Mercantiles, artículos 260 a 273; Secretaría de Economía; costos notariales de mercado en Querétaro según Praxium Consultores (2026).
+La comparamos con la S. de R.L. de C.V. y la S.A.P.I. de C.V.: las tres limitan la responsabilidad de los socios, pero la S.A.S. se constituye gratis y en línea, mientras las otras cuestan de $20,000 a $50,000 ante notario. A cambio, solo admite socios personas físicas y tiene un límite de ingresos de $7,678,849.94 al año en 2026.
 
 La S.A.S. cubre lo que BITE necesita en sus primeros años: separa el patrimonio de los socios del de la empresa, no cuesta y se constituye en días. Los ingresos del plan se mantienen muy por debajo de su límite: {{x_ing_bite_5|$k}} en el año 5. Su limitación aparece cuando entra un inversionista o se firman contratos de franquicia; para ese momento presupuestamos {{sup_exp_transformacion|$}} para la transformación ante notario y los documentos de la franquicia.
 
@@ -58,14 +47,7 @@ BITE no tiene cocina, gas ni almacén, que son los riesgos que Protección Civil
 
 La NOM-035-STPS-2018 obliga a todos los centros de trabajo a prevenir los factores de riesgo psicosocial. Sus obligaciones crecen con el tamaño. Con un coordinador y un padrón de ocho repartidores, BITE queda en el primer nivel, el de hasta 15 trabajadores.
 
-!tabla Obligaciones de la NOM-035 para un centro de trabajo de hasta 15 personas
-!cols 2.6,4.4
-| Obligación | Cómo la cumple BITE |
-|---|---|
-| Tener y difundir una política de prevención de riesgos psicosociales | Política de una página, firmada por el administrador, que se entrega con el contrato |
-| Adoptar medidas para prevenir los factores de riesgo y la violencia laboral | Ventanas de entrega fijas en lugar de carreras contra el reloj; tope de cuatro bloques diarios; cero tolerancia al acoso |
-| Identificar y atender a quien viva un acontecimiento traumático severo en el trabajo | Protocolo de accidentes: atención inmediata, aviso al servicio médico y seguimiento |
-| Informar a los trabajadores sobre la política, las medidas y los canales de queja | Se cubre en la capacitación inicial y queda en el reglamento interno |
+Nos pide cuatro cosas: una política de prevención firmada y difundida; medidas contra los riesgos y la violencia laboral (ventanas fijas en lugar de carreras, tope de cuatro bloques diarios, cero tolerancia al acoso); un protocolo para atender accidentes, e informar a los trabajadores, lo que se cubre en la capacitación.
 
 Al abrir el segundo campus el personal superará los 15 trabajadores y la norma pedirá además identificar y analizar los factores de riesgo con sus cuestionarios.
 
@@ -75,13 +57,14 @@ Al abrir el segundo campus el personal superará los 15 trabajadores y la norma 
 !cols 3,2.6,1,1.2
 | Socio | Perfil | Acciones | Aportación |
 |---|---|---|---|
-| Silvana Rubio Reyes | Alumna de licenciatura, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
-| Natalia Orozco Estrada | Alumna de licenciatura, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
-| Diego Rodríguez Sáenz | Alumno de primer semestre de Administración y Dirección de Empresas, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
-| Emmanuel Alexander Quintana Tirado | Alumno de primer semestre de Administración y Dirección de Empresas, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
-| Juan Pablo Palma Redondo | Alumno de primer semestre de Administración y Dirección de Empresas, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
+| Silvana Rubio Reyes | Alumna de primer semestre de Administración y Dirección de Empresas | 30 | {{aporte_socio|$}} |
+| Natalia Orozco Estrada | Alumna de primer semestre de Administración y Dirección de Empresas | 30 | {{aporte_socio|$}} |
+| Diego Rodríguez Sáenz | Alumno de primer semestre de Administración y Dirección de Empresas | 30 | {{aporte_socio|$}} |
+| Emmanuel Alexander Quintana Tirado | Alumno de primer semestre de Administración y Dirección de Empresas | 30 | {{aporte_socio|$}} |
+| Juan Pablo Palma Redondo | Alumno de primer semestre de Administración y Dirección de Empresas | 30 | {{aporte_socio|$}} |
 
 Los cinco son personas físicas, como exige la S.A.S., y ninguno puede controlar otra sociedad mercantil mientras sea accionista. El capital se divide en 150 acciones de $1,000. Además del contrato social, firmamos un convenio entre accionistas con dos reglas pensadas para un equipo de estudiantes: derecho de preferencia de los demás si alguno vende, y la obligación de ofrecer sus acciones a los otros socios si alguien deja de participar al graduarse.
+
 
 ## 12.5 Objeto social
 
@@ -93,17 +76,8 @@ El objeto deja fuera, a propósito, la preparación y el almacenamiento de alime
 
 **Régimen Simplificado de Confianza de personas morales.** BITE cumple sus requisitos: todos sus socios son personas físicas y sus ingresos son inferiores a $35 millones al año. Paga ISR de 30% sobre flujo de efectivo: acumula lo que cobra y deduce lo que paga. El modelo financiero calcula el impuesto de esa forma y arrastra la pérdida del primer año.
 
-!tabla Obligaciones fiscales
-!cols 2,5
-| Obligación | Cómo aplica |
-|---|---|
-| ISR | 30% de la utilidad fiscal, con pagos provisionales mensuales. El modelo lo carga completo en diciembre para simplificar |
-| IVA | 16% sobre el envío, el sobreprecio, la cuota de BITE Pass y la comisión que se factura al local |
-| Cobros por cuenta de terceros | El dinero de la comida es del local. BITE lo registra aparte de sus ingresos y solo causa IVA sobre su comisión |
-| Retenciones a locales | Al cobrar por cuenta del local, la plataforma retiene ISR e IVA conforme a las reglas de plataformas tecnológicas vigentes en 2026, y los entera al SAT |
-| Retenciones a repartidores | El SAT trata a quien reparte por medio de una plataforma con las reglas de plataformas tecnológicas: retención de ISR de 2.1% y de la mitad del IVA. Cómo convive esto con su contrato laboral lo confirma el contador |
-| Facturación | Factura semanal de comisión a cada local y comprobantes de retención |
-| Impuesto sobre nóminas | 3% en Querétaro, con la deducción de la ley estatal |
+
+Nuestras obligaciones: ISR de 30% sobre la utilidad; IVA de 16% sobre el envío, el sobreprecio, la cuota de BITE Pass y la comisión; registrar aparte el dinero de la comida, que es del local; retener y enterar al SAT los impuestos de locales y repartidores conforme a las reglas de plataformas, y facturar cada semana.
 
 Las retenciones no son un costo para BITE: es dinero de terceros que se entrega al SAT. Sí son trabajo administrativo, y por eso la contabilidad externa es el gasto fijo más alto. El encuadre exacto de los cobros por cuenta de terceros se confirma con el contador antes del primer pedido.
 
@@ -139,17 +113,12 @@ La Ley Federal de Protección a la Propiedad Industrial dice que hay franquicia 
 
 **Qué es una franquicia BITE.** El derecho a operar el servicio en un campus, con la marca, la app y los manuales de BITE.
 
-!fig franquicia_modelo | 16.5 | Qué pone cada parte en una franquicia de campus.
 
 ## 13.1 Cuota de franquicia
 
 La cuota inicial es de **{{sup_fq_cuota|$}} más IVA** por campus. Incluye el derecho de uso de la marca en ese campus por cinco años, la configuración de la app con sus edificios, salones y locales, los manuales, la capacitación inicial y el acompañamiento durante el primer mes de operación.
 
 Fijamos la cuota al revés de como suele hacerse: primero calculamos cuánto gana una unidad y después cuánto puede pagar para recuperar su inversión en menos de dos años.
-
-!tabla Inversión de un franquiciatario
-!auto franquicia_inversion
-!fuente Fuente: hoja «Franquicia» del modelo financiero.
 
 ## 13.2 Regalías
 
@@ -171,7 +140,7 @@ Por eso estas cifras son una hipótesis que se revisa con los resultados reales 
 El contrato se firma por escrito y cumple el contenido mínimo del artículo 246 de la ley:
 
 - La zona en la que opera el franquiciatario: un campus.
-- La inversión mínima y la infraestructura: el equipo del apartado 7.1.2.1.3.
+- La inversión mínima y la infraestructura: el equipo de reparto.
 - Las políticas de suministros, publicidad y precios: BITE fija el envío, el Pass y el rango de comisión.
 - Las contraprestaciones: cuota, regalía y fondo de publicidad, y la forma en que se descuentan.
 - Los márgenes del franquiciatario y los criterios con que se calculan.
@@ -190,31 +159,14 @@ El territorio de una franquicia es **un campus**, no un radio ni un conjunto de 
 
 ## 13.5 Zonas geográficas
 
-!tabla Orden de expansión por zonas
-!cols 1,2.6,3.4
-| Etapa | Zona | Por qué |
-|---|---|---|
-| Años 1 a 3 | Zona metropolitana de Querétaro, con campus propios | Podemos supervisar en persona. El primer candidato es el campus Querétaro del Tecnológico de Monterrey, que reporta más de 7,000 alumnos; el tercero se elige entre los campus de más de 6,000 alumnos de la zona |
-| Año 4 | Bajío: Guanajuato y San Luis Potosí | A menos de tres horas por carretera, para acompañar a las primeras franquicias |
-| Año 5 | Ciudad de México, Estado de México y Puebla | La mayor concentración de universidades privadas. Tan solo la Universidad Anáhuac México tiene 15,290 alumnos de licenciatura |
-| Año 6 en adelante | Mérida, Monterrey, Guadalajara y resto del país | Con franquicia maestra por región |
+El orden es: años 1 a 3, zona de Querétaro con campus propios, empezando por el Tecnológico de Monterrey campus Querétaro; año 4, Guanajuato y San Luis Potosí; año 5, Ciudad de México, Estado de México y Puebla; después, el resto del país con franquicia maestra.
 
 Un campus es candidato a franquicia si cumple cuatro condiciones: al menos 7,000 alumnos, acceso controlado, comida concentrada en uno o dos puntos y autorización de la universidad. El mínimo de alumnos sale del modelo: los números de la unidad suponen un campus del tamaño de Anáhuac Querétaro, y uno de 4,000 alumnos generaría poco más de la mitad del margen con casi los mismos gastos fijos.
 
 ## 13.6 Programas de capacitación
 
-La capacitación inicial dura diez días y ocurre en el campus Anáhuac Querétaro.
+La capacitación inicial dura diez días y ocurre en el campus Anáhuac Querétaro: cinco de taller (modelo, plataforma, afiliación de locales y repartidores) y cinco de operación real junto al coordinador, con evaluación al final.
 
-!tabla Capacitación inicial del franquiciatario
-!cols 1,3.4,2.6
-| Días | Contenido | Forma |
-|---|---|---|
-| 1 y 2 | El modelo BITE: economía de un pedido, bloques, cupos y garantía | Taller con el manual de operación |
-| 3 | La plataforma: panel de administración, altas, cortes y reportes | Práctica en un ambiente de pruebas |
-| 4 | Afiliación de locales y gestión del permiso con la universidad | Casos y simulación de negociación |
-| 5 | Repartidores: reclutamiento, contrato, capacitación y seguridad social | Taller con formatos |
-| 6 a 9 | Operación real: guardia de bloques, incidencias, corte diario y conciliación | Acompañando al coordinador |
-| 10 | Evaluación y plan de lanzamiento de su campus | Examen práctico |
 
 Después hay una visita de BITE durante la primera semana de operación, revisión mensual de indicadores y actualización cada semestre.
 
@@ -243,10 +195,6 @@ No se busca a un inversionista que ponga a alguien más a operar. En un negocio 
 !tabla Plan de expansión a cinco años, escenario esperado
 !auto expansion
 !fuente Fuente: hoja «Expansión» del modelo financiero. Cada campus nuevo repite la curva del campus original. Los propios se calculan a {{sup_exp_tamano|%}} de su tamaño y pagan coordinador desde su primer mes; los franquiciados, al {{sup_fq_tamano|%}}.
-
-!fig fin_exp_campus | 15.5 | Campus en la red por año.
-
-!fig fin_exp_resultado | 16 | Ingresos y utilidad neta de BITE a cinco años.
 
 La utilidad del año 5 es parecida a la del año 4 aunque la red casi se duplica. La razón está en la tabla: ese año el segundo socio empieza a cobrar sueldo de tiempo completo y las franquicias nuevas todavía están en su primer año.
 
