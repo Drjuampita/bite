@@ -201,17 +201,20 @@ function construir(paginas) {
   }
 
   // ── Portada ──
-  const centro = (t, o = {}) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: o.after ?? 80 }, children: [new TextRun({ text: t, size: o.size || 24, bold: o.bold, color: o.color })] });
+  const centro = (t, o = {}) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: o.before ?? 0, after: o.after ?? 80, line: 276 }, children: [new TextRun({ text: t, size: o.size || 24, bold: o.bold, color: o.color })] });
   const logoP = pngSize(path.join(RAIZ, "figuras", "logo_portada.png"));
   const portada = [
-    centro("Universidad Anáhuac Querétaro", { size: 30, bold: true, after: 60 }),
-    centro("Taller de Empresa", { size: 24, after: 40 }),
-    centro("Docente: Néstor Daniel Sánchez García", { size: 22, color: COL.gris, after: 900 }),
-    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 700 }, children: [new ImageRun({ type: "png", data: logoP.data, transformation: { width: 360, height: (360 * logoP.h) / logoP.w } })] }),
-    centro("Proyecto Integrador Final", { size: 40, bold: true, after: 120 }),
-    centro("Plan de negocios de una app de entrega de comida dentro del campus", { size: 24, color: COL.gris, after: 900 }),
-    ...["Silvana Rubio Reyes · 00640949", "Natalia Orozco Estrada · 00633241", "Diego Rodríguez Sáenz · 00634144", "Emmanuel Alexander Quintana Tirado · 00640255", "Juan Pablo Palma Redondo · 00645488"].map((t) => centro(t, { size: 23, after: 50 })),
-    centro("Agosto – noviembre de 2026", { size: 22, color: COL.gris, after: 0 }),
+    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 1500, after: 700 }, children: [new ImageRun({ type: "png", data: logoP.data, transformation: { width: 380, height: (380 * logoP.h) / logoP.w } })] }),
+    centro("Universidad Anáhuac Querétaro", { size: 32, bold: true, after: 40 }),
+    centro("Licenciatura en Administración y Dirección de Empresas", { size: 24, bold: true, after: 40 }),
+    centro("Materia: Taller de Empresa", { size: 24, bold: true, after: 40 }),
+    centro("Profesor: Néstor Daniel Sánchez García", { size: 24, bold: true, after: 800 }),
+    centro("Proyecto Integrador Final", { size: 40, bold: true, after: 80 }),
+    centro("Plan de negocios de una app de entrega de comida dentro del campus", { size: 24, bold: true, after: 800 }),
+    centro("Integrantes", { size: 24, bold: true, after: 40 }),
+    ...["Silvana Rubio Reyes · 00640949", "Natalia Orozco Estrada · 00633241", "Diego Rodríguez Sáenz · 00634144", "Emmanuel Alexander Quintana Tirado · 00640255", "Juan Pablo Palma Redondo · 00645488"].map((t) => centro(t, { size: 24, bold: true, after: 0 })),
+    centro("Fecha de realización del proyecto: 23 de octubre de 2026", { size: 24, bold: true, after: 0, before: 800 }),
+    centro("Fecha de finalización: 15 de noviembre de 2026", { size: 24, bold: true, after: 0 }),
     new Paragraph({ children: [new PageBreak()] }),
   ];
 

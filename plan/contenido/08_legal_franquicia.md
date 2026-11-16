@@ -1,6 +1,6 @@
 # 12. Aspectos legales y personalidad jurídica
 
-!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Los requisitos legales de este capítulo los consultamos con un abogado.
+!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. Para el desarrollo financiero del producto y del MVP nos apoyamos en el motor financiero de Grupey (empresa de uno de los integrantes). También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Los requisitos legales de este capítulo los consultamos con un abogado.
 
 ## 12.1 Constitución legal del negocio
 

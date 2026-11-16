@@ -1,6 +1,6 @@
 # 14. Conclusiones
 
-Empezamos a armar este documento el 23 de octubre de 2026, a partir de nuestro borrador y de la app que ya teníamos, y lo cerramos a mediados de noviembre.
+Empezamos a armar este documento el 23 de octubre de 2026, a partir de nuestro borrador y de la app que ya teníamos, y lo terminamos el 15 de noviembre.
 
 1. **El problema es real y el producto lo resuelve de una forma que nadie más ofrece.** Cuando el receso es corto, la fila se lo lleva. BITE quita la fila del camino: la comida llega a la puerta del salón antes de la clase.
 2. **La idea que hace viable el negocio es el horario.** Agendar por hora de clase permite juntar pedidos, asignar repartidores con un día de anticipación y que el local cocine antes del pico. Sin eso, un envío de {{sup_fee|$}} dentro del campus no dejaría margen.
