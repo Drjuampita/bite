@@ -2,15 +2,15 @@
 
 1. **El problema es real y el producto lo resuelve de una forma que nadie más ofrece.** Cuando el receso es corto, la fila se lo lleva. BITE quita la fila del camino: la comida llega a la puerta del salón antes de la clase.
 2. **La idea que hace viable el negocio es el horario.** Agendar por hora de clase permite juntar pedidos, asignar repartidores con un día de anticipación y que el local cocine antes del pico. Sin eso, un envío de {{sup_fee|$}} dentro del campus no dejaría margen.
-3. **Cada pedido deja {{u_margen_E|$2}} y el punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase, {{e_be_adop_E|%1}} de los alumnos, se pagan los gastos fijos de todo el año mientras los socios operan. Con un coordinador pagado hacen falta {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
-4. **Un campus es un negocio pequeño.** En el escenario esperado deja {{E_neta_2|$}} en el año 2 y {{E_neta_3|$}} en el año 3, sin pagar el trabajo de los socios. El valor está en repetirlo: con diez campus al año 5, la utilidad neta llega a {{x_neta_5|$}} después de pagar dos sueldos de tiempo completo.
-5. **El riesgo está medido.** El capital de {{capital|$}} se fijó para que la caja conserve un colchón aun en el escenario pesimista. En ese escenario los socios no recuperan su dinero en tres años, y el plan dice en qué mes se sabrá y qué se hace entonces.
-6. **Todo depende de un número que todavía no se ha medido: la adopción.** El modelo necesita {{e_be2_adop_E|%1}} para sostenerse con un coordinador pagado y supone {{sup_adop1_E|%}} en el primer año. La encuesta y el piloto existen para medirlo antes de gastar.
-7. **Hay dos condiciones que no dependen del equipo:** el permiso de la universidad, con sus reglas, y que los locales acepten la comisión. Ambas dependen de una negociación y van antes que cualquier gasto.
+3. **Cada pedido deja {{u_margen_E|$2}} y el punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase, {{e_be_adop_E|%1}} de los alumnos, se pagan los gastos fijos de todo el año mientras operamos nosotros. Con un coordinador pagado hacen falta {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
+4. **Un campus es un negocio pequeño.** En el escenario esperado deja {{E_neta_2|$}} en el año 2 y {{E_neta_3|$}} en el año 3, sin pagar nuestro trabajo. El valor está en repetirlo: con diez campus al año 5, la utilidad neta llega a {{x_neta_5|$}} después de pagar dos sueldos de tiempo completo.
+5. **El riesgo está medido.** Fijamos el capital en {{capital|$}} para que la caja conserve un colchón aun en el escenario pesimista. En ese escenario no recuperamos nuestro dinero en tres años, y el plan dice en qué mes se sabrá y qué se hace entonces.
+6. **Todo depende de un número que todavía no se ha medido: la adopción.** Necesitamos {{e_be2_adop_E|%1}} para sostenernos con un coordinador pagado y suponemos {{sup_adop1_E|%}} en el primer año. La encuesta y el piloto existen para medirlo antes de gastar.
+7. **Hay dos condiciones que no dependen de nosotros:** el permiso de la universidad, con sus reglas, y que los locales acepten la comisión. Ambas dependen de una negociación y van antes que cualquier gasto.
 
 # 15. Recomendaciones
 
-El orden importa: cada paso es barato y decide si se da el siguiente.
+Nos recomendamos este orden: cada paso es barato y decide si damos el siguiente.
 
 !tabla Ruta de arranque
 !cols 0.4,3.2,1.5,2
@@ -37,7 +37,7 @@ Recomendaciones de fondo:
 - **Medir en el piloto lo que el local quiere saber:** cuánta de la venta por BITE es nueva. Se comparan sus ventas totales antes y durante el piloto. Si el local lo pide, el primer mes va sin comisión.
 - **No abrir un segundo campus antes de un año completo de cifras.** El plan de expansión supone que la curva del primer campus se repite; primero hay que conocerla.
 - **Escribir el manual de operación desde el primer día.** Es el activo que después se vende como franquicia.
-- **Acordar hoy qué pasa cuando los socios se gradúen.** El convenio entre accionistas debe decir quién sigue, quién vende y a qué precio.
+- **Acordar hoy qué pasa cuando nos graduemos.** El convenio entre accionistas debe decir quién sigue, quién vende y a qué precio.
 
 # 16. Anexos
 
@@ -60,7 +60,7 @@ Recomendaciones de fondo:
 | El IMSS exige seguridad social completa para todos los repartidores | Media | Medio | Medido en la sensibilidad: reduce la utilidad anual en {{= -S.sens_d_13 |$}} |
 | Un local organiza sus propios pedidos anticipados | Media | Medio | BITE ofrece lo que un local solo no puede: reparto a todos los edificios y un solo lugar para pedir a todos |
 | Tres meses al año sin ingresos | Segura | Medio | Ya está en el modelo: la publicidad y el coordinador solo se pagan en meses con clases y la reserva cubre los fijos |
-| Los socios se gradúan y el equipo se dispersa | Alta | Alto | Coordinador de operación desde el año 1; convenio entre accionistas; manual de operación |
+| Nos graduamos y el equipo se dispersa | Alta | Alto | Coordinador de operación desde el año 1; convenio entre accionistas; manual de operación |
 
 ## Anexo B. Guía de entrevista
 

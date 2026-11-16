@@ -10,9 +10,9 @@
 
 **El modelo de negocio.** BITE cobra $19 de envío, un sobreprecio promedio de $10 sobre el menú y 20% de comisión al local. Por un pedido de $120 ingresa {{u_ing_E|$2}} sin IVA y, después de pagar al repartidor, la pasarela de pago, el sello y las garantías, le quedan {{u_margen_E|$2}}. La comisión se calcula sobre el precio al público. Quien pide con frecuencia puede contratar BITE Pass: $99 al mes con todos los envíos incluidos.
 
-**El producto ya existe.** El equipo construyó un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor, con una base de datos cuyas reglas de negocio pasan 29 pruebas automáticas. Falta conectar el cobro con tarjeta y BITE Pass, presupuestados en el arranque.
+**El producto ya existe.** Construimos un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor, con una base de datos cuyas reglas de negocio pasan 29 pruebas automáticas. Falta conectar el cobro con tarjeta y BITE Pass, presupuestados en el arranque.
 
-**Los números.** Mientras los socios coordinan la operación sin cobrar, BITE cubre sus gastos fijos con {{e_be_oday_E|n}} pedidos por día de clase: basta con que lo use {{e_be_adop_E|%1}} de los alumnos. Con un coordinador pagado necesita {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}} de los alumnos. El escenario esperado supone 5% en el primer año y 6% en el segundo.
+**Los números.** Mientras nosotros coordinemos la operación sin cobrar, BITE cubre sus gastos fijos con {{e_be_oday_E|n}} pedidos por día de clase: basta con que lo use {{e_be_adop_E|%1}} de los alumnos. Con un coordinador pagado necesita {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}} de los alumnos. En el escenario esperado suponemos 5% en el primer año y 6% en el segundo.
 
 !tabla Resultados del escenario esperado en el campus Anáhuac Querétaro
 !cols 3,1.3,1.3,1.3
@@ -25,17 +25,17 @@
 | Caja al cierre del año | {{E_caja_1|$}} | {{E_caja_2|$}} | {{E_caja_3|$}} |
 !fuente Fuente: modelo financiero del proyecto (archivo BITE_Modelo_Financiero.xlsx). El año 1 incluye {{arranque|$}} de gastos de arranque.
 
-**La inversión.** Los cinco socios aportan {{aporte_socio|$}} cada uno, {{capital|$}} en total. De ese monto, {{arranque|$}} son gastos de arranque y {{reserva|$}} quedan como reserva. En el escenario esperado el capital se recupera en el mes {{E_payback|n}}. En el pesimista no se recupera en tres años, pero la caja nunca baja de {{P_caja_min|$}}: el capital se fijó en esa cifra para que así fuera.
+**La inversión.** Los cinco socios aportamos {{aporte_socio|$}} cada uno, {{capital|$}} en total. De ese monto, {{arranque|$}} son gastos de arranque y {{reserva|$}} quedan como reserva. En el escenario esperado el capital se recupera en el mes {{E_payback|n}}. En el pesimista no se recupera en tres años, pero la caja nunca baja de {{P_caja_min|$}}: fijamos el capital en esa cifra para que así fuera.
 
-**El crecimiento.** Un campus es un negocio pequeño: en el año 3 deja {{E_neta_3|$}}, que son {{= S.E_neta_3/5 |$}} por socio, sin pagar su trabajo. El plan es repetirlo: tres campus propios en la zona de Querétaro al año 3 y, desde el año 4, franquicias de campus. Al año 5 la red tendría {{x_n_total_5|n}} campus, ingresos por {{x_ing_bite_5|$k}} y una utilidad neta de {{x_neta_5|$k}}, después de pagar sueldo a dos socios de tiempo completo.
+**El crecimiento.** Un campus es un negocio pequeño: en el año 3 deja {{E_neta_3|$}}, que son {{= S.E_neta_3/5 |$}} por socio, sin pagar nuestro trabajo. Nuestro plan es repetirlo: tres campus propios en la zona de Querétaro al año 3 y, desde el año 4, franquicias de campus. Al año 5 la red tendría {{x_n_total_5|n}} campus, ingresos por {{x_ing_bite_5|$k}} y una utilidad neta de {{x_neta_5|$k}}, después de pagar sueldo a dos socios de tiempo completo.
 
-**Lo que falta por comprobar.** Cuatro cosas condicionan el arranque del 11 de enero de 2027: el permiso de la universidad, que incluye su regla sobre alimentos en los salones; los convenios con los cuatro locales; la encuesta a 300 alumnos, y el piloto de dos semanas. El documento dice en cada apartado qué es dato, qué es decisión y qué es supuesto.
+**Lo que falta por comprobar.** Cuatro cosas condicionan el arranque del 11 de enero de 2027: el permiso de la universidad, que incluye su regla sobre alimentos en los salones; los convenios con los cuatro locales; la encuesta a 300 alumnos, y el piloto de dos semanas. En cada apartado decimos qué es dato, qué es decisión nuestra y qué es supuesto.
 
 # 2. Desarrollo
 
 ## 2.1 Descripción del concepto
 
-Para quien nunca ha estado en el campus, BITE se entiende con un caso típico.
+Para quien nunca ha estado en nuestro campus, BITE se entiende con un caso típico.
 
 Ana estudia cuarto semestre. Los martes sale de una clase y tiene media hora libre antes de la siguiente, que empieza a las 9:00 en el salón C204. Media hora parece suficiente para desayunar, pero el área de comida está en otro edificio y a esa hora todos tienen el mismo receso. Entre caminar, hacer fila, esperar su pedido y volver, le quedan cinco minutos para comer. Muchas veces prefiere no ir.
 

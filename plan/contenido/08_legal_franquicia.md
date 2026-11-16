@@ -17,7 +17,7 @@
 | Entrada de inversionistas | Limitada | Difícil: las partes sociales no circulan libremente | Diseñada para eso |
 !fuente Fuente: Ley General de Sociedades Mercantiles, artículos 260 a 273; Secretaría de Economía; costos notariales de mercado en Querétaro según Praxium Consultores (2026).
 
-La S.A.S. cubre lo que BITE necesita en sus primeros años: separa el patrimonio de los socios del de la empresa, no cuesta y se constituye en días. Los ingresos del plan se mantienen muy por debajo de su límite: {{x_ing_bite_5|$k}} en el año 5. Su limitación aparece cuando entra un inversionista o se firman contratos de franquicia; para ese momento el plan presupuesta {{sup_exp_transformacion|$}} para la transformación ante notario y los documentos de la franquicia.
+La S.A.S. cubre lo que BITE necesita en sus primeros años: separa el patrimonio de los socios del de la empresa, no cuesta y se constituye en días. Los ingresos del plan se mantienen muy por debajo de su límite: {{x_ing_bite_5|$k}} en el año 5. Su limitación aparece cuando entra un inversionista o se firman contratos de franquicia; para ese momento presupuestamos {{sup_exp_transformacion|$}} para la transformación ante notario y los documentos de la franquicia.
 
 !tabla Trámites para constituir y operar
 !cols 0.4,2.2,1.8,1.3,2.5
@@ -79,7 +79,7 @@ Al abrir el segundo campus el personal superará los 15 trabajadores y la norma 
 | Emmanuel Alexander Quintana Tirado | Alumno de licenciatura, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
 | Juan Pablo Palma Redondo | Alumno de licenciatura, Universidad Anáhuac Querétaro | 30 | {{aporte_socio|$}} |
 
-Los cinco son personas físicas, como exige la S.A.S., y ninguno puede controlar otra sociedad mercantil mientras sea accionista. El capital se divide en 150 acciones de $1,000. Además del contrato social, los socios firman un convenio entre accionistas con dos reglas pensadas para un equipo de estudiantes: derecho de preferencia de los demás si alguno vende, y la obligación de ofrecer sus acciones a los otros socios si alguien deja de participar al graduarse.
+Los cinco son personas físicas, como exige la S.A.S., y ninguno puede controlar otra sociedad mercantil mientras sea accionista. El capital se divide en 150 acciones de $1,000. Además del contrato social, firmamos un convenio entre accionistas con dos reglas pensadas para un equipo de estudiantes: derecho de preferencia de los demás si alguno vende, y la obligación de ofrecer sus acciones a los otros socios si alguien deja de participar al graduarse.
 
 !pendiente Completar la carrera y el semestre de cada socio.
 
@@ -133,7 +133,7 @@ BITE no tiene inmuebles, así que no hay nada que inscribir en el Registro Públ
 
 # 13. Franquicia
 
-La franquicia no es para el primer día. BITE la ofrece a partir del año 4, cuando tenga tres años de cifras reales y tres campus propios operando. Antes de eso no hay un sistema probado que vender.
+La franquicia no es para el primer día. La ofreceremos a partir del año 4, cuando tenga tres años de cifras reales y tres campus propios operando. Antes de eso no hay un sistema probado que vender.
 
 La Ley Federal de Protección a la Propiedad Industrial dice que hay franquicia cuando, con la licencia de una marca, se transmiten conocimientos técnicos o asistencia para operar de manera uniforme (artículo 245). El franquiciante debe entregar al interesado información sobre el estado de su empresa al menos 30 días antes de firmar; el artículo 124 del Reglamento de la ley, de 2026, enumera su contenido.
 
@@ -145,7 +145,7 @@ La Ley Federal de Protección a la Propiedad Industrial dice que hay franquicia 
 
 La cuota inicial es de **{{sup_fq_cuota|$}} más IVA** por campus. Incluye el derecho de uso de la marca en ese campus por cinco años, la configuración de la app con sus edificios, salones y locales, los manuales, la capacitación inicial y el acompañamiento durante el primer mes de operación.
 
-La cuota se fijó al revés de como suele hacerse: primero se calculó cuánto gana una unidad y después cuánto puede pagar para recuperar su inversión en menos de dos años.
+Fijamos la cuota al revés de como suele hacerse: primero calculamos cuánto gana una unidad y después cuánto puede pagar para recuperar su inversión en menos de dos años.
 
 !tabla Inversión de un franquiciatario
 !auto franquicia_inversion
@@ -194,7 +194,7 @@ El territorio de una franquicia es **un campus**, no un radio ni un conjunto de 
 !cols 1,2.6,3.4
 | Etapa | Zona | Por qué |
 |---|---|---|
-| Años 1 a 3 | Zona metropolitana de Querétaro, con campus propios | Los socios pueden supervisar en persona. El primer candidato es el campus Querétaro del Tecnológico de Monterrey, que reporta más de 7,000 alumnos; el tercero se elige entre los campus de más de 6,000 alumnos de la zona |
+| Años 1 a 3 | Zona metropolitana de Querétaro, con campus propios | Podemos supervisar en persona. El primer candidato es el campus Querétaro del Tecnológico de Monterrey, que reporta más de 7,000 alumnos; el tercero se elige entre los campus de más de 6,000 alumnos de la zona |
 | Año 4 | Bajío: Guanajuato y San Luis Potosí | A menos de tres horas por carretera, para acompañar a las primeras franquicias |
 | Año 5 | Ciudad de México, Estado de México y Puebla | La mayor concentración de universidades privadas. Tan solo la Universidad Anáhuac México tiene 15,290 alumnos de licenciatura |
 | Año 6 en adelante | Mérida, Monterrey, Guadalajara y resto del país | Con franquicia maestra por región |
@@ -250,7 +250,7 @@ No se busca a un inversionista que ponga a alguien más a operar. En un negocio 
 
 La utilidad del año 5 es parecida a la del año 4 aunque la red casi se duplica. La razón está en la tabla: ese año el segundo socio empieza a cobrar sueldo de tiempo completo y las franquicias nuevas todavía están en su primer año.
 
-**Quién opera los campus nuevos.** En un campus donde los socios no estudian, la operación diaria queda en un coordinador que sí es alumno de ese campus, contratado desde el primer mes. Un socio lo supervisa cada semana. Ese costo ya está en la tabla.
+**Quién opera los campus nuevos.** En un campus donde no estudiamos, la operación diaria queda en un coordinador que sí es alumno de ese campus, contratado desde el primer mes. Uno de nosotros lo supervisa cada semana. Ese costo ya está en la tabla.
 
 **Cuándo se abre el segundo campus.** Solo si el primero cierra su año 1 con una adopción de al menos {{sup_adop_decision|%}}. Si el campus original va por el escenario pesimista, no hay expansión: el plan a cinco años es el del escenario esperado y no tiene versión pesimista, porque en ese caso no se ejecuta.
 
@@ -259,11 +259,11 @@ La utilidad del año 5 es parecida a la del año 4 aunque la red casi se duplica
 - **Casos propios.** Los tres campus de Querétaro son la muestra: cualquier interesado puede visitarlos y ver sus cifras.
 - **Redes universitarias.** Incubadoras y programas de emprendimiento de las universidades candidatas, donde están los alumnos que serían franquiciatarios.
 - **Ferias de franquicias.** Presencia a partir del año 4, pagada con el fondo de publicidad.
-- **Vendedores.** Los socios. No se contrata a un corredor de franquicias en esta etapa.
+- **Vendedores.** Nosotros. No contratamos a un corredor de franquicias en esta etapa.
 
 ## 13.10 Franquicia maestra
 
-La franquicia maestra se plantea del año 6 en adelante, para regiones que los socios no puedan supervisar desde Querétaro. El franquiciatario maestro recibe el derecho de abrir y subfranquiciar campus en una región, por ejemplo el sureste o el noreste, con un compromiso de aperturas por año. Un planteamiento inicial, por validar con asesoría legal:
+Planteamos la franquicia maestra del año 6 en adelante, para regiones que no podamos supervisar desde Querétaro. El franquiciatario maestro recibe el derecho de abrir y subfranquiciar campus en una región, por ejemplo el sureste o el noreste, con un compromiso de aperturas por año. Un planteamiento inicial, por validar con asesoría legal:
 
 - **Cuota por la región:** {{= 5*S.sup_fq_cuota |$}}, equivalente a la de cinco campus, con el compromiso de abrir cinco en tres años.
 - **Funciones del maestro:** recluta, capacita y supervisa a los franquiciatarios de su región.

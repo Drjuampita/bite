@@ -1,6 +1,6 @@
 # 7. Operación y producción
 
-La guía del proyecto está escrita para un negocio con local, caja e inventario. BITE no tiene ninguno de los tres. En cada apartado se responde lo que la guía pide con su equivalente en una plataforma de reparto, y se dice así cuando algo no aplica.
+La guía del proyecto está escrita para un negocio con local, caja e inventario. BITE no tiene ninguno de los tres. En cada apartado respondemos lo que la guía pide con su equivalente en una plataforma de reparto, y lo decimos cuando algo no aplica.
 
 ## 7.1 Procesos
 
@@ -185,7 +185,7 @@ Requisición, tres cotizaciones, comparación, orden de compra, recepción contr
 | Dominio .mx, por año | Akky: $689 | HostGator: $950 | Hostinger: $817 al renovar | Akky: registrador mexicano, precio estable |
 !fuente Fuente: sitios de cada proveedor, consultados el 15 de noviembre de 2026. Las playeras y gorras de Lazzar y los impresos de 360imprimir, Pixz y Sinergia se publican sin IVA; aquí Lazzar ya lo incluye.
 
-!nota El modelo usa la tarifa de Stripe, que es la más alta de las tres. Si se contrata Conekta, el costo por pedido baja y el margen mejora; la proyección no cuenta con ello.
+!nota En el modelo usamos la tarifa de Stripe, que es la más alta de las tres. Si se contrata Conekta, el costo por pedido baja y el margen mejora; la proyección no cuenta con ello.
 
 #### 7.1.2.1.3 Presupuesto de equipo
 
@@ -290,7 +290,7 @@ La cocina es del local. Lo que BITE produce es la entrega, por bloques.
 
 **Las dos pasadas.** En cada ventana el repartidor recorre su zona dos veces. En la primera pasada, desde el minuto 45, entrega a quien ya está en su salón. En la segunda, en los últimos cinco minutos, entrega a quien viene llegando de otra clase. Al pedir, el alumno marca si estará en el salón o si viene de otra clase, y la app ordena la ruta. A la hora en punto el repartidor se retira: no se entrega con la clase empezada.
 
-**Capacidad.** En una mochila caben {{sup_cap_viaje|n}} pedidos, pero con dos pasadas y varios pisos el modelo supone que un repartidor entrega {{sup_ped_rb|n}} por bloque en promedio. Es un supuesto clave que el piloto debe medir.
+**Capacidad.** En una mochila caben {{sup_cap_viaje|n}} pedidos, pero con dos pasadas y varios pisos suponemos que un repartidor entrega {{sup_ped_rb|n}} por bloque en promedio. Es un supuesto clave que el piloto debe medir.
 
 **Cuántos repartidores.** Cada bloque abierto lleva al menos {{sup_rep_min|n}} repartidores, uno por cada mitad del campus, y se suma otro por cada {{sup_ped_rb|n}} pedidos. El bloque más cargado concentra {{sup_pico|%}} de los pedidos del día: en el año 2 del escenario esperado son {{= S.E_oday_oct_2*S.sup_pico |n}} pedidos, que piden {{= Math.ceil(S.E_oday_oct_2*S.sup_pico/S.sup_ped_rb) |n}} repartidores al mismo tiempo, uno por zona. En el optimista el pico llega a {{O_pico_max|n}} pedidos: caben en el cupo de {{sup_cupo_locales|n}} pedidos por hora con que está configurada la app, pero piden {{= Math.ceil(S.O_pico_max/S.sup_ped_rb) |n}} repartidores, más que el padrón inicial de {{sup_padron|n}}. En ese escenario el padrón y el equipo crecen con cargo a la caja.
 

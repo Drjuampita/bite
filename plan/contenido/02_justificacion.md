@@ -2,9 +2,9 @@
 
 ## 3.0 Preguntas de justificación
 
-### ¿Qué elementos se tomaron en cuenta para desarrollar el concepto?
+### ¿Qué elementos tomamos en cuenta para desarrollar el concepto?
 
-**El tiempo del alumno.** El semestre de la Universidad Anáhuac Querétaro tiene 16 semanas y el año suma {{dias_ano|n}} días de clase. El equipo vive el problema a diario: cuando el receso entre dos clases es corto, la fila del área de comida en hora pico se lleva la mayor parte. El resultado es conocido: se come tarde, se come de prisa o no se come.
+**El tiempo del alumno.** El semestre de la Universidad Anáhuac Querétaro tiene 16 semanas y el año suma {{dias_ano|n}} días de clase. Vivimos el problema a diario: cuando el receso entre dos clases es corto, la fila del área de comida en hora pico se lleva la mayor parte. El resultado es conocido: se come tarde, se come de prisa o no se come.
 
 **La evidencia de que no es un caso aislado.** En un estudio con 300 alumnos de la Universidad Autónoma del Estado de México (UAEMéx), la mitad omitió alguna de las tres comidas principales durante su estancia en la universidad y 52.7% comía en las cafeterías del campus (Martínez-Hernández et al., 2021). En otro, con estudiantes de nutrición de la Ciudad de México, 29.4% atribuyó no desayunar a la falta de tiempo (Sámano et al., 2024).
 
@@ -14,21 +14,21 @@
 
 **El horario como ventaja.** Las clases empiezan a horas fijas. Si las entregas se agrupan en la ventana anterior a cada hora, un repartidor lleva varios pedidos por viaje y el local sabe con anticipación cuánto cocinar. Ese es el elemento que hace viable un envío de $19 dentro del campus.
 
-### ¿Qué conocimientos o experiencia tiene el equipo en el proyecto que pretende realizar?
+### ¿Qué conocimientos o experiencia tenemos en el proyecto que pretendemos realizar?
 
-- **Conoce al cliente porque es el cliente.** Los cinco socios son alumnos del campus: conocen los horarios, los edificios, los locales y las horas pico.
-- **Ya construyó el producto.** El equipo desarrolló un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor. La base de datos tiene reglas de negocio probadas con 29 pruebas automáticas, que están en el repositorio del proyecto: cupo por hora, precios calculados en el servidor, código de entrega y acceso por rol.
-- **Tiene formación en negocios.** El equipo cursa licenciaturas del área de negocios, lo que respalda la planeación comercial, financiera y de operación de este documento.
-- **Sabe lo que no sabe.** No tiene experiencia operando repartidores ni negociando con locales. Por eso el plan arranca con un piloto de dos semanas y 50 alumnos antes de abrir a todo el campus, y contrata asesoría legal y contabilidad externa desde el primer día.
+- **Conocemos al cliente porque somos el cliente.** Los cinco somos alumnos del campus: conocemos los horarios, los edificios, los locales y las horas pico.
+- **Ya construimos el producto.** Desarrollamos un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor. La base de datos tiene reglas de negocio probadas con 29 pruebas automáticas, que están en el repositorio del proyecto: cupo por hora, precios calculados en el servidor, código de entrega y acceso por rol.
+- **Tenemos formación en negocios.** Cursamos licenciaturas del área de negocios, lo que respalda la planeación comercial, financiera y de operación de este documento.
+- **Sabemos lo que no sabemos.** No tenemos experiencia operando repartidores ni negociando con locales. Por eso arrancamos con un piloto de dos semanas y 50 alumnos antes de abrir a todo el campus, y contratamos asesoría legal y contabilidad externa desde el primer día.
 
-### ¿Qué razones justifican el plan de empresa?
+### ¿Qué razones justifican nuestro plan de empresa?
 
 1. **Cada pedido genera margen.** Por un pedido de $120, BITE ingresa {{u_ing_E|$2}} y gasta {{u_costo_E|$2}}. El margen es de {{u_margen_E|$2}}, {{u_margen_pct_E|%}} del ingreso.
-2. **El punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase se cubren los gastos fijos de todo el año mientras los socios operan: {{e_be_adop_E|%1}} de los alumnos. Con un coordinador pagado son {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
+2. **El punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase se cubren los gastos fijos de todo el año mientras operamos nosotros: {{e_be_adop_E|%1}} de los alumnos. Con un coordinador pagado son {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
 3. **Casi no hay activos.** BITE no tiene local, cocina ni vehículos. Los gastos de arranque son {{arranque|$}}, y la mayor parte es terminar la app y la publicidad de lanzamiento.
 4. **Los locales no invierten.** Reciben pedidos anticipados, pagan solo cuando venden y la comisión de 20% es menor que la de 25% a 29% que Uber Eats publica para restaurantes en México. Cuánta de esa venta es nueva y cuánta habría llegado al mostrador se mide en el piloto.
 5. **Se puede repetir.** Lo que funcione en un campus se copia en otro con {{sup_exp_apertura|$}} de inversión, porque la app, la marca y los manuales ya existen.
-6. **El riesgo está acotado.** En el peor de los tres escenarios los socios no recuperan su capital en tres años, pero la empresa no se queda sin caja. Y hay una regla escrita para decidir en abril si se sigue.
+6. **El riesgo está acotado.** En el peor de los tres escenarios no recuperamos nuestro capital en tres años, pero la empresa no se queda sin caja. Y tenemos una regla escrita para decidir en abril si se sigue.
 
 ## 3.1 Objetivos
 
@@ -54,7 +54,7 @@ BITE es una app de entrega de comida que opera dentro de la Universidad Anáhuac
 | | | | | E3. Diversificar los ingresos | T3. Publicidad de los locales dentro de la app y pedidos para eventos del campus |
 !fuente Las cifras salen del escenario esperado del modelo financiero (apartado 11.2) y del plan de expansión (apartado 13.9).
 
-### ¿Cuáles son los productos o servicios que se ofrecen?
+### ¿Cuáles son los productos o servicios que ofrecemos?
 
 - **Pedido agendado.** El alumno elige la hora de su clase y lo recibe en los 15 minutos anteriores. Envío: {{sup_fee|$}}.
 - **Pedido «Ahora».** Entra a la cocina de inmediato y se entrega en cuanto está listo. Mismo envío.
@@ -115,11 +115,11 @@ Las cuatro promesas que el alumno puede exigir:
 
 ## 4.4 Historia
 
-BITE nació en el Taller de Empresa del semestre agosto–noviembre de 2026. El proyecto se llamó primero MOCHI; el equipo cambió el nombre y el logotipo a BITE porque comunican mejor un servicio de comida. Durante el semestre el equipo pasó de la idea a un producto que se puede usar: definió los tres usuarios (alumno, local y repartidor), programó la app con los edificios y salones reales del campus y construyó la base de datos con sus reglas de negocio. El siguiente paso es el piloto de enero de 2027.
+BITE nació en el Taller de Empresa del semestre agosto–noviembre de 2026. El proyecto se llamó primero MOCHI; cambiamos el nombre y el logotipo a BITE porque comunican mejor un servicio de comida. Durante el semestre pasamos de la idea a un producto que se puede usar: definimos los tres usuarios (alumno, local y repartidor), programamos la app con los edificios y salones reales del campus y construimos la base de datos con sus reglas de negocio. El siguiente paso es el piloto de enero de 2027.
 
-## 4.5 ¿Cómo se concibió la idea?
+## 4.5 ¿Cómo concebimos la idea?
 
-La idea salió de tres situaciones que el equipo veía cada semana:
+La idea salió de tres situaciones que veíamos cada semana:
 
 - Alumnos con clases seguidas que llegaban tarde, o sin comer, por ir al área de comida.
 - Alumnos deportistas que deben comer a horas fijas por su dieta y su entrenamiento, y no siempre alcanzan.

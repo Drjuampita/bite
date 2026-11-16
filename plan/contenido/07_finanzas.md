@@ -1,11 +1,11 @@
 # 11. Aspectos financieros
 
-Todas las cifras de este capítulo salen del libro BITE_Modelo_Financiero.xlsx. Ninguna se escribió a mano: si se cambia un supuesto en el libro, cambian todas. Los precios al alumno incluyen IVA; los ingresos y costos de BITE van sin IVA, en pesos de 2026.
+Todas las cifras de este capítulo salen de nuestro modelo, el libro BITE_Modelo_Financiero.xlsx. Ninguna la escribimos suelta: si se cambia un supuesto en el libro, cambian todas. Los precios al alumno incluyen IVA; los ingresos y costos de BITE van sin IVA, en pesos de 2026.
 
 Cada dato de entrada del modelo lleva una etiqueta:
 
 - **Dato:** sale de una fuente que se puede consultar.
-- **Decisión:** lo fija el equipo, como un precio.
+- **Decisión:** lo fijamos nosotros, como un precio.
 - **Supuesto:** estimación razonada.
 - **Supuesto clave:** estimación de la que depende el resultado. La encuesta y el piloto deben confirmarla.
 
@@ -17,14 +17,14 @@ La lista completa, con su fuente, está en el Anexo D.
 !auto inversion
 !fuente Fuente: hoja «Inversión» del modelo financiero.
 
-El capital no se fijó sumando gastos, sino con una pregunta: ¿cuánto hace falta para que, aun en el peor escenario, la caja conserve un colchón de {{sup_colchon|%}} del capital? La respuesta es {{capital|$}}. Con esa cifra, la caja más baja del escenario pesimista en tres años es de {{P_caja_min|$}}.
+No fijamos el capital sumando gastos, sino con una pregunta: ¿cuánto hace falta para que, aun en el peor escenario, la caja conserve un colchón de {{sup_colchon|%}} del capital? La respuesta es {{capital|$}}. Con esa cifra, la caja más baja del escenario pesimista en tres años es de {{P_caja_min|$}}.
 
 De los {{capital|$}}, {{arranque|$}} se gastan antes de abrir. Los otros {{reserva|$}} son la reserva que financia los primeros meses: en el escenario esperado la caja nunca baja de {{E_caja_min|$}}.
 
 !tabla Origen de los recursos
 !auto origen
 
-**Sin deuda.** BITE no pide crédito. No lo necesita: cobra al alumno antes de preparar el pedido y paga al local una semana después. Esa diferencia a favor no se cuenta en el modelo.
+**Sin deuda.** No pedimos crédito. No lo necesita: cobra al alumno antes de preparar el pedido y paga al local una semana después. Esa diferencia a favor no se cuenta en el modelo.
 
 **Aportación en especie.** El producto ya construido vale {{mvp_valor|$}} a precio de mercado. No se suma al capital.
 
@@ -36,13 +36,13 @@ Los tres escenarios describen el mismo negocio, con los mismos precios y los mis
 !auto escenarios_vars
 !fuente Fuente: hoja «Supuestos» del modelo financiero. Todas son supuestos clave.
 
-**De dónde sale la adopción esperada de {{sup_adop1_E|%}}.** No hay un dato propio todavía: es el supuesto que la encuesta debe confirmar. La referencia disponible es la app Skipeat de CETYS Tijuana, para pedir y pasar a recoger, que llegó a cerca de 10% de su campus. No es comparable del todo: Skipeat no cobraba envío y BITE cuesta 24% más que el mostrador. Sirve como orden de magnitud. El escenario esperado supone la mitad; el optimista, menos que ese caso en su primer año.
+**De dónde sale la adopción esperada de {{sup_adop1_E|%}}.** Todavía no tenemos un dato propio: es el supuesto que nuestra encuesta debe confirmar. La referencia disponible es la app Skipeat de CETYS Tijuana, para pedir y pasar a recoger, que llegó a cerca de 10% de su campus. No es comparable del todo: Skipeat no cobraba envío y BITE cuesta 24% más que el mostrador. Sirve como orden de magnitud. El escenario esperado supone la mitad; el optimista, menos que ese caso en su primer año.
 
 **El arranque no es instantáneo.** El primer año no empieza a ritmo pleno. En enero BITE alcanza 15% de su adopción objetivo y llega al 100% en septiembre. En los años 2 y 3 la adopción tampoco salta el 1 de enero: sube la mitad en el primer semestre y el resto desde agosto, y cada agosto arranca al {{sup_regreso|%}} porque una parte de los usuarios tarda en volver del verano.
 
 !tabla Calendario escolar y arranque del primer año
 !auto calendario
-!fuente Fuente: calendarios escolares 2026B y 2027A de la Universidad Anáhuac Querétaro (días de clase) y supuesto del equipo (arranque). No se cuentan exámenes finales ni verano.
+!fuente Fuente: calendarios escolares 2026B y 2027A de la Universidad Anáhuac Querétaro (días de clase) y supuesto nuestro (arranque). No se cuentan exámenes finales ni verano.
 
 !tabla De dónde salen los pedidos
 !auto demanda
@@ -66,11 +66,11 @@ El primer año cierra con una pérdida de {{= -S.E_neta_1 |$}}, que se explica p
 !tabla Resultados del escenario pesimista
 !auto resultados_P
 
-Si la adopción se queda en 3%, pocos contratan el Pass y los locales solo aceptan 15% de comisión, BITE apenas se sostiene: pierde {{= -S.P_neta_1 |$}} el primer año y después ronda el punto de equilibrio. Los socios no recuperan su capital en tres años. La empresa no quiebra, porque la reserva alcanza, pero tampoco es rentable.
+Si la adopción se queda en 3%, pocos contratan el Pass y los locales solo aceptan 15% de comisión, BITE apenas se sostiene: pierde {{= -S.P_neta_1 |$}} el primer año y después ronda el punto de equilibrio. No recuperamos nuestro capital en tres años. La empresa no quiebra, porque la reserva alcanza, pero tampoco es rentable.
 
-Por eso el plan tiene una **regla de decisión**, y el modelo la aplica: si en abril de 2027 hay menos de {{umbral_abr|n}} usuarios activos, desde agosto se suspenden la publicidad pagada y la bolsa de horas de desarrollo, que suman {{= S.ahorro_12+S.ahorro_clase |$}} al mes, y se revisan precio y oferta. Ese umbral es la ruta de una adopción de {{sup_adop_decision|%}}. En el escenario pesimista hay {{m_P_users_4|n}} usuarios en abril, así que la regla se activa; en el esperado hay {{m_E_users_4|n}} y no se activa.
+Por eso tenemos una **regla de decisión**, y el modelo la aplica: si en abril de 2027 hay menos de {{umbral_abr|n}} usuarios activos, desde agosto se suspenden la publicidad pagada y la bolsa de horas de desarrollo, que suman {{= S.ahorro_12+S.ahorro_clase |$}} al mes, y se revisan precio y oferta. Ese umbral es la ruta de una adopción de {{sup_adop_decision|%}}. En el escenario pesimista hay {{m_P_users_4|n}} usuarios en abril, así que la regla se activa; en el esperado hay {{m_E_users_4|n}} y no se activa.
 
-**Y si es peor que el pesimista.** Si en abril no se llega ni al nivel pesimista, lo razonable es cerrar al terminar el semestre. La pérdida de los socios quedaría cerca de {{= S.capital-S.m_P_caja_5 |$}}: los gastos de arranque más cinco meses de operación. Es el costo de averiguar si el negocio existe.
+**Y si es peor que el pesimista.** Si en abril no se llega ni al nivel pesimista, lo razonable es cerrar al terminar el semestre. Nuestra pérdida quedaría cerca de {{= S.capital-S.m_P_caja_5 |$}}: los gastos de arranque más cinco meses de operación. Es el costo de averiguar si el negocio existe.
 
 ### Escenario optimista
 
@@ -90,7 +90,7 @@ Con 8% de adopción en el primer año, BITE gana desde 2027 y recupera el capita
 
 ### Lo que el modelo no incluye
 
-- **Sueldos de los socios** en los primeros tres años. La utilidad de esos años no descuenta el pago de su trabajo, que incluye turnarse la guardia de operación mientras no haya coordinador.
+- **Nuestros sueldos** en los primeros tres años. La utilidad de esos años no descuenta el pago de nuestro trabajo, que incluye turnarnos la guardia de operación mientras no haya coordinador.
 - **Una contraprestación a la universidad.** Si la pide, su efecto está en la sensibilidad del apartado 11.5.
 - **El ISR en pagos provisionales.** Para simplificar, el modelo carga el impuesto de cada año completo en diciembre.
 - **Reparto de utilidades a los trabajadores.** Las empresas nuevas están exentas el primer año; después puede llegar a 10% de la utilidad fiscal.
@@ -106,7 +106,7 @@ Con 8% de adopción en el primer año, BITE gana desde 2027 y recupera el capita
 
 Los gastos fijos se pagan aunque no haya un solo pedido. En un mes con clases suman {{fijos_mes|$}}; en junio, julio y diciembre, sin publicidad, {{fijos_mes_sin|$}}. Al año son {{fijos_ano|$}}.
 
-El **coordinador de operación** no está en la tabla porque no se paga desde el primer día. Entra cuando el volumen pasa de {{sup_umbral_coord|n}} pedidos diarios y cuesta {{sup_coord|$}} al mes durante los nueve meses con clases: {{coord_ano|$}} al año. Con él, los gastos fijos anuales suben a {{e_fijos2_E|$}}. Mientras no esté, la coordinación diaria recae en los socios, que se turnan la guardia de 7:15 a 17:30 sin cobrar. Ese trabajo es real aunque no aparezca como gasto.
+El **coordinador de operación** no está en la tabla porque no se paga desde el primer día. Entra cuando el volumen pasa de {{sup_umbral_coord|n}} pedidos diarios y cuesta {{sup_coord|$}} al mes durante los nueve meses con clases: {{coord_ano|$}} al año. Con él, los gastos fijos anuales suben a {{e_fijos2_E|$}}. Mientras no esté, la coordinación diaria recae en nosotros, que nos turnamos la guardia de 7:15 a 17:30 sin cobrar. Ese trabajo es real aunque no aparezca como gasto.
 
 ## 11.4 Gastos variables
 
@@ -147,7 +147,7 @@ La pregunta es cuántos pedidos al día necesita BITE para pagar sus gastos fijo
 
 !fig fin_equilibrio | 16.5 | Punto de equilibrio en el escenario esperado.
 
-Hay dos puntos de equilibrio, y los dos importan. Mientras los socios operan sin cobrar, BITE deja de perder con {{e_be_oday_E|n}} pedidos por día de clase: {{e_be_adop_E|%1}} de los alumnos, uno de cada {{e_uno_de_E|n}}. Con el coordinador pagado, el equilibrio sube a {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}} de los alumnos; por eso el coordinador solo se contrata al pasar de {{sup_umbral_coord|n}}. El segundo es el equilibrio de un negocio que no depende del trabajo gratuito de sus dueños. Para el cierre del año 2 se proyectan {{e_oday2_E|n}} pedidos: la demanda puede caer {{e_holgura_E|%}} antes de que BITE pierda dinero con coordinador.
+Hay dos puntos de equilibrio, y los dos importan. Mientras operamos nosotros sin cobrar, BITE deja de perder con {{e_be_oday_E|n}} pedidos por día de clase: {{e_be_adop_E|%1}} de los alumnos, uno de cada {{e_uno_de_E|n}}. Con el coordinador pagado, el equilibrio sube a {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}} de los alumnos; por eso el coordinador solo se contrata al pasar de {{sup_umbral_coord|n}}. El segundo es el equilibrio de un negocio que no depende del trabajo gratuito de sus dueños. Para el cierre del año 2 se proyectan {{e_oday2_E|n}} pedidos: la demanda puede caer {{e_holgura_E|%}} antes de que BITE pierda dinero con coordinador.
 
 ### Sensibilidad: qué pasa si un supuesto falla
 
@@ -159,14 +159,14 @@ Hay dos puntos de equilibrio, y los dos importan. Mientras los socios operan sin
 
 Seis lecturas:
 
-1. **La adopción manda.** Con 2% el año pierde {{= -S.sens_16 |$}}. Con 3% y 4% deja {{sens_1|$}} y {{sens_2|$}}, pero solo porque a ese volumen no se contrata coordinador y los socios siguen operando sin cobrar.
+1. **La adopción manda.** Con 2% el año pierde {{= -S.sens_16 |$}}. Con 3% y 4% deja {{sens_1|$}} y {{sens_2|$}}, pero solo porque a ese volumen no se contrata coordinador y seguimos operando nosotros sin cobrar.
 2. **Entre 4% y 6% la utilidad casi no cambia.** El coordinador absorbe el crecimiento. La utilidad vuelve a subir al pasar de 6%.
 3. **El sobreprecio de menú sostiene el negocio.** Sin él, el año pasa de ganar {{sens_0|$}} a perder {{= -S.sens_8 |$}}. Si los alumnos lo rechazan, la alternativa es subir el envío.
 4. **La comisión pesa.** Cada punto de comisión vale cerca de {{= (S.sens_d_5 - S.sens_d_4)/10 |$}} al año. Con 15% el año queda en {{sens_4|$}}. Si el local exige que el 20% se calcule sobre su precio sin IVA, la utilidad baja en {{= -S.sens_d_18 |$}}.
 5. **Una cuota de 3% a la universidad** sobre la venta de comida reduce la utilidad en {{= -S.sens_d_17 |$}}.
 6. **El IMSS completo para los repartidores es absorbible.** Reduce la utilidad en {{= -S.sens_d_13 |$}}, sin llevarla a pérdida.
 
-Hay también un margen adicional que el plan no usa: con el volumen del año 2, un repartidor gana en promedio {{= S.E_ing_rb_2*2 |$}} por hora efectiva, cerca de tres veces el salario mínimo. El pago por pedido podría bajar a $12 y seguir por encima del doble del mínimo; eso sumaría {{sens_d_11|$}} al año.
+Hay también un margen adicional que no usamos: con el volumen del año 2, un repartidor gana en promedio {{= S.E_ing_rb_2*2 |$}} por hora efectiva, cerca de tres veces el salario mínimo. El pago por pedido podría bajar a $12 y seguir por encima del doble del mínimo; eso sumaría {{sens_d_11|$}} al año.
 
 ### Pruebas de consistencia
 

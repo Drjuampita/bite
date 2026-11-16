@@ -62,7 +62,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Supuesto clave",
-     "nota": "Estimación del equipo: un platillo y una bebida. La pregunta 10 de la encuesta debe confirmarlo."
+     "nota": "Estimación nuestra: un platillo y una bebida. La pregunta 10 de la encuesta debe confirmarlo."
     },
     {
      "clave": "markup",
@@ -346,7 +346,7 @@
      "unidad": "personas",
      "fmt": "n",
      "tipo": "Dato",
-     "nota": "Los cinco integrantes del equipo, en partes iguales."
+     "nota": "Los cinco integrantes, en partes iguales."
     },
     {
      "clave": "aporte",
@@ -362,7 +362,7 @@
      "unidad": "horas",
      "fmt": "n",
      "tipo": "Supuesto",
-     "nota": "Estimación del equipo: app del alumno, panel del local, vista del repartidor y base de datos probada."
+     "nota": "Estimación nuestra: app del alumno, panel del local, vista del repartidor y base de datos probada."
     },
     {
      "clave": "mvp_tarifa",
@@ -681,7 +681,7 @@
    "concepto": "Terminar el producto: cobro con tarjeta, BITE Pass, avisos y pruebas",
    "monto": 35000,
    "tipo": "Supuesto",
-   "nota": "100 horas de un desarrollador independiente a $350 la hora. Es el presupuesto original del equipo para la app."
+   "nota": "100 horas de un desarrollador independiente a $350 la hora. Es nuestro presupuesto original para la app."
   },
   {
    "concepto": "Asesoría legal: contratos con locales y repartidores, términos y aviso de privacidad",

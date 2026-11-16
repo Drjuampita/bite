@@ -49,7 +49,7 @@ El Pass puede ser ilimitado porque cada pedido de un suscriptor sigue dejando ma
 
 ### 8.1.2 Diseño de producto
 
-**Diseñador.** El producto lo diseñó y programó el equipo BITE. Las figuras siguientes son capturas del producto mínimo viable en funcionamiento, con datos de demostración y la tarifa de envío del plan.
+**Diseñador.** El producto lo diseñamos y programamos nosotros. Las figuras siguientes son capturas del producto mínimo viable en funcionamiento, con datos de demostración y la tarifa de envío del plan.
 
 !fig app_alumno_1 | 16.5 | App del alumno: de la entrada al platillo.
 
@@ -98,7 +98,7 @@ Suscripción de {{sup_passfee|$}} al mes con todos los envíos incluidos. Se cob
 
 ### 8.2.4 Garantía de puntualidad
 
-Si el repartidor llega después de la hora de inicio de la clase, el alumno elige: recibe su pedido con el envío reembolsado, o lo cancela y BITE le reembolsa todo. El modelo supone que {{sup_pct_tarde|%}} de los pedidos llega tarde y que uno de cada 200 no se entrega por causa de BITE. Las dos cosas se cargan como costo: {{u_c_punt_E|$2}} por pedido.
+Si el repartidor llega después de la hora de inicio de la clase, el alumno elige: recibe su pedido con el envío reembolsado, o lo cancela y BITE le reembolsa todo. Suponemos que {{sup_pct_tarde|%}} de los pedidos llega tarde y que uno de cada 200 no se entrega por causa de BITE. Las dos cosas se cargan como costo: {{u_c_punt_E|$2}} por pedido.
 
 ### 8.2.5 Panel para locales
 
@@ -110,11 +110,11 @@ Publicidad de los locales dentro de la app, pedidos para eventos del campus y sa
 
 # 9. Local
 
-BITE no tiene local. Su mostrador es la app y su piso de operación es el campus. Este capítulo responde cada apartado de la guía con lo que sí existe en el negocio.
+BITE no tiene local. Su mostrador es la app y su piso de operación es el campus. En este capítulo respondemos cada apartado de la guía con lo que sí existe en el negocio.
 
 ## 9.1 Proceso de selección de ubicación
 
-La decisión equivalente a elegir un local fue elegir el campus donde empezar.
+Nuestra decisión equivalente a elegir un local fue elegir el campus donde empezar.
 
 !tabla Por qué empezar en la Universidad Anáhuac Querétaro
 !cols 2,5
@@ -123,7 +123,7 @@ La decisión equivalente a elegir un local fue elegir el campus donde empezar.
 | Mercado | {{sup_alumnos|n}} alumnos de licenciatura en un solo campus |
 | Concentración de la comida | El área de comida está en un punto, la planta baja del Edificio Liderazgo: una sola recolección por bloque |
 | Entorno | Campus cerrado, recorridos a pie, sin tráfico ni vehículos |
-| Conocimiento | Los cinco socios estudian ahí: conocen horarios, edificios y locales |
+| Conocimiento | Los cinco estudiamos ahí: conocemos horarios, edificios y locales |
 | Costo de entrada | No se renta nada; la operación ocurre en espacios que ya existen |
 | Condición | Requiere el permiso de la universidad, que es el primer paso del plan |
 
@@ -143,7 +143,7 @@ Universidad Anáhuac Querétaro. Calle Circuito Universidades I, kilómetro 7, F
 
 !fig mapa_operativo | 16 | Esquema de operación en el campus. No está a escala.
 
-El esquema muestra lo que importa para operar: un punto de recolección y cinco destinos. El plano oficial del campus se cita en las referencias. Antes del piloto, el equipo cronometra el recorrido del área de comida a cada edificio para confirmar que una zona se cubre dentro de la ventana de 15 minutos.
+El esquema muestra lo que importa para operar: un punto de recolección y cinco destinos. El plano oficial del campus se cita en las referencias. Antes del piloto cronometraremos el recorrido del área de comida a cada edificio para confirmar que una zona se cubre dentro de la ventana de 15 minutos.
 
 ## 9.5 Render del lugar
 
@@ -195,7 +195,7 @@ BITE no compra mobiliario. Lo más parecido son las cuatro tabletas que se entre
 
 !fig organigrama | 16 | Organigrama de BITE.
 
-La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cada una de las cuatro áreas la encabeza un socio; el quinto es el administrador. Mientras el volumen sea inferior a {{sup_umbral_coord|n}} pedidos al día, los socios se turnan la guardia de operación. Al pasar ese volumen se contrata a un coordinador de medio tiempo.
+La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cada una de las cuatro áreas la encabeza un socio; el quinto es el administrador. Mientras el volumen sea inferior a {{sup_umbral_coord|n}} pedidos al día, nos turnamos la guardia de operación. Al pasar ese volumen contratamos a un coordinador de medio tiempo.
 
 ### 10.1.1 Aportación de los socios a la empresa
 
@@ -210,7 +210,7 @@ La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cad
 | Juan Pablo Palma Redondo | {{aporte_socio|$}} | 20% | ==por asignar== |
 | **Total** | {{capital|$}} | 100% | |
 
-Además del efectivo, los socios aportan el producto ya construido. A precio de mercado, {{sup_mvp_horas|n}} horas de desarrollo a {{sup_mvp_tarifa|$}} la hora valen {{mvp_valor|$}}. No es dinero en caja y no se suma al capital, pero es la razón por la que terminar la app cuesta $35,000 y no varias veces esa cifra.
+Además del efectivo, aportamos el producto que ya construimos. A precio de mercado, {{sup_mvp_horas|n}} horas de desarrollo a {{sup_mvp_tarifa|$}} la hora valen {{mvp_valor|$}}. No es dinero en caja y no se suma al capital, pero es la razón por la que terminar la app cuesta $35,000 y no varias veces esa cifra.
 
 !pendiente Repartir entre los socios las cuatro áreas y el cargo de administrador único, y confirmar las horas reales invertidas en el producto.
 

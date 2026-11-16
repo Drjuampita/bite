@@ -1,6 +1,6 @@
 # 5. Manual de identidad
 
-La marca BITE parte de una imagen que cualquiera entiende: una mordida. El isotipo es un cuadro naranja de esquinas redondeadas con un círculo blanco al que le falta un bocado. El logotipo lo acompaña con la palabra «bite» en minúsculas y trazo grueso. El naranja se eligió porque se asocia con apetito y energía y porque se distingue a distancia en un pasillo lleno. El diseño es del equipo BITE.
+La marca BITE parte de una imagen que cualquiera entiende: una mordida. El isotipo es un cuadro naranja de esquinas redondeadas con un círculo blanco al que le falta un bocado. El logotipo lo acompaña con la palabra «bite» en minúsculas y trazo grueso. Elegimos el naranja porque se asocia con apetito y energía y porque se distingue a distancia en un pasillo lleno. El diseño es nuestro.
 
 ## 5.1 Diseño de hojas membretadas
 
@@ -16,7 +16,7 @@ La página tiene dos funciones: llevar al alumno a hacer su primer pedido y reci
 
 ## 5.3 Dominio web
 
-El dominio elegido es **bitedelivery.mx**. Es corto, dice lo que hace la empresa y la terminación .mx indica que el servicio es local. El registro cuesta $689 al año con IVA en Akky, el registrador mexicano. Con el dominio se crean dos cuentas de correo, contacto@bitedelivery.mx y pagos@bitedelivery.mx, a $140 al mes por usuario en Google Workspace.
+El dominio que elegimos es **bitedelivery.mx**. Es corto, dice lo que hace la empresa y la terminación .mx indica que el servicio es local. El registro cuesta $689 al año con IVA en Akky, el registrador mexicano. Con el dominio se crean dos cuentas de correo, contacto@bitedelivery.mx y pagos@bitedelivery.mx, a $140 al mes por usuario en Google Workspace.
 
 !tabla Cotizaciones del dominio .mx por un año
 !cols 2,2,3

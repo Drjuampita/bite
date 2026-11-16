@@ -24,7 +24,7 @@ GENERALES = [
     ("Precios al alumno (IVA incluido)", [
         ("iva", "IVA", "%", 0.16, "%", "Dato", "Ley del IVA, artículo 1."),
         ("ticket", "Comida por pedido, a precio de mostrador", "$", 120, "$", "Supuesto clave",
-         "Estimación del equipo: un platillo y una bebida. La pregunta 10 de la encuesta debe confirmarlo."),
+         "Estimación nuestra: un platillo y una bebida. La pregunta 10 de la encuesta debe confirmarlo."),
         ("markup", "Sobreprecio en el menú de la app", "$", 10, "$", "Decisión",
          "8.3% sobre el precio de mostrador. Las apps generales cobran una tarifa de servicio de 7% a 9% además del envío (Profeco, octubre de 2026)."),
         ("fee", "Envío al salón", "$", 19, "$", "Decisión",
@@ -86,10 +86,10 @@ GENERALES = [
         ("fx", "Tipo de cambio", "pesos por dólar", 18.5525, "$2", "Dato", "Tipo de cambio FIX del Banco de México del 13 de noviembre de 2026."),
     ]),
     ("Capital", [
-        ("socios", "Socios", "personas", 5, "n", "Dato", "Los cinco integrantes del equipo, en partes iguales."),
+        ("socios", "Socios", "personas", 5, "n", "Dato", "Los cinco integrantes, en partes iguales."),
         ("aporte", "Aportación en efectivo de cada socio", "$", 33000, "$", "Decisión",
          "Se fija para que, aun en el escenario pesimista, la caja conserve un colchón de 10% del capital (véase la hoja «Pruebas»)."),
-        ("mvp_horas", "Horas invertidas en el producto mínimo viable", "horas", 250, "n", "Supuesto", "Estimación del equipo: app del alumno, panel del local, vista del repartidor y base de datos probada."),
+        ("mvp_horas", "Horas invertidas en el producto mínimo viable", "horas", 250, "n", "Supuesto", "Estimación nuestra: app del alumno, panel del local, vista del repartidor y base de datos probada."),
         ("mvp_tarifa", "Valor de mercado de una hora de desarrollo", "$", 350, "$", "Supuesto", "Tarifa de un desarrollador independiente de nivel medio en México."),
     ]),
     ("Franquicia de campus", [
@@ -161,7 +161,7 @@ FIJOS = [
 # (concepto, monto, tipo, fuente)
 ARRANQUE = [
     ("Terminar el producto: cobro con tarjeta, BITE Pass, avisos y pruebas", 35000, "Supuesto",
-     "100 horas de un desarrollador independiente a $350 la hora. Es el presupuesto original del equipo para la app."),
+     "100 horas de un desarrollador independiente a $350 la hora. Es nuestro presupuesto original para la app."),
     ("Asesoría legal: contratos con locales y repartidores, términos y aviso de privacidad", 7500, "Supuesto",
      "Por cotizar con un despacho. La constitución como S.A.S. es gratuita y en línea (Secretaría de Economía)."),
     ("Registro de marca en el IMPI, dos clases", 5628, "Dato",

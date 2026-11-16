@@ -19,7 +19,7 @@ const DATOS = JSON.parse(fs.readFileSync(path.join(AQUI, "datos.json"), "utf8"))
 const AUTO = require("./tablas_auto")(S, DATOS);
 const SALIDA = path.join(RAIZ, "BITE_Proyecto_Integrador.docx");
 const FUENTE = "Arial";
-const COL = { marca: "FF5B14", marca7: "C23A06", tinta: "1C1511", gris: "75695F", linea: "D9D0C7", suave: "FBF8F5", durazno: "FFE4D3", b50: "FFF4ED", amarillo: "FFF2A8" };
+const COL = { marca: "FF5B14", marca7: "C23A06", tinta: "000000", gris: "75695F", linea: "D9D0C7", suave: "FBF8F5", durazno: "FFE4D3", b50: "FFF4ED", amarillo: "FFF2A8" };
 const ANCHO = 9360; // ancho útil en DXA (carta con márgenes de 2.54 cm)
 
 // ── Formato de cifras ─────────────────────────────────────
@@ -134,7 +134,7 @@ function construir(paginas) {
     let m;
     if ((m = /^(#{1,4}) (.+)$/.exec(l))) {
       const nivel = m[1].length, texto = m[2].trim();
-      if (nivel === 4) { cuerpo.push(new Paragraph({ keepNext: true, spacing: { before: 160, after: 60 }, children: [new TextRun({ text: texto, bold: true, size: 22, color: COL.marca7 })] })); continue; }
+      if (nivel === 4) { cuerpo.push(new Paragraph({ keepNext: true, spacing: { before: 160, after: 60 }, children: [new TextRun({ text: texto, bold: true, size: 22, color: COL.tinta })] })); continue; }
       const id = `h${indice.length}`;
       indice.push({ nivel, texto, id });
       cuerpo.push(new Paragraph({
@@ -160,8 +160,8 @@ function construir(paginas) {
     } else if (l.startsWith("!nota ")) {
       cuerpo.push(new Paragraph({
         spacing: { before: 120, after: 200, line: 288 }, indent: { left: 200, right: 100 },
-        border: { left: { style: BorderStyle.SINGLE, size: 24, color: COL.marca, space: 10 } },
-        shading: { type: ShadingType.CLEAR, fill: COL.b50, color: "auto" },
+        border: { left: { style: BorderStyle.SINGLE, size: 18, color: "8A8A8A", space: 10 } },
+        shading: { type: ShadingType.CLEAR, fill: "F2F2F2", color: "auto" },
         children: runs(l.slice(6)),
       }));
     } else if (l.startsWith("!pendiente ")) {
@@ -169,7 +169,7 @@ function construir(paginas) {
         spacing: { before: 120, after: 200, line: 288 }, indent: { left: 200, right: 100 },
         border: { left: { style: BorderStyle.SINGLE, size: 24, color: "C9A400", space: 10 } },
         shading: { type: ShadingType.CLEAR, fill: COL.amarillo, color: "auto" },
-        children: [new TextRun({ text: "Pendiente del equipo. ", bold: true }), ...runs(l.slice(11))],
+        children: [new TextRun({ text: "Pendiente. ", bold: true }), ...runs(l.slice(11))],
       }));
     } else if (l.startsWith("!ref ")) {
       cuerpo.push(new Paragraph({ alignment: AlignmentType.LEFT, spacing: { after: 110, line: 264 }, indent: { left: 500, hanging: 500 }, children: runs(l.slice(5), { size: 20 }) }));
@@ -207,7 +207,7 @@ function construir(paginas) {
     centro("Taller de Empresa", { size: 24, after: 40 }),
     centro("Docente: Néstor Daniel Sánchez García", { size: 22, color: COL.gris, after: 900 }),
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 700 }, children: [new ImageRun({ type: "png", data: logoP.data, transformation: { width: 360, height: (360 * logoP.h) / logoP.w } })] }),
-    centro("Proyecto Integrador Final", { size: 40, bold: true, color: COL.marca7, after: 120 }),
+    centro("Proyecto Integrador Final", { size: 40, bold: true, after: 120 }),
     centro("Plan de negocios de una app de entrega de comida dentro del campus", { size: 24, color: COL.gris, after: 900 }),
     ...["Silvana Rubio Reyes · 00640949", "Natalia Orozco Estrada · 00633241", "Diego Rodríguez Sáenz · 00634144", "Emmanuel Alexander Quintana Tirado · 00640255", "Juan Pablo Palma Redondo · 00645488"].map((t) => centro(t, { size: 23, after: 50 })),
     centro("Agosto – noviembre de 2026", { size: 22, color: COL.gris, after: 0 }),
@@ -215,7 +215,7 @@ function construir(paginas) {
   ];
 
   // ── Índice ──
-  const toc = [new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "Índice", bold: true, size: 36, color: COL.marca7 })] })];
+  const toc = [new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "Índice", bold: true, size: 34 })] })];
   for (const h of indice) {
     if (h.nivel > 2) continue;
     toc.push(new Paragraph({
@@ -235,7 +235,7 @@ function construir(paginas) {
     styles: {
       default: {
         document: { run: { font: FUENTE, size: 22, color: COL.tinta } },
-        heading1: { run: { font: FUENTE, size: 34, bold: true, color: COL.marca7 }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
+        heading1: { run: { font: FUENTE, size: 32, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
         heading2: { run: { font: FUENTE, size: 27, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 320, after: 140 }, keepNext: true } },
         heading3: { run: { font: FUENTE, size: 23, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 240, after: 100 }, keepNext: true } },
       },
@@ -247,7 +247,7 @@ function construir(paginas) {
     sections: [{
       properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1440, bottom: 1300, left: 1440, right: 1440 } }, titlePage: true },
       headers: {
-        default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: COL.linea, space: 4 } }, children: [new TextRun({ text: "BITE", bold: true, size: 17, color: COL.marca }), new TextRun({ text: "  ·  Proyecto Integrador Final", size: 17, color: COL.gris })] })] }),
+        default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: COL.linea, space: 4 } }, children: [new TextRun({ text: "BITE  ·  Proyecto Integrador Final", size: 17, color: COL.gris })] })] }),
         first: new Header({ children: [new Paragraph({ children: [] })] }),
       },
       footers: {

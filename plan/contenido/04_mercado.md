@@ -1,6 +1,6 @@
 # 6. Estudio de mercado
 
-Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que el equipo supone y lo que la encuesta y el piloto tienen que confirmar. Los supuestos de demanda del modelo financiero están marcados como tales en el apartado 11.
+Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que nosotros suponemos y lo que la encuesta y el piloto tienen que confirmar. Los supuestos de demanda del modelo financiero están marcados como tales en el apartado 11.
 
 ## 6.1 Mercado meta
 
@@ -25,7 +25,7 @@ Frente a ese mercado, lo que BITE necesita es poco: los {{E_oday_oct_2|n}} pedid
 
 ## 6.2 Determinación del mercado meta
 
-El mercado se ordenó con tres criterios: qué tan fuerte es el problema, qué tan seguido se repite y qué tan fácil es llegar a ese grupo.
+Ordenamos el mercado con tres criterios: qué tan fuerte es el problema, qué tan seguido se repite y qué tan fácil es llegar a ese grupo.
 
 !tabla Segmentos por orden de prioridad
 !cols 2.2,2.6,2.6,1.2
@@ -55,11 +55,11 @@ El mercado se ordenó con tres criterios: qué tan fuerte es el problema, qué t
 
 !pendiente El levantamiento de las 300 respuestas está por hacerse. Las celdas amarillas se llenan al capturar los resultados en el modelo. Mientras tanto el modelo trabaja con supuestos declarados; no se inventó ninguna respuesta.
 
-**Cómo se leen los resultados.** La intención declarada siempre es mayor que el uso real. Por eso la adopción implícita cuenta solo a {{sup_conv_def|%}} de quienes respondan «definitivamente sí» y a {{sup_conv_prob|%}} de quienes respondan «probablemente sí». La regla de decisión queda escrita antes de ver los datos:
+**Cómo se leen los resultados.** La intención declarada siempre es mayor que el uso real. Por eso la adopción implícita cuenta solo a {{sup_conv_def|%}} de quienes respondan «definitivamente sí» y a {{sup_conv_prob|%}} de quienes respondan «probablemente sí». Dejamos escrita la regla de decisión antes de ver los datos:
 
 - **Adopción implícita de {{sup_adop1_E|%}} o más:** el plan sigue como está.
 - **Entre {{e_be2_adop_E|%1}} y {{sup_adop1_E|%}}:** se lanza con el plan, sin contratar coordinador hasta que el volumen lo pague.
-- **Entre {{e_be_adop_E|%1}} y {{e_be2_adop_E|%1}}:** el negocio solo se sostiene mientras los socios lo operen sin cobrar. Se lanza con menos bloques y la mitad de la publicidad, y se planea con el escenario pesimista.
+- **Entre {{e_be_adop_E|%1}} y {{e_be2_adop_E|%1}}:** el negocio solo se sostiene mientras lo operemos nosotros sin cobrar. Se lanza con menos bloques y la mitad de la publicidad, y se planea con el escenario pesimista.
 - **Menos de {{e_be_adop_E|%1}}:** no se gasta en terminar el producto hasta revisar el precio y la oferta.
 
 **Complementos.** La encuesta dice cuántos; no dice por qué. Se suman dos herramientas baratas: diez entrevistas con la guía del Anexo B, y la medición de filas del Anexo C, que con un cronómetro y tres días da dos datos que hoy solo se conocen por experiencia: cuántos minutos cuesta comprar comida en hora pico y cuántos alumnos dejan la fila sin comprar.
@@ -70,9 +70,9 @@ El mercado se ordenó con tres criterios: qué tan fuerte es el problema, qué t
 !cols 1.2,6
 | Factor | Análisis |
 |---|---|
-| Fortalezas | El producto ya está construido y probado. La entrega se sincroniza con el horario de clases, algo que ninguna app general hace. La demanda de mañana se conoce desde hoy. No hay local, cocina ni inventario de comida. Los socios están dentro del campus todos los días |
+| Fortalezas | El producto ya está construido y probado. La entrega se sincroniza con el horario de clases, algo que ninguna app general hace. La demanda de mañana se conoce desde hoy. No hay local, cocina ni inventario de comida. Estamos dentro del campus todos los días |
 | Oportunidades | La mitad de los universitarios omite comidas. Las apps generales cobran de 25% a 29% a los restaurantes y no llegan al salón. Hay más campus con el mismo problema. En Estados Unidos el pedido por app dentro del campus ya opera en más de 450 universidades |
-| Debilidades | Marca nueva. Depende de cuatro locales y del permiso de una sola universidad. Los socios son estudiantes y dedican tiempo parcial. Un solo campus da ingresos pequeños. La demanda todavía no está medida |
+| Debilidades | Marca nueva. Depende de cuatro locales y del permiso de una sola universidad. Somos estudiantes y dedicamos tiempo parcial. Un solo campus da ingresos pequeños. La demanda todavía no está medida |
 | Amenazas | La universidad puede negar o condicionar el permiso. Los locales pueden organizar sus propios pedidos anticipados. Una app grande puede entrar a los campus. La regulación laboral de plataformas puede encarecer el reparto. Tres meses al año no hay clases ni ingresos |
 
 ### 6.3.1 SWOT de las 4P
@@ -85,7 +85,7 @@ El mercado se ordenó con tres criterios: qué tan fuerte es el problema, qué t
 | Producto | Pedido por hora de clase, entrega en el salón, código de entrega y bolsa sellada | Sumar pedidos de eventos y publicidad de locales en la app | Solo cuatro locales al inicio; el menú depende de ellos | Un pedido tardío o incompleto en las primeras semanas daña la confianza; que no se permita comer en los salones |
 | Precio | Total visible antes de pagar; BITE Pass baja el costo de quien pide con frecuencia | Precio distinto por hora para mover pedidos fuera del pico | Cuesta 24% más que ir al mostrador | Comprar en el local no tiene cargo; una app grande puede subsidiar envíos |
 | Plaza | El campus es cerrado, con recorridos cortos y destinos que se repiten | Puntos fijos en el Polideportivo y la biblioteca | Requiere que el repartidor pueda entrar a todos los edificios | Cambios en las reglas de acceso o de circulación del campus |
-| Promoción | Los socios y los repartidores son alumnos; la recomendación pasa entre compañeros | Primer envío gratis y programa de referidos | Sin acceso garantizado a los canales oficiales de la universidad | Saturación de avisos en el campus |
+| Promoción | Nosotros y los repartidores somos alumnos; la recomendación pasa entre compañeros | Primer envío gratis y programa de referidos | Sin acceso garantizado a los canales oficiales de la universidad | Saturación de avisos en el campus |
 
 ### 6.3.2 SWOT por áreas de la empresa
 
@@ -98,12 +98,12 @@ La guía pide estas cuatro áreas. En el organigrama del apartado 10.1, Ventas y
 |---|---|---|---|---|
 | Administración | Todo cobro pasa por la app y queda registrado | Usar los datos de demanda por hora para negociar con locales | Sin historial ni crédito | Carga fiscal de plataforma: retenciones y facturación semanal |
 | Operaciones | La demanda agendada permite asignar repartidores con un día de anticipación | Medir cada entrega y premiar la puntualidad | Depende de que los repartidores cumplan sus bloques | Lluvia, exámenes y eventos que cambian los horarios |
-| Ventas | Oferta clara para el local: paga solo si vende | Afiliar a los locales por orden de preferencia de la encuesta | Sin fuerza de ventas: los socios hacen la afiliación | Que un local se salga y deje un hueco en el menú |
+| Ventas | Oferta clara para el local: paga solo si vende | Afiliar a los locales por orden de preferencia de la encuesta | Sin fuerza de ventas: la afiliación la hacemos nosotros | Que un local se salga y deje un hueco en el menú |
 | Marketing | Beneficio fácil de mostrar: «llega antes de tu clase» | Contenido hecho por alumnos y embajadores por carrera | Presupuesto de {{fijo_5_mes|$}} al mes | Que la novedad se agote si el servicio falla |
 
 ## 6.4 Análisis de la competencia
 
-El equipo no conoce ninguna otra app de entrega que opere dentro de la universidad. BITE compite contra lo que el alumno hace hoy.
+No conocemos ninguna otra app de entrega que opere dentro de la universidad. BITE compite contra lo que el alumno hace hoy.
 
 !tabla Benchmarking: las alternativas del alumno
 !cols 1.5,1.5,1.8,1.3,1.6
