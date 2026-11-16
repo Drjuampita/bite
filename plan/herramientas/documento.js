@@ -8,7 +8,7 @@ const { execFileSync } = require("child_process");
 const D = require("docx");
 const {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, Table, TableRow, TableCell, WidthType, ShadingType,
-  BorderStyle, ImageRun, PageBreak, Header, Footer, PageNumber, LevelFormat, InternalHyperlink, Bookmark, VerticalAlign,
+  BorderStyle, ImageRun, PageBreak, Header, Footer, PageNumber, LevelFormat, InternalHyperlink, ExternalHyperlink, Bookmark, VerticalAlign,
   TableLayoutType, TabStopType, LeaderType, Tab,
 } = D;
 
@@ -52,8 +52,9 @@ const sustituir = (t) => t.replace(/\{\{([^}]+)\}\}/g, (_, e) => valor(e));
 // ── Texto con formato en línea ────────────────────────────
 function runs(texto, base = {}) {
   const out = [];
-  for (const parte of texto.split(/(\*\*[^*]+\*\*|\*[^*]+\*|==[^=]+==)/)) {
+  for (const parte of texto.split(/(\*\*[^*]+\*\*|\*[^*]+\*|==[^=]+==|https:\/\/[^\s)]*[^\s).,])/)) {
     if (!parte) continue;
+    if (parte.startsWith("https://")) { out.push(new ExternalHyperlink({ link: parte, children: [new TextRun({ ...base, text: parte, color: "0563C1", underline: {} })] })); continue; }
     if (parte.startsWith("**")) out.push(new TextRun({ ...base, text: parte.slice(2, -2) })); // sin negritas dentro del texto
     else if (parte.startsWith("==")) out.push(new TextRun({ ...base, text: parte.slice(2, -2), shading: { type: ShadingType.CLEAR, fill: COL.amarillo, color: "auto" } }));
     else if (parte.startsWith("*")) out.push(new TextRun({ ...base, text: parte.slice(1, -1), italics: true }));
