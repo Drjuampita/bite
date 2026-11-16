@@ -18,10 +18,9 @@ const S = JSON.parse(fs.readFileSync(path.join(AQUI, "salidas.json"), "utf8"));
 const DATOS = JSON.parse(fs.readFileSync(path.join(AQUI, "datos.json"), "utf8"));
 const AUTO = require("./tablas_auto")(S, DATOS);
 const SALIDA = path.join(RAIZ, "BITE_Proyecto_Integrador.docx");
-const FUENTE = "Arial";
-const COL = { marca: "FF5B14", marca7: "C23A06", tinta: "000000", gris: "75695F", linea: "D9D0C7", suave: "FBF8F5", durazno: "FFE4D3", b50: "FFF4ED", amarillo: "FFF2A8" };
-const ANCHO = 9972;
-const ESCALA_FIG = Number(process.env.ESCALA_FIG || 0.5); // ancho útil en DXA (carta con márgenes de 2.54 cm)
+const FUENTE = "Times New Roman";
+const COL = { marca: "E5386D", marca7: "A81D4A", tinta: "000000", gris: "75695F", linea: "D9D0C7", suave: "FFF5F8", durazno: "FFDDE7", b50: "FFF1F5", amarillo: "FFF2A8" };
+const ANCHO = 9360; // ancho útil en DXA (carta con márgenes de 2.54 cm)
 
 // ── Formato de cifras ─────────────────────────────────────
 const num = (v, d = 0) => Number(v).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -62,7 +61,7 @@ function runs(texto, base = {}) {
   }
   return out;
 }
-const P = (texto, o = {}) => new Paragraph({ children: runs(texto, o.run || {}), spacing: { after: 70, line: 245 }, alignment: o.align || AlignmentType.JUSTIFIED, ...o.par });
+const P = (texto, o = {}) => new Paragraph({ children: runs(texto, o.run || {}), spacing: { after: 120, line: 288 }, alignment: o.align || AlignmentType.JUSTIFIED, ...o.par });
 
 // ── Tablas ────────────────────────────────────────────────
 const borde = { style: BorderStyle.SINGLE, size: 4, color: COL.linea };
@@ -73,7 +72,7 @@ function tabla(filas, cols, o = {}) {
   const total = pesos.reduce((a, b) => a + b, 0);
   const anchos = pesos.map((p) => Math.round((p / total) * ANCHO));
   anchos[n - 1] += ANCHO - anchos.reduce((a, b) => a + b, 0);
-  const tam = Math.min(o.size || 16, 16);
+  const tam = o.size || 18;
   const rows = filas.map((fila, i) => new TableRow({
     tableHeader: i === 0, cantSplit: true,
     children: fila.map((celda, j) => {
@@ -82,13 +81,13 @@ function tabla(filas, cols, o = {}) {
       return new TableCell({
         width: { size: anchos[j], type: WidthType.DXA },
         verticalAlign: VerticalAlign.CENTER,
-        margins: { top: 30, bottom: 30, left: 80, right: 80 },
-        shading: i === 0 ? { type: ShadingType.CLEAR, fill: "BDD7EE", color: "auto" } : esTotal ? { type: ShadingType.CLEAR, fill: "DDEBF7", color: "auto" } : undefined,
+        margins: { top: 60, bottom: 60, left: 100, right: 100 },
+        shading: i === 0 ? { type: ShadingType.CLEAR, fill: COL.marca, color: "auto" } : esTotal ? { type: ShadingType.CLEAR, fill: COL.durazno, color: "auto" } : i % 2 === 0 ? { type: ShadingType.CLEAR, fill: COL.suave, color: "auto" } : undefined,
         borders: { top: borde, bottom: borde, left: borde, right: borde },
         children: partes.map((t) => new Paragraph({
           alignment: i === 0 ? (j === 0 ? AlignmentType.LEFT : AlignmentType.CENTER) : (j > 0 && esNumero(t.replace(/\*\*|==/g, "")) ? AlignmentType.RIGHT : AlignmentType.LEFT),
-          spacing: { after: 0, line: 228 },
-          children: runs(t, i === 0 ? { bold: true, size: tam } : { size: tam }),
+          spacing: { after: 0, line: 252 },
+          children: runs(t, i === 0 ? { bold: true, color: "FFFFFF", size: tam } : { size: tam }),
         })),
       });
     }),
@@ -105,7 +104,7 @@ function figura(nombre, cm) {
   const file = path.join(RAIZ, "figuras", nombre + ".png");
   if (!fs.existsSync(file)) throw new Error("Falta la figura " + file);
   const { w, h, data } = pngSize(file);
-  const px = (Math.min(cm, 16.5) * ESCALA_FIG / 2.54) * 96;
+  const px = (cm / 2.54) * 96;
   return new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 120, after: 60 }, children: [new ImageRun({ type: "png", data, transformation: { width: px, height: (px * h) / w } })] });
 }
 
@@ -126,7 +125,7 @@ function construir(paginas) {
   const ponerTabla = (filas) => {
     if (pendTabla) cuerpo.push(tituloTabla(pendTabla));
     cuerpo.push(tabla(filas, cols, { size: tam }));
-    cuerpo.push(new Paragraph({ spacing: { after: 0, line: 160 }, children: [] }));
+    cuerpo.push(new Paragraph({ spacing: { after: 100 }, children: [] }));
     cols = null; pendTabla = null; tam = null;
   };
   for (let i = 0; i < lineas.length; i++) {
@@ -140,7 +139,7 @@ function construir(paginas) {
       indice.push({ nivel, texto, id });
       cuerpo.push(new Paragraph({
         heading: [HeadingLevel.HEADING_1, HeadingLevel.HEADING_2, HeadingLevel.HEADING_3][nivel - 1],
-        pageBreakBefore: false,
+        pageBreakBefore: nivel === 1 && h1++ > 0,
         children: [new Bookmark({ id, children: [new TextRun({ text: texto })] })],
       }));
     } else if (l.startsWith("!cols ")) cols = l.slice(6).split(",").map(Number);
@@ -157,17 +156,17 @@ function construir(paginas) {
     else if (l.startsWith("!fig ")) {
       const [nombre, cm, texto] = l.slice(5).split("|").map((x) => x.trim());
       cuerpo.push(figura(nombre, Number(cm)));
-      cuerpo.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 120 }, children: [new TextRun({ text: `Figura ${++nFig}. `, bold: true, size: 19 }), ...runs(texto, { size: 19 })] }));
+      cuerpo.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 200 }, children: [new TextRun({ text: `Figura ${++nFig}. `, bold: true, size: 19 }), ...runs(texto, { size: 19 })] }));
     } else if (l.startsWith("!nota ")) {
       cuerpo.push(new Paragraph({
-        spacing: { before: 80, after: 120, line: 245 }, indent: { left: 200, right: 100 },
+        spacing: { before: 120, after: 200, line: 288 }, indent: { left: 200, right: 100 },
         border: { left: { style: BorderStyle.SINGLE, size: 18, color: "8A8A8A", space: 10 } },
         shading: { type: ShadingType.CLEAR, fill: "F2F2F2", color: "auto" },
         children: runs(l.slice(6)),
       }));
     } else if (l.startsWith("!pendiente ")) {
       cuerpo.push(new Paragraph({
-        spacing: { before: 80, after: 120, line: 245 }, indent: { left: 200, right: 100 },
+        spacing: { before: 120, after: 200, line: 288 }, indent: { left: 200, right: 100 },
         border: { left: { style: BorderStyle.SINGLE, size: 24, color: "C9A400", space: 10 } },
         shading: { type: ShadingType.CLEAR, fill: COL.amarillo, color: "auto" },
         children: [new TextRun({ text: "Pendiente. ", bold: true }), ...runs(l.slice(11))],
@@ -186,14 +185,14 @@ function construir(paginas) {
       ponerTabla(filas);
     } else if (/^- /.test(l)) {
       while (i < lineas.length && /^- /.test(lineas[i])) {
-        cuerpo.push(new Paragraph({ numbering: { reference: "vinetas", level: 0 }, spacing: { after: 30, line: 245 }, children: runs(lineas[i].slice(2)) }));
+        cuerpo.push(new Paragraph({ numbering: { reference: "vinetas", level: 0 }, spacing: { after: 70, line: 288 }, children: runs(lineas[i].slice(2)) }));
         i++;
       }
       i--;
     } else if (/^\d+\. /.test(l)) {
       nLista++;
       while (i < lineas.length && /^\d+\. /.test(lineas[i])) {
-        cuerpo.push(new Paragraph({ numbering: { reference: "numeros", level: 0, instance: nLista }, spacing: { after: 30, line: 245 }, children: runs(lineas[i].replace(/^\d+\. /, "")) }));
+        cuerpo.push(new Paragraph({ numbering: { reference: "numeros", level: 0, instance: nLista }, spacing: { after: 70, line: 288 }, children: runs(lineas[i].replace(/^\d+\. /, "")) }));
         i++;
       }
       i--;
@@ -218,7 +217,7 @@ function construir(paginas) {
   // ── Índice ──
   const toc = [new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "Índice", bold: true, size: 34 })] })];
   for (const h of indice) {
-    if (h.nivel > 1) continue;
+    if (h.nivel > 2) continue;
     toc.push(new Paragraph({
       spacing: { after: h.nivel === 1 ? 70 : 30, before: h.nivel === 1 ? 110 : 0 }, indent: { left: h.nivel === 1 ? 0 : 300 },
       tabStops: [{ type: TabStopType.RIGHT, position: ANCHO, leader: LeaderType.DOT }],
@@ -235,10 +234,10 @@ function construir(paginas) {
     creator: "Equipo BITE", title: "BITE · Proyecto Integrador Final", description: "Taller de Empresa, Universidad Anáhuac Querétaro",
     styles: {
       default: {
-        document: { run: { font: FUENTE, size: 20, color: COL.tinta } },
-        heading1: { run: { font: FUENTE, size: 28, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 320, after: 140 }, keepNext: true } },
-        heading2: { run: { font: FUENTE, size: 24, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 200, after: 90 }, keepNext: true } },
-        heading3: { run: { font: FUENTE, size: 22, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 160, after: 70 }, keepNext: true } },
+        document: { run: { font: FUENTE, size: 22, color: COL.tinta } },
+        heading1: { run: { font: FUENTE, size: 32, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
+        heading2: { run: { font: FUENTE, size: 27, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 320, after: 140 }, keepNext: true } },
+        heading3: { run: { font: FUENTE, size: 23, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 240, after: 100 }, keepNext: true } },
       },
     },
     numbering: { config: [
@@ -246,9 +245,9 @@ function construir(paginas) {
       { reference: "numeros", levels: [{ level: 0, format: LevelFormat.DECIMAL, text: "%1.", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 500, hanging: 320 } } } }] },
     ] },
     sections: [{
-      properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1150, bottom: 1050, left: 1134, right: 1134 } }, titlePage: true },
+      properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1440, bottom: 1300, left: 1440, right: 1440 } }, titlePage: true },
       headers: {
-        default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ size: 18, children: [PageNumber.CURRENT] })] })] }),
+        default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ size: 20, children: [PageNumber.CURRENT] })] })] }),
         first: new Header({ children: [new Paragraph({ children: [] })] }),
       },
       children: [...portada, ...toc, ...cuerpo],

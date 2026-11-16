@@ -18,7 +18,7 @@ Nos recomendamos este orden: cada paso es barato y decide si damos el siguiente.
 |---|---|---|---|
 | 1 | Presentar el proyecto a la universidad y pedir por escrito su autorización para el piloto y sus reglas: accesos, alimentos en salones y uso del correo institucional | Noviembre de 2026 | Si hay negocio en este campus y con qué oferta |
 | 2 | Levantar la encuesta de 300 respuestas y capturarla en el modelo | Noviembre de 2026 | Si la adopción respalda el plan, con la regla del apartado 6.2.1 |
-| 3 | Medir filas y recorridos tres días con el protocolo del Anexo B | Noviembre de 2026 | El argumento de venta, con minutos reales, y cuántos pedidos puede entregar un repartidor por bloque |
+| 3 | Medir filas y recorridos tres días con el protocolo del Anexo C | Noviembre de 2026 | El argumento de venta, con minutos reales, y cuántos pedidos puede entregar un repartidor por bloque |
 | 4 | Firmar convenio con los cuatro locales; cargar menús y precios reales | Diciembre de 2026 | La comisión del escenario y el ticket promedio |
 | 5 | Constituir la S.A.S., abrir cuenta y contratar la pasarela de pago | Diciembre de 2026 | Nada: es requisito para cobrar |
 | 6 | Terminar el producto: cobro, Pass y avisos | Diciembre de 2026 | Solo se ejerce si los pasos 1 y 2 salieron bien |
@@ -53,11 +53,29 @@ Recomendaciones de fondo:
 | La universidad pide una contraprestación | Media | Medio | Medida en la sensibilidad: una cuota de 3% de la venta reduce la utilidad anual en {{= -S.sens_d_17 |$}} |
 | Los locales no aceptan 20% de comisión | Media | Alto | El escenario pesimista ya supone 15%. Se ofrece el primer mes sin comisión a cambio de un semestre de convenio |
 | La adopción se queda por debajo de {{e_be_adop_E|%1}} | Media | Alto | Encuesta antes de gastar; piloto antes de abrir; punto de decisión en abril |
+| Faltan repartidores en horas pico | Media | Medio | Padrón de ocho para cubrir cuatro a la vez; garantía de pago por bloque; reclutamiento cada semestre |
 | Entregas tardías en las primeras semanas | Alta | Medio | Empezar con tres bloques; cupo por local; garantía de puntualidad que reembolsa el envío |
+| Falla de la app en hora pico | Baja | Alto | Plan de contingencia del apartado 7.1.6; monitoreo; cobro de prueba cada mañana |
 | Un alumno se enferma y culpa al pedido | Baja | Alto | La comida la prepara el local con sus permisos; bolsa sellada; seguro de responsabilidad civil; bitácora de cada entrega |
+| El IMSS exige seguridad social completa para todos los repartidores | Media | Medio | Medido en la sensibilidad: reduce la utilidad anual en {{= -S.sens_d_13 |$}} |
+| Un local organiza sus propios pedidos anticipados | Media | Medio | BITE ofrece lo que un local solo no puede: reparto a todos los edificios y un solo lugar para pedir a todos |
+| Tres meses al año sin ingresos | Segura | Medio | Ya está en el modelo: la publicidad y el coordinador solo se pagan en meses con clases y la reserva cubre los fijos |
 | Nos graduamos y el equipo se dispersa | Alta | Alto | Coordinador de operación desde el año 1; convenio entre accionistas; manual de operación |
 
-## Anexo B. Protocolo para medir filas
+## Anexo B. Guía de entrevista
+
+Diez entrevistas de 15 minutos a alumnos con clases seguidas. Las respuestas se agrupan por tema.
+
+1. Cuéntame cómo es un día tuyo con clases seguidas. ¿En qué momento comes?
+2. Acuérdate de la última vez que compraste comida en el campus con prisa. ¿Qué pasó?
+3. ¿Qué haces cuando no alcanzas a comer?
+4. ¿Has pedido por una app de reparto estando en el campus? ¿Cómo te fue?
+5. Si la comida llegara a tu salón antes de tu clase, ¿qué tendría que pasar para que confiaras en que llega a tiempo?
+6. ¿Cuánto sería caro y cuánto sería barato por ese servicio? ¿Por qué?
+7. ¿Qué te haría dejar de usarlo después de la primera vez?
+8. ¿A quién le contarías y cómo se lo explicarías?
+
+## Anexo C. Protocolo para medir filas
 
 **Objetivo.** Saber cuántos minutos cuesta comprar comida en hora pico, del salón al salón.
 
@@ -68,10 +86,30 @@ Recomendaciones de fondo:
 - **Registro:** hoja con local, día, hora, personas en la fila, minutos de espera y minutos de recorrido.
 - **Resultado:** minutos promedio y máximo por local y por hora, y personas que dejan la fila. El primer número va al mensaje de lanzamiento y al cálculo de las zonas; el segundo es el argumento para el local: ventas que hoy pierde.
 
+## Anexo D. Supuestos del modelo financiero
+
+!tabla Supuestos generales, con su tipo y su fuente
+!auto supuestos
+
+!tabla Supuestos que cambian entre escenarios
+!auto supuestos_esc
+
+## Anexo E. Puntos principales del convenio con los locales
+
+1. **Objeto.** El local vende sus productos por medio de BITE; BITE cobra, entrega y le paga.
+2. **Comisión.** {{sup_com_E|%}} sobre el precio al público de lo vendido, más IVA, descontada del pago semanal. El IVA de la comisión es acreditable para el local.
+3. **Precios.** El local fija su precio de mostrador. El precio en la app incluye la tarifa de servicio de BITE.
+4. **Cupo y horario.** El local define cuántos pedidos acepta por hora y puede cambiarlo con un día de aviso.
+5. **Preparación.** El pedido sale completo, sellado y etiquetado 15 minutos antes de la ventana de entrega.
+6. **Pago.** Cada lunes, por transferencia, con estado de cuenta de la semana anterior. El dinero de los locales se guarda en una cuenta separada de la de operación de BITE.
+7. **Incidencias.** Un pedido incompleto o mal preparado se repone o se descuenta al local; uno entregado tarde por el repartidor lo absorbe BITE.
+8. **Equipo y espacio.** La tableta se entrega en comodato y se devuelve al terminar el convenio. El local aparta un tramo de barra para las bolsas listas; uno de los locales presta además el espacio para el gabinete de las mochilas.
+9. **Vigencia.** Un semestre, renovable. Sin exclusividad para ninguna de las partes.
+10. **Datos.** El local recibe sus ventas y horarios pico; los datos personales de los alumnos los resguarda BITE.
+
 # 17. Referencias bibliográficas
 
 !ref Asociación Mexicana de Venta Online. (2026). *Estudio de venta online 2026* [versión para prensa]. https://images.produ.com/wp-content/uploads/2026/03/12132700/AMVO_Estudio-de-Venta-Online-2026-Prensa-1_compressed.pdf
-!ref Canham-Clyne, A. (2026, 15 de septiembre). DoorDash buys Grubhub campus unit for $300M. *Restaurant Dive*. https://www.restaurantdive.com/news/doordash-wonder-grubhub-college-campus-division-acquisition/830396/
 !ref CETYS Universidad. (2019, 3 de octubre). *Estudiante de CETYS crea App para pedir comida y reducir tiempo de espera*. https://www.cetys.mx/noticias/estudiante-de-cetys-crea-app-para-pedir-comida-y-reducir-tiempo-de-espera/
 !ref Instituto Nacional de Estadística y Geografía. (2026). *Encuesta Nacional sobre Disponibilidad y Uso de Tecnologías de la Información en los Hogares 2025* [comunicado de prensa]. https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/endutih/ENDUTIH_25_RR.pdf
 !ref Ley Federal del Trabajo. (2026). Cámara de Diputados. https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf

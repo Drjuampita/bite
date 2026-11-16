@@ -41,18 +41,33 @@ Tres aclaraciones sobre el costeo:
 - **El repartidor es el costo mayor.** Se le paga por pedido; así BITE asume el riesgo de un día de pocos pedidos solo hasta la garantía de {{sup_garantia|$}} por bloque.
 - **La comisión se calcula sobre el precio al público.** El {{sup_com_E|%}} se aplica a los {{sup_ticket|$}} que paga el alumno por la comida, IVA incluido, y se factura al local más IVA. Equivale a {{= S.sup_com_E*1.16 |%1}} de su venta antes de IVA.
 
+!tabla BITE Pass: lo que deja un suscriptor
+!auto pass
+!fuente Fuente: hoja «Unitario» del modelo financiero.
+
 El Pass puede ser ilimitado porque cada pedido de un suscriptor sigue dejando margen por la comisión y el sobreprecio. En el peor escenario ese margen es de {{u_p_margen_P|$2}} por pedido: pequeño, pero positivo. Para el alumno, BITE Pass conviene desde el sexto pedido del mes: seis envíos sueltos cuestan {{= 6*S.sup_fee |$}}, y con ocho pedidos ahorra {{= 8*S.sup_fee-S.sup_passfee |$}}.
 
 ### 8.1.2 Diseño de producto
 
 **Diseñador.** El producto lo diseñamos y programamos nosotros. Las figuras siguientes son capturas del producto mínimo viable en funcionamiento, con datos de demostración y la tarifa de envío del plan.
 
+!fig app_alumno_1 | 16.5 | App del alumno: de la entrada al platillo.
+
 !fig app_alumno_2 | 16.5 | App del alumno: del carrito al seguimiento.
 
 !fig app_operacion | 16.5 | Las otras dos caras del producto: el local y el repartidor.
 
-**Planos.** El plano de un producto digital es su arquitectura: una app web instalable (Next.js), una base de datos con las reglas del negocio (Supabase) y un hospedaje (Vercel). Falta conectar la pasarela de pago.
+**Planos.** El plano de un producto digital es su arquitectura.
 
+!tabla Arquitectura de la app
+!cols 1.6,2.6,2.8
+| Capa | Tecnología | Qué resuelve |
+|---|---|---|
+| Aplicación | Next.js, React y Tailwind, como app web instalable | Una sola base de código para alumno, local y repartidor |
+| Base de datos y reglas | Supabase: Postgres, autenticación y tiempo real | Las reglas viven en el servidor: precios, cupo, horarios y permisos por rol |
+| Tareas programadas | Tarea cada minuto en la base de datos | Pasa a cocina los pedidos agendados 60 minutos antes de la clase |
+| Hospedaje | Vercel | Publicación y certificados |
+| Cobro | Pasarela de pago con tarjeta | Por conectar antes del lanzamiento |
 
 !tabla Estado del producto al cierre de noviembre de 2026
 !cols 3.5,3.5
@@ -99,8 +114,18 @@ BITE no tiene local. Su mostrador es la app y su piso de operación es el campus
 
 ## 9.1 Proceso de selección de ubicación
 
-Nuestra decisión equivalente a elegir un local fue elegir el campus donde empezar. Elegimos el nuestro por cinco razones: tiene {{sup_alumnos|n}} alumnos de licenciatura; la comida está concentrada en un punto; es un campus cerrado, que se recorre a pie; lo conocemos porque estudiamos ahí, y no hay que rentar nada. La condición es el permiso de la universidad.
+Nuestra decisión equivalente a elegir un local fue elegir el campus donde empezar.
 
+!tabla Por qué empezar en la Universidad Anáhuac Querétaro
+!cols 2,5
+| Criterio | Evaluación |
+|---|---|
+| Mercado | {{sup_alumnos|n}} alumnos de licenciatura en un solo campus |
+| Concentración de la comida | El área de comida está en un punto, la planta baja del Edificio Liderazgo: una sola recolección por bloque |
+| Entorno | Campus cerrado, recorridos a pie, sin tráfico ni vehículos |
+| Conocimiento | Los cinco estudiamos ahí: conocemos horarios, edificios y locales |
+| Costo de entrada | No se renta nada; la operación ocurre en espacios que ya existen |
+| Condición | Requiere el permiso de la universidad, que es el primer paso del plan |
 
 ## 9.2 Características de la localización
 
@@ -132,8 +157,17 @@ BITE no tiene un local que distribuir. Lo único físico es el punto de recolecc
 
 ### 9.5.2 Plano de área operativa
 
-El área operativa son las cuatro zonas del esquema anterior: edificios A y B; edificio C; IDEA, y Business & Innovation Hub, más un punto fijo en el Polideportivo.
+El área operativa son las cuatro zonas del esquema anterior.
 
+!tabla Zonas de entrega
+!cols 1.2,2.6,3.2
+| Zona | Cubre | Cómo se entrega |
+|---|---|---|
+| Zona 1 | Edificios A y B | Puerta del salón; un repartidor cubre ambos edificios |
+| Zona 2 | Edificio C | Puerta del salón; se recorre de arriba abajo |
+| Zona 3 | Edificio IDEA | Puerta del salón |
+| Zona 4 | Business & Innovation Hub | Puerta del salón; por sus seis pisos es la zona que primero recibe un segundo repartidor |
+| Punto fijo | Polideportivo | Entrega en recepción a la hora elegida |
 
 En las horas de poca demanda un repartidor cubre dos zonas. En el bloque pico cada zona tiene el suyo.
 
@@ -143,12 +177,17 @@ Cero pesos. No hay obra ni adecuaciones: la operación usa instalaciones que ya 
 
 ## 9.7 Presupuesto de mobiliario
 
-BITE no compra mobiliario. Lo más parecido son las cuatro tabletas que se entregan en comodato a los locales, por $7,196, incluidas en el presupuesto de equipo.
+BITE no compra mobiliario. Lo más parecido son las cuatro tabletas que se entregan en comodato a los locales, por $7,196, incluidas en el presupuesto de equipo del apartado 7.1.2.1.3.
 
 ## 9.8 Presupuesto de seguro
 
-Un seguro de responsabilidad civil de $6,000 al año, que cubre daños a terceros durante la operación, y el aseguramiento de riesgos de trabajo de los repartidores ante el IMSS, que cuesta {{sup_pct_ss|%}} de su pago. No hay inmueble que asegurar.
-
+!tabla Seguros
+!cols 2.4,1.4,3.2
+| Cobertura | Costo | Qué cubre |
+|---|---|---|
+| Responsabilidad civil | $6,000 al año | Daños a terceros durante la operación. Las primas para una pyme con cobertura básica van de $4,000 a $7,000 al año |
+| Riesgos de trabajo de repartidores | {{sup_pct_ss|%}} de su pago | Aseguramiento ante el IMSS que la ley exige a toda plataforma |
+| Inmueble y contenidos | No aplica | No hay local |
 
 # 10. Recursos humanos
 
@@ -190,13 +229,22 @@ Además del efectivo, aportamos el producto que ya construimos. A precio de merc
 
 ## 10.3 Proceso de reclutamiento
 
-!fig flujo_reclutamiento | 12.5 | Reclutamiento de repartidores.
+!fig flujo_reclutamiento | 15.5 | Reclutamiento de repartidores.
 
 Se recluta al inicio de cada semestre, cuando los alumnos ya conocen su horario. El padrón es de {{sup_padron|n}} repartidores para tener siempre cubierto el bloque pico. La ley prohíbe contratar a menores de edad en plataformas, así que el primer filtro es la edad.
 
 ## 10.4 Capacitación de empleados
 
-El repartidor recibe tres horas antes de su primer bloque (uso de la app, higiene y traslado de alimentos, trato y emergencias) y hace dos bloques acompañado. El personal de cada local recibe 45 minutos sobre su panel, y el coordinador, cuatro horas sobre corte, conciliación e incidencias.
+!tabla Programa de capacitación
+!cols 2.6,1,1.6,1.8
+| Tema | Duración | Para quién | Cuándo |
+|---|---|---|---|
+| Uso de la app: tomar pedidos, estados y código de entrega | 1 hora | Repartidores | Antes del primer bloque |
+| Higiene y manejo de alimentos en traslado; limpieza de la mochila | 1 hora | Repartidores | Antes del primer bloque |
+| Trato al alumno, incidencias y emergencias en el campus | 1 hora | Repartidores | Antes del primer bloque |
+| Recorrido acompañado con un repartidor | 2 bloques | Repartidores | Primera semana |
+| Panel del local: pedidos, productos agotados y cierre | 45 minutos | Personal de cada local | Al afiliar el local |
+| Corte diario, conciliación y atención de incidencias | 4 horas | Coordinador | Al contratarlo |
 
 La capacitación se registra con fecha y firma. Es evidencia para la norma de riesgos psicosociales (NOM-035, apartado 12.3) y para la universidad.
 
