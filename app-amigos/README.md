@@ -24,7 +24,7 @@ Luego abre http://localhost:8000. En la computadora se ve con tamaño de celular
 |---|---|
 | `#/login` | Inicio de sesión con correo institucional (o "Entrar con cuenta de prueba") |
 | `#/inicio` | Buscador, categorías, pedido en curso y lista de locales |
-| `#/local/:id` | Menú del local, con botón Agregar y contador |
+| `#/local/:id` | Menú del local por secciones, con botón + y contador |
 | `#/carrito` | Productos, instrucciones para el local y total |
 | `#/checkout` | Cuándo (lo antes posible o programado), salón y forma de pago |
 | `#/pedido/:id` | Seguimiento: Recibido, Preparando, En camino, Entregado; calificación y "pedir otra vez" |
@@ -32,7 +32,11 @@ Luego abre http://localhost:8000. En la computadora se ve con tamaño de celular
 | `#/perfil` | Salón habitual, modo demo y reinicio de datos |
 | `#/panel` | Panel del local (para computadora): tabla de pedidos y botones para avanzarlos |
 
-Los mockups de todas las pantallas están en `mockups/` (`00-tablero-completo.png` las junta todas).
+Los mockups de la app (12 pantallas en marco de celular) están en `mockups/`. `00-todas-las-pantallas.png` las junta todas.
+
+## Locales y menús
+
+Sinforosa, Luka Poke, Starbucks y Tim Hortons. Los menús y precios son **aproximados** (armados con información pública y precios de referencia de 2025-2026) y se ajustan en `js/data.js`. No se usan logotipos de las marcas: cada local tiene un color y un ícono.
 
 ## Cómo presentar la demo
 
@@ -51,7 +55,8 @@ Los datos se guardan en el navegador (localStorage). No hay servidor ni pagos re
 | Locales, menús y precios | `LOCALES` y `PRODUCTOS` en `js/data.js` |
 | Edificios y horas de entrega | `EDIFICIOS` y `HORAS_ENTREGA` en `js/data.js` |
 | Colores de marca | Variables `--naranja` y `--marino` al inicio de `css/styles.css` |
-| Ícono | `img/icono.svg` |
+| Ícono de la app | `img/icono.svg` |
+| Íconos de la interfaz | `js/iconos.js` |
 
 ## Publicarla (cuando quieran)
 
@@ -59,4 +64,5 @@ Es un sitio estático: en Vercel se importa la carpeta tal cual, sin comando de 
 
 ## Créditos
 
-Tipografía Poppins (SIL Open Font License), incluida en `fonts/`.
+- Tipografía Inter (SIL Open Font License), incluida en `fonts/`.
+- Íconos de [Lucide](https://lucide.dev) (licencia ISC), en `js/iconos.js`.
