@@ -54,7 +54,7 @@ function runs(texto, base = {}) {
   const out = [];
   for (const parte of texto.split(/(\*\*[^*]+\*\*|\*[^*]+\*|==[^=]+==)/)) {
     if (!parte) continue;
-    if (parte.startsWith("**")) out.push(new TextRun({ ...base, text: parte.slice(2, -2), bold: true }));
+    if (parte.startsWith("**")) out.push(new TextRun({ ...base, text: parte.slice(2, -2) })); // sin negritas dentro del texto
     else if (parte.startsWith("==")) out.push(new TextRun({ ...base, text: parte.slice(2, -2), shading: { type: ShadingType.CLEAR, fill: COL.amarillo, color: "auto" } }));
     else if (parte.startsWith("*")) out.push(new TextRun({ ...base, text: parte.slice(1, -1), italics: true }));
     else out.push(new TextRun({ ...base, text: parte }));
@@ -121,7 +121,7 @@ function construir(paginas) {
   let nTabla = 0, nFig = 0, nLista = 0, h1 = 0;
   let cols = null, pendTabla = null, tam = null;
   const pie = (t) => new Paragraph({ alignment: AlignmentType.LEFT, spacing: { after: 160 }, children: runs(t, { size: 17, color: COL.gris }) });
-  const tituloTabla = (t) => new Paragraph({ keepNext: true, spacing: { before: 160, after: 80 }, children: [new TextRun({ text: `Tabla ${++nTabla}. `, bold: true, size: 19 }), ...runs(t, { size: 19 })] });
+  const tituloTabla = (t) => new Paragraph({ keepNext: true, spacing: { before: 160, after: 80 }, children: [new TextRun({ text: `Tabla ${++nTabla}. `, bold: true, size: 22 }), ...runs(t, { size: 22 })] });
   const ponerTabla = (filas) => {
     if (pendTabla) cuerpo.push(tituloTabla(pendTabla));
     cuerpo.push(tabla(filas, cols, { size: tam }));
@@ -156,7 +156,7 @@ function construir(paginas) {
     else if (l.startsWith("!fig ")) {
       const [nombre, cm, texto] = l.slice(5).split("|").map((x) => x.trim());
       cuerpo.push(figura(nombre, Number(cm)));
-      cuerpo.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 200 }, children: [new TextRun({ text: `Figura ${++nFig}. `, bold: true, size: 19 }), ...runs(texto, { size: 19 })] }));
+      cuerpo.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 200 }, children: [new TextRun({ text: `Figura ${++nFig}. `, bold: true, size: 22 }), ...runs(texto, { size: 22 })] }));
     } else if (l.startsWith("!nota ")) {
       cuerpo.push(new Paragraph({
         spacing: { before: 120, after: 200, line: 259 }, indent: { left: 200, right: 100 },
@@ -172,7 +172,7 @@ function construir(paginas) {
         children: [new TextRun({ text: "Pendiente. ", bold: true }), ...runs(l.slice(11))],
       }));
     } else if (l.startsWith("!ref ")) {
-      cuerpo.push(new Paragraph({ alignment: AlignmentType.LEFT, spacing: { after: 110, line: 264 }, indent: { left: 500, hanging: 500 }, children: runs(l.slice(5), { size: 20 }) }));
+      cuerpo.push(new Paragraph({ alignment: AlignmentType.LEFT, spacing: { after: 110, line: 264 }, indent: { left: 500, hanging: 500 }, children: runs(l.slice(5), { size: 22 }) }));
     } else if (l.trim() === "!salto") cuerpo.push(new Paragraph({ children: [new PageBreak()] }));
     else if (l.startsWith("|")) {
       const filas = [];
@@ -222,8 +222,8 @@ function construir(paginas) {
       spacing: { after: h.nivel === 1 ? 70 : 30, before: h.nivel === 1 ? 110 : 0 }, indent: { left: h.nivel === 1 ? 0 : 300 },
       tabStops: [{ type: TabStopType.RIGHT, position: ANCHO, leader: LeaderType.DOT }],
       children: [new InternalHyperlink({ anchor: h.id, children: [
-        new TextRun({ text: h.texto, bold: h.nivel === 1, size: h.nivel === 1 ? 21 : 19 }),
-        new TextRun({ size: 19, children: [new Tab(), String(paginas[h.id] || "")] }),
+        new TextRun({ text: h.texto, bold: h.nivel === 1, size: 22 }),
+        new TextRun({ size: 22, children: [new Tab(), String(paginas[h.id] || "")] }),
       ] })],
     }));
   }
@@ -235,9 +235,9 @@ function construir(paginas) {
     styles: {
       default: {
         document: { run: { font: FUENTE, size: 22, color: COL.tinta } },
-        heading1: { run: { font: FUENTE, size: 32, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
-        heading2: { run: { font: FUENTE, size: 27, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 320, after: 140 }, keepNext: true } },
-        heading3: { run: { font: FUENTE, size: 23, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 240, after: 100 }, keepNext: true } },
+        heading1: { run: { font: FUENTE, size: 28, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
+        heading2: { run: { font: FUENTE, size: 22, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 320, after: 140 }, keepNext: true } },
+        heading3: { run: { font: FUENTE, size: 22, bold: true, color: COL.tinta }, paragraph: { spacing: { before: 240, after: 100 }, keepNext: true } },
       },
     },
     numbering: { config: [
@@ -247,7 +247,7 @@ function construir(paginas) {
     sections: [{
       properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1250, bottom: 1150, left: 1300, right: 1300 } }, titlePage: true },
       headers: {
-        default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ size: 20, children: [PageNumber.CURRENT] })] })] }),
+        default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ size: 22, children: [PageNumber.CURRENT] })] })] }),
         first: new Header({ children: [new Paragraph({ children: [] })] }),
       },
       children: [...portada, ...toc, ...cuerpo],
