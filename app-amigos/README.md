@@ -1,9 +1,11 @@
-# App de comida del campus (naranja + azul marino)
+# Leverance Walk
 
 App web para pedir comida a los locales del campus y recibirla en tu salón.
 HTML, CSS y JavaScript sin dependencias: no hay que instalar nada.
 
-> "Recreo" es un nombre provisional. Se cambia en una línea (ver abajo).
+> En la app todavía aparece "Recreo", que es un nombre provisional. Se cambia en una línea (ver abajo).
+>
+> Todo el contexto del proyecto (diseño, reglas, menús, decisiones y pendientes) está en [CONTEXTO.md](CONTEXTO.md).
 
 ## Cómo abrirla
 
@@ -12,7 +14,6 @@ Opción rápida: doble clic en `index.html`.
 Opción recomendada (servidor local):
 
 ```bash
-cd app-amigos
 python3 -m http.server 8000
 ```
 
@@ -32,7 +33,7 @@ Luego abre http://localhost:8000. En la computadora se ve con tamaño de celular
 | `#/perfil` | Salón habitual, modo demo y reinicio de datos |
 | `#/panel` | Panel del local (para computadora): tabla de pedidos y botones para avanzarlos |
 
-Los mockups de la app (12 pantallas en marco de celular) están en `mockups/`. `00-todas-las-pantallas.png` las junta todas.
+Los mockups de la app (12 pantallas en marco de celular) están en `mockups/`. `00-todas-las-pantallas.png` las junta todas. Para volver a generarlos: `node herramientas/mockups.js` (ver CONTEXTO.md, sección 9).
 
 ## Locales y menús
 
