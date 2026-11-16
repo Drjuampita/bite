@@ -6,7 +6,7 @@ La marca BITE parte de una imagen que cualquiera entiende: una mordida. El isoti
 
 !fig id_membrete | 16 | Hoja membretada: datos de contacto, RFC y especificaciones.
 
-La hoja membretada se usa en convenios con locales, cartas a la universidad y estados de cuenta. Lleva el logotipo y los datos fiscales arriba, y el domicilio, correo, teléfono y sitio en la franja inferior. El millar impreso a color cuesta $792 más IVA (360imprimir, 15 de noviembre de 2026).
+La hoja membretada se usa en convenios con locales, cartas a la universidad y estados de cuenta. Lleva el logotipo y los datos fiscales arriba, y el domicilio, correo, teléfono y sitio en la franja inferior. El millar impreso a color cuesta $792 más IVA (360imprimir, noviembre de 2026).
 
 ## 5.2 Página web (landing page)
 
@@ -18,14 +18,6 @@ La página tiene dos funciones: llevar al alumno a hacer su primer pedido y reci
 
 El dominio que elegimos es **bitedelivery.mx**. Es corto, dice lo que hace la empresa y la terminación .mx indica que el servicio es local. El registro cuesta $689 al año con IVA en Akky, el registrador mexicano. Con el dominio se crean dos cuentas de correo, contacto@bitedelivery.mx y pagos@bitedelivery.mx, a $140 al mes por usuario en Google Workspace.
 
-!tabla Cotizaciones del dominio .mx por un año
-!cols 2,2,3
-| Registrador | Precio | Observación |
-|---|---|---|
-| Akky | $689, IVA incluido | Registrador mexicano; opción elegida |
-| HostGator México | $950; renovación $1,150 | Más caro al renovar |
-| Hostinger | $99.99 el primer año; renovación $816.99 | Barato solo el primer año |
-!fuente Fuente: sitios de cada registrador, consultados el 15 de noviembre de 2026.
 
 ## 5.4 Logotipo
 
@@ -47,19 +39,15 @@ El eslogan dice las dos cosas que hacen distinto al servicio: que es comida y qu
 
 !fig id_usos | 16.5 | Usos correctos e incorrectos del logotipo.
 
-!fig id_aplicaciones | 16.5 | La marca aplicada: ícono, sello de seguridad, etiqueta de pedido y cartel.
-
 El sello y la etiqueta son parte del servicio, no adornos. El sello cierra la bolsa en el local y le dice al alumno que nadie la abrió en el camino. La etiqueta lleva en grande el salón y la hora de la clase, que es lo que el repartidor necesita leer mientras camina.
 
 ## 5.7 Tarjeta de presentación
 
 !fig id_tarjeta | 16.5 | Tarjeta de presentación: distribución, materiales, colores y medidas.
 
-Se imprime un millar por socio conforme se necesite. El millar cuesta $201 más IVA (360imprimir, 15 de noviembre de 2026).
+Se imprime un millar por socio conforme se necesite. El millar cuesta $201 más IVA (360imprimir, noviembre de 2026).
 
 ## 5.8 Tipografía
-
-!fig id_tipografia | 16.5 | Plus Jakarta Sans y sus usos.
 
 La tipografía de la marca es **Plus Jakarta Sans**, una letra sin remates, de formas redondas y muy legible en pantallas pequeñas. Es de código abierto, con licencia SIL Open Font, así que se usa en la app, la página y los impresos sin pagar licencia. En documentos de oficina, cuando no esté instalada, se sustituye por Arial.
 
@@ -78,4 +66,4 @@ El uniforme cumple una función de seguridad: dentro del campus, cualquiera debe
 | Mochila térmica | 6 | Lona impermeable con forro térmico, 51 litros; se comparten por bloque | $1,129.00 | Sears |
 | Gafete | 8 | PVC con foto, nombre, folio y cordón | $50.00 | Por cotizar |
 | **Total** | | | **$12,436** | |
-!fuente Fuente: cotizaciones en línea del 15 de noviembre de 2026; las tres cotizaciones de cada pieza están en el apartado 7.1.2.1.2, salvo el gafete, que falta cotizar. Precios con IVA.
+!fuente Fuente: cotizaciones en línea de noviembre de 2026; las tres cotizaciones de cada pieza están en el apartado 7.1.2.1.2, salvo el gafete, que falta cotizar. Precios con IVA.

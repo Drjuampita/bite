@@ -13,7 +13,7 @@ Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que 
 | Geográfica | Campus de la Universidad Anáhuac Querétaro, en El Marqués, Querétaro. El servicio empieza y termina dentro del campus |
 | Demográfica | Alumnos de licenciatura, de 17 a 25 años. Son {{sup_alumnos|n}} según el Informe 2024 de la universidad; con posgrado y educación continua la universidad reporta 8,222 |
 | Género | Indistinto |
-| Nivel socioeconómico, según la Asociación Mexicana de Agencias de Inteligencia de Mercado y Opinión (AMAI) | A/B y C+, por tratarse de una universidad privada. Estos niveles agrupan a 7.3% y 12.0% de los hogares del país (AMAI, 2024). Es una hipótesis: la regla AMAI clasifica por características del hogar y la encuesta no las mide |
+| Nivel socioeconómico, según la Asociación Mexicana de Agencias de Inteligencia de Mercado y Opinión (AMAI) | A/B y C+, por tratarse de una universidad privada. Estos niveles agrupan a 7.3% y 12.0% de los hogares del país. Es una hipótesis: la regla AMAI clasifica por características del hogar y la encuesta no las mide |
 | Ingresos | No se pregunta el ingreso familiar. Se mide lo que importa para el negocio: el gasto habitual por comida (pregunta 10) y lo máximo que pagarían por el envío (pregunta 11) |
 | Grado de estudios | Licenciatura en curso |
 | Gustos y preferencias | Resolver la comida rápido, saber el total antes de pagar, pagar con tarjeta desde el celular y no perder clase. Usuarios habituales de apps |
@@ -27,15 +27,6 @@ Frente a ese mercado, lo que BITE necesita es poco: los {{E_oday_oct_2|n}} pedid
 
 Ordenamos el mercado con tres criterios: qué tan fuerte es el problema, qué tan seguido se repite y qué tan fácil es llegar a ese grupo.
 
-!tabla Segmentos por orden de prioridad
-!cols 2.2,2.6,2.6,1.2
-| Segmento | Qué problema tiene | Cómo se le atiende | Cuándo |
-|---|---|---|---|
-| Alumnos con recesos de 30 minutos o menos | La fila se lleva el receso: comen de prisa o no comen | Pedido agendado por hora de clase, con entrega en la puerta del salón 15 minutos antes | Desde el piloto |
-| Alumnos sin receso entre dos clases | No tienen tiempo de ir por comida | Entrega al llegar al salón, en los últimos cinco minutos de la ventana. Comer en el salón depende de la regla de la universidad | Según el permiso |
-| Alumnos deportistas | Comen a horas fijas por dieta y entrenamiento | Punto de entrega fijo en el Polideportivo y BITE Pass | Año 1 |
-| Docentes y personal | Dan clases seguidas o no pueden dejar su oficina | La app ya admite cualquier correo institucional; falta definir sus puntos de entrega | Año 2 |
-| Locales de comida del campus | Pierden ventas cuando la fila ahuyenta al cliente | Panel de pedidos, cobro y reparto a cargo de BITE | Cuatro locales en el arranque |
 
 ### 6.2.1 Encuestas
 
@@ -62,7 +53,7 @@ Ordenamos el mercado con tres criterios: qué tan fuerte es el problema, qué ta
 - **Entre {{e_be_adop_E|%1}} y {{e_be2_adop_E|%1}}:** el negocio solo se sostiene mientras lo operemos nosotros sin cobrar. Se lanza con menos bloques y la mitad de la publicidad, y se planea con el escenario pesimista.
 - **Menos de {{e_be_adop_E|%1}}:** no se gasta en terminar el producto hasta revisar el precio y la oferta.
 
-**Complementos.** La encuesta dice cuántos; no dice por qué. Se suman dos herramientas baratas: diez entrevistas con la guía del Anexo B, y la medición de filas del Anexo C, que con un cronómetro y tres días da dos datos que hoy solo se conocen por experiencia: cuántos minutos cuesta comprar comida en hora pico y cuántos alumnos dejan la fila sin comprar.
+**Complementos.** La encuesta dice cuántos; no dice por qué. Sumamos una herramienta barata: la medición de filas del Anexo B, que con un cronómetro y tres días da dos datos que hoy solo se conocen por experiencia: cuántos minutos cuesta comprar comida en hora pico y cuántos alumnos dejan la fila sin comprar.
 
 ## 6.3 Análisis SWOT general
 
@@ -105,16 +96,7 @@ La guía pide estas cuatro áreas. En el organigrama del apartado 10.1, Ventas y
 
 No conocemos ninguna otra app de entrega que opere dentro de la universidad. BITE compite contra lo que el alumno hace hoy.
 
-!tabla Benchmarking: las alternativas del alumno
-!cols 1.5,1.5,1.8,1.3,1.6
-!tam 16
-| Alternativa | Dónde se recibe | Costo extra sobre la comida | ¿Se agenda por clase? | Lo que cuesta en tiempo |
-|---|---|---|---|---|
-| Ir al mostrador | En el local | $0 | No | Caminar, hacer fila y esperar en hora pico |
-| Traer comida de casa | No aplica | $0 | No aplica | Prepararla y cargarla todo el día |
-| Apps generales: Uber Eats, DiDi Food, Rappi | En la dirección del campus; hay que salir a encontrarse con el repartidor | De $12 a $44 en un platillo de $175 | Solo por hora de reloj | Espera variable y el traslado al punto de encuentro |
-| Encargar al local y pasar a recoger | En el local | $0 | Informal, si el local acepta | Caminar y recoger |
-| **BITE** | En la puerta del salón | {{= S.sup_fee+S.sup_markup |$}} en un pedido de {{sup_ticket|$}}; con BITE Pass y ocho pedidos al mes, {{= S.sup_markup+S.sup_passfee/8 |$}} | Sí, desde un día antes | Un minuto para pedir |
+Las alternativas son cuatro: ir al mostrador, traer comida de casa, pedir por una app general (que entrega en la dirección del campus, no en un salón) o encargar al local y pasar a recoger. Ninguna se puede agendar por hora de clase.
 
 **Lo que cuestan las apps generales.** En octubre de 2026 la Profeco comparó el mismo platillo de $175 en tres plataformas.
 
@@ -157,17 +139,9 @@ Para el local el argumento es igual de corto: **«Vende a quien hoy se va por la
 
 ## 6.7 Tendencias
 
-!fig tend_compradores | 15.5 | Compradores digitales en México, en millones de personas mayores de 18 años. Fuente: AMVO (2026).
-
 En siete años se duplicó el número de mexicanos que compran en línea. El alumno que entra hoy a la universidad creció comprando desde el celular.
 
-!fig tend_ecommerce | 15.5 | Valor del comercio electrónico minorista en México, en miles de millones de pesos. Fuente: AMVO (2026).
-
 El gasto en línea creció más del doble entre 2021 y 2025. La comida preparada es una de las categorías habituales: 54% de los compradores digitales la compró en línea en 2025 (AMVO, 2026).
-
-!fig tend_pagos | 15.5 | Medio de pago en compras de $500 o menos, población de 18 a 70 años. Fuente: INEGI y CNBV (2025), Encuesta Nacional de Inclusión Financiera 2021 y 2024.
-
-El efectivo sigue dominando las compras pequeñas, pero la tarjeta y los pagos desde el celular pasaron de 9.0% a 14.8% en tres años. BITE cobra solo con tarjeta dentro de la app. Es una decisión consciente: evita que el repartidor maneje dinero y confirma el pago antes de cocinar. La pregunta abierta de la encuesta dirá si el pago es una barrera; si lo es, la segunda fase incluye un saldo recargable.
 
 !fig tend_tiles | 16.5 | Cuatro datos sobre el alumno y el pedido por app en campus.
 

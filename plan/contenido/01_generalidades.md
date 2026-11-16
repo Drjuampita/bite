@@ -31,6 +31,8 @@
 
 **Lo que falta por comprobar.** Cuatro cosas condicionan el arranque del 11 de enero de 2027: el permiso de la universidad, que incluye su regla sobre alimentos en los salones; los convenios con los cuatro locales; la encuesta a 300 alumnos, y el piloto de dos semanas. En cada apartado decimos qué es dato, qué es decisión nuestra y qué es supuesto.
 
+**Cómo hicimos este trabajo.** Lo escribimos en equipo. Usamos herramientas de inteligencia artificial para tres cosas: investigar el marco legal y fiscal, armar y revisar el modelo financiero en Excel, y corregir la redacción para que todo el documento tuviera una sola voz. Las decisiones, los supuestos y la app son nuestros.
+
 # 2. Desarrollo
 
 ## 2.1 Descripción del concepto

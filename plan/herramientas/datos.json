@@ -139,7 +139,7 @@
      "unidad": "%",
      "fmt": "%",
      "tipo": "Dato",
-     "nota": "Tarifa pública de Stripe México para tarjetas nacionales: 3.6% + $3.00 más IVA (stripe.com/mx/pricing, 15 de noviembre de 2026). El IVA es acreditable."
+     "nota": "Tarifa pública de Stripe México para tarjetas nacionales: 3.6% + $3.00 más IVA (stripe.com/mx/pricing, noviembre de 2026). El IVA es acreditable."
     },
     {
      "clave": "pas_fijo",
@@ -171,7 +171,7 @@
      "unidad": "$",
      "fmt": "$2",
      "tipo": "Supuesto",
-     "nota": "Sello de seguridad impreso: $1.22 por pieza en millar (Pop México, 15 de noviembre de 2026), más la etiqueta con número de pedido y salón."
+     "nota": "Sello de seguridad impreso: $1.22 por pieza en millar (Pop México, noviembre de 2026), más la etiqueta con número de pedido y salón."
     }
    ]
   },
@@ -624,7 +624,7 @@
    "meses": 12,
    "nivel": "Empresa",
    "tipo": "Dato",
-   "nota": "Supabase Pro, 25 dólares, y Vercel Pro, 20 dólares al mes (páginas oficiales de precios, 15 de noviembre de 2026), al tipo de cambio FIX.",
+   "nota": "Supabase Pro, 25 dólares, y Vercel Pro, 20 dólares al mes (páginas oficiales de precios, noviembre de 2026), al tipo de cambio FIX.",
    "suspendible": false
   },
   {

@@ -9,7 +9,7 @@ Cada dato de entrada del modelo lleva una etiqueta:
 - **Supuesto:** estimación razonada.
 - **Supuesto clave:** estimación de la que depende el resultado. La encuesta y el piloto deben confirmarla.
 
-La lista completa, con su fuente, está en el Anexo D.
+La lista completa, con la fuente de cada dato, está en la hoja «Supuestos» del modelo.
 
 ## 11.1 Origen de recursos: total de capital
 
@@ -20,9 +20,6 @@ La lista completa, con su fuente, está en el Anexo D.
 No fijamos el capital sumando gastos, sino con una pregunta: ¿cuánto hace falta para que, aun en el peor escenario, la caja conserve un colchón de {{sup_colchon|%}} del capital? La respuesta es {{capital|$}}. Con esa cifra, la caja más baja del escenario pesimista en tres años es de {{P_caja_min|$}}.
 
 De los {{capital|$}}, {{arranque|$}} se gastan antes de abrir. Los otros {{reserva|$}} son la reserva que financia los primeros meses: en el escenario esperado la caja nunca baja de {{E_caja_min|$}}.
-
-!tabla Origen de los recursos
-!auto origen
 
 **Sin deuda.** No pedimos crédito. No lo necesita: cobra al alumno antes de preparar el pedido y paga al local una semana después. Esa diferencia a favor no se cuenta en el modelo.
 
@@ -40,16 +37,6 @@ Los tres escenarios describen el mismo negocio, con los mismos precios y los mis
 
 **El arranque no es instantáneo.** El primer año no empieza a ritmo pleno. En enero BITE alcanza 15% de su adopción objetivo y llega al 100% en septiembre. En los años 2 y 3 la adopción tampoco salta el 1 de enero: sube la mitad en el primer semestre y el resto desde agosto, y cada agosto arranca al {{sup_regreso|%}} porque una parte de los usuarios tarda en volver del verano.
 
-!tabla Calendario escolar y arranque del primer año
-!auto calendario
-!fuente Fuente: calendarios escolares 2026B y 2027A de la Universidad Anáhuac Querétaro (días de clase) y supuesto nuestro (arranque). No se cuentan exámenes finales ni verano.
-
-!tabla De dónde salen los pedidos
-!auto demanda
-!fuente Fuente: hojas de escenario del modelo financiero.
-
-!fig fin_pedidos | 16.5 | Pedidos por día de clase en los tres escenarios, 36 meses.
-
 ### Escenario esperado
 
 !tabla Resultados del escenario esperado
@@ -57,14 +44,7 @@ Los tres escenarios describen el mismo negocio, con los mismos precios y los mis
 
 El primer año cierra con una pérdida de {{= -S.E_neta_1 |$}}, que se explica por los {{arranque|$}} de gastos de arranque. Sin ellos, la operación del año deja {{= S.E_ebit_1 + S.arranque |$}}. En septiembre de 2027 el volumen pasa de {{sup_umbral_coord|n}} pedidos diarios y se contrata al coordinador. El año 2 no paga ISR porque amortiza la pérdida del primero. La caja vuelve a superar el capital aportado en el mes {{E_payback|n}}.
 
-!tabla El primer año mes por mes, escenario esperado (ingresos, margen, gastos, utilidad y caja en miles de pesos)
-!auto mensual_E
-!fuente Fuente: hoja «Esc_Esperado» del modelo financiero. La utilidad de enero incluye los gastos de arranque. Junio, julio y diciembre no tienen clases, pero sí gastos fijos.
-
 ### Escenario pesimista
-
-!tabla Resultados del escenario pesimista
-!auto resultados_P
 
 Si la adopción se queda en 3%, pocos contratan el Pass y los locales solo aceptan 15% de comisión, BITE apenas se sostiene: pierde {{= -S.P_neta_1 |$}} el primer año y después ronda el punto de equilibrio. No recuperamos nuestro capital en tres años. La empresa no quiebra, porque la reserva alcanza, pero tampoco es rentable.
 
@@ -74,19 +54,12 @@ Por eso tenemos una **regla de decisión**, y el modelo la aplica: si en abril d
 
 ### Escenario optimista
 
-!tabla Resultados del escenario optimista
-!auto resultados_O
-
 Con 8% de adopción en el primer año, BITE gana desde 2027 y recupera el capital en el mes {{O_payback|n}}. El bloque más cargado llega a {{O_pico_max|n}} pedidos, dentro del cupo de {{sup_cupo_locales|n}} que suman los cuatro locales. El límite de este escenario no es la demanda sino la cocina: para crecer más habría que afiliar más locales.
 
 ### Los tres escenarios juntos
 
 !tabla Comparativo de escenarios a tres años
 !auto comparativo
-
-!fig fin_escenarios | 16 | Utilidad neta por año y escenario.
-
-!fig fin_caja | 16.5 | Caja al cierre de cada mes en los tres escenarios. La caída de diciembre es el pago del ISR.
 
 ### Lo que el modelo no incluye
 
@@ -125,15 +98,6 @@ Los gastos variables existen solo si hay pedidos. Son ocho.
 | Garantía de puntualidad | {{u_i_fee_E|$2}} por pedido tardío | {{sup_pct_tarde|%}} de los pedidos sin Pass |
 | Pedidos no entregados | {{sup_ticket|$}} por pedido reembolsado | Uno de cada 200 pedidos |
 
-!tabla Gastos variables por año, escenario esperado
-!cols 3,1.3,1.3,1.3
-| Concepto | Año 1 | Año 2 | Año 3 |
-|---|---|---|---|
-| Ingresos | {{E_ing_1|$}} | {{E_ing_2|$}} | {{E_ing_3|$}} |
-| Gastos variables | {{E_cvar_1|$}} | {{E_cvar_2|$}} | {{E_cvar_3|$}} |
-| Gastos variables por pedido | {{= S.E_cvar_1/S.E_pedidos_1 |$2}} | {{= S.E_cvar_2/S.E_pedidos_2 |$2}} | {{= S.E_cvar_3/S.E_pedidos_3 |$2}} |
-| **Margen de contribución** | {{E_mc_1|$}} | {{E_mc_2|$}} | {{E_mc_3|$}} |
-| Margen sobre ingresos | {{E_mc_pct_1|%1}} | {{E_mc_pct_2|%1}} | {{E_mc_pct_3|%1}} |
 
 El detalle por pedido está en el apartado 8.1.1.
 
@@ -153,10 +117,6 @@ Hay dos puntos de equilibrio, y los dos importan. Mientras operamos nosotros sin
 
 !fig fin_sensibilidad | 16.5 | Efecto de cambiar un solo supuesto sobre la utilidad de operación de un año.
 
-!tabla Sensibilidad de la utilidad de operación
-!auto sensibilidad
-!fuente Fuente: hoja «Sensibilidad» del modelo financiero. Año completo al ritmo de cierre del año 2 del escenario esperado. El coordinador se paga solo en los casos en que el volumen pasa de {{sup_umbral_coord|n}} pedidos diarios. La base es mayor que la utilidad del año 2 de la tabla de resultados ({{E_ebit_2|$}}) porque supone la adopción de cierre durante todo el año.
-
 Seis lecturas:
 
 1. **La adopción manda.** Con 2% el año pierde {{= -S.sens_16 |$}}. Con 3% y 4% deja {{sens_1|$}} y {{sens_2|$}}, pero solo porque a ese volumen no se contrata coordinador y seguimos operando nosotros sin cobrar.
@@ -171,7 +131,3 @@ Hay también un margen adicional que no usamos: con el volumen del año 2, un re
 ### Pruebas de consistencia
 
 El modelo se revisa a sí mismo con doce pruebas. Si una falla, la cifra no se usa.
-
-!tabla Pruebas de consistencia del modelo
-!auto pruebas
-!fuente Fuente: hoja «Pruebas» del modelo financiero. La última prueba queda pendiente hasta capturar la encuesta.

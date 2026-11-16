@@ -6,7 +6,7 @@
 
 **El tiempo del alumno.** El semestre de la Universidad Anáhuac Querétaro tiene 16 semanas y el año suma {{dias_ano|n}} días de clase. Vivimos el problema a diario: cuando el receso entre dos clases es corto, la fila del área de comida en hora pico se lleva la mayor parte. El resultado es conocido: se come tarde, se come de prisa o no se come.
 
-**La evidencia de que no es un caso aislado.** En un estudio con 300 alumnos de la Universidad Autónoma del Estado de México (UAEMéx), la mitad omitió alguna de las tres comidas principales durante su estancia en la universidad y 52.7% comía en las cafeterías del campus (Martínez-Hernández et al., 2021). En otro, con estudiantes de nutrición de la Ciudad de México, 29.4% atribuyó no desayunar a la falta de tiempo (Sámano et al., 2024).
+**La evidencia de que no es un caso aislado.** En un estudio con 300 alumnos de la Universidad Autónoma del Estado de México (UAEMéx), la mitad omitió alguna de las tres comidas principales durante su estancia en la universidad y 52.7% comía en las cafeterías del campus (Martínez-Hernández et al., 2021).
 
 **La geografía del campus.** La comida se concentra en un punto, el área de comida de la planta baja del Edificio Liderazgo, y los alumnos están repartidos en los edificios A, B, C, IDEA y Business & Innovation Hub. Es un entorno cerrado, con recorridos a pie y destinos que se repiten cada hora. Para una operación de reparto es el mejor escenario posible: sin tráfico, sin vehículos y con rutas cortas.
 
@@ -18,7 +18,7 @@
 
 - **Conocemos al cliente porque somos el cliente.** Los cinco somos alumnos del campus: conocemos los horarios, los edificios, los locales y las horas pico.
 - **Ya construimos el producto.** Desarrollamos un producto mínimo viable que funciona: la app del alumno, el panel del local y la vista del repartidor. La base de datos tiene reglas de negocio probadas con 29 pruebas automáticas, que están en el repositorio del proyecto: cupo por hora, precios calculados en el servidor, código de entrega y acceso por rol.
-- **Tenemos formación en negocios.** Cursamos licenciaturas del área de negocios, lo que respalda la planeación comercial, financiera y de operación de este documento.
+- **Estamos empezando la carrera.** Cursamos el primer semestre de Administración y Dirección de Empresas. Lo que no sabíamos lo investigamos, y lo decimos donde corresponde.
 - **Sabemos lo que no sabemos.** No tenemos experiencia operando repartidores ni negociando con locales. Por eso arrancamos con un piloto de dos semanas y 50 alumnos antes de abrir a todo el campus, y contratamos asesoría legal y contabilidad externa desde el primer día.
 
 ### ¿Qué razones justifican nuestro plan de empresa?
