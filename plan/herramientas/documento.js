@@ -105,7 +105,7 @@ function figura(nombre, cm) {
   const file = path.join(RAIZ, "figuras", nombre + ".png");
   if (!fs.existsSync(file)) throw new Error("Falta la figura " + file);
   const { w, h, data } = pngSize(file);
-  const px = ((cm * Number(process.env.ESCALA_FIG || 0.6)) / 2.54) * 96;
+  const px = ((cm * Number(process.env.ESCALA_FIG || 0.57)) / 2.54) * 96;
   return new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 120, after: 60 }, children: [new ImageRun({ type: "png", data, transformation: { width: px, height: (px * h) / w } })] });
 }
 
@@ -203,18 +203,20 @@ function construir(paginas) {
   // ── Portada ──
   const centro = (t, o = {}) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: o.before ?? 0, after: o.after ?? 80, line: 276 }, children: [new TextRun({ text: t, size: o.size || 24, bold: o.bold, color: o.color })] });
   const logoP = pngSize(path.join(RAIZ, "figuras", "logo_portada.png"));
+  // Portada sin formato: texto simple en 12 puntos, interlineado sencillo y sin espacios, para acomodarla a mano.
+  const simple = (t) => new Paragraph({ spacing: { before: 0, after: 0, line: 240, lineRule: "auto" }, children: t ? [new TextRun({ text: t, size: 24 })] : [] });
   const portada = [
-    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 1500, after: 700 }, children: [new ImageRun({ type: "png", data: logoP.data, transformation: { width: 380, height: (380 * logoP.h) / logoP.w } })] }),
-    centro("Universidad Anáhuac Querétaro", { size: 32, bold: true, after: 40 }),
-    centro("Licenciatura en Administración y Dirección de Empresas", { size: 24, bold: true, after: 40 }),
-    centro("Materia: Taller de Empresa", { size: 24, bold: true, after: 40 }),
-    centro("Profesor: Néstor Daniel Sánchez García", { size: 24, bold: true, after: 800 }),
-    centro("Proyecto Integrador Final", { size: 40, bold: true, after: 80 }),
-    centro("Plan de negocios de una app de entrega de comida dentro del campus", { size: 24, bold: true, after: 800 }),
-    centro("Integrantes", { size: 24, bold: true, after: 40 }),
-    ...["Silvana Rubio Reyes · 00640949", "Natalia Orozco Estrada · 00633241", "Diego Rodríguez Sáenz · 00634144", "Emmanuel Alexander Quintana Tirado · 00640255", "Juan Pablo Palma Redondo · 00645488"].map((t) => centro(t, { size: 24, bold: true, after: 0 })),
-    centro("Fecha de realización del proyecto: 23 de octubre de 2026", { size: 24, bold: true, after: 0, before: 800 }),
-    centro("Fecha de finalización: 15 de noviembre de 2026", { size: 24, bold: true, after: 0 }),
+    new Paragraph({ spacing: { before: 0, after: 0 }, children: [new ImageRun({ type: "png", data: logoP.data, transformation: { width: 300, height: (300 * logoP.h) / logoP.w } })] }),
+    simple("Universidad Anáhuac Querétaro"),
+    simple("Licenciatura en Administración y Dirección de Empresas"),
+    simple("Materia: Taller de Empresa"),
+    simple("Profesor: Néstor Daniel Sánchez García"),
+    simple("Proyecto Integrador Final"),
+    simple("Plan de negocios de una app de entrega de comida dentro del campus"),
+    simple("Integrantes:"),
+    ...["Silvana Rubio Reyes · 00640949", "Natalia Orozco Estrada · 00633241", "Diego Rodríguez Sáenz · 00634144", "Emmanuel Alexander Quintana Tirado · 00640255", "Juan Pablo Palma Redondo · 00645488"].map(simple),
+    simple("Fecha de realización del proyecto: 23 de octubre de 2026"),
+    simple("Fecha de finalización: 15 de noviembre de 2026"),
     new Paragraph({ children: [new PageBreak()] }),
   ];
 
