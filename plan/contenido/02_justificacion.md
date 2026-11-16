@@ -76,8 +76,8 @@ BITE es una app de entrega de comida que opera dentro de la Universidad Anáhuac
 | Nombre comercial | BITE. Marca por registrar ante el IMPI en las clases 39 y 35 |
 | Domicilio de operación | Circuito Universidades I, kilómetro 7, Fracción 2, El Marqués, Querétaro, C.P. 76246 (campus de la Universidad Anáhuac Querétaro) |
 | Teléfono | +52 442 447 8664 |
-| Correo electrónico | contacto@bitedelivery.mx |
-| Sitio web | bitedelivery.mx |
+| Correo electrónico | contacto@bitedelivery.io |
+| Sitio web | bitedelivery.io |
 | Tamaño | Microempresa |
 | Sector | Servicios |
 | Actividades económicas principales | Servicios de plataformas tecnológicas intermediarias; servicios de mensajería y paquetería local |
@@ -86,7 +86,7 @@ BITE es una app de entrega de comida que opera dentro de la Universidad Anáhuac
 | Fecha de inicio de operaciones | 11 de enero de 2027, primer día del semestre enero–mayo |
 | Propietarios | Silvana Rubio Reyes, Natalia Orozco Estrada, Diego Rodríguez Sáenz, Emmanuel Alexander Quintana Tirado y Juan Pablo Palma Redondo, con 20% cada uno |
 
-Revisamos el buscador de marcas del IMPI y la marca BITE está disponible en nuestra clase; el dominio bitedelivery.mx también está libre.
+Revisamos el buscador de marcas del IMPI y la marca BITE está disponible en nuestra clase; el dominio bitedelivery.io también está libre.
 
 ## 4.2 Visión y misión
 

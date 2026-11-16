@@ -59,6 +59,10 @@ Recomendaciones de fondo:
 | Un alumno se enferma y culpa al pedido | Baja | Alto | La comida la prepara el local con sus permisos; bolsa sellada; seguro de responsabilidad civil; bitácora de cada entrega |
 | Nos graduamos y el equipo se dispersa | Alta | Alto | Coordinador de operación desde el año 1; convenio entre accionistas; manual de operación |
 
+## Anexo B. Modelo financiero en Excel
+
+El modelo financiero completo se entrega junto con este documento, en el archivo comprimido BITE_Modelo_Financiero.zip. Contiene el libro de Excel con los supuestos, los tres escenarios, el flujo de caja, el punto de equilibrio y la sensibilidad. Todas las cifras del capítulo 11 salen de ese archivo.
+
 # 17. Referencias bibliográficas
 
 !ref Asociación Mexicana de Venta Online. (2026). *Estudio de venta online 2026* [versión para prensa]. https://images.produ.com/wp-content/uploads/2026/03/12132700/AMVO_Estudio-de-Venta-Online-2026-Prensa-1_compressed.pdf

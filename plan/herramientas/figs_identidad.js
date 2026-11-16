@@ -72,7 +72,7 @@ module.exports = (S, OUT) => {
         <div style="height:2px;background:${C.brand};margin-top:12px;width:44px"></div>
         <div style="margin-top:26px;font-size:6.5px;color:${C.gris};line-height:2.1">El Marqués, Querétaro, a 11 de enero de 2027<br><br>${"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>".repeat(9)}</div>
         <div style="position:absolute;left:0;right:0;bottom:0;background:${C.ink};color:#fff;font-size:6.2px;line-height:1.6;padding:9px 28px;display:flex;justify-content:space-between">
-          <span>Circuito Universidades I, km 7, Fracción 2<br>El Marqués, Querétaro, C.P. 76246</span><span style="text-align:right">contacto@bitedelivery.mx · 442 447 8664<br>bitedelivery.mx</span></div>
+          <span>Circuito Universidades I, km 7, Fracción 2<br>El Marqués, Querétaro, C.P. 76246</span><span style="text-align:right">contacto@bitedelivery.io · 442 447 8664<br>bitedelivery.io</span></div>
       </div>
       <div style="font-size:12.5px;line-height:1.5;max-width:270px">
         <div style="font-weight:800;font-size:14px;margin-bottom:6px">Hoja membretada</div>
@@ -86,7 +86,7 @@ module.exports = (S, OUT) => {
       <div style="width:270px;height:150px;border-radius:10px;background:${C.brand};box-shadow:0 8px 22px rgba(28,21,17,.16);display:flex;flex-direction:column;align-items:center;justify-content:center">${logoInv(40, "t1")}<div style="color:#fff;font-size:10.5px;font-weight:600;margin-top:10px">Tu comida, directo a tu salón.</div></div>
       <div style="width:270px;height:150px;border-radius:10px;background:#fff;box-shadow:0 8px 22px rgba(28,21,17,.16);padding:18px 20px;position:relative">
         <div style="font-size:14px;font-weight:800">Nombre Apellido</div><div style="font-size:10px;color:${C.brand7};font-weight:700">Socio · Área a su cargo</div>
-        <div style="font-size:9.5px;color:${C.muted};line-height:1.7;margin-top:16px">442 447 8664<br>nombre@bitedelivery.mx<br>bitedelivery.mx</div>
+        <div style="font-size:9.5px;color:${C.muted};line-height:1.7;margin-top:16px">442 447 8664<br>nombre@bitedelivery.io<br>bitedelivery.io</div>
         <div style="position:absolute;right:18px;bottom:16px">${logoMark(30, "t2")}</div></div>
       <div style="font-size:12px;line-height:1.5;max-width:170px"><b>Medidas:</b> 9 × 5 cm<br><b>Material:</b> cartulina couché de 300 g, laminado mate<br><b>Tintas:</b> 4 × 4<br><b>Frente:</b> frambuesa BITE con logotipo invertido y eslogan<br><b>Vuelta:</b> nombre, puesto y datos de contacto</div></div>`,
   });
@@ -95,7 +95,7 @@ module.exports = (S, OUT) => {
   figs.push({
     name: "id_landing",
     html: `<div style="border:1px solid ${C.line};border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(28,21,17,.10)">
-      <div style="background:${C.canvas};padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid ${C.line}"><span style="display:flex;gap:5px">${["#e8b4a6", "#ecd3a0", "#b9d9b0"].map((c) => `<i style="width:9px;height:9px;border-radius:50%;background:${c};display:block"></i>`).join("")}</span><div style="flex:1;background:#fff;border:1px solid ${C.line};border-radius:999px;font-size:10.5px;color:${C.muted};padding:3px 12px">https://bitedelivery.mx</div></div>
+      <div style="background:${C.canvas};padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid ${C.line}"><span style="display:flex;gap:5px">${["#e8b4a6", "#ecd3a0", "#b9d9b0"].map((c) => `<i style="width:9px;height:9px;border-radius:50%;background:${c};display:block"></i>`).join("")}</span><div style="flex:1;background:#fff;border:1px solid ${C.line};border-radius:999px;font-size:10.5px;color:${C.muted};padding:3px 12px">https://bitedelivery.io</div></div>
       <div style="background:${C.brand};color:#fff;padding:22px 30px 0;display:grid;grid-template-columns:1.25fr 1fr;gap:10px;position:relative;overflow:hidden">
         <div style="padding-bottom:26px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px"><span style="background:#fff;border-radius:999px;padding:5px 12px;display:inline-flex">${logo(18, C.ink, "l1")}</span></div>
           <div style="font-size:35px;font-weight:800;letter-spacing:-0.03em;line-height:1.05">Tu comida,<br>directo a tu salón.</div>

@@ -10,22 +10,15 @@ La hoja membretada se usa en convenios con locales, cartas a la universidad y es
 
 ## 5.2 Página web (landing page)
 
-!fig id_landing | 16 | Página de entrada de bitedelivery.mx.
+!fig id_landing | 16 | Página de entrada de bitedelivery.io.
 
 La página tiene dos funciones: llevar al alumno a hacer su primer pedido y recibir a los locales que quieren afiliarse. Por eso solo tiene dos botones. Debajo explica el servicio en tres frases y enlaza al aviso de privacidad, que exige la ley de datos personales, y a los términos y condiciones, que la Ley Federal de Protección al Consumidor pide a quien vende en línea. Se publica en el mismo hospedaje que la app, sin costo adicional.
 
 ## 5.3 Dominio web
 
-El dominio que elegimos es **bitedelivery.mx**. Es corto, dice lo que hace la empresa y la terminación .mx indica que el servicio es local. El registro cuesta $689 al año con IVA en Akky, el registrador mexicano. Con el dominio se crean dos cuentas de correo, contacto@bitedelivery.mx y pagos@bitedelivery.mx, a $140 al mes por usuario en Google Workspace.
+Nuestro dominio es bitedelivery.io. Es corto y dice lo que hace la empresa; la terminación .io es común en productos de tecnología. El dominio ya es nuestro. Con él se crean dos cuentas de correo, contacto@bitedelivery.io y pagos@bitedelivery.io.
 
-!tabla Cotizaciones del dominio .mx por un año
-!cols 2,2,3
-| Registrador | Precio | Observación |
-|---|---|---|
-| Akky | $689, IVA incluido | Registrador mexicano; opción elegida |
-| HostGator México | $950; renovación $1,150 | Más caro al renovar |
-| Hostinger | $99.99 el primer año; renovación $816.99 | Barato solo el primer año |
-!fuente Fuente: sitios de cada registrador, consultados en noviembre de 2026.
+Mientras tanto, la app está publicada y se puede probar en https://bite-campus.vercel.app. La conexión del dominio con la app la haremos dos días antes de la presentación, para llegar con la versión final ya probada y no mover nada después.
 
 ## 5.4 Logotipo
 
