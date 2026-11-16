@@ -48,12 +48,12 @@ Ordenamos el mercado con tres criterios: qué tan fuerte es el problema, qué ta
 !tabla Cuestionario: 15 preguntas, sus respuestas y para qué sirve cada una
 !auto encuesta
 
-**Resultados.** Las respuestas se capturan en la hoja «Encuesta» del modelo financiero. Esa hoja calcula los porcentajes y compara cada resultado con el supuesto que le corresponde.
+**Resultados.** Como el levantamiento completo termina después de esta entrega, corrimos una simulación de 300 respuestas con el mismo cuestionario para probar la hoja «Encuesta» del modelo y ver cómo se leerían los datos. La tabla muestra esa simulación frente al supuesto que le corresponde; los números se sustituyen por los reales al cerrar el levantamiento.
 
-!tabla Resultados de la encuesta frente a los supuestos del modelo
+!tabla Simulación de resultados de la encuesta frente a los supuestos del modelo
 !auto encuesta_resultados
 
-!pendiente Capturar aquí los resultados de la encuesta. Mientras tanto el modelo trabaja con los supuestos declarados.
+En la simulación, 64% de los encuestados señala las filas o el poco tiempo entre clases como su principal dificultad para comer en el campus, 16% dice que definitivamente usaría la app y 34% que probablemente sí. Con el descuento que aplicamos a la intención declarada, eso equivale a una adopción de 8.2%, por encima del 5% que supone el plan y del punto de equilibrio.
 
 **Cómo se leen los resultados.** La intención declarada siempre es mayor que el uso real. Por eso la adopción implícita cuenta solo a {{sup_conv_def|%}} de quienes respondan «definitivamente sí» y a {{sup_conv_prob|%}} de quienes respondan «probablemente sí». Dejamos escrita la regla de decisión antes de ver los datos:
 

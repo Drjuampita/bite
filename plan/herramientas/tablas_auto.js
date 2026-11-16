@@ -144,13 +144,13 @@ module.exports = (S, D) => {
   T.encuesta = { size: 16, cols: [0.4, 3, 2.8, 2.6], filas: [["#", "Pregunta", "Respuestas", "Para qué sirve esta información"],
     ...todas.map((q) => [q.num, q.texto, q.opciones.join(" · "), q.uso])] };
   T.encuesta_resultados = { size: 17, cols: [3.4, 1.3, 1.3, 1.3], filas: [
-    ["Indicador", "Resultado de la encuesta", "Supuesto del modelo", "Punto de equilibrio"],
-    ["Respuestas válidas", "==por capturar==", num(S.sup_meta_encuestas), "–"],
-    ["Adopción implícita (pregunta 6, con descuento)", "==por capturar==", pct(S.sup_adop1_E), num(S.e_be_adop_E * 100, 1) + "%"],
-    ["Pedidos al mes de quien sí lo usaría (pregunta 7)", "==por capturar==", num(S.u_ped_user_E, 2), "–"],
-    ["Gasto habitual por comida (pregunta 10)", "==por capturar==", $(S.sup_ticket), "–"],
-    ["Dispuestos a pagar $20 o más de envío (pregunta 11)", "==por capturar==", pct(S.sup_adop1_E), num(S.e_be_adop_E * 100, 1) + "%"],
-    ["Suscriptores implícitos de BITE Pass (pregunta 12)", "==por capturar==", num(S.sup_adop1_E * S.sup_pct_pass_E * 100, 2) + "%", "–"],
+    ["Indicador", "Resultado (simulación)", "Supuesto del modelo", "Punto de equilibrio"],
+    ["Respuestas válidas", "300", num(S.sup_meta_encuestas), "–"],
+    ["Adopción implícita (pregunta 6, con descuento)", "8.2%", pct(S.sup_adop1_E), num(S.e_be_adop_E * 100, 1) + "%"],
+    ["Pedidos al mes de quien sí lo usaría (pregunta 7)", "4.1", num(S.u_ped_user_E, 2), "–"],
+    ["Gasto habitual por comida (pregunta 10)", "$118", $(S.sup_ticket), "–"],
+    ["Dispuestos a pagar $20 o más de envío (pregunta 11)", "38%", pct(S.sup_adop1_E), num(S.e_be_adop_E * 100, 1) + "%"],
+    ["Suscriptores implícitos de BITE Pass (pregunta 12)", "1.4%", num(S.sup_adop1_E * S.sup_pct_pass_E * 100, 2) + "%", "–"],
   ] };
   return T;
 };

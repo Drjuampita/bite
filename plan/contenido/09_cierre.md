@@ -16,7 +16,7 @@ Nos recomendamos este orden: cada paso es barato y decide si damos el siguiente.
 !cols 0.4,3.2,1.5,2
 | # | Acción | Cuándo | Qué decide |
 |---|---|---|---|
-| 1 | Presentar el proyecto a la universidad y pedir por escrito su autorización para el piloto y sus reglas: accesos, alimentos en salones y uso del correo institucional | Noviembre de 2026 | Si hay negocio en este campus y con qué oferta |
+| 1 | Reunirnos con la directora de carrera para acordar las reglas del piloto que la universidad ya autorizó: accesos, alimentos en salones y uso del correo institucional | Noviembre de 2026 | Si hay negocio en este campus y con qué oferta |
 | 2 | Levantar la encuesta de 300 respuestas y capturarla en el modelo | Noviembre de 2026 | Si la adopción respalda el plan, con la regla del apartado 6.2.1 |
 | 3 | Medir filas y recorridos tres días con el protocolo del Anexo C | Noviembre de 2026 | El argumento de venta, con minutos reales, y cuántos pedidos puede entregar un repartidor por bloque |
 | 4 | Firmar convenio con los cuatro locales; cargar menús y precios reales | Diciembre de 2026 | La comisión del escenario y el ticket promedio |
@@ -48,7 +48,7 @@ Recomendaciones de fondo:
 !tam 16
 | Riesgo | Probabilidad | Impacto | Respuesta |
 |---|---|---|---|
-| La universidad no autoriza la operación | Media | Total | Es el paso 1. Se propone un piloto acotado, con reglas de la universidad y un responsable de enlace. Sin permiso no se gasta |
+| La universidad no extiende la autorización más allá del piloto | Baja | Total | Ya tenemos permiso para un piloto pequeño. Lo operamos con las reglas que acordemos con la directora de carrera y un responsable de enlace |
 | No se permite comer en los salones | Media | Medio | La entrega 15 minutos antes de la clase ya está pensada para comer fuera del salón. Quien no tiene receso queda fuera del mercado; el modelo no depende de ese grupo |
 | La universidad pide una contraprestación | Media | Medio | Medida en la sensibilidad: una cuota de 3% de la venta reduce la utilidad anual en {{= -S.sens_d_17 |$}} |
 | Los locales no aceptan 20% de comisión | Media | Alto | El escenario pesimista ya supone 15%. Se ofrece el primer mes sin comisión a cambio de un semestre de convenio |

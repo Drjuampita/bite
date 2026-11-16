@@ -43,7 +43,7 @@ La S.A.S. cubre lo que BITE necesita en sus primeros años: separa el patrimonio
 
 **Requisitos sanitarios.** BITE no prepara ni almacena alimentos, así que no presenta aviso de funcionamiento sanitario propio; cada local opera con el suyo. Sí adopta lo que la NOM-251-SSA1-2009 pide al transporte de alimentos: evitar la contaminación, proteger el producto y conservar su temperatura. De ahí salen la bolsa sellada, la mochila térmica y su limpieza diaria.
 
-!pendiente Presentar el proyecto a la universidad y obtener su autorización por escrito. Sin ella no se ejerce ningún gasto de arranque.
+**Permiso de la universidad.** Presentamos el proyecto y la universidad nos autorizó hacer un piloto pequeño con el producto mínimo viable. Nos quedan dos pasos: reunirnos con la directora de carrera para acordar las reglas (accesos, alimentos en salones y uso del correo institucional) y hablar con los establecimientos para formalizar la alianza.
 
 ## 12.2 Protección Civil
 

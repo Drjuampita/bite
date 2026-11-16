@@ -13,7 +13,7 @@
 | Ventana de entrega | Los 15 minutos anteriores a la hora de inicio de la clase |
 | Anticipación | Hasta las 21:00 del día anterior, o el mismo día con 45 minutos de anticipación |
 | Cupo | Cada local fija cuántos pedidos acepta por hora, de 10 a 20; la app muestra «Quedan N» y bloquea la hora llena |
-| Locales | Cuatro en el arranque. La app está configurada con Sinforosa, Luka, Diego's House y Carrusel como candidatos; ninguno ha firmado convenio todavía |
+| Locales | Cuatro en el arranque, de cinco candidatos: Starbucks, Luka Poke, Sinforosa, Tim Hortons y Vete a la Burger. Arrancamos con los cuatro que firmen primero |
 | Pago | Tarjeta de débito o crédito dentro de la app |
 | Precio | Envío de {{sup_fee|$}} por pedido, o BITE Pass de {{sup_passfee|$}} al mes |
 | Acceso | Registro con correo institucional @anahuac.mx |
@@ -22,7 +22,11 @@
 | Garantía | Si llega después de la hora de la clase, se reembolsa el envío; si el alumno ya no puede recibirlo, el pedido completo |
 | Dónde se come | Cerca del salón, antes de la clase. Dentro del salón, solo si el reglamento de la universidad lo permite |
 
-!pendiente Confirmar con cada local su nombre comercial, horario, menú, precios y cupo por hora. La app tiene hoy menús y horarios de demostración.
+**Locales y menú.** Revisamos qué ofrece cada local y elegimos cinco productos por cada uno para el menú inicial: lo que más se pide y lo que aguanta bien el traslado en mochila térmica.
+
+!fig menus_locales | 16.5 | Menú inicial por local. Precios de mostrador de referencia; se confirman con cada local al firmar el convenio. Fotos ilustrativas.
+
+Buscamos que la oferta cubra los momentos del día: café y pan para la primera clase (Starbucks y Tim Hortons), comida completa a mediodía (Sinforosa, Luka Poke y Vete a la Burger) y algo ligero para la tarde. El horario y el cupo por hora los fija cada local en su panel.
 
 ### 8.1.1 Costeo de producto
 

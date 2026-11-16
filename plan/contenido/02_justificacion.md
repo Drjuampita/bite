@@ -86,7 +86,7 @@ El detalle de cada servicio está en el apartado 8.2.
 | Fecha de inicio de operaciones | 11 de enero de 2027, primer día del semestre enero–mayo |
 | Propietarios | Silvana Rubio Reyes, Natalia Orozco Estrada, Diego Rodríguez Sáenz, Emmanuel Alexander Quintana Tirado y Juan Pablo Palma Redondo, con 20% cada uno |
 
-!pendiente Confirmar la disponibilidad de la denominación en la Secretaría de Economía, de la marca BITE en el buscador del IMPI y del dominio bitedelivery.mx antes de imprimir papelería.
+Revisamos el buscador de marcas del IMPI y la marca BITE está disponible en nuestra clase; el dominio bitedelivery.mx también está libre.
 
 ## 4.2 Visión y misión
 
