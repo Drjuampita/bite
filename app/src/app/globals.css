@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Tokens de diseño de Bite. La fase de diseño los afina aquí sin tocar componentes. */
+@theme {
+  --color-brand-50: #fff4ed;
+  --color-brand-100: #ffe4d3;
+  --color-brand-200: #ffc5a6;
+  --color-brand-500: #ff5b14;
+  --color-brand-600: #eb4a05;
+  --color-brand-700: #c23a06;
+
+  --color-ink: #1c1511;
+  --color-muted: #75695f;
+  --color-line: #efe7e0;
+  --color-canvas: #fbf8f5;
+  --color-backdrop: #ece5df;
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(28 21 17 / 0.04), 0 8px 24px -12px rgb(28 21 17 / 0.12);
+  --shadow-float: 0 12px 32px -8px rgb(235 74 5 / 0.45);
+
+  --animate-sheet-up: sheet-up 0.28s cubic-bezier(0.2, 0.9, 0.3, 1);
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-pop: pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1);
+
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-backdrop);
+  color: var(--color-ink);
+}
+
+/* Oculta la barra de scroll en carruseles horizontales. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
