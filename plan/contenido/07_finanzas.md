@@ -91,7 +91,7 @@ Con 8% de adopción en el primer año, BITE gana desde 2027 y recupera el capita
 ### Lo que el modelo no incluye
 
 - **Nuestros sueldos** en los primeros tres años. La utilidad de esos años no descuenta el pago de nuestro trabajo, que incluye turnarnos la guardia de operación mientras no haya coordinador.
-- **Una contraprestación a la universidad.** Si la pide, su efecto está en la sensibilidad del apartado 11.5.
+- **Una contraprestación a la universidad.** Si la pide, reduce la utilidad.
 - **El ISR en pagos provisionales.** Para simplificar, el modelo carga el impuesto de cada año completo en diciembre.
 - **Reparto de utilidades a los trabajadores.** Las empresas nuevas están exentas el primer año; después puede llegar a 10% de la utilidad fiscal.
 - **Inflación.** Precios y costos se mantienen en pesos de 2026.
@@ -135,7 +135,6 @@ Los gastos variables existen solo si hay pedidos. Son ocho.
 | **Margen de contribución** | {{E_mc_1|$}} | {{E_mc_2|$}} | {{E_mc_3|$}} |
 | Margen sobre ingresos | {{E_mc_pct_1|%1}} | {{E_mc_pct_2|%1}} | {{E_mc_pct_3|%1}} |
 
-El detalle por pedido está en el apartado 8.1.1.
 
 ## 11.5 Punto de equilibrio
 

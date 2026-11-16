@@ -136,7 +136,7 @@ El esquema muestra lo que importa para operar: un punto de recolección y cinco 
 
 ## 9.5 Render del lugar
 
-No aplica como imagen de un local. El lugar que el cliente ve es la app: las figuras del apartado 8.1.2 son su aspecto real, y la figura de la página de entrada del apartado 5.2 es su fachada.
+No aplica como imagen de un local. El lugar que el cliente ve es la app: las pantallas de la app son su aspecto real, y la figura de la página de entrada es su fachada.
 
 ### 9.5.1 Plano de distribución de local
 
@@ -212,7 +212,7 @@ Se recluta al inicio de cada semestre, cuando los alumnos ya conocen su horario.
 
 El repartidor recibe tres horas antes de su primer bloque (uso de la app, higiene y traslado de alimentos, trato y emergencias) y hace dos bloques acompañado. El personal de cada local recibe 45 minutos sobre su panel, y el coordinador, cuatro horas sobre corte, conciliación e incidencias.
 
-La capacitación se registra con fecha y firma. Es evidencia para la norma de riesgos psicosociales (NOM-035, apartado 12.3) y para la universidad.
+La capacitación se registra con fecha y firma. Es evidencia para la norma de riesgos psicosociales (NOM-035) y para la universidad.
 
 ## 10.5 Contrato laboral
 

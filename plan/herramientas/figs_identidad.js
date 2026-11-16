@@ -5,7 +5,7 @@ const { C, W, esc, logo, logoMark } = require("./figuras_lib");
 module.exports = (S, OUT) => {
   const figs = [];
   const img = (n) => "file://" + path.join(OUT, "app", n + ".png");
-  const markColor = (size, bg, fg, id) => `<svg width="${size}" height="${size}" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="${bg}"/><mask id="${id}"><rect width="512" height="512" fill="#fff"/><circle cx="372" cy="150" r="64" fill="#000"/><circle cx="410" cy="226" r="48" fill="#000"/></mask><circle cx="256" cy="268" r="150" fill="${fg}" mask="url(#${id})"/></svg>`;
+  const markColor = (size, bg, fg, id) => { const [cab, resto] = logoMark(size, id).split("</mask>"); return cab.replace(`fill="${C.brand}"`, `fill="${bg}"`) + "</mask>" + resto.split("#fff").join(fg); };
   const logoInv = (size, id) => `<span style="display:inline-flex;align-items:center;gap:${size * 0.22}px">${markColor(size, "#fff", C.brand, id)}<span style="font-size:${size * 0.82}px;font-weight:800;letter-spacing:-0.035em;color:#fff;line-height:1">bite</span></span>`;
   const lab = (t) => `<div style="font-size:11.5px;color:${C.muted};margin-top:6px;text-align:center;line-height:1.3">${t}</div>`;
   const tileS = `border-radius:14px;height:120px;display:flex;align-items:center;justify-content:center;border:1px solid ${C.line}`;

@@ -1,6 +1,6 @@
 # 5. Manual de identidad
 
-La marca BITE parte de una imagen que cualquiera entiende: una mordida. El isotipo es un cuadro color frambuesa de esquinas redondeadas con un círculo blanco al que le falta un bocado. El logotipo lo acompaña con la palabra «bite» en minúsculas y trazo grueso. Elegimos un rosa frambuesa porque es cálido, se antoja y se distingue a distancia en un pasillo lleno. Descartamos el naranja a propósito: es el color de las apps de reparto más conocidas y no queremos parecernos a ellas. El diseño es nuestro.
+La marca BITE Delivery junta dos ideas: la comida y quien te la lleva. El isotipo es un cuadro color frambuesa de esquinas redondeadas con un repartidor en scooter eléctrico, con su mochila a la espalda, que lleva en la mano una galleta mordida. La galleta representa la comida y el scooter, la entrega. El logotipo lo acompaña con la palabra «bite» en minúsculas y trazo grueso, y debajo «delivery». Elegimos un rosa frambuesa porque es cálido, se antoja y se distingue a distancia en un pasillo lleno. Descartamos el naranja a propósito: es el color de las apps de reparto más conocidas y no queremos parecernos a ellas. El diseño es nuestro.
 
 ## 5.1 Diseño de hojas membretadas
 
@@ -31,7 +31,7 @@ El dominio que elegimos es **bitedelivery.mx**. Es corto, dice lo que hace la em
 
 !fig id_logo | 16.5 | Versiones del logotipo, zona de protección y paleta de color.
 
-**Descripción.** El logotipo tiene dos partes: el isotipo (el cuadro con la mordida) y la palabra «bite». Pueden ir juntos o, en espacios pequeños, el isotipo solo.
+**Descripción.** El logotipo tiene dos partes: el isotipo (el cuadro con el repartidor en scooter) y las palabras «bite delivery». Pueden ir juntos o, en espacios pequeños, el isotipo solo.
 
 **Colores.** El frambuesa BITE es el color de la marca y de los botones. El frambuesa profundo se usa en títulos y texto sobre fondo claro, porque contrasta mejor. La tinta es el color del texto. El rosa claro y el lienzo son fondos.
 

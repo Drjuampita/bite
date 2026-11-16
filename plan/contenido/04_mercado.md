@@ -1,6 +1,6 @@
 # 6. Estudio de mercado
 
-Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que nosotros suponemos y lo que la encuesta y el piloto tienen que confirmar. Los supuestos de demanda del modelo financiero están marcados como tales en el apartado 11.
+Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que nosotros suponemos y lo que la encuesta y el piloto tienen que confirmar.
 
 ## 6.1 Mercado meta
 
@@ -89,7 +89,7 @@ En la simulación, 64% de los encuestados señala las filas o el poco tiempo ent
 
 ### 6.3.2 SWOT por áreas de la empresa
 
-La guía pide estas cuatro áreas. En el organigrama del apartado 10.1, Ventas y Marketing forman una sola: Comercial y marketing.
+La guía pide estas cuatro áreas. En el organigrama, Ventas y Marketing forman una sola: Comercial y marketing.
 
 !tabla SWOT por área
 !cols 1.2,1.8,1.8,1.8,1.8

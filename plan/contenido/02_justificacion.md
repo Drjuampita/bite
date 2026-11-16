@@ -62,7 +62,7 @@ BITE es una app de entrega de comida que opera dentro de la Universidad Anáhuac
 - **Garantía de puntualidad.** Si el pedido llega después de la hora de la clase, BITE reembolsa el costo del envío; si el alumno ya no puede recibirlo, reembolsa el pedido completo.
 - **Panel para locales.** Pedidos agrupados por hora, control de productos agotados, resumen de ventas y pago semanal.
 
-El detalle de cada servicio está en el apartado 8.2.
+
 
 # 4. Descripción y naturaleza del negocio
 
@@ -104,7 +104,7 @@ Revisamos el buscador de marcas del IMPI y la marca BITE está disponible en nue
 |---|---|---|---|
 | El alumno | Su comida en la puerta de su salón antes de que empiece su clase, sin hacer fila; puede agendarla desde un día antes | {{sup_fee|$}} de envío por pedido, o {{sup_passfee|$}} al mes con BITE Pass; los precios del menú incluyen una tarifa de servicio de 8% | Usa su receso para comer y no para hacer fila. Si el pedido llega tarde, el envío no se cobra |
 | El local | Pedidos anticipados, cobrados y entregados por BITE; panel con sus ventas por hora | {{sup_com_E|%}} de comisión sobre el precio al público de lo que vende por BITE, más IVA | Puede vender a quien hoy se va por la fila y reparte la carga de la hora pico. No contrata a nadie y paga solo si vende |
-| La universidad | Un servicio para sus alumnos operado por alumnos, sin costo para ella | Nada. Si pide una contraprestación, su efecto está medido en el apartado 11.5 | Menos aglomeración en el área de comida, menos retardos por ir a comer y un proyecto emprendedor nacido en su aula. Ella fija las reglas: accesos, horarios y alimentos en salones |
+| La universidad | Un servicio para sus alumnos operado por alumnos, sin costo para ella | Nada. Si pide una contraprestación, se negocia | Menos aglomeración en el área de comida, menos retardos por ir a comer y un proyecto emprendedor nacido en su aula. Ella fija las reglas: accesos, horarios y alimentos en salones |
 
 Las cuatro promesas que el alumno puede exigir:
 

@@ -77,7 +77,7 @@ BITE no almacena alimentos. Su inventario es de equipo y consumibles: mochilas, 
 | Ingreso por hora efectiva de trabajo | {{= S.E_ing_rb_2*2 |$}} |
 | Salario mínimo por hora | {{= S.sup_sm_diario/8 |$2}} |
 
-El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases. Mientras el ingreso neto del mes quede por debajo de un salario mínimo mensual, la ley trata al repartidor como trabajador independiente de plataforma y BITE paga su aseguramiento contra riesgos de trabajo. Si un repartidor rebasa el umbral, BITE lo inscribe en el IMSS con seguridad social completa. El costo de ese caso está medido en el apartado 11.5. Este encuadre laboral y fiscal debe confirmarse por escrito con un abogado laboral y un contador antes de reclutar.
+El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases. Mientras el ingreso neto del mes quede por debajo de un salario mínimo mensual, la ley trata al repartidor como trabajador independiente de plataforma y BITE paga su aseguramiento contra riesgos de trabajo. Si un repartidor rebasa el umbral, BITE lo inscribe en el IMSS con seguridad social completa. Este encuadre laboral y fiscal debe confirmarse por escrito con un abogado laboral y un contador antes de reclutar.
 
 **Coordinador de operación.** Sueldo fijo quincenal con contrato por temporada. Su costo mensual de {{sup_coord|$}} incluye las cuotas patronales y solo se paga en los meses con clases.
 
@@ -122,7 +122,7 @@ Requisición, tres cotizaciones, comparación, orden de compra, recepción contr
 
 #### 7.1.2.1.3 Presupuesto de equipo
 
-El equipo cuesta $19,632: seis mochilas térmicas ($6,774), uniformes para ocho repartidores ($5,662) y cuatro tabletas para los locales ($7,196). Forma parte de los gastos de arranque del apartado 11.1.
+El equipo cuesta $19,632: seis mochilas térmicas ($6,774), uniformes para ocho repartidores ($5,662) y cuatro tabletas para los locales ($7,196). Forma parte de los gastos de arranque.
 
 
 #### 7.1.2.2 Plan de sistema de control
@@ -133,7 +133,7 @@ El control de BITE descansa en que cada paso deja registro en la app, con hora y
 
 - **Repartidor.** Confirma su asistencia en la app 20 minutos antes de su bloque. Si no confirma, la app avisa a Operaciones y ofrece el bloque al siguiente del padrón.
 - **Local.** Al abrir marca «Abierto» en su panel. Si no lo hace, la app deja de ofrecer sus pedidos «Ahora» y avisa a Operaciones.
-- **Operaciones.** El socio o coordinador de guardia inicia sesión a las 7:15 y revisa la lista de encendido del apartado 7.1.6.
+- **Operaciones.** El socio o coordinador de guardia inicia sesión a las 7:15 y revisa la lista de encendido.
 
 #### 7.1.2.2.2 Seguridad
 

@@ -19,7 +19,7 @@ Nos recomendamos este orden: cada paso es barato y decide si damos el siguiente.
 | # | Acción | Cuándo | Qué decide |
 |---|---|---|---|
 | 1 | Reunirnos con la directora de carrera para acordar las reglas del piloto que la universidad ya autorizó: accesos, alimentos en salones y uso del correo institucional | Noviembre de 2026 | Si hay negocio en este campus y con qué oferta |
-| 2 | Levantar la encuesta de 300 respuestas y capturarla en el modelo | Noviembre de 2026 | Si la adopción respalda el plan, con la regla del apartado 6.2.1 |
+| 2 | Levantar la encuesta de 300 respuestas y capturarla en el modelo | Noviembre de 2026 | Si la adopción respalda el plan, con la regla de decisión que fijamos |
 | 3 | Medir filas y recorridos tres días | Noviembre de 2026 | El argumento de venta, con minutos reales, y cuántos pedidos puede entregar un repartidor por bloque |
 | 4 | Firmar convenio con los cuatro locales; cargar menús y precios reales | Diciembre de 2026 | La comisión del escenario y el ticket promedio |
 | 5 | Constituir la S.A.S., abrir cuenta y contratar la pasarela de pago | Diciembre de 2026 | Nada: es requisito para cobrar |
@@ -27,7 +27,7 @@ Nos recomendamos este orden: cada paso es barato y decide si damos el siguiente.
 | 7 | Reclutar y capacitar a ocho repartidores | Primera semana de enero | La cobertura de los bloques del piloto |
 | 8 | Piloto de dos semanas con 50 alumnos y tres bloques | 11 al 22 de enero de 2027 | Pedidos por repartidor, puntualidad y recompra |
 | 9 | Apertura a todo el campus | 25 de enero de 2027 | El ritmo de arranque frente al modelo |
-| 10 | Punto de decisión con los usuarios activos de abril | Abril de 2027 | Seguir, ajustar o detener, con la regla del apartado 11.2 |
+| 10 | Punto de decisión con los usuarios activos de abril | Abril de 2027 | Seguir, ajustar o detener, con la regla de decisión que fijamos |
 
 **Si el calendario no alcanza.** Faltan ocho semanas para el 11 de enero y el permiso, los convenios y el cobro con tarjeta están por resolverse. Si alguno no está listo, el piloto se hace en febrero con lo que haya y la apertura general se recorre al semestre de agosto de 2027. El modelo se desplaza completo siete meses y sus conclusiones no cambian; lo que cambia es que el primer año calendario tendría un solo semestre de ventas.
 

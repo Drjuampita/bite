@@ -1,6 +1,6 @@
 # 12. Aspectos legales y personalidad jurídica
 
-!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Lo de este capítulo y del 13 debe confirmarse con un abogado y un contador antes de ejecutarse.
+!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Lo de este capítulo y el de franquicia debe confirmarse con un abogado y un contador antes de ejecutarse.
 
 ## 12.1 Constitución legal del negocio
 
@@ -27,7 +27,7 @@ La S.A.S. cubre lo que BITE necesita en sus primeros años: separa el patrimonio
 | 10 | Impuesto sobre nóminas | Estado de Querétaro | 3% | Con la deducción que marca la ley estatal, una nómina de este tamaño paga poco o nada |
 | 11 | Registro del modelo de contrato de repartidor | Centro Federal de Conciliación y Registro Laboral | Sin costo | Obligación de toda plataforma digital |
 | 12 | Aviso de privacidad y términos y condiciones | Se publican en la app y la página | Incluido en la asesoría legal | Ley de datos personales de 2025 y artículo 76 Bis de la Ley Federal de Protección al Consumidor |
-| 13 | Convenio de operación con la universidad | Universidad Anáhuac Querétaro | Sin costo en el modelo | Es la condición para operar y se gestiona antes que cualquier otro gasto. Debe fijar accesos, horarios, alimentos en salones, uso del correo institucional y responsabilidad por los repartidores. Si incluye una cuota, su efecto está en el apartado 11.5 |
+| 13 | Convenio de operación con la universidad | Universidad Anáhuac Querétaro | Sin costo en el modelo | Es la condición para operar y se gestiona antes que cualquier otro gasto. Debe fijar accesos, horarios, alimentos en salones, uso del correo institucional y responsabilidad por los repartidores. Si incluye una cuota, su efecto está |
 | 14 | Convenios de comisión con los locales | Cada local | Sin costo | Definen comisión, cupo, horarios, pago semanal e incidencias |
 
 **Requisitos sanitarios.** BITE no prepara ni almacena alimentos, así que no presenta aviso de funcionamiento sanitario propio; cada local opera con el suyo. Sí adopta lo que la NOM-251-SSA1-2009 pide al transporte de alimentos: evitar la contaminación, proteger el producto y conservar su temperatura. De ahí salen la bolsa sellada, la mochila térmica y su limpieza diaria.
@@ -89,7 +89,7 @@ En una S.A.S. el documento equivalente al acta constitutiva es el **contrato soc
 2. Nombre, domicilio, RFC y correo electrónico de los cinco accionistas.
 3. Domicilio social: El Marqués, Querétaro.
 4. Duración: indefinida.
-5. Objeto social: el del apartado 12.5.
+5. Objeto social: el que se describe en este capítulo.
 6. Capital: {{capital|$}}, dividido en 150 acciones nominativas de $1,000; 30 por socio. Las acciones se pagan dentro del año siguiente a la inscripción.
 7. Administración: un administrador único, que es accionista.
 8. Asamblea de accionistas: decisiones por mayoría de votos, con posibilidad de votar por medios electrónicos.
@@ -174,7 +174,7 @@ Después hay una visita de BITE durante la primera semana de operación, revisi�
 
 El franquiciatario compra tres cosas, siempre con la especificación de BITE:
 
-- **Equipo de reparto y uniformes:** a los proveedores aprobados del apartado 7.1.2.1.2, o a un proveedor local que iguale la especificación y el precio.
+- **Equipo de reparto y uniformes:** a los proveedores aprobados, o a un proveedor local que iguale la especificación y el precio.
 - **Sellos y etiquetas:** a BITE, que los compra por volumen para toda la red y los surte al costo.
 - **Tabletas:** en cualquier tienda, con la especificación mínima.
 

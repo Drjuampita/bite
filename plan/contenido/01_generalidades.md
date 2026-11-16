@@ -76,4 +76,4 @@ BITE es una empresa de **servicios**. Su actividad es la intermediación entre l
 
 !fig sinoptico | 16.5 | Clasificación de BITE (cuadro sinóptico).
 
-BITE nace como microempresa. Si el plan de expansión se cumple, el número de repartidores la llevará a pequeña empresa a partir del segundo campus. La figura jurídica se explica en el apartado 12.1 y el régimen fiscal en el 12.6.
+BITE nace como microempresa. Si el plan de expansión se cumple, el número de repartidores la llevará a pequeña empresa a partir del segundo campus.
