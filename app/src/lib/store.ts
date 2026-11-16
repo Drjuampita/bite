@@ -5,7 +5,7 @@ import { DELIVERY_FEE, getSlot } from "@/lib/data/campus";
 import { getProduct } from "@/lib/data/products";
 import { DEMO_STAFF_PIN } from "@/lib/data/staff";
 import { getVendor } from "@/lib/data/vendors";
-import { itemsSubtotal } from "@/lib/format";
+import { itemsSubtotal, priceOptions } from "@/lib/format";
 import {
   activationTime,
   canCancel,
@@ -248,10 +248,7 @@ export function placeOrder(input: PlaceOrderInput): PlaceOrderResult {
       return { ok: false, error: `${item.name} ya no está disponible. Quítalo del carrito.` };
     }
     // El precio se recalcula desde el catálogo, no se confía en el que trae el carrito.
-    const options = item.options.map((o) => {
-      const choice = product.options?.find((g) => g.id === o.groupId)?.choices.find((c) => c.id === o.choiceId);
-      return { ...o, price: choice?.price ?? 0 };
-    });
+    const options = priceOptions(product, item.options);
     items.push({ ...item, basePrice: product.price, options });
   }
 

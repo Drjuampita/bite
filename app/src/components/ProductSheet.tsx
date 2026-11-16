@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { QuantityStepper } from "@/components/ui/QuantityStepper";
 import { Sheet } from "@/components/ui/Sheet";
-import { money } from "@/lib/format";
+import { money, priceOptions } from "@/lib/format";
 import type { CartItem, Product, SelectedOption } from "@/lib/types";
 
 interface ProductSheetProps {
@@ -36,16 +36,12 @@ function ProductForm({ product, onClose, onAdd }: Required<Omit<ProductSheetProp
   const [quantity, setQuantity] = useState(1);
   const [note, setNote] = useState("");
 
-  const selected: SelectedOption[] = (product.options ?? []).flatMap((group) =>
-    group.choices
-      .filter((c) => selection[group.id]?.includes(c.id))
-      .map((c) => ({
-        groupId: group.id,
-        groupName: group.name,
-        choiceId: c.id,
-        choiceName: c.name,
-        price: c.price,
-      })),
+  // Se respeta el orden en que el alumno eligió: las primeras opciones son las incluidas.
+  const selected: SelectedOption[] = priceOptions(
+    product,
+    (product.options ?? []).flatMap((group) =>
+      (selection[group.id] ?? []).map((choiceId) => ({ groupId: group.id, choiceId })),
+    ),
   );
   const unit = product.price + selected.reduce((s, o) => s + o.price, 0);
   const missingRequired = (product.options ?? []).some(
@@ -80,15 +76,23 @@ function ProductForm({ product, onClose, onAdd }: Required<Omit<ProductSheetProp
 
   return (
     <>
-      <div className="grid h-48 place-items-center bg-gradient-to-b from-brand-50 to-white text-[96px]" aria-hidden="true">
-        {product.emoji}
-      </div>
+      {product.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={product.image} alt="" className="h-52 w-full object-cover" />
+      ) : (
+        <div className="grid h-48 place-items-center bg-gradient-to-b from-brand-50 to-white text-[96px]" aria-hidden="true">
+          {product.emoji}
+        </div>
+      )}
       <div className="px-5 pb-6">
         <h2 className="text-2xl font-extrabold tracking-tight">{product.name}</h2>
         <p className="mt-1 text-sm text-muted">{product.description}</p>
-        <p className="mt-3 text-lg font-bold">{money(product.price)}</p>
+        <p className="mt-3 text-lg font-bold">{money(unit)}</p>
 
-        {(product.options ?? []).map((group) => (
+        {(product.options ?? []).map((group) => {
+          const count = selection[group.id]?.length ?? 0;
+          const overIncluded = group.included !== undefined && count >= group.included;
+          return (
           <fieldset key={group.id} className="mt-6">
             <legend className="flex w-full items-center justify-between">
               <span className="font-bold">{group.name}</span>
@@ -100,6 +104,12 @@ function ProductForm({ product, onClose, onAdd }: Required<Omit<ProductSheetProp
                 {group.required ? "Obligatorio" : "Opcional"}
               </span>
             </legend>
+            {group.included !== undefined && (
+              <p className="mt-1 text-xs text-muted">
+                {group.included} incluidas · llevas {count}
+                {group.extraPrice ? ` · cada adicional +${money(group.extraPrice)}` : ""}
+              </p>
+            )}
             <div className="mt-3 divide-y divide-line rounded-2xl ring-1 ring-line">
               {group.choices.map((choice) => {
                 const checked = selection[group.id]?.includes(choice.id) ?? false;
@@ -121,12 +131,16 @@ function ProductForm({ product, onClose, onAdd }: Required<Omit<ProductSheetProp
                     </span>
                     <span className="flex-1 text-sm font-medium">{choice.name}</span>
                     {choice.price > 0 && <span className="text-sm text-muted">+{money(choice.price)}</span>}
+                    {choice.price === 0 && !checked && overIncluded && group.extraPrice ? (
+                      <span className="text-sm text-muted">+{money(group.extraPrice)}</span>
+                    ) : null}
                   </label>
                 );
               })}
             </div>
           </fieldset>
-        ))}
+          );
+        })}
 
         <label className="mt-6 block">
           <span className="font-bold">Instrucciones especiales</span>

@@ -1,36 +1,13 @@
-import type { OptionGroup, Product } from "@/lib/types";
+import type { Product } from "@/lib/types";
+import { NUEVOS_MENUS } from "./menus.ts";
 
-// Menús de ejemplo con precios aproximados en MXN.
-// Reemplazar con los menús reales de cada local.
-
-const tamañoBebida: OptionGroup = {
-  id: "tamano",
-  name: "Tamaño",
-  type: "single",
-  required: true,
-  choices: [
-    { id: "chico", name: "Chico", price: 0 },
-    { id: "grande", name: "Grande", price: 10 },
-  ],
-};
-
-const leche: OptionGroup = {
-  id: "leche",
-  name: "Leche",
-  type: "single",
-  required: true,
-  choices: [
-    { id: "entera", name: "Entera", price: 0 },
-    { id: "deslactosada", name: "Deslactosada", price: 0 },
-    { id: "almendra", name: "Almendra", price: 8 },
-    { id: "avena", name: "Avena", price: 8 },
-  ],
-};
+// Sinforosa conserva su menú de referencia; los demás locales están en menus.ts.
 
 export const PRODUCTS: Product[] = [
   // ── Sinforosa ─────────────────────────────────────────────
   {
     id: "sin-chilaquiles",
+    image: "/menu/chilaquiles.jpg",
     vendorId: "sinforosa",
     name: "Chilaquiles",
     description: "Totopos bañados en salsa, crema, queso fresco y cebolla.",
@@ -86,6 +63,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "sin-enchiladas",
+    image: "/menu/enchiladas.jpg",
     vendorId: "sinforosa",
     name: "Enchiladas suizas",
     description: "Tres enchiladas de pollo con salsa verde cremosa y queso gratinado.",
@@ -96,6 +74,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "sin-tacos",
+    image: "/menu/tacos.jpg",
     vendorId: "sinforosa",
     name: "Tacos de guisado (3)",
     description: "Tortilla hecha a mano con el guisado del día.",
@@ -118,6 +97,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "sin-torta",
+    image: "/menu/torta.jpg",
     vendorId: "sinforosa",
     name: "Torta de milanesa",
     description: "Milanesa de res, aguacate, frijoles, jitomate y chipotle.",
@@ -158,6 +138,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "sin-cafe",
+    image: "/menu/americano.jpg",
     vendorId: "sinforosa",
     name: "Café de olla",
     description: "Con piloncillo y canela.",
@@ -166,290 +147,7 @@ export const PRODUCTS: Product[] = [
     section: "Bebidas",
   },
 
-  // ── Luka ──────────────────────────────────────────────────
-  {
-    id: "luka-americano",
-    vendorId: "luka",
-    name: "Americano",
-    description: "Espresso doble con agua caliente. Grano de Veracruz.",
-    price: 35,
-    emoji: "☕",
-    section: "Café",
-    options: [tamañoBebida],
-  },
-  {
-    id: "luka-latte",
-    vendorId: "luka",
-    name: "Latte",
-    description: "Espresso con leche vaporizada.",
-    price: 45,
-    emoji: "🥛",
-    section: "Café",
-    popular: true,
-    options: [tamañoBebida, leche],
-  },
-  {
-    id: "luka-frappe",
-    vendorId: "luka",
-    name: "Frappé moka",
-    description: "Café frío con chocolate y crema batida.",
-    price: 60,
-    emoji: "🧋",
-    section: "Café",
-    options: [leche],
-  },
-  {
-    id: "luka-acai",
-    vendorId: "luka",
-    name: "Bowl de açaí",
-    description: "Açaí, granola, plátano, fresa y miel.",
-    price: 90,
-    emoji: "🫐",
-    section: "Saludable",
-    popular: true,
-  },
-  {
-    id: "luka-cesar",
-    vendorId: "luka",
-    name: "Ensalada César con pollo",
-    description: "Lechuga romana, pollo a la plancha, parmesano y crutones.",
-    price: 95,
-    emoji: "🥗",
-    section: "Saludable",
-  },
-  {
-    id: "luka-wrap",
-    vendorId: "luka",
-    name: "Wrap de pollo",
-    description: "Tortilla de harina integral, pollo, espinaca y aderezo de yogurt.",
-    price: 85,
-    emoji: "🌯",
-    section: "Saludable",
-  },
-  {
-    id: "luka-toast",
-    vendorId: "luka",
-    name: "Avocado toast",
-    description: "Pan de masa madre, aguacate, huevo pochado y semillas.",
-    price: 70,
-    emoji: "🥑",
-    section: "Saludable",
-  },
-  {
-    id: "luka-smoothie",
-    vendorId: "luka",
-    name: "Smoothie verde",
-    description: "Espinaca, piña, manzana, apio y jengibre.",
-    price: 55,
-    emoji: "🥤",
-    section: "Bebidas",
-  },
-
-  // ── Diego's House ─────────────────────────────────────────
-  {
-    id: "dh-clasica",
-    vendorId: "diegos-house",
-    name: "Hamburguesa clásica",
-    description: "Carne de res 150 g, queso americano, lechuga, jitomate y salsa de la casa.",
-    price: 95,
-    emoji: "🍔",
-    section: "Hamburguesas",
-    popular: true,
-    options: [
-      {
-        id: "extras",
-        name: "Extras",
-        type: "multi",
-        required: false,
-        choices: [
-          { id: "tocino", name: "Tocino", price: 15 },
-          { id: "queso", name: "Queso extra", price: 10 },
-          { id: "aguacate", name: "Aguacate", price: 15 },
-        ],
-      },
-    ],
-  },
-  {
-    id: "dh-doble",
-    vendorId: "diegos-house",
-    name: "Hamburguesa doble",
-    description: "Doble carne, doble queso, cebolla caramelizada y pepinillos.",
-    price: 125,
-    emoji: "🍔",
-    section: "Hamburguesas",
-  },
-  {
-    id: "dh-chicken",
-    vendorId: "diegos-house",
-    name: "Chicken crispy",
-    description: "Pechuga empanizada, coleslaw y mayonesa de chipotle.",
-    price: 105,
-    emoji: "🍗",
-    section: "Hamburguesas",
-  },
-  {
-    id: "dh-boneless",
-    vendorId: "diegos-house",
-    name: "Boneless (10 pzas)",
-    description: "Con apio, zanahoria y aderezo ranch.",
-    price: 110,
-    emoji: "🍗",
-    section: "Para compartir",
-    popular: true,
-    options: [
-      {
-        id: "salsa",
-        name: "Salsa",
-        type: "single",
-        required: true,
-        choices: [
-          { id: "bbq", name: "BBQ", price: 0 },
-          { id: "bufalo", name: "Búfalo", price: 0 },
-          { id: "mango", name: "Mango habanero", price: 0 },
-        ],
-      },
-    ],
-  },
-  {
-    id: "dh-club",
-    vendorId: "diegos-house",
-    name: "Club sándwich",
-    description: "Pavo, jamón, tocino, queso y vegetales en pan tostado.",
-    price: 90,
-    emoji: "🥪",
-    section: "Sándwiches",
-  },
-  {
-    id: "dh-hotdog",
-    vendorId: "diegos-house",
-    name: "Hot dog",
-    description: "Salchicha de pavo, cebolla, jitomate y jalapeño.",
-    price: 55,
-    emoji: "🌭",
-    section: "Sándwiches",
-  },
-  {
-    id: "dh-papas",
-    vendorId: "diegos-house",
-    name: "Papas a la francesa",
-    description: "Crujientes, con sal de mar.",
-    price: 40,
-    emoji: "🍟",
-    section: "Para compartir",
-    options: [tamañoBebida],
-  },
-  {
-    id: "dh-refresco",
-    vendorId: "diegos-house",
-    name: "Refresco",
-    description: "Lata de 355 ml.",
-    price: 25,
-    emoji: "🥤",
-    section: "Bebidas",
-  },
-
-  // ── Carrusel ──────────────────────────────────────────────
-  {
-    id: "car-crepa-nutella",
-    vendorId: "carrusel",
-    name: "Crepa de Nutella",
-    description: "Con Nutella y azúcar glass.",
-    price: 65,
-    emoji: "🥞",
-    section: "Crepas",
-    popular: true,
-    options: [
-      {
-        id: "fruta",
-        name: "Agrega fruta",
-        type: "multi",
-        required: false,
-        choices: [
-          { id: "fresa", name: "Fresa", price: 10 },
-          { id: "platano", name: "Plátano", price: 8 },
-        ],
-      },
-    ],
-  },
-  {
-    id: "car-crepa-salada",
-    vendorId: "carrusel",
-    name: "Crepa de jamón y queso",
-    description: "Jamón de pavo, queso manchego y champiñones.",
-    price: 60,
-    emoji: "🫓",
-    section: "Crepas",
-  },
-  {
-    id: "car-waffle",
-    vendorId: "carrusel",
-    name: "Waffle",
-    description: "Con miel de maple, mantequilla y fruta.",
-    price: 70,
-    emoji: "🧇",
-    section: "Postres",
-  },
-  {
-    id: "car-esquite",
-    vendorId: "carrusel",
-    name: "Esquite",
-    description: "Con mayonesa, queso, limón y chile.",
-    price: 40,
-    emoji: "🌽",
-    section: "Snacks",
-    popular: true,
-    options: [tamañoBebida],
-  },
-  {
-    id: "car-fruta",
-    vendorId: "carrusel",
-    name: "Fruta picada",
-    description: "Sandía, papaya, piña y melón con chile y limón.",
-    price: 40,
-    emoji: "🍉",
-    section: "Snacks",
-  },
-  {
-    id: "car-palomitas",
-    vendorId: "carrusel",
-    name: "Palomitas",
-    description: "Naturales o con caramelo.",
-    price: 30,
-    emoji: "🍿",
-    section: "Snacks",
-  },
-  {
-    id: "car-galleta",
-    vendorId: "carrusel",
-    name: "Galleta con chispas",
-    description: "Recién horneada.",
-    price: 25,
-    emoji: "🍪",
-    section: "Postres",
-  },
-  {
-    id: "car-malteada",
-    vendorId: "carrusel",
-    name: "Malteada",
-    description: "Helado de vainilla con leche. 400 ml.",
-    price: 60,
-    emoji: "🥤",
-    section: "Postres",
-    options: [
-      {
-        id: "sabor",
-        name: "Sabor",
-        type: "single",
-        required: true,
-        choices: [
-          { id: "vainilla", name: "Vainilla", price: 0 },
-          { id: "chocolate", name: "Chocolate", price: 0 },
-          { id: "fresa", name: "Fresa", price: 0 },
-          { id: "oreo", name: "Oreo", price: 8 },
-        ],
-      },
-    ],
-  },
+  ...NUEVOS_MENUS,
 ];
 
 export function getProduct(id: string): Product | undefined {

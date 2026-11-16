@@ -88,9 +88,14 @@ function VendorMenu({ vendorId }: { vendorId: string }) {
                 onClick={() => setSelected(p)}
                 className="w-36 shrink-0 overflow-hidden rounded-2xl bg-white text-left shadow-sm ring-1 ring-line"
               >
-                <span className="grid h-24 place-items-center bg-brand-50 text-5xl" aria-hidden="true">
-                  {p.emoji}
-                </span>
+                {p.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={p.image} alt="" className="h-24 w-full object-cover" />
+                ) : (
+                  <span className="grid h-24 place-items-center bg-brand-50 text-5xl" aria-hidden="true">
+                    {p.emoji}
+                  </span>
+                )}
                 <span className="block p-3">
                   <span className="block truncate text-sm font-bold">{p.name}</span>
                   <span className="text-sm text-muted">{money(p.price)}</span>
@@ -185,9 +190,14 @@ function ProductRow({
         <p className="mt-1.5 text-sm font-bold">{soldOut ? "Agotado" : money(product.price)}</p>
       </div>
       <div className="relative">
-        <span className="grid size-20 place-items-center rounded-2xl bg-brand-50 text-4xl" aria-hidden="true">
-          {product.emoji}
-        </span>
+        {product.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={product.image} alt="" className="size-20 rounded-2xl object-cover" />
+        ) : (
+          <span className="grid size-20 place-items-center rounded-2xl bg-brand-50 text-4xl" aria-hidden="true">
+            {product.emoji}
+          </span>
+        )}
         {!soldOut && (
           <span className="absolute -right-1.5 -bottom-1.5 grid size-8 place-items-center rounded-full bg-white text-ink shadow-md ring-1 ring-line">
             <Plus className="size-4" />

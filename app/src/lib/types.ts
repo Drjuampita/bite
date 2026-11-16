@@ -16,8 +16,10 @@ export interface Vendor {
   name: string;
   tagline: string;
   emoji: string;
-  /** Clases de Tailwind para el fondo de portada (placeholder hasta tener fotos). */
+  /** Clases de Tailwind para el fondo de portada cuando no hay foto. */
   cover: string;
+  /** Foto de portada, en /public. */
+  image?: string;
   categories: Category[];
   rating: number;
   prepTime: string;
@@ -49,6 +51,10 @@ export interface OptionGroup {
   type: "single" | "multi";
   required: boolean;
   choices: OptionChoice[];
+  /** En grupos "multi": cuántas opciones van incluidas en el precio. */
+  included?: number;
+  /** Precio de cada opción que pase de las incluidas. */
+  extraPrice?: number;
 }
 
 export interface Product {
@@ -58,6 +64,8 @@ export interface Product {
   description: string;
   price: number;
   emoji: string;
+  /** Foto del producto, en /public. */
+  image?: string;
   section: string;
   popular?: boolean;
   options?: OptionGroup[];

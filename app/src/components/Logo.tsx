@@ -5,7 +5,7 @@ export function LogoMark({ className = "size-9" }: { className?: string }) {
   const maskId = `bite-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   return (
     <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
-      <rect width="512" height="512" rx="112" fill="#ff5b14" />
+      <rect width="512" height="512" rx="112" fill="#e5386d" />
       <mask id={maskId}>
         <rect width="512" height="512" fill="#fff" />
         <circle cx="372" cy="150" r="64" fill="#000" />

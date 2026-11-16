@@ -22,11 +22,21 @@
 | Garantía | Si llega después de la hora de la clase, se reembolsa el envío; si el alumno ya no puede recibirlo, el pedido completo |
 | Dónde se come | Cerca del salón, antes de la clase. Dentro del salón, solo si el reglamento de la universidad lo permite |
 
-**Locales y menú.** Revisamos qué ofrece cada local y elegimos cinco productos por cada uno para el menú inicial: lo que más se pide y lo que aguanta bien el traslado en mochila térmica.
+**Locales y menú.** Definimos el menú inicial de los cinco locales candidatos y lo cargamos en la app con fotos y precios.
 
-!fig menus_locales | 16.5 | Menú inicial por local. Precios de mostrador de referencia; se confirman con cada local al firmar el convenio. Fotos ilustrativas.
+!fig menus_locales | 16.5 | Menú inicial por local. Precios de referencia; se confirman con cada local al firmar el convenio. Fotos ilustrativas.
 
-Buscamos que la oferta cubra los momentos del día: café y pan para la primera clase (Starbucks y Tim Hortons), comida completa a mediodía (Sinforosa, Luka Poke y Vete a la Burger) y algo ligero para la tarde. El horario y el cupo por hora los fija cada local en su panel.
+- **Starbucks.** Ocho bebidas con el mismo precio por tamaño (Short $80, Alto $95, Grande $104 y Venti $120), cake pops de $59 y tres baguettes de $110 a $129.
+- **Luka Poke.** Siete bowls de la casa (Spicy Tuna, Spicy Salmon, Kamoa Crunchy, Popcorn Poke, Chicken Miso, Orange Chicken y Cilantro Steak) y la opción de armar el bowl desde cero: base, proteína, guarniciones y aderezos.
+- **Sinforosa.** Desayunos y comida mexicana: chilaquiles, enchiladas suizas, molletes, tacos de guisado, tortas y aguas frescas.
+- **Tim Hortons.** Bebidas calientes y frías en tamaño chico, mediano y grande, Timbits, donas, apple fritter y dos desayunos.
+- **Vete a la Burger.** Cinco hamburguesas, dos hot dogs, papas, alitas con papas y pizzas individuales.
+
+**Personalizar el pedido.** En la app el alumno puede añadir o quitar cosas antes de agregar al carrito, y el precio se actualiza al momento. Las reglas que programamos son tres: el tamaño cambia el precio de la bebida; la leche es entera y la deslactosada cuesta $15 más; y en Luka Poke cada bowl incluye cinco guarniciones y cada guarnición adicional cuesta $25. En las hamburguesas se pueden quitar ingredientes sin costo y agregar extras con precio.
+
+!fig app_menus | 16.5 | Menú de Luka Poke, armado de un bowl con dos guarniciones adicionales, bebida de Starbucks en tamaño Venti con leche deslactosada y menú de Vete a la Burger.
+
+El horario y el cupo por hora los fija cada local en su panel.
 
 ### 8.1.1 Costeo de producto
 

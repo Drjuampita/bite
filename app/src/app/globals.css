@@ -2,12 +2,12 @@
 
 /* Tokens de diseño de Bite. La fase de diseño los afina aquí sin tocar componentes. */
 @theme {
-  --color-brand-50: #fff4ed;
-  --color-brand-100: #ffe4d3;
-  --color-brand-200: #ffc5a6;
-  --color-brand-500: #ff5b14;
-  --color-brand-600: #eb4a05;
-  --color-brand-700: #c23a06;
+  --color-brand-50: #fff1f5;
+  --color-brand-100: #ffdde7;
+  --color-brand-200: #ffb9cd;
+  --color-brand-500: #e5386d;
+  --color-brand-600: #cf2a5c;
+  --color-brand-700: #a81d4a;
 
   --color-ink: #1c1511;
   --color-muted: #75695f;

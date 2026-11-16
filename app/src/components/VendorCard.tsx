@@ -8,6 +8,14 @@ import type { Vendor } from "@/lib/types";
 import { useNow } from "@/lib/useNow";
 
 export function VendorCover({ vendor, className = "h-36" }: { vendor: Vendor; className?: string }) {
+  if (vendor.image) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={vendor.image} alt="" className="size-full object-cover" />
+      </div>
+    );
+  }
   return (
     <div className={`relative overflow-hidden bg-gradient-to-br ${vendor.cover} ${className}`}>
       <span className="absolute -right-4 -bottom-6 text-[110px] leading-none opacity-90 drop-shadow-lg select-none" aria-hidden="true">
