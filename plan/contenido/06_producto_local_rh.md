@@ -109,7 +109,7 @@ Publicidad de los locales dentro de la app, pedidos para eventos del campus y sa
 
 # 9. Local
 
-BITE no tiene local. Su mostrador es la app y su piso de operación es el campus. En este capítulo respondemos cada apartado de la guía con lo que sí existe en el negocio.
+BITE no tiene local. Su mostrador es la app y su piso de operación es el campus. En este capítulo describimos lo que sí existe en el negocio.
 
 ## 9.1 Proceso de selección de ubicación
 
@@ -136,7 +136,7 @@ El esquema muestra lo que importa para operar: un punto de recolección y cinco 
 
 ## 9.5 Render del lugar
 
-No aplica como imagen de un local. El lugar que el cliente ve es la app: las pantallas de la app son su aspecto real, y la figura de la página de entrada es su fachada.
+BITE no tiene un local que mostrar. El lugar que el cliente ve es la app: las pantallas de la app son su aspecto real, y la figura de la página de entrada es su fachada.
 
 ### 9.5.1 Plano de distribución de local
 
@@ -170,7 +170,7 @@ Un seguro de responsabilidad civil de $6,000 al año, que cubre daños a tercero
 
 !fig organigrama | 16 | Organigrama de BITE.
 
-La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cada una de las cuatro áreas la encabeza un socio; el quinto es el administrador. Mientras el volumen sea inferior a {{sup_umbral_coord|n}} pedidos al día, nos turnamos la guardia de operación. Al pasar ese volumen contratamos a un coordinador de medio tiempo.
+La sociedad tiene un administrador único, como marca la ley para una S.A.S. Juan Pablo Palma lleva la administración y el área técnica, y es el administrador único. Natalia Orozco y Silvana Rubio llevan ventas; Diego Rodríguez y Emmanuel Quintana, marketing. La operación diaria la cubrimos entre los cinco. Mientras el volumen sea inferior a {{sup_umbral_coord|n}} pedidos al día, nos turnamos la guardia de operación. Al pasar ese volumen contratamos a un coordinador de medio tiempo.
 
 ### 10.1.1 Aportación de los socios a la empresa
 
@@ -178,16 +178,15 @@ La sociedad tiene un administrador único, como marca la ley para una S.A.S. Cad
 !cols 3,1.3,1.1,1.6
 | Socio | Aportación en efectivo | Participación | Área a su cargo |
 |---|---|---|---|
-| Silvana Rubio Reyes | {{aporte_socio|$}} | 20% | ==por asignar== |
-| Natalia Orozco Estrada | {{aporte_socio|$}} | 20% | ==por asignar== |
-| Diego Rodríguez Sáenz | {{aporte_socio|$}} | 20% | ==por asignar== |
-| Emmanuel Alexander Quintana Tirado | {{aporte_socio|$}} | 20% | ==por asignar== |
-| Juan Pablo Palma Redondo | {{aporte_socio|$}} | 20% | ==por asignar== |
+| Silvana Rubio Reyes | {{aporte_socio|$}} | 20% | Ventas |
+| Natalia Orozco Estrada | {{aporte_socio|$}} | 20% | Ventas |
+| Diego Rodríguez Sáenz | {{aporte_socio|$}} | 20% | Marketing |
+| Emmanuel Alexander Quintana Tirado | {{aporte_socio|$}} | 20% | Marketing |
+| Juan Pablo Palma Redondo | {{aporte_socio|$}} | 20% | Administración y área técnica |
 | **Total** | {{capital|$}} | 100% | |
 
 Además del efectivo, aportamos el producto que ya construimos. A precio de mercado, {{sup_mvp_horas|n}} horas de desarrollo a {{sup_mvp_tarifa|$}} la hora valen {{mvp_valor|$}}. No es dinero en caja y no se suma al capital, pero es la razón por la que terminar la app cuesta $35,000 y no varias veces esa cifra.
 
-!pendiente Repartir entre los socios las cuatro áreas y el cargo de administrador único, y confirmar las horas reales invertidas en el producto.
 
 ## 10.2 Perfiles de empleados
 
@@ -216,7 +215,7 @@ La capacitación se registra con fecha y firma. Es evidencia para la norma de ri
 
 ## 10.5 Contrato laboral
 
-**Repartidores.** Se rigen por el capítulo de trabajo en plataformas digitales de la Ley Federal del Trabajo (artículos 291-A y siguientes), vigente desde junio de 2025. La ley exige un contrato escrito cuyo modelo se registra ante el Centro Federal de Conciliación y Registro Laboral. El contrato de BITE incluye:
+**Repartidores.** Se rigen por el capítulo de trabajo en plataformas digitales de la Ley Federal del Trabajo (), vigente desde junio de 2025. La ley exige un contrato escrito cuyo modelo se registra ante el Centro Federal de Conciliación y Registro Laboral. El contrato de BITE incluye:
 
 - Datos de las partes y descripción del servicio: reparto a pie dentro del campus, por bloques que el repartidor elige.
 - Forma de pago: {{sup_pago|$}} por pedido entregado, con mínimo de {{sup_garantia|$}} por bloque asignado; pago y recibo semanales.
@@ -229,7 +228,7 @@ La capacitación se registra con fecha y firma. Es evidencia para la norma de ri
 
 **Socios.** Su relación con la empresa es societaria, no laboral, mientras no cobren sueldo.
 
-Los tres modelos de contrato los redacta un abogado laboral; su costo está en la partida de asesoría legal de los gastos de arranque. El mismo abogado confirma por escrito el encuadre de los repartidores antes de reclutar.
+Los tres modelos de contrato los redacta un abogado laboral; su costo está en la partida de asesoría legal de los gastos de arranque.
 
 ## 10.6 Documentación necesaria
 

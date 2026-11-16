@@ -54,7 +54,7 @@
      "unidad": "%",
      "fmt": "%",
      "tipo": "Dato",
-     "nota": "Ley del IVA, artículo 1."
+     "nota": "Ley del IVA."
     },
     {
      "clave": "ticket",
@@ -131,7 +131,7 @@
      "unidad": "%",
      "fmt": "%",
      "tipo": "Supuesto",
-     "nota": "Prima de riesgo de trabajo Clase IV (4.65325%, Ley del Seguro Social art. 73), la que las Reglas del IMSS asignan a plataformas, redondeada a 5%. Aplica mientras el repartidor gane menos de un salario mínimo mensual neto (LFT art. 291-C)."
+     "nota": "Prima de riesgo de trabajo Clase IV (Ley del Seguro Social), la que las Reglas del IMSS asignan a plataformas, redondeada a 5%. Aplica mientras el repartidor gane menos de un salario mínimo mensual neto."
     },
     {
      "clave": "pas_pct",
@@ -309,7 +309,7 @@
      "unidad": "$",
      "fmt": "$",
      "tipo": "Dato",
-     "nota": "Umbral del artículo 291-C de la Ley Federal del Trabajo: quien gana menos que esto, neto, es trabajador independiente de plataforma ese mes."
+     "nota": "Umbral de la Ley Federal del Trabajo: quien gana menos que esto, neto, es trabajador independiente de plataforma ese mes."
     },
     {
      "clave": "excl_pie",
@@ -325,7 +325,7 @@
      "unidad": "%",
      "fmt": "%",
      "tipo": "Dato",
-     "nota": "Ley del ISR, artículo 9."
+     "nota": "Ley del ISR."
     },
     {
      "clave": "fx",
@@ -693,7 +693,7 @@
    "concepto": "Registro de marca en el IMPI, dos clases",
    "monto": 5628,
    "tipo": "Dato",
-   "nota": "$2,813.77 por clase con IVA, en línea (Tarifa del IMPI, art. 14a, con 10% de descuento). Clases 39 y 35."
+   "nota": "$2,813.77 por clase con IVA, en línea (Tarifa del IMPI, con 10% de descuento). Clases 39 y 35."
   },
   {
    "concepto": "Licencia de funcionamiento y visto bueno de Protección Civil",

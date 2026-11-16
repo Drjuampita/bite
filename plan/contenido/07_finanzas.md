@@ -7,9 +7,9 @@ Cada dato de entrada del modelo lleva una etiqueta:
 - **Dato:** sale de una fuente que se puede consultar.
 - **Decisión:** lo fijamos nosotros, como un precio.
 - **Supuesto:** estimación razonada.
-- **Supuesto clave:** estimación de la que depende el resultado. La encuesta y el piloto deben confirmarla.
+- **Supuesto clave:** estimación de la que depende el resultado. La validamos con la encuesta y el piloto.
 
-La lista completa está en la hoja «Supuestos» del modelo financiero.
+La lista completa está en la hoja «Supuestos» del modelo financiero. El archivo de Excel se entrega junto con este documento.
 
 ## 11.1 Origen de recursos: total de capital
 
@@ -36,7 +36,7 @@ Los tres escenarios describen el mismo negocio, con los mismos precios y los mis
 !auto escenarios_vars
 !fuente Fuente: hoja «Supuestos» del modelo financiero. Todas son supuestos clave.
 
-**De dónde sale la adopción esperada de {{sup_adop1_E|%}}.** Todavía no tenemos un dato propio: es el supuesto que nuestra encuesta debe confirmar. La referencia disponible es la app Skipeat de CETYS Tijuana, para pedir y pasar a recoger, que llegó a cerca de 10% de su campus. No es comparable del todo: Skipeat no cobraba envío y BITE cuesta 24% más que el mostrador. Sirve como orden de magnitud. El escenario esperado supone la mitad; el optimista, menos que ese caso en su primer año.
+**De dónde sale la adopción esperada de {{sup_adop1_E|%}}.** Es nuestro supuesto central y lo contrastamos con la encuesta. La referencia disponible es la app Skipeat de CETYS Tijuana, para pedir y pasar a recoger, que llegó a cerca de 10% de su campus. No es comparable del todo: Skipeat no cobraba envío y BITE cuesta 24% más que el mostrador. Sirve como orden de magnitud. El escenario esperado supone la mitad; el optimista, menos que ese caso en su primer año.
 
 **El arranque no es instantáneo.** El primer año no empieza a ritmo pleno. En enero BITE alcanza 15% de su adopción objetivo y llega al 100% en septiembre. En los años 2 y 3 la adopción tampoco salta el 1 de enero: sube la mitad en el primer semestre y el resto desde agosto, y cada agosto arranca al {{sup_regreso|%}} porque una parte de los usuarios tarda en volver del verano.
 

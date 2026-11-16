@@ -1,6 +1,6 @@
 # 12. Aspectos legales y personalidad jurídica
 
-!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Lo de este capítulo y el de franquicia debe confirmarse con un abogado y un contador antes de ejecutarse.
+!nota **Cómo investigamos este capítulo.** El marco legal, laboral y fiscal es el tema más alejado de lo que hemos visto en primer semestre. Para investigarlo nos apoyamos en una herramienta de inteligencia artificial de búsqueda, que localiza y resume fuentes, y después revisamos cada dato en la ley o en la página oficial. También usamos inteligencia artificial para revisar las fórmulas del modelo financiero y para ordenar y corregir la redacción a partir de nuestro borrador. La idea, las decisiones, los supuestos y la app son nuestros. Los requisitos legales de este capítulo los consultamos con un abogado.
 
 ## 12.1 Constitución legal del negocio
 
@@ -26,7 +26,7 @@ La S.A.S. cubre lo que BITE necesita en sus primeros años: separa el patrimonio
 | 9 | Registro patronal e inscripción de trabajadores | IMSS | Cuotas según nómina | Incluye a los repartidores, con las reglas de plataformas digitales |
 | 10 | Impuesto sobre nóminas | Estado de Querétaro | 3% | Con la deducción que marca la ley estatal, una nómina de este tamaño paga poco o nada |
 | 11 | Registro del modelo de contrato de repartidor | Centro Federal de Conciliación y Registro Laboral | Sin costo | Obligación de toda plataforma digital |
-| 12 | Aviso de privacidad y términos y condiciones | Se publican en la app y la página | Incluido en la asesoría legal | Ley de datos personales de 2025 y artículo 76 Bis de la Ley Federal de Protección al Consumidor |
+| 12 | Aviso de privacidad y términos y condiciones | Se publican en la app y la página | Incluido en la asesoría legal | Ley de datos personales de 2025 y Ley Federal de Protección al Consumidor |
 | 13 | Convenio de operación con la universidad | Universidad Anáhuac Querétaro | Sin costo en el modelo | Es la condición para operar y se gestiona antes que cualquier otro gasto. Debe fijar accesos, horarios, alimentos en salones, uso del correo institucional y responsabilidad por los repartidores. Si incluye una cuota, su efecto está |
 | 14 | Convenios de comisión con los locales | Cada local | Sin costo | Definen comisión, cupo, horarios, pago semanal e incidencias |
 
@@ -79,7 +79,7 @@ El objeto deja fuera, a propósito, la preparación y el almacenamiento de alime
 
 Nuestras obligaciones: ISR de 30% sobre la utilidad; IVA de 16% sobre el envío, el sobreprecio, la cuota de BITE Pass y la comisión; registrar aparte el dinero de la comida, que es del local; retener y enterar al SAT los impuestos de locales y repartidores conforme a las reglas de plataformas, y facturar cada semana.
 
-Las retenciones no son un costo para BITE: es dinero de terceros que se entrega al SAT. Sí son trabajo administrativo, y por eso la contabilidad externa es el gasto fijo más alto. El encuadre exacto de los cobros por cuenta de terceros se confirma con el contador antes del primer pedido.
+Las retenciones no son un costo para BITE: es dinero de terceros que se entrega al SAT. Sí son trabajo administrativo, y por eso la contabilidad externa es el gasto fijo más alto.
 
 ## 12.7 Acta constitutiva propia del negocio
 
@@ -109,7 +109,7 @@ BITE no tiene inmuebles, así que no hay nada que inscribir en el Registro Públ
 
 La franquicia no es para el primer día. La ofreceremos a partir del año 4, cuando tenga tres años de cifras reales y tres campus propios operando. Antes de eso no hay un sistema probado que vender.
 
-La Ley Federal de Protección a la Propiedad Industrial dice que hay franquicia cuando, con la licencia de una marca, se transmiten conocimientos técnicos o asistencia para operar de manera uniforme (artículo 245). El franquiciante debe entregar al interesado información sobre el estado de su empresa al menos 30 días antes de firmar; el artículo 124 del Reglamento de la ley, de 2026, enumera su contenido.
+La Ley Federal de Protección a la Propiedad Industrial dice que hay franquicia cuando, con la licencia de una marca, se transmiten conocimientos técnicos o asistencia para operar de manera uniforme (). El franquiciante debe entregar al interesado información sobre el estado de su empresa al menos 30 días antes de firmar; el Reglamento de la ley enumera su contenido.
 
 **Qué es una franquicia BITE.** El derecho a operar el servicio en un campus, con la marca, la app y los manuales de BITE.
 

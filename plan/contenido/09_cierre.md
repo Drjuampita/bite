@@ -7,7 +7,7 @@ Empezamos a armar este documento el 23 de octubre de 2026, a partir de nuestro b
 3. **Cada pedido deja {{u_margen_E|$2}} y el punto de equilibrio es alcanzable.** Con {{e_be_oday_E|n}} pedidos por día de clase, {{e_be_adop_E|%1}} de los alumnos, se pagan los gastos fijos de todo el año mientras operamos nosotros. Con un coordinador pagado hacen falta {{e_be2_oday_E|n}} pedidos, {{e_be2_adop_E|%1}}.
 4. **Un campus es un negocio pequeño.** En el escenario esperado deja {{E_neta_2|$}} en el año 2 y {{E_neta_3|$}} en el año 3, sin pagar nuestro trabajo. El valor está en repetirlo: con diez campus al año 5, la utilidad neta llega a {{x_neta_5|$}} después de pagar dos sueldos de tiempo completo.
 5. **El riesgo está medido.** Fijamos el capital en {{capital|$}} para que la caja conserve un colchón aun en el escenario pesimista. En ese escenario no recuperamos nuestro dinero en tres años, y el plan dice en qué mes se sabrá y qué se hace entonces.
-6. **Todo depende de un número que todavía no se ha medido: la adopción.** Necesitamos {{e_be2_adop_E|%1}} para sostenernos con un coordinador pagado y suponemos {{sup_adop1_E|%}} en el primer año. La encuesta y el piloto existen para medirlo antes de gastar.
+6. **El número que más pesa es la adopción.** Necesitamos {{e_be2_adop_E|%1}} para sostenernos con un coordinador pagado y suponemos {{sup_adop1_E|%}} en el primer año. La encuesta y el piloto existen para medirlo antes de gastar.
 7. **Hay dos condiciones que no dependen de nosotros:** el permiso de la universidad, con sus reglas, y que los locales acepten la comisión. Ambas dependen de una negociación y van antes que cualquier gasto.
 
 # 15. Recomendaciones

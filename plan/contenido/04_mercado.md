@@ -1,6 +1,6 @@
 # 6. Estudio de mercado
 
-Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que nosotros suponemos y lo que la encuesta y el piloto tienen que confirmar.
+Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que nosotros suponemos y lo que medimos con la encuesta y el piloto.
 
 ## 6.1 Mercado meta
 
@@ -13,7 +13,7 @@ Este capítulo separa tres cosas: lo que se sabe por fuentes publicadas, lo que 
 | Geográfica | Campus de la Universidad Anáhuac Querétaro, en El Marqués, Querétaro. El servicio empieza y termina dentro del campus |
 | Demográfica | Alumnos de licenciatura, de 17 a 25 años. Son {{sup_alumnos|n}} según el Informe 2024 de la universidad; con posgrado y educación continua la universidad reporta 8,222 |
 | Género | Indistinto |
-| Nivel socioeconómico, según la Asociación Mexicana de Agencias de Inteligencia de Mercado y Opinión (AMAI) | A/B y C+, por tratarse de una universidad privada. Estos niveles agrupan a 7.3% y 12.0% de los hogares del país. Es una hipótesis: la regla AMAI clasifica por características del hogar y la encuesta no las mide |
+| Nivel socioeconómico, según la Asociación Mexicana de Agencias de Inteligencia de Mercado y Opinión (AMAI) | A/B y C+, por tratarse de una universidad privada. Estos niveles agrupan a 7.3% y 12.0% de los hogares del país. |
 | Ingresos | No se pregunta el ingreso familiar. Se mide lo que importa para el negocio: el gasto habitual por comida (pregunta 10) y lo máximo que pagarían por el envío (pregunta 11) |
 | Grado de estudios | Licenciatura en curso |
 | Gustos y preferencias | Resolver la comida rápido, saber el total antes de pagar, pagar con tarjeta desde el celular y no perder clase. Usuarios habituales de apps |
@@ -41,7 +41,7 @@ Ordenamos el mercado con tres criterios: qué tan fuerte es el problema, qué ta
 
 **Diseño.** La encuesta es cuantitativa, de 15 preguntas organizadas por las 4P: 14 cerradas con cinco respuestas cada una y una abierta. Cada pregunta existe porque alimenta una decisión o un supuesto del modelo; la última columna de la tabla dice cuál.
 
-**Muestra.** La guía pide 300 respuestas. Sobre una población de {{sup_alumnos|n}} alumnos, 300 respuestas dan un margen de error de ±5.5 puntos con 95% de confianza. Para que la muestra se parezca al campus se fijan cuotas por edificio: se reparten los códigos QR en proporción a los salones de cada uno.
+**Muestra.** Nos fijamos una meta de 300 respuestas. Sobre una población de {{sup_alumnos|n}} alumnos, 300 respuestas dan un margen de error de ±5.5 puntos con 95% de confianza. Para que la muestra se parezca al campus se fijan cuotas por edificio: se reparten los códigos QR en proporción a los salones de cada uno.
 
 **Aplicación.** Formulario en línea, sin datos personales, distribuido con códigos QR en los edificios y en los grupos de WhatsApp de cada carrera durante cinco días de clase. El formulario abre con una pregunta filtro, «¿eres alumno de licenciatura?», que no cuenta entre las 15.
 
@@ -72,7 +72,7 @@ En la simulación, 64% de los encuestados señala las filas o el poco tiempo ent
 |---|---|
 | Fortalezas | El producto ya está construido y probado. La entrega se sincroniza con el horario de clases, algo que ninguna app general hace. La demanda de mañana se conoce desde hoy. No hay local, cocina ni inventario de comida. Estamos dentro del campus todos los días |
 | Oportunidades | La mitad de los universitarios omite comidas. Las apps generales cobran de 25% a 29% a los restaurantes y no llegan al salón. Hay más campus con el mismo problema. En Estados Unidos el pedido por app dentro del campus ya opera en más de 450 universidades |
-| Debilidades | Marca nueva. Depende de cuatro locales y del permiso de una sola universidad. Somos estudiantes y dedicamos tiempo parcial. Un solo campus da ingresos pequeños. La demanda todavía no está medida |
+| Debilidades | Marca nueva. Depende de cuatro locales y del permiso de una sola universidad. Somos estudiantes y dedicamos tiempo parcial. Un solo campus da ingresos pequeños. La demanda se termina de medir en el piloto |
 | Amenazas | La universidad puede negar o condicionar el permiso. Los locales pueden organizar sus propios pedidos anticipados. Una app grande puede entrar a los campus. La regulación laboral de plataformas puede encarecer el reparto. Tres meses al año no hay clases ni ingresos |
 
 ### 6.3.1 SWOT de las 4P
@@ -89,7 +89,7 @@ En la simulación, 64% de los encuestados señala las filas o el poco tiempo ent
 
 ### 6.3.2 SWOT por áreas de la empresa
 
-La guía pide estas cuatro áreas. En el organigrama, Ventas y Marketing forman una sola: Comercial y marketing.
+Analizamos cuatro áreas. En el organigrama, Ventas y Marketing forman una sola: Comercial y marketing.
 
 !tabla SWOT por área
 !cols 1.2,1.8,1.8,1.8,1.8
@@ -111,7 +111,7 @@ No conocemos ninguna otra app de entrega que opere dentro de la universidad. BIT
 | Alternativa | Dónde se recibe | Costo extra sobre la comida | ¿Se agenda por clase? | Lo que cuesta en tiempo |
 |---|---|---|---|---|
 | Ir al mostrador | En el local | $0 | No | Caminar, hacer fila y esperar en hora pico |
-| Traer comida de casa | No aplica | $0 | No aplica | Prepararla y cargarla todo el día |
+| Traer comida de casa | — | $0 | — | Prepararla y cargarla todo el día |
 | Apps generales: Uber Eats, DiDi Food, Rappi | En la dirección del campus; hay que salir a encontrarse con el repartidor | De $12 a $44 en un platillo de $175 | Solo por hora de reloj | Espera variable y el traslado al punto de encuentro |
 | Encargar al local y pasar a recoger | En el local | $0 | Informal, si el local acepta | Caminar y recoger |
 | **BITE** | En la puerta del salón | {{= S.sup_fee+S.sup_markup |$}} en un pedido de {{sup_ticket|$}}; con BITE Pass y ocho pedidos al mes, {{= S.sup_markup+S.sup_passfee/8 |$}} | Sí, desde un día antes | Un minuto para pedir |

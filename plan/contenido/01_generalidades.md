@@ -29,7 +29,7 @@
 
 **El crecimiento.** Un campus es un negocio pequeño: en el año 3 deja {{E_neta_3|$}}, que son {{= S.E_neta_3/5 |$}} por socio, sin pagar nuestro trabajo. Nuestro plan es repetirlo: tres campus propios en la zona de Querétaro al año 3 y, desde el año 4, franquicias de campus. Al año 5 la red tendría {{x_n_total_5|n}} campus, ingresos por {{x_ing_bite_5|$k}} y una utilidad neta de {{x_neta_5|$k}}, después de pagar sueldo a dos socios de tiempo completo.
 
-**Lo que falta por comprobar.** La universidad ya nos autorizó hacer un piloto pequeño con el producto mínimo viable. Para arrancar el 11 de enero de 2027 nos falta acordar los detalles con la directora de carrera, firmar los convenios con los locales, terminar la encuesta a 300 alumnos y correr el piloto de dos semanas. En cada apartado decimos qué es dato, qué es decisión nuestra y qué es supuesto.
+**Lo que sigue.** La universidad ya nos autorizó hacer un piloto pequeño con el producto mínimo viable. Para arrancar el 11 de enero de 2027 nos falta acordar los detalles con la directora de carrera, firmar los convenios con los locales, terminar la encuesta a 300 alumnos y correr el piloto de dos semanas. En cada apartado decimos qué es dato, qué es decisión nuestra y qué es supuesto.
 
 # 2. Desarrollo
 

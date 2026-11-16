@@ -1,6 +1,6 @@
 # 7. Operación y producción
 
-La guía del proyecto está escrita para un negocio con local, caja e inventario. BITE no tiene ninguno de los tres. En cada apartado respondemos lo que la guía pide con su equivalente en una plataforma de reparto, y lo decimos cuando algo no aplica.
+BITE no tiene local, caja ni inventario propios. BITE no tiene ninguno de los tres. En cada apartado explicamos cómo funciona ese proceso en una plataforma de reparto.
 
 ## 7.1 Procesos
 
@@ -77,7 +77,7 @@ BITE no almacena alimentos. Su inventario es de equipo y consumibles: mochilas, 
 | Ingreso por hora efectiva de trabajo | {{= S.E_ing_rb_2*2 |$}} |
 | Salario mínimo por hora | {{= S.sup_sm_diario/8 |$2}} |
 
-El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases. Mientras el ingreso neto del mes quede por debajo de un salario mínimo mensual, la ley trata al repartidor como trabajador independiente de plataforma y BITE paga su aseguramiento contra riesgos de trabajo. Si un repartidor rebasa el umbral, BITE lo inscribe en el IMSS con seguridad social completa. Este encuadre laboral y fiscal debe confirmarse por escrito con un abogado laboral y un contador antes de reclutar.
+El tope de cuatro bloques diarios mantiene el trabajo compatible con las clases. Mientras el ingreso neto del mes quede por debajo de un salario mínimo mensual, la ley trata al repartidor como trabajador independiente de plataforma y BITE paga su aseguramiento contra riesgos de trabajo. Si un repartidor rebasa el umbral, BITE lo inscribe en el IMSS con seguridad social completa. Este encuadre laboral y fiscal lo revisamos con un abogado.
 
 **Coordinador de operación.** Sueldo fijo quincenal con contrato por temporada. Su costo mensual de {{sup_coord|$}} incluye las cuotas patronales y solo se paga en los meses con clases.
 
