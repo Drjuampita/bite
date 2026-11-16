@@ -1,6 +1,6 @@
 // Utilidades para dibujar las figuras del documento como SVG/HTML y capturarlas a PNG.
 const C = {
-  brand: "#ff5b14", brand6: "#eb4a05", brand7: "#c23a06", b50: "#fff4ed", b100: "#ffe4d3", b200: "#ffc5a6",
+  brand: "#e5386d", brand6: "#cf2a5c", brand7: "#a81d4a", b50: "#fff1f5", b100: "#ffdde7", b200: "#ffb9cd",
   ink: "#1c1511", muted: "#75695f", line: "#e6ddd5", canvas: "#fbf8f5", white: "#ffffff", grid: "#ece6e0",
   s1: "#2a78d6", s2: "#eb6834", s3: "#1baf7a", gris: "#9b9087",
 };

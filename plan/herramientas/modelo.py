@@ -31,10 +31,10 @@ NEGRO = Font(name=F, size=10, color="000000")
 VERDE = Font(name=F, size=10, color="008000")
 NEGRITA = Font(name=F, size=10, bold=True)
 GRIS = Font(name=F, size=9, color="666666")
-TITULO = Font(name=F, size=14, bold=True, color="C23A06")
+TITULO = Font(name=F, size=14, bold=True, color="A81D4A")
 BLANCO = Font(name=F, size=10, bold=True, color="FFFFFF")
-R_MARCA = PatternFill("solid", fgColor="FF5B14")
-R_SUAVE = PatternFill("solid", fgColor="FFE4D3")
+R_MARCA = PatternFill("solid", fgColor="E5386D")
+R_SUAVE = PatternFill("solid", fgColor="FFDDE7")
 R_GRIS = PatternFill("solid", fgColor="F3EEE9")
 R_AMARILLO = PatternFill("solid", fgColor="FFFF00")
 LINEA = Side(style="thin", color="D9D0C7")
@@ -1130,7 +1130,7 @@ ws = ws_l
 ws.sheet_view.showGridLines = False
 ws.column_dimensions["A"].width = 30
 ws.column_dimensions["B"].width = 100
-put(ws, "A1", "BITE · Modelo financiero", font=Font(name=F, size=16, bold=True, color="C23A06"))
+put(ws, "A1", "BITE · Modelo financiero", font=Font(name=F, size=16, bold=True, color="A81D4A"))
 put(ws, "A2", f"Proyecto Integrador, Taller de Empresa, Universidad Anáhuac Querétaro. Generado el {dt.date.today().isoformat()}.", font=GRIS)
 lineas = [
     ("Para qué sirve", "Todas las cifras del Proyecto Integrador salen de este libro. Si cambias un supuesto, cambian todas las hojas."),

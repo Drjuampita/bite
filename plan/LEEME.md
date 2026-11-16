@@ -108,3 +108,7 @@ Los supuestos se cambian en `herramientas/datos.py`. El texto, en `contenido/`.
 - La presentación en PowerPoint del punto 18 de la guía. El lienzo está en el documento.
 - Una segunda ronda de revisores sobre la versión corregida.
 - Contratos completos. Están los puntos principales del convenio con locales y del contrato de repartidores; redactarlos le toca al abogado.
+
+## Color de marca
+
+El manual de identidad usa frambuesa `#E5386D` (profundo `#A81D4A`, rosa claro `#FFDDE7`) en lugar del naranja original, para no parecerse a las apps de reparto. Las capturas de `figuras/app/` se recolorearon; el código de la app (rama aparte) sigue en naranja y habría que cambiar sus tokens `--color-brand-*`.

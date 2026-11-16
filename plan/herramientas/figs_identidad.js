@@ -19,13 +19,13 @@ module.exports = (S, OUT) => {
     name: "id_logo",
     html: `<div style="display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px">
         <div><div style="${tileS};background:#fff">${logo(58, C.ink, "a")}</div>${lab("Versión principal, sobre fondo claro")}</div>
-        <div><div style="${tileS};background:${C.brand};border-color:${C.brand}">${logoInv(46, "b")}</div>${lab("Versión invertida, sobre naranja BITE")}</div>
+        <div><div style="${tileS};background:${C.brand};border-color:${C.brand}">${logoInv(46, "b")}</div>${lab("Versión invertida, sobre frambuesa BITE")}</div>
         <div><div style="${tileS};background:${C.ink};border-color:${C.ink}">${logo(46, "#fff", "c")}</div>${lab("Sobre fondo oscuro")}</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 2.2fr;gap:12px;margin-top:14px">
         <div><div style="${tileS};background:${C.canvas};position:relative"><div style="border:1.5px dashed ${C.gris};padding:26px;border-radius:8px">${logoMark(52, "d")}</div></div>${lab("Isotipo y zona de protección: medio isotipo por lado. Tamaño mínimo: 24 px en pantalla, 10 mm impreso")}</div>
         <div><div style="display:flex;gap:10px">
-          ${sw("#ff5b14", "Naranja BITE", "255, 91, 20", "0, 64, 92, 0")}${sw("#c23a06", "Naranja profundo", "194, 58, 6", "0, 70, 97, 24")}${sw("#1c1511", "Tinta", "28, 21, 17", "0, 25, 39, 89")}${sw("#ffe4d3", "Durazno", "255, 228, 211", "0, 11, 17, 0")}${sw("#fbf8f5", "Lienzo", "251, 248, 245", "0, 1, 2, 2")}
+          ${sw("#e5386d", "Frambuesa BITE", "229, 56, 109", "0, 76, 52, 10")}${sw("#a81d4a", "Frambuesa profundo", "168, 29, 74", "0, 83, 56, 34")}${sw("#1c1511", "Tinta", "28, 21, 17", "0, 25, 39, 89")}${sw("#ffdde7", "Rosa claro", "255, 221, 231", "0, 13, 9, 0")}${sw("#fbf8f5", "Lienzo", "251, 248, 245", "0, 1, 2, 2")}
         </div></div>
       </div>`,
   });
@@ -36,13 +36,13 @@ module.exports = (S, OUT) => {
   figs.push({
     name: "id_usos",
     html: `<div style="font-size:13px;font-weight:700;margin-bottom:8px">Uso correcto</div>
-      <div style="display:flex;gap:10px">${ok(logo(40, C.ink, "u1"), "Completo, sobre blanco o lienzo")}${ok(logoInv(34, "u2"), "Invertido sobre naranja BITE", C.brand)}${ok(logoMark(46, "u3"), "Isotipo solo en espacios chicos: ícono de la app, sello, gorra", C.canvas)}${ok(logo(34, "#fff", "u4"), "Sobre foto o fondo oscuro con contraste suficiente", C.ink)}</div>
+      <div style="display:flex;gap:10px">${ok(logo(40, C.ink, "u1"), "Completo, sobre blanco o lienzo")}${ok(logoInv(34, "u2"), "Invertido sobre frambuesa BITE", C.brand)}${ok(logoMark(46, "u3"), "Isotipo solo en espacios chicos: ícono de la app, sello, gorra", C.canvas)}${ok(logo(34, "#fff", "u4"), "Sobre foto o fondo oscuro con contraste suficiente", C.ink)}</div>
       <div style="font-size:13px;font-weight:700;margin:16px 0 8px">Uso incorrecto</div>
       <div style="display:flex;gap:10px">
         ${no(`<div style="transform:scaleX(1.55)">${logo(32, C.ink, "n1")}</div>`, "Estirarlo o deformarlo")}
         ${no(`<span style="display:inline-flex;align-items:center;gap:8px">${markColor(36, "#2a78d6", "#fff", "n2")}<span style="font-size:30px;font-weight:800;color:#2a78d6;letter-spacing:-0.035em">bite</span></span>`, "Cambiarle el color")}
         ${no(`<div style="transform:rotate(-16deg)">${logo(34, C.ink, "n3")}</div>`, "Girarlo")}
-        ${no(logo(34, "#ff8a55", "n4"), "Ponerlo sobre un fondo sin contraste", "#ffa272")}
+        ${no(logo(34, "#ee7b9b", "n4"), "Ponerlo sobre un fondo sin contraste", "#f08aa6")}
         ${no(`<div style="filter:drop-shadow(4px 5px 3px rgba(0,0,0,.55))">${logo(34, C.ink, "n5")}</div>`, "Agregarle sombras, contornos o efectos")}
       </div>`,
   });
@@ -88,7 +88,7 @@ module.exports = (S, OUT) => {
         <div style="font-size:14px;font-weight:800">Nombre Apellido</div><div style="font-size:10px;color:${C.brand7};font-weight:700">Socio · Área a su cargo</div>
         <div style="font-size:9.5px;color:${C.muted};line-height:1.7;margin-top:16px">442 447 8664<br>nombre@bitedelivery.mx<br>bitedelivery.mx</div>
         <div style="position:absolute;right:18px;bottom:16px">${logoMark(30, "t2")}</div></div>
-      <div style="font-size:12px;line-height:1.5;max-width:170px"><b>Medidas:</b> 9 × 5 cm<br><b>Material:</b> cartulina couché de 300 g, laminado mate<br><b>Tintas:</b> 4 × 4<br><b>Frente:</b> naranja BITE con logotipo invertido y eslogan<br><b>Vuelta:</b> nombre, puesto y datos de contacto</div></div>`,
+      <div style="font-size:12px;line-height:1.5;max-width:170px"><b>Medidas:</b> 9 × 5 cm<br><b>Material:</b> cartulina couché de 300 g, laminado mate<br><b>Tintas:</b> 4 × 4<br><b>Frente:</b> frambuesa BITE con logotipo invertido y eslogan<br><b>Vuelta:</b> nombre, puesto y datos de contacto</div></div>`,
   });
 
   // ── Landing page ──
@@ -117,7 +117,7 @@ module.exports = (S, OUT) => {
   figs.push({
     name: "id_uniforme",
     html: `<div style="display:flex;gap:6px;background:${C.canvas};border-radius:16px;padding:16px 10px">
-      ${pz(polo, "Playera polo", "Naranja BITE, isotipo bordado al pecho")}${pz(gorra, "Gorra", "Color tinta, isotipo bordado al frente")}${pz(mochila, "Mochila térmica", "51 litros, franja reflejante, logotipo")}${pz(gafete, "Gafete", "Foto, nombre y folio de repartidor")}</div>`,
+      ${pz(polo, "Playera polo", "Frambuesa BITE, isotipo bordado al pecho")}${pz(gorra, "Gorra", "Color tinta, isotipo bordado al frente")}${pz(mochila, "Mochila térmica", "51 litros, franja reflejante, logotipo")}${pz(gafete, "Gafete", "Foto, nombre y folio de repartidor")}</div>`,
   });
 
   // ── Aplicaciones ──

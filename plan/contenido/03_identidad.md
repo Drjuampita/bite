@@ -1,6 +1,6 @@
 # 5. Manual de identidad
 
-La marca BITE parte de una imagen que cualquiera entiende: una mordida. El isotipo es un cuadro naranja de esquinas redondeadas con un círculo blanco al que le falta un bocado. El logotipo lo acompaña con la palabra «bite» en minúsculas y trazo grueso. Elegimos el naranja porque se asocia con apetito y energía y porque se distingue a distancia en un pasillo lleno. El diseño es nuestro.
+La marca BITE parte de una imagen que cualquiera entiende: una mordida. El isotipo es un cuadro color frambuesa de esquinas redondeadas con un círculo blanco al que le falta un bocado. El logotipo lo acompaña con la palabra «bite» en minúsculas y trazo grueso. Elegimos un rosa frambuesa porque es cálido, se antoja y se distingue a distancia en un pasillo lleno. Descartamos el naranja a propósito: es el color de las apps de reparto más conocidas y no queremos parecernos a ellas. El diseño es nuestro.
 
 ## 5.1 Diseño de hojas membretadas
 
@@ -25,7 +25,7 @@ El dominio que elegimos es **bitedelivery.mx**. Es corto, dice lo que hace la em
 
 **Descripción.** El logotipo tiene dos partes: el isotipo (el cuadro con la mordida) y la palabra «bite». Pueden ir juntos o, en espacios pequeños, el isotipo solo.
 
-**Colores.** El naranja BITE es el color de la marca y de los botones. El naranja profundo se usa en títulos y texto sobre fondo claro, porque contrasta mejor. La tinta es el color del texto. El durazno y el lienzo son fondos.
+**Colores.** El frambuesa BITE es el color de la marca y de los botones. El frambuesa profundo se usa en títulos y texto sobre fondo claro, porque contrasta mejor. La tinta es el color del texto. El rosa claro y el lienzo son fondos.
 
 **Distribución.** El isotipo va a la izquierda y la palabra a la derecha, alineados al centro. La separación entre ambos es una quinta parte del alto del isotipo. Alrededor del logotipo se deja libre un espacio igual a medio isotipo.
 
