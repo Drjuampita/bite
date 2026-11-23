@@ -3,7 +3,7 @@
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, type ReactNode } from "react";
+import { Suspense, useEffect, type ReactNode } from "react";
 import { DesktopNav } from "@/components/DesktopNav";
 import { LogoMark } from "@/components/Logo";
 import { useBite } from "@/lib/store";
@@ -12,7 +12,10 @@ import { useBite } from "@/lib/store";
 export function PhoneShell({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-[440px] flex-col bg-canvas sm:shadow-[0_0_80px_-20px_rgb(28_21_17/0.25)] lg:max-w-none lg:shadow-none">
-      <DesktopNav />
+      {/* Lee la ruta actual, que solo existe en el navegador: Suspense evita que bloquee el prerenderizado. */}
+      <Suspense fallback={null}>
+        <DesktopNav />
+      </Suspense>
       {children}
     </div>
   );
