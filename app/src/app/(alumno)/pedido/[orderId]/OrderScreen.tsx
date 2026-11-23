@@ -54,9 +54,9 @@ function OrderDetail() {
   return (
     <>
       <PageHeader title={`Pedido #${orderRef(order)}`} backHref="/pedidos" right={<StatusBadge status={order.status} />} />
-      <main className="flex-1 space-y-4 px-4 pt-4 pb-10">
+      <main className="flex-1 space-y-4 px-4 pt-4 pb-10 lg:mx-auto lg:w-full lg:max-w-6xl lg:grid lg:flex-none lg:grid-cols-2 lg:items-start lg:gap-6 lg:space-y-0 lg:px-5 lg:pb-16">
         {isNew && (order.status === "recibido" || order.status === "programado") && (
-          <div className="flex animate-fade-in items-center gap-4 rounded-card bg-emerald-50 p-4 ring-1 ring-emerald-200">
+          <div className="flex animate-fade-in items-center gap-4 rounded-card bg-emerald-50 p-4 ring-1 ring-emerald-200 lg:col-span-2">
             <span className="grid size-12 shrink-0 animate-pop place-items-center rounded-full bg-emerald-500 text-2xl text-white">✓</span>
             <div>
               <p className="font-bold text-emerald-900">
@@ -71,6 +71,7 @@ function OrderDetail() {
           </div>
         )}
 
+        <div className="space-y-4">
         <section className="overflow-hidden rounded-card bg-white shadow-card ring-1 ring-line/60">
           <div className="bg-ink p-5 text-white">
             <p className="flex items-center gap-1.5 text-xs font-semibold text-white/60">
@@ -105,7 +106,9 @@ function OrderDetail() {
         </section>
 
         {order.status === "entregado" && <RatingCard order={order} />}
+        </div>
 
+        <div className="space-y-4">
         <section className="space-y-4 rounded-card bg-white p-5 shadow-card ring-1 ring-line/60">
           <Detail icon={<MapPin className="size-5" />} label="Entregar en">
             Salón {order.location.room} · {describeLocation(order.location)}
@@ -180,6 +183,7 @@ function OrderDetail() {
             <RotateCcw className="size-4" /> Pedir de nuevo
           </Button>
         )}
+        </div>
       </main>
 
       <ConfirmDialog

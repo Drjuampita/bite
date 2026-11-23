@@ -4,6 +4,7 @@ import { ChevronLeft, Clock, MapPin, Plus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { CartBar } from "@/components/CartBar";
+import { CartPanel } from "@/components/CartPanel";
 import { ProductSheet } from "@/components/ProductSheet";
 import { RequireUser } from "@/components/shell";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
@@ -39,19 +40,19 @@ function VendorMenu({ vendorId }: { vendorId: string }) {
   }
 
   return (
-    <main className="flex-1 pb-28">
-      <div className="relative">
-        <VendorCover vendor={vendor} className="h-52" />
+    <main className="flex-1 pb-28 lg:mx-auto lg:w-full lg:max-w-6xl lg:pb-16">
+      <div className="relative lg:px-5 lg:pt-6">
+        <VendorCover vendor={vendor} className="h-52 lg:h-72 lg:rounded-card" />
         <Link
           href="/inicio"
           aria-label="Regresar"
-          className="absolute top-4 left-4 grid size-10 place-items-center rounded-full bg-white text-ink shadow-md"
+          className="absolute top-4 left-4 grid size-10 place-items-center rounded-full bg-white text-ink shadow-md lg:top-10 lg:left-9"
         >
           <ChevronLeft className="size-5" />
         </Link>
       </div>
 
-      <section className="relative -mt-8 mx-4 rounded-card bg-white p-5 shadow-card ring-1 ring-line/60">
+      <section className="relative -mt-8 mx-4 lg:mx-10 lg:p-6 rounded-card bg-white p-5 shadow-card ring-1 ring-line/60">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight">{vendor.name}</h1>
@@ -70,7 +71,9 @@ function VendorMenu({ vendorId }: { vendorId: string }) {
         </div>
       </section>
 
-      <nav aria-label="Secciones del menú" className="no-scrollbar sticky top-0 z-20 mt-4 flex gap-2 overflow-x-auto bg-canvas/95 px-4 py-3 backdrop-blur">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-8 lg:px-5 lg:pt-6">
+      <div className="min-w-0">
+      <nav aria-label="Secciones del menú" className="no-scrollbar sticky top-0 z-20 mt-4 flex gap-2 overflow-x-auto bg-canvas/95 px-4 py-3 backdrop-blur lg:top-16 lg:mt-0 lg:px-0">
         {popular.length > 0 && <SectionLink id="populares" label="⭐ Populares" />}
         {sections.map((s) => (
           <SectionLink key={s} id={slug(s)} label={s} />
@@ -78,19 +81,19 @@ function VendorMenu({ vendorId }: { vendorId: string }) {
       </nav>
 
       {popular.length > 0 && (
-        <section id="populares" className="scroll-mt-16 pt-2">
-          <h2 className="px-5 text-lg font-bold">Populares</h2>
-          <div className="no-scrollbar mt-3 flex gap-3 overflow-x-auto px-5 pb-2">
+        <section id="populares" className="scroll-mt-16 pt-2 lg:scroll-mt-32">
+          <h2 className="px-5 text-lg font-bold lg:px-0 lg:text-xl">Populares</h2>
+          <div className="no-scrollbar mt-3 flex gap-3 overflow-x-auto px-5 pb-2 lg:px-0.5">
             {popular.map((p) => (
               <button
                 key={p.id}
                 type="button"
                 onClick={() => setSelected(p)}
-                className="w-36 shrink-0 overflow-hidden rounded-2xl bg-white text-left shadow-sm ring-1 ring-line"
+                className="w-36 shrink-0 overflow-hidden rounded-2xl bg-white text-left shadow-sm ring-1 ring-line transition hover:shadow-md lg:w-44"
               >
                 {p.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={p.image} alt="" className="h-24 w-full object-cover" />
+                  <img src={p.image} alt="" className="h-24 w-full object-cover lg:h-28" />
                 ) : (
                   <span className="grid h-24 place-items-center bg-brand-50 text-5xl" aria-hidden="true">
                     {p.emoji}
@@ -107,9 +110,9 @@ function VendorMenu({ vendorId }: { vendorId: string }) {
       )}
 
       {sections.map((section) => (
-        <section key={section} id={slug(section)} className="scroll-mt-16 pt-6">
-          <h2 className="px-5 text-lg font-bold">{section}</h2>
-          <ul className="mt-2 divide-y divide-line">
+        <section key={section} id={slug(section)} className="scroll-mt-16 pt-6 lg:scroll-mt-32 lg:pt-8">
+          <h2 className="px-5 text-lg font-bold lg:px-0 lg:text-xl">{section}</h2>
+          <ul className="mt-2 divide-y divide-line lg:mt-3 lg:grid lg:grid-cols-2 lg:gap-4 lg:divide-y-0">
             {products
               .filter((p) => p.section === section)
               .map((p) => (
@@ -124,6 +127,10 @@ function VendorMenu({ vendorId }: { vendorId: string }) {
           </ul>
         </section>
       ))}
+
+      </div>
+      <CartPanel />
+      </div>
 
       <ProductSheet product={selected} onClose={() => setSelected(null)} onAdd={handleAdd} />
       <ConfirmDialog
@@ -175,7 +182,7 @@ function ProductRow({
       type="button"
       onClick={onSelect}
       disabled={soldOut}
-      className="flex w-full items-center gap-4 px-5 py-4 text-left transition active:bg-black/[0.02] disabled:opacity-50"
+      className="flex w-full items-center gap-4 px-5 py-4 text-left transition active:bg-black/[0.02] disabled:opacity-50 lg:h-full lg:rounded-2xl lg:bg-white lg:p-4 lg:ring-1 lg:ring-line lg:hover:shadow-md"
     >
       <div className="min-w-0 flex-1">
         <p className="font-bold">

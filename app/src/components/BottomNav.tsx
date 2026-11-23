@@ -18,7 +18,7 @@ export function BottomNav() {
   const activeCount = orders.filter((o) => o.userId === user?.id && isActive(o)).length;
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[440px] border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[440px] border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
       <ul className="grid grid-cols-3">
         {TABS.map(({ href, label, Icon }) => {
           const active = pathname.startsWith(href);

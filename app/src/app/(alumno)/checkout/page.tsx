@@ -99,10 +99,25 @@ function Checkout({ vendor }: { vendor: Vendor }) {
     router.replace(`/pedido/${result.order.id}?nuevo=1`);
   }
 
+  // El mismo botón va en la barra fija (teléfono) y bajo el resumen (computadora).
+  const submitBlock = (
+    <>
+      {error && (
+        <p role="alert" className="mb-2 text-center text-sm font-medium text-red-600">
+          {error}
+        </p>
+      )}
+      <Button size="lg" block disabled={!canSubmit} onClick={submit}>
+        {mode === "ahora" ? "Pedir ahora" : "Agendar pedido"} · {money(total)}
+      </Button>
+    </>
+  );
+
   return (
     <>
       <PageHeader title="Confirmar pedido" />
-      <main className="flex-1 space-y-4 px-4 pt-4 pb-36">
+      <main className="flex-1 px-4 pt-4 pb-36 lg:mx-auto lg:w-full lg:max-w-6xl lg:grid lg:flex-none lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-8 lg:px-5 lg:pb-16">
+        <div className="space-y-4">
         <Step n={1} title="¿Cuándo lo quieres?">
           <Segmented
             label="Tipo de entrega"
@@ -149,7 +164,7 @@ function Checkout({ vendor }: { vendor: Vendor }) {
 
               <p className="mt-4 mb-2 text-xs font-semibold text-muted">¿A qué hora empieza tu clase?</p>
               {visibleSlots.length > 0 ? (
-                <div role="radiogroup" aria-label="Hora de tu clase" className="grid grid-cols-3 gap-2">
+                <div role="radiogroup" aria-label="Hora de tu clase" className="grid grid-cols-3 gap-2 lg:grid-cols-5">
                   {visibleSlots.map(({ slot, available, remaining }) => {
                     const active = slot.id === slotId;
                     const few = available && remaining !== undefined && remaining <= LOW_CAPACITY_THRESHOLD;
@@ -256,7 +271,9 @@ function Checkout({ vendor }: { vendor: Vendor }) {
             />
           </label>
         </Step>
+        </div>
 
+        <aside className="mt-4 lg:sticky lg:top-24 lg:mt-0">
         <section className="rounded-card bg-white p-5 shadow-card ring-1 ring-line/60">
           <h2 className="font-bold">Resumen · {vendor.name}</h2>
           <ul className="mt-3 space-y-1 text-sm">
@@ -284,17 +301,12 @@ function Checkout({ vendor }: { vendor: Vendor }) {
             </div>
           </dl>
         </section>
+        <div className="mt-4 hidden lg:block">{submitBlock}</div>
+        </aside>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[440px] border-t border-line bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        {error && (
-          <p role="alert" className="mb-2 text-center text-sm font-medium text-red-600">
-            {error}
-          </p>
-        )}
-        <Button size="lg" block disabled={!canSubmit} onClick={submit}>
-          {mode === "ahora" ? "Pedir ahora" : "Agendar pedido"} · {money(total)}
-        </Button>
+      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[440px] border-t border-line bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden">
+        {submitBlock}
       </div>
     </>
   );

@@ -7,7 +7,7 @@ import { useBite } from "@/lib/store";
 import type { Vendor } from "@/lib/types";
 import { useNow } from "@/lib/useNow";
 
-export function VendorCover({ vendor, className = "h-36" }: { vendor: Vendor; className?: string }) {
+export function VendorCover({ vendor, className = "h-36 lg:h-44" }: { vendor: Vendor; className?: string }) {
   if (vendor.image) {
     return (
       <div className={`relative overflow-hidden ${className}`}>
@@ -60,7 +60,7 @@ export function VendorCard({ vendor }: { vendor: Vendor }) {
   return (
     <Link
       href={`/local/${vendor.id}`}
-      className="block overflow-hidden rounded-card bg-white shadow-card ring-1 ring-line/60 transition active:scale-[0.99]"
+      className="block overflow-hidden rounded-card bg-white shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99]"
     >
       <VendorCover vendor={vendor} />
       <div className="p-4">

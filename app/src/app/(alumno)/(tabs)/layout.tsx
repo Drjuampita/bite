@@ -4,7 +4,7 @@ import { RequireUser } from "@/components/shell";
 export default function TabsLayout({ children }: LayoutProps<"/">) {
   return (
     <RequireUser>
-      <div className="flex flex-1 flex-col pb-24">{children}</div>
+      <div className="flex flex-1 flex-col pb-24 lg:pb-12">{children}</div>
       <BottomNav />
     </RequireUser>
   );

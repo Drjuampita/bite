@@ -14,7 +14,7 @@ export function CartBar({ aboveNav = false }: { aboveNav?: boolean }) {
 
   return (
     <div
-      className={`fixed inset-x-0 z-40 mx-auto max-w-[440px] px-4 ${
+      className={`fixed inset-x-0 z-40 mx-auto max-w-[440px] px-4 lg:hidden ${
         aboveNav ? "bottom-[calc(4.5rem+env(safe-area-inset-bottom))]" : "bottom-[max(1rem,env(safe-area-inset-bottom))]"
       }`}
     >

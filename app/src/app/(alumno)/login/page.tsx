@@ -38,23 +38,24 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex flex-1 flex-col">
-      <section className="relative overflow-hidden bg-brand-500 px-6 pt-12 pb-16 text-white">
-        <div className="absolute -top-16 -right-16 size-56 rounded-full bg-white/10" aria-hidden="true" />
-        <div className="absolute top-24 -right-6 size-24 rounded-full bg-white/10" aria-hidden="true" />
+    <main className="flex flex-1 flex-col lg:flex-row">
+      <section className="relative overflow-hidden bg-brand-500 px-6 pt-12 pb-16 text-white lg:flex lg:flex-1 lg:items-center lg:px-20 lg:py-16">
+        <div className="absolute -top-16 -right-16 size-56 rounded-full bg-white/10 lg:size-96" aria-hidden="true" />
+        <div className="absolute top-24 -right-6 size-24 rounded-full bg-white/10 lg:top-auto lg:right-40 lg:bottom-16 lg:size-40" aria-hidden="true" />
+        <div className="absolute -bottom-32 -left-24 hidden size-80 rounded-full bg-white/10 lg:block" aria-hidden="true" />
         <div className="relative">
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-ink">
             <Logo small />
           </span>
-          <h1 className="mt-8 text-4xl leading-[1.05] font-extrabold tracking-tight">
+          <h1 className="mt-8 text-4xl leading-[1.05] font-extrabold tracking-tight lg:mt-10 lg:text-7xl">
             Tu comida,
             <br />
             directo a tu salón.
           </h1>
-          <p className="mt-3 max-w-xs text-white/85">
+          <p className="mt-3 max-w-xs text-white/85 lg:mt-6 lg:max-w-md lg:text-xl">
             Pide a los locales del campus y recíbelo entre clases. Sin filas, sin correr.
           </p>
-          <ul className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
+          <ul className="mt-6 flex flex-wrap gap-2 text-xs font-semibold lg:mt-10 lg:text-sm">
             <li className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5">
               <Zap className="size-3.5" /> Pide al momento
             </li>
@@ -68,8 +69,8 @@ export default function LoginPage() {
         </div>
       </section>
 
-      <form onSubmit={submit} className="-mt-6 flex flex-1 flex-col rounded-t-[28px] bg-canvas px-6 pt-8 pb-8">
-        <h2 className="text-xl font-bold">Entra con tu cuenta</h2>
+      <form onSubmit={submit} className="-mt-6 flex flex-1 flex-col rounded-t-[28px] bg-canvas px-6 pt-8 pb-8 lg:mt-0 lg:w-[30rem] lg:flex-none lg:justify-center lg:rounded-none lg:px-14">
+        <h2 className="text-xl font-bold lg:text-3xl lg:font-extrabold lg:tracking-tight">Entra con tu cuenta</h2>
         <p className="mt-1 text-sm text-muted">Solo para la comunidad universitaria.</p>
 
         <label className="mt-6 block">
@@ -107,7 +108,7 @@ export default function LoginPage() {
           Entrar con cuenta de demostración
         </Button>
 
-        <div className="mt-auto pt-10 text-center text-xs text-muted">
+        <div className="mt-auto pt-10 text-center text-xs text-muted lg:mt-0">
           ¿Trabajas en el campus?{" "}
           <Link href="/panel" className="font-semibold text-ink underline underline-offset-2">
             Panel de local

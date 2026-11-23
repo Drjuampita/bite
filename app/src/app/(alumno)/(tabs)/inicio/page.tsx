@@ -26,15 +26,15 @@ export default function InicioPage() {
   const vendors = category ? VENDORS.filter((v) => v.categories.includes(category)) : VENDORS;
 
   return (
-    <main className="flex-1">
-      <header className="flex items-center justify-between px-5 pt-6">
+    <main className="flex-1 lg:mx-auto lg:w-full lg:max-w-6xl">
+      <header className="flex items-center justify-between px-5 pt-6 lg:pt-10">
         <div>
           <p className="text-sm text-muted">Hola, {firstName(user?.name ?? "")} 👋</p>
-          <h1 className="text-2xl font-extrabold tracking-tight">¿Qué se te antoja?</h1>
+          <h1 className="text-2xl font-extrabold tracking-tight lg:text-4xl">¿Qué se te antoja?</h1>
         </div>
         <Link
           href="/perfil"
-          className="flex max-w-[45%] items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-semibold shadow-sm ring-1 ring-line"
+          className="flex max-w-[45%] items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-semibold shadow-sm ring-1 ring-line lg:hidden"
         >
           <MapPin className="size-4 shrink-0 text-brand-500" />
           <span className="truncate">{user?.defaultLocation ? `Salón ${user.defaultLocation.room}` : "Elige tu salón"}</span>
@@ -45,7 +45,7 @@ export default function InicioPage() {
         {active ? (
           <Link
             href={`/pedido/${active.id}`}
-            className="flex items-center gap-4 rounded-card bg-ink p-4 text-white shadow-card"
+            className="flex items-center gap-4 rounded-card bg-ink p-4 text-white shadow-card lg:p-6"
           >
             <span className={`grid size-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-2xl ${getVendor(active.vendorId)?.cover}`}>
               {getVendor(active.vendorId)?.emoji}
@@ -58,14 +58,15 @@ export default function InicioPage() {
             <ChevronRight className="size-5 text-white/60" />
           </Link>
         ) : (
-          <div className="relative overflow-hidden rounded-card bg-brand-500 p-5 text-white">
-            <div className="absolute -right-10 -bottom-12 size-40 rounded-full bg-white/10" aria-hidden="true" />
+          <div className="relative overflow-hidden rounded-card bg-brand-500 p-5 text-white lg:p-8">
+            <div className="absolute -right-10 -bottom-12 size-40 rounded-full bg-white/10 lg:-right-12 lg:-bottom-24 lg:size-72" aria-hidden="true" />
+            <div className="absolute top-6 right-56 hidden size-24 rounded-full bg-white/10 lg:block" aria-hidden="true" />
             <CalendarClock className="size-7" />
-            <p className="mt-3 text-lg leading-tight font-extrabold">
+            <p className="mt-3 text-lg leading-tight font-extrabold lg:text-3xl">
               Agenda hoy tu comida
-              <br /> de mañana
+              <br className="lg:hidden" /> de mañana
             </p>
-            <p className="mt-1 max-w-[16rem] text-sm text-white/85">
+            <p className="mt-1 max-w-[16rem] text-sm text-white/85 lg:mt-2 lg:max-w-md lg:text-base">
               Elige el bloque de tu clase y llega a tu salón justo a tiempo.
             </p>
           </div>
@@ -122,7 +123,7 @@ export default function InicioPage() {
         <SectionTitle action={<span className="text-sm text-muted">{vendors.length} locales</span>}>
           Locales en el campus
         </SectionTitle>
-        <div className="space-y-4 px-5">
+        <div className="grid gap-4 px-5 lg:grid-cols-3 lg:gap-6">
           {vendors.map((v) => (
             <VendorCard key={v.id} vendor={v} />
           ))}
@@ -130,7 +131,7 @@ export default function InicioPage() {
       </section>
 
       <CartBar aboveNav />
-      <div className="h-20" />
+      <div className="h-20 lg:hidden" />
     </main>
   );
 }

@@ -4,13 +4,15 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
+import { DesktopNav } from "@/components/DesktopNav";
 import { LogoMark } from "@/components/Logo";
 import { useBite } from "@/lib/store";
 
-/** Columna de la app con proporción de teléfono; en escritorio se ve centrada como un mockup. */
+/** Columna con proporción de teléfono hasta tableta; en computadora ocupa todo el ancho con barra superior. */
 export function PhoneShell({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[440px] flex-col bg-canvas sm:shadow-[0_0_80px_-20px_rgb(28_21_17/0.25)]">
+    <div className="mx-auto flex min-h-dvh w-full max-w-[440px] flex-col bg-canvas sm:shadow-[0_0_80px_-20px_rgb(28_21_17/0.25)] lg:max-w-none lg:shadow-none">
+      <DesktopNav />
       {children}
     </div>
   );
@@ -49,8 +51,8 @@ export function PageHeader({ title, backHref, right, transparent }: PageHeaderPr
     "grid size-10 place-items-center rounded-full bg-white text-ink shadow-sm ring-1 ring-line";
   return (
     <header
-      className={`sticky top-0 z-30 flex h-16 items-center gap-3 px-4 ${
-        transparent ? "" : "border-b border-line/70 bg-canvas/90 backdrop-blur"
+      className={`sticky top-0 z-30 flex h-16 items-center gap-3 px-4 lg:static lg:mx-auto lg:mt-4 lg:w-full lg:max-w-6xl lg:px-5 ${
+        transparent ? "" : "border-b border-line/70 bg-canvas/90 backdrop-blur lg:border-0 lg:bg-transparent lg:backdrop-blur-none"
       }`}
     >
       {backHref ? (
@@ -62,7 +64,7 @@ export function PageHeader({ title, backHref, right, transparent }: PageHeaderPr
           <ChevronLeft className="size-5" />
         </button>
       )}
-      {title && <h1 className="flex-1 truncate text-lg font-bold">{title}</h1>}
+      {title && <h1 className="flex-1 truncate text-lg font-bold lg:text-2xl lg:font-extrabold lg:tracking-tight">{title}</h1>}
       {!title && <div className="flex-1" />}
       {right}
     </header>

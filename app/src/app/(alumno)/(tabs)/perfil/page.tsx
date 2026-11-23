@@ -23,11 +23,11 @@ export default function PerfilPage() {
     .join("");
 
   return (
-    <main className="flex-1 space-y-4 px-4 pt-6">
-      <section className="flex items-center gap-4 px-1">
+    <main className="flex-1 space-y-4 px-4 pt-6 lg:mx-auto lg:w-full lg:max-w-6xl lg:grid lg:flex-none lg:grid-cols-2 lg:items-start lg:gap-6 lg:space-y-0 lg:px-5 lg:pt-10">
+      <section className="flex items-center gap-4 px-1 lg:col-span-2">
         <span className="grid size-16 place-items-center rounded-full bg-brand-500 text-xl font-extrabold text-white">{initials}</span>
         <div className="min-w-0">
-          <h1 className="truncate text-xl font-extrabold">{user.name}</h1>
+          <h1 className="truncate text-xl font-extrabold lg:text-3xl lg:tracking-tight">{user.name}</h1>
           <p className="truncate text-sm text-muted">{user.email}</p>
         </div>
       </section>
@@ -63,7 +63,7 @@ export default function PerfilPage() {
         <NavRow href="/repartidor" icon={<Bike className="size-5" />} label="Vista del repartidor" />
       </Card>
 
-      <div className="space-y-2 pb-6">
+      <div className="space-y-2 pb-6 lg:col-span-2 lg:flex lg:gap-3 lg:space-y-0 lg:[&>button]:w-auto">
         <Button variant="secondary" block onClick={() => setConfirmReset(true)}>
           <RefreshCcw className="size-4" /> Reiniciar datos de la demo
         </Button>

@@ -48,7 +48,8 @@ function Carrito() {
           </button>
         }
       />
-      <main className="flex-1 px-4 pt-4 pb-32">
+      <main className="flex-1 px-4 pt-4 pb-32 lg:mx-auto lg:w-full lg:max-w-6xl lg:grid lg:flex-none lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-8 lg:px-5 lg:pb-16">
+        <div>
         <Link href={`/local/${vendor.id}`} className="flex items-center gap-3 rounded-card bg-white p-4 shadow-card ring-1 ring-line/60">
           <span className={`grid size-12 place-items-center rounded-2xl bg-gradient-to-br text-2xl ${vendor.cover}`}>
             {vendor.emoji}
@@ -86,8 +87,10 @@ function Carrito() {
             </Link>
           </li>
         </ul>
+        </div>
 
-        <dl className="mt-4 space-y-2 rounded-card bg-white p-5 text-sm shadow-card ring-1 ring-line/60">
+        <aside className="mt-4 lg:sticky lg:top-24 lg:mt-0">
+        <dl className="space-y-2 rounded-card bg-white p-5 text-sm shadow-card ring-1 ring-line/60">
           <div className="flex justify-between">
             <dt className="text-muted">Subtotal</dt>
             <dd className="font-semibold">{money(subtotal)}</dd>
@@ -101,9 +104,13 @@ function Carrito() {
             <dd className="font-extrabold">{money(subtotal + DELIVERY_FEE)}</dd>
           </div>
         </dl>
+        <ButtonLink href="/checkout" size="lg" block className="mt-4 hidden lg:inline-flex">
+          Continuar · {money(subtotal + DELIVERY_FEE)}
+        </ButtonLink>
+        </aside>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[440px] border-t border-line bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[440px] lg:hidden border-t border-line bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <ButtonLink href="/checkout" size="lg" block>
           Continuar · {money(subtotal + DELIVERY_FEE)}
         </ButtonLink>

@@ -12,7 +12,7 @@ interface SheetProps {
   label: string;
 }
 
-/** Hoja inferior estilo app móvil. */
+/** Hoja inferior estilo app móvil; en computadora se muestra como ventana centrada. */
 export function Sheet({ open, onClose, children, footer, label }: SheetProps) {
   useEffect(() => {
     if (!open) return;
@@ -36,7 +36,7 @@ export function Sheet({ open, onClose, children, footer, label }: SheetProps) {
         className="absolute inset-0 animate-fade-in bg-black/40"
         onClick={onClose}
       />
-      <div className="relative mt-auto flex max-h-[92dvh] w-full max-w-[440px] animate-sheet-up flex-col overflow-hidden rounded-t-[28px] bg-white">
+      <div className="relative mt-auto flex max-h-[92dvh] w-full max-w-[440px] animate-sheet-up flex-col overflow-hidden rounded-t-[28px] bg-white lg:my-auto lg:max-h-[88dvh] lg:max-w-[520px] lg:animate-fade-in lg:rounded-[28px] lg:shadow-2xl">
         <button
           type="button"
           onClick={onClose}

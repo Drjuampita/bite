@@ -32,11 +32,11 @@ export default function PedidosPage() {
   const list = lists[tab];
 
   return (
-    <main className="flex flex-1 flex-col">
-      <header className="px-5 pt-6">
-        <h1 className="text-2xl font-extrabold tracking-tight">Mis pedidos</h1>
+    <main className="flex flex-1 flex-col lg:mx-auto lg:w-full lg:max-w-6xl">
+      <header className="px-5 pt-6 lg:pt-10">
+        <h1 className="text-2xl font-extrabold tracking-tight lg:text-4xl">Mis pedidos</h1>
       </header>
-      <div className="px-4 pt-4">
+      <div className="px-4 pt-4 lg:max-w-lg lg:px-5 lg:pt-6">
         <Segmented
           label="Filtrar pedidos"
           value={tab}
@@ -52,7 +52,7 @@ export default function PedidosPage() {
       {list.length === 0 ? (
         <EmptyState {...EMPTY[tab]} action={<ButtonLink href="/inicio">Explorar locales</ButtonLink>} />
       ) : (
-        <ul className="space-y-3 px-4 pt-4">
+        <ul className="space-y-3 px-4 pt-4 lg:grid lg:grid-cols-2 lg:gap-4 lg:space-y-0 lg:px-5 lg:pt-6">
           {list.map((o) => (
             <li key={o.id}>
               <OrderCard
